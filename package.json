@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "deploy": "surge po4a/ja https://goaccess-ja.surge.sh"
+  },
   "devDependencies": {
     "surge": "^0.23.1"
   }
