@@ -1,0 +1,4118 @@
+# Japanese translations for goaccess package
+# goaccess パッケージに対する英訳
+# Copyright (C) 2023 gemmaro.
+# This file is distributed under the same license as the goaccess package.
+#
+# 翻訳者へ：man形式の多バイト文字対応は良くないため、句読点の後の改行は必須と考えて良いように思います。
+# ただし、固定長で折り返すとgrepが効きにくくなる、textlintの導入が難しくなるなどの害が大きいため強く推奨しません。
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: goaccess 1.7\n"
+"POT-Creation-Date: 2023-07-15 16:39+0900\n"
+"PO-Revision-Date: 2023-07-15 16:46+0900\n"
+"Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
+"Language-Team: none\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. type: TH
+#: ../goaccess.1:1
+#, no-wrap
+msgid "goaccess"
+msgstr "goaccess"
+
+#. type: TH
+#: ../goaccess.1:1
+#, no-wrap
+msgid "MARCH 2023"
+msgstr "2023年3月"
+
+#. type: TH
+#: ../goaccess.1:1
+#, no-wrap
+msgid "GNU+Linux"
+msgstr "GNU+Linux"
+
+#. type: TH
+#: ../goaccess.1:1
+#, no-wrap
+msgid "User Manuals"
+msgstr "利用者の手引"
+
+#. type: SH
+#: ../goaccess.1:2
+#, no-wrap
+msgid "NAME"
+msgstr "名称"
+
+#. type: Plain text
+#: ../goaccess.1:4
+msgid "goaccess - fast web log analyzer and interactive viewer."
+msgstr "goaccess - 高速なwebログ解析器と対話的な閲覧器"
+
+#. type: SH
+#: ../goaccess.1:4
+#, no-wrap
+msgid "SYNOPSIS"
+msgstr "処方"
+
+#. type: Plain text
+#: ../goaccess.1:7
+msgid "B<goaccess [filename] [options...] [-c][-M][-H][-q][-d][...]>"
+msgstr "B<goaccess [ファイル名] [オプション...] [-c][-M][-H][-q][-d][...]>"
+
+#. type: SH
+#: ../goaccess.1:7
+#, no-wrap
+msgid "DESCRIPTION"
+msgstr "説明"
+
+#. type: Plain text
+#: ../goaccess.1:14
+msgid ""
+"B<goaccess> GoAccess is an open source real-time web log analyzer and "
+"interactive viewer that runs in a I<terminal> in *nix systems or through "
+"your I<browser.>"
+msgstr ""
+"B<goaccess> GoAccessはオープンソースの実時間webログ解析器と対話的な閲覧器を兼"
+"ねており、\n"
+"*nixシステムのI<端末>やI<ブラウザ>上で走ります。"
+
+#. type: Plain text
+#: ../goaccess.1:17
+msgid ""
+"It provides fast and valuable HTTP statistics for system administrators that "
+"require a visual server report on the fly."
+msgstr ""
+"サーバーレポートで思うがままにデータの可視化を行う必要があるシステム管理者の"
+"ために、\n"
+"高速で価値のあるHTTPの統計情報を提供します。"
+
+#. type: Plain text
+#: ../goaccess.1:20
+msgid ""
+"GoAccess parses the specified web log file and outputs the data to the X "
+"terminal. Features include:"
+msgstr ""
+"GoAccessは指定されたwebログファイルを解析しX端末にデータを出力します。\n"
+"含まれている機能は以下です："
+
+#. type: IP
+#: ../goaccess.1:21
+#, no-wrap
+msgid "General Statistics:"
+msgstr "一般的な統計："
+
+#. type: Plain text
+#: ../goaccess.1:26
+msgid ""
+"This panel gives a summary of several metrics, such as the number of valid "
+"and invalid requests, time taken to analyze the dataset, unique visitors, "
+"requested files, static files (CSS, ICO, JPG, etc) HTTP referrers, 404s, "
+"size of the parsed log file and bandwidth consumption."
+msgstr ""
+"このパネルにはいくつかの指標の概要があります。\n"
+"妥当ないし不当なリクエストの数、\n"
+"データセットの解析所要時間、\n"
+"正味訪問者数、\n"
+"リクエストされたファイル、\n"
+"静的ファイル（CSS、ICO、JPGなど）のHTTPリファラ、\n"
+"404、\n"
+"そして解析されたログファイルの大きさ、\n"
+"さらに帯域幅の消費量といったものです。"
+
+#. type: IP
+#: ../goaccess.1:26
+#, no-wrap
+msgid "Unique visitors"
+msgstr "正味訪問者"
+
+#. type: Plain text
+#: ../goaccess.1:31
+msgid ""
+"This panel shows metrics such as hits, unique visitors and cumulative "
+"bandwidth per date. HTTP requests containing the same IP, the same date, and "
+"the same user agent are considered a unique visitor. By default, it includes "
+"web crawlers/spiders."
+msgstr ""
+"このパネルにはヒット数、正味訪問者、日次累積帯域幅といった指標が示されます。"
+
+# --date-spec=hrのhrはキーワードなので訳しません
+#. type: Plain text
+#: ../goaccess.1:37
+msgid ""
+"Optionally, date specificity can be set to the hour level using I<--date-"
+"spec=hr> which will display dates such as 05/Jun/2016:16, or to the minute "
+"level producing 05/Jun/2016:16:59. This is great if you want to track your "
+"daily traffic at the hour or minute level."
+msgstr ""
+"おまけとして日付での指定はI<--date-spec=hr>を使って時単位に設定することによ"
+"り、\n"
+"05/Jun/2016:16のような日付を表示できます。\n"
+"もしくは分単位にすることで05/Jun/2016:16:59になります。\n"
+"時単位ないし分単位で日次トラフィックを把握したいときは威力を発揮します。"
+
+#. type: IP
+#: ../goaccess.1:37
+#, no-wrap
+msgid "Requested files"
+msgstr "リクエストされたファイル"
+
+#. type: Plain text
+#: ../goaccess.1:41
+msgid ""
+"This panel displays the most requested (non-static) files on your web "
+"server.  It shows hits, unique visitors, and percentage, along with the "
+"cumulative bandwidth, protocol, and the request method used."
+msgstr ""
+"このパネルにはwebサーバーにリクエストされた（静的でない）ファイルのほとんどが"
+"表示されます。\n"
+"ヒット数、正味訪問者、比率と共に、使用された累積帯域幅、プロトコル、リクエス"
+"トメソッドが示されます。"
+
+#. type: IP
+#: ../goaccess.1:41
+#, no-wrap
+msgid "Requested static files"
+msgstr "リクエストされた静的ファイル"
+
+#. type: Plain text
+#: ../goaccess.1:45
+msgid ""
+"Lists the most frequently static files such as: JPG, CSS, SWF, JS, GIF, and "
+"PNG file types, along with the same metrics as the last panel. Additional "
+"static files can be added to the configuration file."
+msgstr ""
+"JPG、CSS、SWF、JS、GIF、PNGファイル種のような頻出の静的ファイルを一覧にしつ"
+"つ、\n"
+"上のリクエストされたファイルのパネルと同じ指標も備わります。\n"
+"静的ファイルの種類を設定ファイルに加えることができます。"
+
+#. type: IP
+#: ../goaccess.1:45
+#, no-wrap
+msgid "404 or Not Found"
+msgstr "404ないしNot Found"
+
+#. type: Plain text
+#: ../goaccess.1:49
+msgid ""
+"Displays the same metrics as the previous request panels, however, its data "
+"contains all pages that were not found on the server, or commonly known as "
+"404 status code."
+msgstr ""
+"前述のリクエストパネルと同じ指標を表示します。\n"
+"ただしこちらはサーバーで見当たらなかったり、\n"
+"一般に404ステータスコードとして知られているデータが含まれます。"
+
+#. type: IP
+#: ../goaccess.1:49
+#, no-wrap
+msgid "Hosts"
+msgstr "ホスト"
+
+#. type: Plain text
+#: ../goaccess.1:52
+msgid ""
+"This panel has detailed information on the hosts themselves. This is great "
+"for spotting aggressive crawlers and identifying who's eating your bandwidth."
+msgstr ""
+"このパネルにはホスト自体についての詳細情報が載っています。\n"
+"これにより容易に攻撃的なクローラーに焦点を当てたり、\n"
+"帯域幅を貪るホストを同定することができます。"
+
+#. type: Plain text
+#: ../goaccess.1:58
+msgid ""
+"Expanding the panel can display more information such as host's reverse DNS "
+"lookup result, country of origin and city. If the I<-a> argument is enabled, "
+"a list of user agents can be displayed by selecting the desired IP address, "
+"and then pressing ENTER."
+msgstr ""
+"パネルを拡大することでホストのリバースDNS探知結果や身元の国家や、\n"
+"市といった追加情報を表示できます。\n"
+"I<-a>引数が有効であれば所望のIPアドレスを選択してエンターを打つことで、\n"
+"ユーザーエージェントを表示させられます。"
+
+#. type: IP
+#: ../goaccess.1:58
+#, no-wrap
+msgid "Operating Systems"
+msgstr "オペレーティングシステム"
+
+#. type: Plain text
+#: ../goaccess.1:62
+msgid ""
+"This panel will report which operating system the host used when it hit the "
+"server. It attempts to provide the most specific version of each operating "
+"system."
+msgstr ""
+"このパネルではサーバーをヒットするときにホストがどのオペレーティングシステム"
+"を用いたかが報告されます。\n"
+"それぞれのオペレーティングシステムの可能な限り最も細かいバージョンが呈示され"
+"ます。"
+
+#. type: IP
+#: ../goaccess.1:62
+#, no-wrap
+msgid "Browsers"
+msgstr "ブラウザ"
+
+#. type: Plain text
+#: ../goaccess.1:65
+msgid ""
+"This panel will report which browser the host used when it hit the server. "
+"It attempts to provide the most specific version of each browser."
+msgstr ""
+"このパネルにはサーバーをヒットした際にホストがどのブラウザを用いたかを報告し"
+"ます。\n"
+"それぞれのブラウザの可能な限り最も細かいバージョンが呈示されます。"
+
+#. type: IP
+#: ../goaccess.1:65
+#, no-wrap
+msgid "Visit Times"
+msgstr "訪問時刻"
+
+#. type: Plain text
+#: ../goaccess.1:68
+msgid ""
+"This panel will display an hourly report. This option displays 24 data "
+"points, one for each hour of the day."
+msgstr ""
+"このパネルには時単位のレポートが表示されます。\n"
+"このオプションでは24個のデータ点が表示され、1つにつき1日のうちの各1時間が充て"
+"られます。"
+
+#. type: Plain text
+#: ../goaccess.1:73
+msgid ""
+"Optionally, hour specificity can be set to the tenth of an hour level using "
+"I<--hour-spec=min> which will display hours as 16:4 This is great if you "
+"want to spot peaks of traffic on your server."
+msgstr ""
+"おまけとして、時指定はI<--hour-spec=min>を使うことで時単位の10分の1に設定する"
+"ことができ、\n"
+"時間は16:4として表示されます。\n"
+"これはサーバーのトラフィックのピークに焦点を当てたいときに効果を発揮します。"
+
+#. type: IP
+#: ../goaccess.1:73
+#, no-wrap
+msgid "Virtual Hosts"
+msgstr "仮想ホスト"
+
+#. type: Plain text
+#: ../goaccess.1:78
+msgid ""
+"This panel will display all the different virtual hosts parsed from the "
+"access log. This panel is displayed if I<%v> is used within the log-format "
+"string."
+msgstr ""
+"このパネルにはアクセスログから解析された全ての各仮想ホストが表示されます。\n"
+"このパネルはログ書式文字列中にI<%v>が使われたときに表示されます。"
+
+#. type: IP
+#: ../goaccess.1:78
+#, no-wrap
+msgid "Referrers URLs"
+msgstr "リファラのURL"
+
+#. type: Plain text
+#: ../goaccess.1:85
+msgid ""
+"If the host in question accessed the site via another resource, or was "
+"linked/diverted to you from another host, the URL they were referred from "
+"will be provided in this panel. See `--ignore-panel` in your configuration "
+"file to enable it.  I<disabled> by default."
+msgstr ""
+"問題のホストが他のリソースを介してアクセスされた場合、\n"
+"もしくは別のホストからリンクないし転換された場合、\n"
+"このパネル中に参照元のURLが呈示されます。\n"
+"有効にするには設定ファイル中の`--ignore-panel`を参照してください。\n"
+"既定ではI<無効>になっています。"
+
+#. type: IP
+#: ../goaccess.1:85
+#, no-wrap
+msgid "Referring Sites"
+msgstr "参照サイト"
+
+#. type: Plain text
+#: ../goaccess.1:88
+msgid ""
+"This panel will display only the host part but not the whole URL. The URL "
+"where the request came from."
+msgstr ""
+"このパネルにはURL全体ではなくホスト部分のみが表示されます。\n"
+"このURLはリクエストの出自です。"
+
+#. type: IP
+#: ../goaccess.1:88
+#, no-wrap
+msgid "Keyphrases"
+msgstr "キーフレーズ"
+
+#. type: Plain text
+#: ../goaccess.1:94
+msgid ""
+"It reports keyphrases used on Google search, Google cache, and Google "
+"translate that have lead to your web server. At present, it only supports "
+"Google search queries via HTTP. See `--ignore-panel` in your configuration "
+"file to enable it.  I<disabled> by default."
+msgstr ""
+"サーバーに導いたGoogle検索、Googleキャッシュ、\n"
+"Google翻訳で使われたキーフレーズが報告されます。\n"
+"現時点ではHTTPを介したGoogle検索問い合せのみに対応しています。\n"
+"有効にするには設定ファイル中の`--ignore-panel`を参照してください。\n"
+"既定ではI<無効>になっています。"
+
+#. type: IP
+#: ../goaccess.1:94
+#, no-wrap
+msgid "Geo Location"
+msgstr "地理的位置"
+
+#. type: Plain text
+#: ../goaccess.1:98
+msgid ""
+"Determines where an IP address is geographically located. Statistics are "
+"broken down by continent and country. It needs to be compiled with "
+"GeoLocation support."
+msgstr ""
+"IPアドレスが地理的にどこに位置しているかを定められます。\n"
+"統計は大陸と国家に細分化されます。\n"
+"GeoLocation対応とともにコンパイルする必要があります。"
+
+#. type: IP
+#: ../goaccess.1:98
+#, no-wrap
+msgid "HTTP Status Codes"
+msgstr "HTTPステータスコード"
+
+#. type: Plain text
+#: ../goaccess.1:100
+msgid "The values of the numeric status code to HTTP requests."
+msgstr "HTTPリクエストに対する数値的なステータスコードの値です。"
+
+#. type: IP
+#: ../goaccess.1:100
+#, no-wrap
+msgid "ASN"
+msgstr "ASN"
+
+#. type: Plain text
+#: ../goaccess.1:103
+msgid ""
+"This panel displays ASN (Autonomous System Numbers) data for GeoIP2 and "
+"legacy databases. Great for detecting malicious traffic and blocking "
+"accordingly."
+msgstr ""
+"このパネルにはGeoIP2と旧式のデータベース用にASN (Autonomous System Numbers) のデータが表示されます。\n"
+"悪意のあるトラフィックを検知しそれに伴ってブロックするのに優れています。"
+
+#. type: IP
+#: ../goaccess.1:103
+#, no-wrap
+msgid "Remote User (HTTP authentication)"
+msgstr "リモートユーザー（HTTP認証）"
+
+#. type: Plain text
+#: ../goaccess.1:109
+msgid ""
+"This is the userid of the person requesting the document as determined by "
+"HTTP authentication. If the document is not password protected, this part "
+"will be \"-\" just like the previous one. This panel is not enabled unless "
+"I<%e> is given within the log-format variable."
+msgstr ""
+"HTTP認証により定められるような、文書をリクエストする人物の利用者IDがこれで"
+"す。\n"
+"文書がパスワードで保護されていなければ前のものと同様にこの部分は\"-\"になりま"
+"す。\n"
+"このパネルはログ書式変数中にI<%e>が与えられていなければ有効になりません。"
+
+#. type: IP
+#: ../goaccess.1:109
+#, no-wrap
+msgid "Cache Status"
+msgstr "キャッシュ状態"
+
+#. type: Plain text
+#: ../goaccess.1:117
+#, no-wrap
+msgid ""
+"If you are using caching on your server, you may be at the point where you\n"
+"want to know if your request is being cached and served from the cache. This\n"
+"panel shows the cache status of the object the server served. This panel is not\n"
+"enabled unless\n"
+"I<%C>\n"
+"is given within the log-format variable. The status can be either\n"
+" `MISS`, `BYPASS`, `EXPIRED`, `STALE`, `UPDATING`, `REVALIDATED` or `HIT`\n"
+msgstr ""
+"サーバーでキャッシュを使っているとき、\n"
+"リクエストがキャッシュされたりキャッシュからリクエストに応答したりしているかどうかを、\n"
+"知りたくなるときがくるかもしれません。\n"
+"このパネルはサーバーが供したオブジェクトのキャッシュ状態を示します。\n"
+"このパネルはログ書式変数中でI<%C>が与えられない限り有効にはされません。\n"
+"状態は`MISS`、`BYPASS`、`EXPIRED`、`STALE`、`UPDATING`、`REVALIDATED`、`HIT`のいずれかです。\n"
+
+#. type: IP
+#: ../goaccess.1:117
+#, no-wrap
+msgid "MIME Types"
+msgstr "MIME種別"
+
+#. type: Plain text
+#: ../goaccess.1:125
+msgid ""
+"This panel specifies Media Types (formerly known as MIME types) and Media "
+"Subtypes which will be assigned and listed underneath. This panel is not "
+"enabled unless I<%M> is given within the log-format variable. See https://"
+"www.iana.org/assignments/media-types/media-types.xhtml for more details."
+msgstr ""
+"このパネルには割り当てられたメディア種別（正式にはMIME種別として知られます）"
+"とメディア副種別が指定されており、\n"
+"その下に一覧になっています。\n"
+"このパネルはログ書式変数中にI<%M>が与えられていない限り有効になりません。\n"
+"詳細は https://www.iana.org/assignments/media-types/media-types.xhtml を参照"
+"してください。"
+
+#. type: IP
+#: ../goaccess.1:125
+#, no-wrap
+msgid "Encryption Settings"
+msgstr "暗号化設定"
+
+#. type: Plain text
+#: ../goaccess.1:130
+msgid ""
+"This panel shows the SSL/TLS protocol used along the Cipher Suites. This "
+"panel is not enabled unless I<%K> is given within the log-format variable."
+msgstr ""
+"このパネルには暗号スート間で使用されたSSL/TLSプロトコルが示されます。\n"
+"このパネルはログ書式変数中でI<%K>が与えられていない限り有効ではありません。"
+
+#. type: Plain text
+#: ../goaccess.1:135
+msgid ""
+"I<NOTE:> Optionally and if configured, all panels can display the average "
+"time taken to serve the request."
+msgstr ""
+"I<補足：>おまけで、設定された際には、\n"
+"全てのパネルへリクエストに対応するのに掛かった平均時間を表示することができま"
+"す。"
+
+#. type: SH
+#: ../goaccess.1:136
+#, no-wrap
+msgid "STORAGE"
+msgstr "容量"
+
+#. type: Plain text
+#: ../goaccess.1:140
+msgid ""
+"There are three storage options that can be used with GoAccess. Choosing one "
+"will depend on your environment and needs."
+msgstr ""
+"GoAccessで使うことができる容量オプションは3つあります。\n"
+"環境と要件により選択は変わってきます。"
+
+#. type: TP
+#: ../goaccess.1:140
+#, no-wrap
+msgid "Default Hash Tables"
+msgstr "既定のハッシュテーブル"
+
+#. type: Plain text
+#: ../goaccess.1:146
+msgid ""
+"In-memory storage provides better performance at the cost of limiting the "
+"dataset size to the amount of available physical memory. GoAccess uses in-"
+"memory hash tables. It has very good memory usage and pretty good "
+"performance. This storage has support for on-disk persistence."
+msgstr ""
+"インメモリ容量はデータセットの大きさを利用できる物理記憶容量に制限するコスト"
+"と引き換えに、\n"
+"よりよいパフォーマンスが得られます。\n"
+"GoAccessはインメモリハッシュテーブルを使用します。\n"
+"とても多いメモリ使用でかなり良いパフォーマンスを発揮します。\n"
+"この容量はディスク上の永続性に対応します。"
+
+#. type: SH
+#: ../goaccess.1:146
+#, no-wrap
+msgid "CONFIGURATION"
+msgstr "コンパイル時の設定"
+
+#. type: Plain text
+#: ../goaccess.1:151
+msgid ""
+"Multiple options can be used to configure GoAccess. For a complete up-to-"
+"date list of configure options, run I<./configure --help>"
+msgstr ""
+"GoAccessのコンパイル時の設定ではいくつかのオプションを使うことができます。\n"
+"完全な最新の設定オプションの一覧についてはI<./configure --help>を走らせてくだ"
+"さい。"
+
+#. type: TP
+#: ../goaccess.1:151
+#, no-wrap
+msgid "B<--enable-debug>"
+msgstr "B<--enable-debug>"
+
+#. type: Plain text
+#: ../goaccess.1:154
+msgid "Compile with debugging symbols and turn off compiler optimizations."
+msgstr ""
+"デバッグシンボル有りでコンパイルし、\n"
+"コンパイラの最適化を切ります。"
+
+#. type: TP
+#: ../goaccess.1:154
+#, no-wrap
+msgid "B<--enable-utf8>"
+msgstr "B<--enable-utf8>"
+
+#. type: Plain text
+#: ../goaccess.1:157
+msgid "Compile with wide character support. Ncursesw is required."
+msgstr ""
+"全角文字対応有りでコンパイルします。\n"
+"Ncurseswが必要です。"
+
+#. type: TP
+#: ../goaccess.1:157
+#, no-wrap
+msgid "B<--enable-geoip=E<lt>legacy|mmdbE<gt>>"
+msgstr "B<--enable-geoip=E<lt>legacy|mmdbE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:164
+msgid ""
+"Compile with GeoLocation support. MaxMind's GeoIP is required.  I<legacy> "
+"will utilize the original GeoIP databases.  I<mmdb> will utilize the "
+"enhanced GeoIP2 databases."
+msgstr ""
+"GeoLocation対応有りでコンパイルします。\n"
+"MaxMindのGeoIPが必要です。\n"
+"I<legacy>は元来のGeoIPデータベースを使用します。\n"
+"I<mmdb>は改善されたGeoIP2データベースを使用します。"
+
+#. type: TP
+#: ../goaccess.1:164
+#, no-wrap
+msgid "B<--with-getline>"
+msgstr "B<--with-getline>"
+
+#. type: Plain text
+#: ../goaccess.1:168
+msgid ""
+"Dynamically expands line buffer in order to parse full line requests instead "
+"of using a fixed size buffer of 4096."
+msgstr ""
+"4096の固定大バッファを使う代わりに、フルラインリクエストを解析するために動的"
+"にラインバッファを拡張します。"
+
+#. type: TP
+#: ../goaccess.1:168
+#, no-wrap
+msgid "B<--with-openssl>"
+msgstr "B<--with-openssl>"
+
+#. type: Plain text
+#: ../goaccess.1:171
+msgid "Compile GoAccess with OpenSSL support for its WebSocket server."
+msgstr "WebSocketサーバー用にGoAccessをOpenSSL対応付きでコンパイルします。"
+
+#. type: SH
+#: ../goaccess.1:171
+#, no-wrap
+msgid "OPTIONS"
+msgstr "オプション"
+
+#. type: Plain text
+#: ../goaccess.1:176
+msgid ""
+"The following options can be supplied to the command or specified in the "
+"configuration file. If specified in the configuration file, long options "
+"need to be used without prepending -- and without using the equal sign =."
+msgstr ""
+"以下のオプションはコマンドに与えたり設定ファイルで指定したりできます。\n"
+"設定ファイルで指定された場合、長いオプション名は--を前に付けず、等号=を使わず"
+"に使用する必要があります。"
+
+#. type: SS
+#: ../goaccess.1:176
+#, no-wrap
+msgid "LOG/DATE/TIME FORMAT"
+msgstr "ログ、日付、時刻の書式"
+
+#. type: TP
+#: ../goaccess.1:178
+#, no-wrap
+msgid "B<--time-format=E<lt>timeformatE<gt>>"
+msgstr "B<--time-format=E<lt>時刻書式E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:183
+msgid ""
+"The time-format variable followed by a space, specifies the log format time "
+"containing either a name of a predefined format (see options below) or any "
+"combination of regular characters and special format specifiers."
+msgstr ""
+"時刻書式変数は空白1つ分に続いて、定義済み書式名（後述のオプションを参照）ない"
+"し通常の文字と特殊書式指定子のあらゆる組み合わせのいずれかを含むログ書式時刻"
+"を指定します。"
+
+#. type: Plain text
+#: ../goaccess.1:186
+msgid ""
+"They all begin with a percentage (%) sign. See `man strftime`.  I<%T or %H:"
+"%M:%S.>"
+msgstr ""
+"全てパーセント符号 (%) から始まります。\n"
+"`man strftime`を参照してください。\n"
+"I<%Tや%H:%M:%S>といったものです。"
+
+#. type: Plain text
+#: ../goaccess.1:193
+msgid ""
+"Note that if a timestamp is given in microseconds, I<%f> must be used as "
+"time-format.  If the timestamp is given in milliseconds I<%*> must be used "
+"as time-format."
+msgstr ""
+"なお、タイムスタンプがマイクロ秒で与えられているならばI<%f>は時刻書式として用"
+"いられねばなりません。\n"
+"タイムスタンプがミリ秒で与えられているならばI<%*>は時刻書式として用いられねば"
+"なりません。"
+
+#. type: TP
+#: ../goaccess.1:193
+#, no-wrap
+msgid "B<--date-format=E<lt>dateformatE<gt>>"
+msgstr "B<--date-format=E<lt>日付書式E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:198
+msgid ""
+"The date-format variable followed by a space, specifies the log format time "
+"containing either a name of a predefined format (see options below) or any "
+"combination of regular characters and special format specifiers."
+msgstr ""
+"日付書式変数は空白1つに続き、定義済み書式名（後述のオプションを参照）ないし通"
+"常の文字と特殊な書式指定子のあらゆる組合せを含むログ書式時刻を指定します。"
+
+#. type: Plain text
+#: ../goaccess.1:201
+msgid ""
+"They all begin with a percentage (%) sign. See `man strftime`.  I<%Y-%m-%d.>"
+msgstr ""
+"全てパーセント (%) 符号から始まります。\n"
+"`man strftime`を参照してください。\n"
+"I<%Y-%m-%d>といったものです。"
+
+#. type: Plain text
+#: ../goaccess.1:209
+msgid ""
+"Note that if a timestamp is given in microseconds, I<%f> must be used as "
+"date-format.  If the timestamp is given in milliseconds I<%*> must be used "
+"as date-format."
+msgstr ""
+"タイムスタンプがマイクロ秒で与えられているならばI<%f>が日付書式として使われな"
+"ければなりません。\n"
+"タイムスタンプがミリ秒で与えられているならばI<%*>が日付書式として使われなけれ"
+"ばなりません。"
+
+#. type: TP
+#: ../goaccess.1:209
+#, no-wrap
+msgid "B<--datetime-format=E<lt>date_time_formatE<gt>>"
+msgstr "B<--datetime-format=E<lt>日時書式E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:215
+msgid ""
+"The date and time format combines the two variables into a single option. "
+"This gives the ability to get the timezone from a request and convert it to "
+"another timezone for output. See I<--tz=E<lt>timezoneE<gt>>"
+msgstr ""
+"日付と時刻の書式について、\n"
+"2つの変数が単一のオプションに組み合わさったものです。\n"
+"これによりリクエストからタイムゾーンを取得し、\n"
+"出力用に他のタイムゾーンに変換することができます。\n"
+"I<--tz=E<lt>タイムゾーンE<gt>>を参照してください。"
+
+#. type: Plain text
+#: ../goaccess.1:218
+msgid ""
+"They all begin with a percentage (%) sign. See `man strftime`. e.g., I<%d/%b/"
+"%Y:%H:%M:%S %z.>"
+msgstr ""
+"全てパーセント (%) 符号から始まります。\n"
+"`man strftime`を参照してください。\n"
+"例としてI<%d/%b/%Y:%H:%M:%S %z>を挙げます。"
+
+#. type: Plain text
+#: ../goaccess.1:222
+msgid ""
+"Note that if --datetime-format is used, I<%x> must be passed in the log-"
+"format variable to represent the date and time field."
+msgstr ""
+"なお--datetime-formatが使われている場合、日付と時刻のフィールドを表現するため"
+"にログ書式変数にI<%x>が渡されなければなりません。"
+
+#. type: TP
+#: ../goaccess.1:222
+#, no-wrap
+msgid "B<--log-format=E<lt>logformatE<gt>>"
+msgstr "B<--log-format=E<lt>ログ書式E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:227
+msgid ""
+"The log-format variable followed by a space or I<\\et> for tab-delimited, "
+"specifies the log format string."
+msgstr ""
+"ログ書式変数は空白1つないしタブ区切り用のI<\\\\et>に続いてログ書式文字列を指"
+"定します。"
+
+#. type: Plain text
+#: ../goaccess.1:230
+msgid ""
+"Note that if there are spaces within the format, the string needs to be "
+"enclosed in single/double quotes. Inner quotes need to be escaped."
+msgstr ""
+"なお書式中に空白があった場合、文字列は単一ないし二重引用符で囲まれていなくて"
+"はなりません。\n"
+"内部の引用符はエスケープされている必要があります。"
+
+#. type: Plain text
+#: ../goaccess.1:235
+msgid ""
+"In addition to specifying the raw log/date/time formats, for simplicity, any "
+"of the following predefined log format names can be supplied to the log/date/"
+"time-format variables. GoAccess can also handle one predefined name in one "
+"variable and another predefined name in another variable."
+msgstr ""
+"生のログ、日付、時刻書式を指定するのに加えて、\n"
+"便宜上以下の定義済みログ書式名から、\n"
+"どれでもログ、日付、時刻書式変数に与えることができます。\n"
+"GoAccessでは、\n"
+"ある変数にある定義済みの名前を、\n"
+"別の変数に別の定義済みの名前を、\n"
+"というように扱うこともできます。"
+
+#. type: Plain text
+#: ../goaccess.1:248
+#, no-wrap
+msgid ""
+"  COMBINED     - Combined Log Format,\n"
+"  VCOMBINED    - Combined Log Format with Virtual Host,\n"
+"  COMMON       - Common Log Format,\n"
+"  VCOMMON      - Common Log Format with Virtual Host,\n"
+"  W3C          - W3C Extended Log File Format,\n"
+"  SQUID        - Native Squid Log Format,\n"
+"  CLOUDFRONT   - Amazon CloudFront Web Distribution,\n"
+"  CLOUDSTORAGE - Google Cloud Storage,\n"
+"  AWSELB       - Amazon Elastic Load Balancing,\n"
+"  AWSS3        - Amazon Simple Storage Service (S3)\n"
+"  AWSALB       - Amazon Application Load Balancer\n"
+"  CADDY        - Caddy's JSON Structured format\n"
+msgstr ""
+"  COMBINED     - Combined Log Format\n"
+"  VCOMBINED    - 仮想ホスト付きCombined Log Format\n"
+"  COMMON       - Common Log Format\n"
+"  VCOMMON      - 仮想ホスト付きCommon Log Format\n"
+"  W3C          - W3C Extended Log File Format\n"
+"  SQUID        - Native Squid Log Format\n"
+"  CLOUDFRONT   - Amazon CloudFront Web Distribution\n"
+"  CLOUDSTORAGE - Google Cloud Storage\n"
+"  AWSELB       - Amazon Elastic Load Balancing\n"
+"  AWSS3        - Amazon Simple Storage Service (S3)\n"
+"  AWSALB       - Amazon Application Load Balancer\n"
+"  CADDY        - CaddyのJSON Structured format\n"
+
+#. type: Plain text
+#: ../goaccess.1:253 ../goaccess.1:1054
+msgid ""
+"I<Note:> Piping data into GoAccess won't prompt a log/date/time "
+"configuration dialog, you will need to previously define it in your "
+"configuration file or in the command line."
+msgstr ""
+"I<補足：>データをGoAccessにパイプで流し込むときはログ、日付、時刻設定ダイアロ"
+"グは質問されないので、予め設定ファイルかコマンドラインで定義しておく必要があ"
+"ります。"
+
+#. type: SS
+#: ../goaccess.1:253
+#, no-wrap
+msgid "USER INTERFACE OPTIONS"
+msgstr "利用者用対話的オプション"
+
+#. type: TP
+#: ../goaccess.1:255
+#, no-wrap
+msgid "B<-c --config-dialog>"
+msgstr "B<-c --config-dialog>"
+
+#. type: Plain text
+#: ../goaccess.1:259
+msgid ""
+"Prompt log/time/date configuration window on program start. Only when curses "
+"is initialized."
+msgstr ""
+"プログラムの開始時にログ、日付、時刻の設定窓を開きます。\n"
+"cursesが初期化されているとき限定です。"
+
+#. type: TP
+#: ../goaccess.1:259
+#, no-wrap
+msgid "B<-i --hl-header>"
+msgstr "B<-i --hl-header>"
+
+#. type: Plain text
+#: ../goaccess.1:262
+msgid "Color highlight active terminal panel."
+msgstr "活性化された端末パネルを色付けします。"
+
+#. type: TP
+#: ../goaccess.1:262
+#, no-wrap
+msgid "B<-m --with-mouse>"
+msgstr "B<-m --with-mouse>"
+
+#. type: Plain text
+#: ../goaccess.1:265
+msgid "Enable mouse support on main terminal dashboard."
+msgstr "主な端末ダッシュボードでマウス対応を有効にします。"
+
+#. type: TP
+#: ../goaccess.1:265
+#, no-wrap
+msgid "B<---color=E<lt>fg:bg[attrs, PANEL]E<gt>>"
+msgstr "B<---color=E<lt>前景:背景[属性, パネル]E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:268
+msgid "Specify custom colors for the terminal output."
+msgstr "端末出力用の独自の色を指定します。"
+
+#. type: Plain text
+#: ../goaccess.1:271
+#, no-wrap
+msgid ""
+"I<Color Syntax>\n"
+"  DEFINITION space/tab colorFG#:colorBG# [attributes,PANEL]\n"
+msgstr ""
+"I<Color Syntax>\n"
+"  定義 空白またはタブ 前景色#:背景色# [属性,パネル]\n"
+
+#. type: Plain text
+#: ../goaccess.1:274
+#, no-wrap
+msgid ""
+" FG# = foreground color [-1...255] (-1 = default term color)\n"
+" BG# = background color [-1...255] (-1 = default term color)\n"
+msgstr ""
+" FG# = 前景色 [-1...255]（-1 = 端末既定の色）\n"
+" BG# = 背景色 [-1...255]（-1 = 端末既定の色）\n"
+
+# 色属性は固定と思われるため訳しません。
+#. type: Plain text
+#: ../goaccess.1:282
+msgid ""
+"Optionally, it is possible to apply color attributes (multiple attributes "
+"are comma separated), such as: I<bold,> I<underline,> I<normal,> I<reverse,> "
+"I<blink>"
+msgstr ""
+"おまけとして色属性を適用することができます（複数の属性はコンマ区切になりま"
+"す）。\n"
+"例えばI<bold>、I<underline>、I<normal>、I<reverse>、I<blink>です。"
+
+#. type: Plain text
+#: ../goaccess.1:286
+msgid ""
+"If desired, it is possible to apply custom colors per panel, that is, a "
+"metric in the REQUESTS panel can be of color A, while the same metric in the "
+"BROWSERS panel can be of color B."
+msgstr ""
+"必要に応じてパネル毎に独自の色を適用することができます。\n"
+"つまりリクエストパネルの指標は色Aのものにしつつ、\n"
+"ブラウザパネルの同じ指標は色Bのものにする、といったことができます。"
+
+#. type: Plain text
+#: ../goaccess.1:315
+#, no-wrap
+msgid ""
+"I<Available color definitions:>\n"
+"  COLOR_MTRC_HITS\n"
+"  COLOR_MTRC_VISITORS\n"
+"  COLOR_MTRC_DATA\n"
+"  COLOR_MTRC_BW\n"
+"  COLOR_MTRC_AVGTS\n"
+"  COLOR_MTRC_CUMTS\n"
+"  COLOR_MTRC_MAXTS\n"
+"  COLOR_MTRC_PROT\n"
+"  COLOR_MTRC_MTHD\n"
+"  COLOR_MTRC_HITS_PERC\n"
+"  COLOR_MTRC_HITS_PERC_MAX\n"
+"  COLOR_MTRC_VISITORS_PERC\n"
+"  COLOR_MTRC_VISITORS_PERC_MAX\n"
+"  COLOR_PANEL_COLS\n"
+"  COLOR_BARS\n"
+"  COLOR_ERROR\n"
+"  COLOR_SELECTED\n"
+"  COLOR_PANEL_ACTIVE\n"
+"  COLOR_PANEL_HEADER\n"
+"  COLOR_PANEL_DESC\n"
+"  COLOR_OVERALL_LBLS\n"
+"  COLOR_OVERALL_VALS\n"
+"  COLOR_OVERALL_PATH\n"
+"  COLOR_ACTIVE_LABEL\n"
+"  COLOR_BG\n"
+"  COLOR_DEFAULT\n"
+"  COLOR_PROGRESS\n"
+msgstr ""
+"I<利用できる色の定義：>\n"
+"  COLOR_MTRC_HITS\n"
+"  COLOR_MTRC_VISITORS\n"
+"  COLOR_MTRC_DATA\n"
+"  COLOR_MTRC_BW\n"
+"  COLOR_MTRC_AVGTS\n"
+"  COLOR_MTRC_CUMTS\n"
+"  COLOR_MTRC_MAXTS\n"
+"  COLOR_MTRC_PROT\n"
+"  COLOR_MTRC_MTHD\n"
+"  COLOR_MTRC_HITS_PERC\n"
+"  COLOR_MTRC_HITS_PERC_MAX\n"
+"  COLOR_MTRC_VISITORS_PERC\n"
+"  COLOR_MTRC_VISITORS_PERC_MAX\n"
+"  COLOR_PANEL_COLS\n"
+"  COLOR_BARS\n"
+"  COLOR_ERROR\n"
+"  COLOR_SELECTED\n"
+"  COLOR_PANEL_ACTIVE\n"
+"  COLOR_PANEL_HEADER\n"
+"  COLOR_PANEL_DESC\n"
+"  COLOR_OVERALL_LBLS\n"
+"  COLOR_OVERALL_VALS\n"
+"  COLOR_OVERALL_PATH\n"
+"  COLOR_ACTIVE_LABEL\n"
+"  COLOR_BG\n"
+"  COLOR_DEFAULT\n"
+"  COLOR_PROGRESS\n"
+
+#. type: Plain text
+#: ../goaccess.1:317
+msgid "See configuration file for a sample color scheme."
+msgstr "カラースキームの例は設定ファイルを参照してください。"
+
+#. type: TP
+#: ../goaccess.1:317
+#, no-wrap
+msgid "B<--color-scheme=E<lt>1|2|3E<gt>>"
+msgstr "B<--color-scheme=E<lt>1|2|3E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:326
+msgid ""
+"Choose among color schemes.  I<1> for the default grey scheme.  I<2> for the "
+"green scheme.  I<3> for the Monokai scheme (shown only if terminal supports "
+"256 colors)."
+msgstr ""
+"カラースキームから選択します。\n"
+"I<1>は既定の灰色のスキームです。\n"
+"I<2>は緑色のスキームです。\n"
+"I<3>はMonokaiのスキームです（端末が256色に対応しているときのみ現れます）。"
+
+#. type: TP
+#: ../goaccess.1:326
+#, no-wrap
+msgid "B<--crawlers-only>"
+msgstr "B<--crawlers-only>"
+
+#. type: Plain text
+#: ../goaccess.1:329
+msgid "Parse and display only crawlers (bots)."
+msgstr "クローラー（ボット）のみ解析と表示を行います。"
+
+#. type: TP
+#: ../goaccess.1:329
+#, no-wrap
+msgid "B<--html-custom-css=E<lt>path/custom.cssE<gt>>"
+msgstr "B<--html-custom-css=E<lt>自前のCSSファイルへのパスE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:332
+msgid "Specifies a custom CSS file path to load in the HTML report."
+msgstr "HTMLレポートで読み込まれる自前のCSSファイルパスを指定します。"
+
+#. type: TP
+#: ../goaccess.1:332
+#, no-wrap
+msgid "B<--html-custom-js=E<lt>path/custom.jsE<gt>>"
+msgstr "B<--html-custom-js=E<lt>自前のJavaScriptファイルへのパスE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:335
+msgid "Specifies a custom JS file path to load in the HTML report."
+msgstr "HTMLレポートで読み込まれる自前のJSファイルパスを指定します。"
+
+#. type: TP
+#: ../goaccess.1:335
+#, no-wrap
+msgid "B<--html-report-title=E<lt>titleE<gt>>"
+msgstr "B<--html-report-title=E<lt>題名E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:338
+msgid "Set HTML report page title and header."
+msgstr "HTMLレポートページに題名とヘッダを設定します。"
+
+#. type: TP
+#: ../goaccess.1:338
+#, no-wrap
+msgid "B<--html-refresh=E<lt>secsE<gt>>"
+msgstr "B<--html-refresh=E<lt>秒数E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:342
+msgid ""
+"Refresh the HTML report every X seconds. The value has to be between 1 and "
+"60 seconds. The default is set to refresh the HTML report every 1 second."
+msgstr ""
+"HTMLレポートをX秒毎に再描画します。\n"
+"値は1から60秒の間でなくてはなりません。\n"
+"既定ではHTMLレポートを1秒毎に再描画するように設定されています。"
+
+#. type: TP
+#: ../goaccess.1:342
+#, no-wrap
+msgid "B<--html-prefs=E<lt>JSONE<gt>>"
+msgstr "B<--html-prefs=E<lt>JSONE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:347
+msgid ""
+"Set HTML report default preferences. Supply a valid JSON object containing "
+"the HTML preferences. It allows the ability to customize each panel plot. "
+"See example below."
+msgstr ""
+"HTMLレポートの既定の設定を加えます。\n"
+"HTML設定を含む妥当なJSONオブジェクトを与えてください。\n"
+"それぞれのパネルプロットを自前のものにすることができます。\n"
+"以下の例をご覽ください。"
+
+#. type: Plain text
+#: ../goaccess.1:350
+msgid ""
+"I<Note:> The JSON object passed needs to be a one line JSON string. For "
+"instance,"
+msgstr ""
+"I<補足：>渡すJSONオブジェクトは1行のJSON文字列である必要があります。\n"
+"例えば次の通りです。"
+
+#. type: Plain text
+#: ../goaccess.1:353
+#, no-wrap
+msgid "--html-prefs='{\"theme\":\"bright\",\"perPage\":5,\"layout\":\"horizontal\",\"showTables\":true,\"visitors\":{\"plot\":{\"chartType\":\"bar\"}}}'\n"
+msgstr "--html-prefs='{\"theme\":\"bright\",\"perPage\":5,\"layout\":\"horizontal\",\"showTables\":true,\"visitors\":{\"plot\":{\"chartType\":\"bar\"}}}'\n"
+
+#. type: TP
+#: ../goaccess.1:354
+#, no-wrap
+msgid "B<--json-pretty-print>"
+msgstr "B<--json-pretty-print>"
+
+#. type: Plain text
+#: ../goaccess.1:357
+msgid "Format JSON output using tabs and newlines."
+msgstr "タブと改行を使ってJSON出力の書式を整えます。"
+
+#. type: Plain text
+#: ../goaccess.1:361
+msgid ""
+"I<Note:> This is not recommended when outputting a real-time HTML report "
+"since the WebSocket payload will much much larger."
+msgstr ""
+"I<補足：>WebSocketのペイロードが遥かに増大するため、\n"
+"実時間HTMLレポートを出力する際は推奨されません。"
+
+#. type: TP
+#: ../goaccess.1:361
+#, no-wrap
+msgid "B<--max-items=E<lt>numberE<gt>>"
+msgstr "B<--max-items=E<lt>数E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:365
+msgid ""
+"The maximum number of items to display per panel. The maximum can be a "
+"number between 1 and n."
+msgstr ""
+"パネル毎に表示する項目の最大数。\n"
+"最大値は1からnまでの間にできます。"
+
+#. type: Plain text
+#: ../goaccess.1:369
+msgid ""
+"I<Note:> Only the CSV and JSON output allow a maximum number greater than "
+"the default value of 366 (or 50 in the real-time HTML output) items per "
+"panel."
+msgstr ""
+"I<補足：>CSV及びJSON出力のみでパネル毎の既定値の366\n"
+"（実時間HTMLレポートでは50）項目より大きい最大数が許されます。"
+
+#. type: TP
+#: ../goaccess.1:369
+#, no-wrap
+msgid "B<--no-color>"
+msgstr "B<--no-color>"
+
+#. type: Plain text
+#: ../goaccess.1:373
+msgid ""
+"Turn off colored output. This is the default output on terminals that do not "
+"support colors."
+msgstr ""
+"色付きの出力にします。\n"
+"これは彩色に対応していない端末では既定の出力です。"
+
+#. type: TP
+#: ../goaccess.1:373
+#, no-wrap
+msgid "B<--no-column-names>"
+msgstr "B<--no-column-names>"
+
+#. type: Plain text
+#: ../goaccess.1:377
+msgid ""
+"Don't write column names in the terminal output. By default, it displays "
+"column names for each available metric in every panel."
+msgstr ""
+"端末の出力で列名を書き入れません。\n"
+"既定ではパネル毎にそれぞれの使える指標について列名が表示されます。"
+
+#. type: TP
+#: ../goaccess.1:377
+#, no-wrap
+msgid "B<--no-csv-summary>"
+msgstr "B<--no-csv-summary>"
+
+#. type: Plain text
+#: ../goaccess.1:380
+msgid "Disable summary metrics on the CSV output."
+msgstr "CSVの出力で指標の概要を無効にします。"
+
+#. type: TP
+#: ../goaccess.1:380
+#, no-wrap
+msgid "B<--no-progress>"
+msgstr "B<--no-progress>"
+
+#. type: Plain text
+#: ../goaccess.1:383
+msgid "Disable progress metrics [total requests/requests per second]."
+msgstr "進行中の指標 [リクエスト合計/毎秒リクエスト] を無効にします。"
+
+#. type: TP
+#: ../goaccess.1:383
+#, no-wrap
+msgid "B<--no-tab-scroll>"
+msgstr "B<--no-tab-scroll>"
+
+#. type: Plain text
+#: ../goaccess.1:387
+msgid ""
+"Disable scrolling through panels when TAB is pressed or when a panel is "
+"selected using a numeric key."
+msgstr ""
+"タブが押下されていたり、\n"
+"パネルが数字のキーを使って選択されていたりするときは\n"
+"パネルを通じてのスクロールを無効にします。"
+
+#. type: TP
+#: ../goaccess.1:387
+#, no-wrap
+msgid "B<--no-html-last-updated>"
+msgstr "B<--no-html-last-updated>"
+
+#. type: Plain text
+#: ../goaccess.1:390
+msgid ""
+"Do not show the last updated field displayed in the HTML generated report."
+msgstr ""
+"HTMLの生成されたレポート中に表示される最後に更新されたフィールドが現れないよ"
+"うにします。"
+
+#. type: TP
+#: ../goaccess.1:390
+#, no-wrap
+msgid "B<--no-parsing-spinner>"
+msgstr "B<--no-parsing-spinner>"
+
+#. type: Plain text
+#: ../goaccess.1:393
+msgid "Do now show the progress metrics and parsing spinner."
+msgstr "進行中の指標とスピナーの解析を表示しません。"
+
+#. type: TP
+#: ../goaccess.1:393
+#, no-wrap
+msgid "B<--tz=E<lt>timezoneE<gt>>"
+msgstr "B<--tz=E<lt>timezoneE<gt>>"
+
+# typo: ouput -> output
+#. type: Plain text
+#: ../goaccess.1:405
+msgid ""
+"Outputs the report date/time data in the given timezone. Note that it uses "
+"the canonical timezone name. e.g., I<Europe/Berlin> or I<America/Chicago> or "
+"I<Africa/Cairo> If an invalid timezone name is given, the output will be in "
+"GMT. See I<--datetime-format> in order to properly specify a timezone in the "
+"date/time format."
+msgstr ""
+"レポートの日付、時刻データを与えられたタイムゾーンで出力します。\n"
+"正統なタイムゾーン名を使うことに注意してください。\n"
+"例えばI<Europe/Berlin>やI<America/Chicago>やI<Africa/Cairo>といったようにです。\n"
+"不正なタイムゾーン名が与えられると出力はGMTになります。\n"
+"日付、時刻書式で適切にタイムゾーンを指定するにはI<--datetime-format>を参照してください。"
+
+#. type: SS
+#: ../goaccess.1:405
+#, no-wrap
+msgid "SERVER OPTIONS"
+msgstr "サーバーオプション"
+
+# maybe I<Note:>?
+#. type: Plain text
+#: ../goaccess.1:415
+msgid ""
+"I<Note> This is just a WebSocket server to provide the raw real-time data.  "
+"It is not a WebServer itself. To access your reports html file, you will "
+"still need your own HTTP server, place the generated report in it's document "
+"root dir and open the html file in your browser. The browser will then open "
+"another WebSocket-connection to the ws-server you may setup here, to keep "
+"the dashboard up-to-date."
+msgstr ""
+"I<補足：> 生の実時間データがもたらされるのはWebSocketサーバーだけです。\n"
+"WebServer自体ではありません。\n"
+"レポートのHTMLファイルにアクセスするには、やっぱり自前のHTTPサーバーが必要に"
+"なります。\n"
+"生成されたレポートをドキュメントルートディレクトリに置いてブラウザでHTMLファ"
+"イルを開いてください。\n"
+"ブラウザはここでセットアップできるws-serverへの別のWebSocket接続を開いて、\n"
+"ダッシュボードを更新された状態に保つことができます。"
+
+#. type: TP
+#: ../goaccess.1:415
+#, no-wrap
+msgid "B<--addr>"
+msgstr "B<--addr>"
+
+#. type: Plain text
+#: ../goaccess.1:418
+msgid ""
+"Specify IP address to bind the server to. Otherwise it binds to 0.0.0.0."
+msgstr ""
+"サーバーに束縛するIPアドレスを指定します。\n"
+"指定しなければ0.0.0.0に束縛します。"
+
+#. type: Plain text
+#: ../goaccess.1:421
+msgid ""
+"Usually there is no need to specify the address, unless you intentionally "
+"would like to bind the server to a different address within your server."
+msgstr ""
+"大抵はアドレスを指定する必要はないのですが、\n"
+"意図的にサーバー内で異なるアドレスにサーバーを束縛したいときはその限りではあ"
+"りません。"
+
+#. type: TP
+#: ../goaccess.1:421
+#, no-wrap
+msgid "B<--daemonize>"
+msgstr "B<--daemonize>"
+
+#. type: Plain text
+#: ../goaccess.1:424
+msgid "Run GoAccess as daemon (only if B<--real-time-html enabled).>"
+msgstr ""
+"GoAccessをデーモンとして走らせます（B<--real-time-html>が有効になっているとき"
+"のみ）。"
+
+#. type: Plain text
+#: ../goaccess.1:427
+msgid ""
+"Note: It's important to make use of absolute paths across GoAccess' "
+"configuration."
+msgstr "補足：GoAccessの設定全体を通じて絶対パスを使うことは大切です。"
+
+#. type: TP
+#: ../goaccess.1:427
+#, no-wrap
+msgid "B<--user-name=E<lt>usernameE<gt>>"
+msgstr "B<--user-name=E<lt>利用者名E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:430
+msgid "Run GoAccess as the specified user."
+msgstr "GoAccessを特定のユーザーとして走らせます。"
+
+#. type: Plain text
+#: ../goaccess.1:436
+msgid ""
+"Note: It's important to ensure the user or the users' group can access the "
+"input and output files as well as any other files needed.  Other groups the "
+"user belongs to will be ignored.  As such it's advised to run GoAccess "
+"behind a SSL proxy as it's unlikely this user can access the SSL "
+"certificates."
+msgstr ""
+"補足：ユーザーないしユーザーのグループが、\n"
+"入出力ファイルやその他に必要なファイルにアクセスできることを確かめておくこと"
+"は大事です。\n"
+"ユーザーが属する他のグループは無視されます。\n"
+"そういったわけで、\n"
+"ユーザーがSSL証明書にアクセスできることはそうそうないでしょうから、\n"
+"GoAccessはSSLプロキシの背後で走らせることをお勧めします。"
+
+#. type: TP
+#: ../goaccess.1:436
+#, no-wrap
+msgid "B<--origin=E<lt>urlE<gt>>"
+msgstr "B<--origin=E<lt>URLE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:439
+msgid ""
+"Ensure clients send the specified origin header upon the WebSocket handshake."
+msgstr ""
+"クライアントがWebSocketハンドシェイクで必ず指定されたオリジンヘッダーを送るよ"
+"うにします。"
+
+#. type: TP
+#: ../goaccess.1:439
+#, no-wrap
+msgid "B<--pid-file=E<lt>path/goaccess.pidE<gt>>"
+msgstr "B<--pid-file=E<lt>GoAccessのpidファイルへのパスE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:442
+msgid "Write the daemon PID to a file when used along the --daemonize option."
+msgstr ""
+"--daemonizeオプションと一緒に使ったときにデーモンのPIDをファイルに書き込みま"
+"す。"
+
+#. type: TP
+#: ../goaccess.1:442
+#, no-wrap
+msgid "B<--port=E<lt>portE<gt>>"
+msgstr "B<--port=E<lt>ポートE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:446
+msgid ""
+"Specify the port to use. By default GoAccess' WebSocket server listens on "
+"port 7890."
+msgstr ""
+"使うポートを指定します。\n"
+"既定ではGoAccessのWebSocketサーバーは7890ポートで待ち受けます。"
+
+#. type: TP
+#: ../goaccess.1:446
+#, no-wrap
+msgid "B<--real-time-html>"
+msgstr "B<--real-time-html>"
+
+#. type: Plain text
+#: ../goaccess.1:449
+msgid "Enable real-time HTML output."
+msgstr "実時間HTML出力を有効にします。"
+
+#. type: Plain text
+#: ../goaccess.1:452
+msgid ""
+"GoAccess uses its own WebSocket server to push the data from the server to "
+"the client. See http://gwsocket.io for more details how the WebSocket server "
+"works."
+msgstr ""
+"GoAccessは自前のWebSocketサーバーを使ってサーバーからクライエントへのデータを"
+"送信します。\n"
+"WebSocketサーバーの仕組みの詳細については http://gwsocket.io を参照してくださ"
+"い。"
+
+#. type: TP
+#: ../goaccess.1:452
+#, no-wrap
+msgid "B<--ws-url=E<lt>[scheme://]url[:port]E<gt>>"
+msgstr "B<--ws-url=E<lt>[scheme://]url[:port]E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:456
+msgid ""
+"URL to which the WebSocket server responds. This is the URL supplied to the "
+"WebSocket constructor on the client side."
+msgstr ""
+"WebSocketサーバーが応答するURLです。\n"
+"これはクライアント側でWebSocket構築子に与えられるURLです。"
+
+#. type: Plain text
+#: ../goaccess.1:464
+msgid ""
+"Optionally, it is possible to specify the WebSocket URI scheme, such as "
+"I<ws://> or I<wss://> for unencrypted and encrypted connections. e.g., "
+"I<wss://goaccess.io>"
+msgstr ""
+"おまけとしてWebSocketのURIスキームを指定することができます。\n"
+"暗号化されていなかったりされていたりするI<ws://>やI<wss://>といったもので"
+"す。\n"
+"例：I<wss://goaccess.io>"
+
+#. type: Plain text
+#: ../goaccess.1:469
+msgid ""
+"If GoAccess is running behind a proxy, you could set the client side to "
+"connect to a different port by specifying the host followed by a colon and "
+"the port.  e.g., I<goaccess.io:9999>"
+msgstr ""
+"GoAccessがプロキシの背後で走っている場合、\n"
+"ホストにコロンとポートを続けて指定することによって、\n"
+"クライアント側で異なるポートに接続するように設定することができます。\n"
+"例えばI<goaccess.io:9999>です。"
+
+#. type: Plain text
+#: ../goaccess.1:473
+msgid ""
+"By default, it will attempt to connect to the generated report's hostname. "
+"If GoAccess is running on a remote server, the host of the remote server "
+"should be specified here. Also, make sure it is a valid host and NOT an http "
+"address."
+msgstr ""
+"既定では生成されたレポートのホスト名に接続を試みます。\n"
+"GoAccessがリモートサーバーで走っている場合、リモートサーバーのホストはここで"
+"指定されるべきです。\n"
+"また、妥当なホストになっていてHTTPアドレスになって「いない」ことを必ず確認し"
+"てください。"
+
+#. type: TP
+#: ../goaccess.1:473
+#, no-wrap
+msgid "B<--ping-interval=E<lt>secsE<gt>>"
+msgstr "B<--ping-interval=E<lt>秒数E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:477
+msgid ""
+"Enable WebSocket ping with specified interval in seconds. This helps prevent "
+"idle connections getting disconnected."
+msgstr ""
+"指定された秒数の間隔でWebSocketの死活監視を有効にします。\n"
+"これにより切断されて放置されたままの接続を防ぐことができます。"
+
+#. type: TP
+#: ../goaccess.1:477
+#, no-wrap
+msgid "B<--fifo-in=E<lt>path/fileE<gt>>"
+msgstr "B<--fifo-in=E<lt>ファイルへのパスE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:480
+msgid "Creates a named pipe (FIFO) that reads from on the given path/file."
+msgstr ""
+"名前付きパイプ (FIFO) を作り、与えられたファイルパスから読むようにします。"
+
+#. type: TP
+#: ../goaccess.1:480
+#, no-wrap
+msgid "B<--fifo-out=E<lt>path/fileE<gt>>"
+msgstr "B<--fifo-out=E<lt>ファイルへのパスE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:483
+msgid "Creates a named pipe (FIFO) that writes to the given path/file."
+msgstr ""
+"名前付きパイプ (FIFO) を作り、与えられたファイルパスに書き込むようにします。"
+
+#. type: TP
+#: ../goaccess.1:483
+#, no-wrap
+msgid "B<--ssl-cert=E<lt>cert.crtE<gt>>"
+msgstr "B<--ssl-cert=E<lt>証明書.crtE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:487
+msgid ""
+"Path to TLS/SSL certificate. In order to enable TLS/SSL support, GoAccess "
+"requires that --ssl-cert and --ssl-key are used."
+msgstr ""
+"TLS/SSL証明書へのパスです。\n"
+"GoAccessでTLS/SSL対応を有効にするためには--ssl-certと--ssl-keyが使用されてい"
+"ることが必要です。"
+
+#. type: Plain text
+#: ../goaccess.1:489 ../goaccess.1:495
+msgid "Only if configured using --with-openssl"
+msgstr "--with-opensslを使ってconfigureしたときに限定されます。"
+
+#. type: TP
+#: ../goaccess.1:489
+#, no-wrap
+msgid "B<--ssl-key=E<lt>priv.keyE<gt>>"
+msgstr "B<--ssl-key=E<lt>秘密鍵.keyE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:493
+msgid ""
+"Path to TLS/SSL private key. In order to enable TLS/SSL support, GoAccess "
+"requires that --ssl-cert and --ssl-key are used."
+msgstr ""
+"TLS/SSL秘密鍵へのパスです。\n"
+"GoAccessでTLS/SSL対応を有効にするためには、--ssl-certと--ssl-keyが使用されて"
+"いることが必要です。"
+
+#. type: SS
+#: ../goaccess.1:495
+#, no-wrap
+msgid "FILE OPTIONS"
+msgstr "ファイルオプション"
+
+#. type: TP
+#: ../goaccess.1:497
+#, no-wrap
+msgid "B<->"
+msgstr "B<->"
+
+#. type: Plain text
+#: ../goaccess.1:500
+msgid "The log file to parse is read from stdin."
+msgstr "解析するログファイルが標準入力から読み込まれます。"
+
+#. type: TP
+#: ../goaccess.1:500
+#, no-wrap
+msgid "B<-f --log-file=E<lt>logfileE<gt>>"
+msgstr "B<-f --log-file=E<lt>ログファイルE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:504
+msgid ""
+"Specify the path to the input log file. If set in the config file, it will "
+"take priority over -f from the command line."
+msgstr ""
+"入力ログファイルへのパスを指定します。\n"
+"設定ファイルで指定されている場合はコマンドラインから-fで指定されたものよりも"
+"優先されます。"
+
+#. type: TP
+#: ../goaccess.1:504
+#, no-wrap
+msgid "B<-S --log-size=E<lt>bytesE<gt>>"
+msgstr "B<-S --log-size=E<lt>バイト数E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:508
+msgid ""
+"Specify the log size in bytes. This is useful when piping in logs for "
+"processing in which the log size can be explicitly set."
+msgstr ""
+"ログの大きさをバイトで指定します。\n"
+"これはログの大きさを明示的に設定できる処理におけるログからパイプを繋いでくる"
+"ときに便利です。"
+
+#. type: TP
+#: ../goaccess.1:508
+#, no-wrap
+msgid "B<-l --debug-file=E<lt>debugfileE<gt>>"
+msgstr "B<-l --debug-file=E<lt>デバッグファイルE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:511
+msgid "Send all debug messages to the specified file."
+msgstr "全てのデバッグ文言を指定されたファイルに送ります。"
+
+#. type: TP
+#: ../goaccess.1:511
+#, no-wrap
+msgid "B<-p --config-file=E<lt>configfileE<gt>>"
+msgstr "B<-p --config-file=E<lt>設定ファイルE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:515
+msgid ""
+"Specify a custom configuration file to use. If set, it will take priority "
+"over the global configuration file (if any)."
+msgstr ""
+"独自に使用する設定ファイルを指定します。\n"
+"設定されている場合、（もしあっても）大域的な設定ファイルより優先されます。"
+
+#. type: TP
+#: ../goaccess.1:515
+#, no-wrap
+msgid "B<--external-assets>"
+msgstr "B<--external-assets>"
+
+#. type: Plain text
+#: ../goaccess.1:523
+msgid ""
+"Output HTML assets to external JS/CSS files. Great if you are setting up "
+"Content Security Policy (CSP). This will create two separate files, "
+"I<goaccess.js> and I<goaccess.css> , in the same directory as your report."
+"html file."
+msgstr ""
+"外部のJS/CSSファイルにHTMLアセットを出力します。\n"
+"Content Security Policy (CSP) を設定している場合に優れます。\n"
+"report.htmlファイルと同じディレクトリに2つの分離されたファイルI<goaccess.js>とI<goaccess.css>を作成します。"
+
+#. type: TP
+#: ../goaccess.1:523
+#, no-wrap
+msgid "B<--invalid-requests=E<lt>filenameE<gt>>"
+msgstr "B<--invalid-requests=E<lt>ファイル名E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:526
+msgid "Log invalid requests to the specified file."
+msgstr "不正なリクエストを指定されたファイルにログ出力します。"
+
+#. type: TP
+#: ../goaccess.1:526
+#, no-wrap
+msgid "B<--unknowns-log=E<lt>filenameE<gt>>"
+msgstr "B<--unknowns-log=E<lt>ファイル名E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:529
+msgid "Log unknown browsers and OSs to the specified file."
+msgstr "不明なブラウザとOSを指定されたファイルにログ出力します。"
+
+#. type: TP
+#: ../goaccess.1:529
+#, no-wrap
+msgid "B<--no-global-config>"
+msgstr "B<--no-global-config>"
+
+#. type: Plain text
+#: ../goaccess.1:535
+msgid ""
+"Do not load the global configuration file. This directory should normally "
+"be /usr/local/etc, unless specified with I<--sysconfdir=/dir.> See --dcf "
+"option for finding the default configuration file."
+msgstr ""
+"大域的な設定ファイルを読み込みません。\n"
+"I<--sysconfdir=ディレクトリへのパス>と指定されない限り、\n"
+"このディレクトリは通常/usr/local/etcです。\n"
+"既定の設定ファイルを見付けるためには--dcfオプションを参照してください。"
+
+#. type: SS
+#: ../goaccess.1:535
+#, no-wrap
+msgid "PARSE OPTIONS"
+msgstr "解析オプション"
+
+#. type: TP
+#: ../goaccess.1:537
+#, no-wrap
+msgid "B<-a --agent-list>"
+msgstr "B<-a --agent-list>"
+
+#. type: Plain text
+#: ../goaccess.1:541
+msgid ""
+"Enable a list of user-agents by host. For faster parsing, do not enable this "
+"flag."
+msgstr ""
+"ホスト毎のユーザーエージェントの一覧を有効にします。\n"
+"高速な解析の上ではこのフラグを有効にしないでください。"
+
+#. type: TP
+#: ../goaccess.1:541
+#, no-wrap
+msgid "B<-d --with-output-resolver>"
+msgstr "B<-d --with-output-resolver>"
+
+#. type: Plain text
+#: ../goaccess.1:544
+msgid "Enable IP resolver on HTML|JSON output."
+msgstr "HTMLないしJSON出力におけるIPリゾルバを有効にします。"
+
+#. type: TP
+#: ../goaccess.1:544
+#, no-wrap
+msgid "B<-e --exclude-ip=E<lt>IP|IP-rangeE<gt>>"
+msgstr "B<-e --exclude-ip=E<lt>IPまたはIPの範囲E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:548
+msgid ""
+"Exclude an IPv4 or IPv6 from being counted.  Ranges can be included as well "
+"using a dash in between the IPs (start-end)."
+msgstr ""
+"IPv4やIPv6の計上対象から除外します。\n"
+"範囲についてはIPの間にダッシュを使う（開始-終了）ことで含められます。"
+
+#. type: Plain text
+#: ../goaccess.1:554
+#, no-wrap
+msgid ""
+"I<Examples:>\n"
+"  exclude-ip 127.0.0.1\n"
+"  exclude-ip 192.168.0.1-192.168.0.100\n"
+"  exclude-ip ::1\n"
+"  exclude-ip 0:0:0:0:0:ffff:808:804-0:0:0:0:0:ffff:808:808\n"
+msgstr ""
+"I<例：>\n"
+"  exclude-ip 127.0.0.1\n"
+"  exclude-ip 192.168.0.1-192.168.0.100\n"
+"  exclude-ip ::1\n"
+"  exclude-ip 0:0:0:0:0:ffff:808:804-0:0:0:0:0:ffff:808:808\n"
+
+#. type: TP
+#: ../goaccess.1:554
+#, no-wrap
+msgid "B<-H --http-protocol=E<lt>yes|noE<gt>>"
+msgstr "B<-H --http-protocol=E<lt>yes|noE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:558
+msgid ""
+"Set/unset HTTP request protocol. This will create a request key containing "
+"the request protocol + the actual request."
+msgstr ""
+"HTTPリクエストのプロトコルを設定したり外したりします。\n"
+"こうすることによりリクエストされたプロトコルと実際のリクエストが含まれたリク"
+"エストキーが作られるようになります。"
+
+#. type: TP
+#: ../goaccess.1:558
+#, no-wrap
+msgid "B<-M --http-method=E<lt>yes|noE<gt>>"
+msgstr "B<-M --http-method=E<lt>yes|noE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:562
+msgid ""
+"Set/unset HTTP request method. This will create a request key containing the "
+"request method + the actual request."
+msgstr ""
+"HTTPリクエストのメソッドを設定したり外したりします。\n"
+"これによりリクエストのメソッドと実際のリクエストを含むリクエストキーが作られ"
+"るようになります。"
+
+#. type: TP
+#: ../goaccess.1:562
+#, no-wrap
+msgid "B<-o --output=E<lt>path/file.[json|csv|html]E<gt>>"
+msgstr "B<-o --output=E<lt>ファイルへのパス.[json|csv|html]E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:566
+msgid ""
+"Write output to stdout given one of the following files and the "
+"corresponding extension for the output format:"
+msgstr ""
+"与えられた以下のファイルと対応する出力形式用の拡張子のうちの1つに標準出力への"
+"出力を書き込みます。"
+
+#. type: Plain text
+#: ../goaccess.1:570
+#, no-wrap
+msgid ""
+"  /path/file.csv - Comma-separated values (CSV)\n"
+"  /path/file.json - JSON (JavaScript Object Notation)\n"
+"  /path/file.html - HTML\n"
+msgstr ""
+"  /path/file.csv - Comma-separated values (CSV)\n"
+"  /path/file.json - JSON (JavaScript Object Notation)\n"
+"  /path/file.html - HTML\n"
+
+#. type: TP
+#: ../goaccess.1:570
+#, no-wrap
+msgid "B<-q --no-query-string>"
+msgstr "B<-q --no-query-string>"
+
+#. type: Plain text
+#: ../goaccess.1:574
+msgid ""
+"Ignore request's query string. i.e., www.google.com/page.htm?query =E<gt> "
+"www.google.com/page.htm."
+msgstr ""
+"リクエストのクエリ文字列を無視します。\n"
+"つまり、www.google.com/page.htm?query =E<gt> www.google.com/page.htm です。"
+
+#. type: Plain text
+#: ../goaccess.1:578
+msgid ""
+"I<Note:> Removing the query string can greatly decrease memory consumption, "
+"especially on timestamped requests."
+msgstr ""
+"I<補足：>クエリ文字列を削除するとメモリ消費量が大幅に減る可能性があります。\n"
+"特にタイムスタンプ付きのリクエストではそうです。"
+
+#. type: TP
+#: ../goaccess.1:578
+#, no-wrap
+msgid "B<-r --no-term-resolver>"
+msgstr "B<-r --no-term-resolver>"
+
+#. type: Plain text
+#: ../goaccess.1:581
+msgid "Disable IP resolver on terminal output."
+msgstr "端末出力でIPリゾルバを無効にします。"
+
+#. type: TP
+#: ../goaccess.1:581
+#, no-wrap
+msgid "B<--444-as-404>"
+msgstr "B<--444-as-404>"
+
+#. type: Plain text
+#: ../goaccess.1:584
+msgid "Treat non-standard status code 444 as 404."
+msgstr "非標準的なステータスコードである444を404として扱います。"
+
+#. type: TP
+#: ../goaccess.1:584
+#, no-wrap
+msgid "B<--4xx-to-unique-count>"
+msgstr "B<--4xx-to-unique-count>"
+
+#. type: Plain text
+#: ../goaccess.1:587
+msgid "Add 4xx client errors to the unique visitors count."
+msgstr "4xxクライアントエラーを固有訪問者に加えます。"
+
+#. type: TP
+#: ../goaccess.1:587
+#, no-wrap
+msgid "B<--anonymize-ip>"
+msgstr "B<--anonymize-ip>"
+
+#. type: Plain text
+#: ../goaccess.1:594
+msgid ""
+"Anonymize the client IP address. The IP anonymization option sets the last "
+"octet of IPv4 user IP addresses and the last 80 bits of IPv6 addresses to "
+"zeros.  e.g., 192.168.20.100 =E<gt> 192.168.20.0 e.g., 2a03:2880:2110:df07:"
+"face:b00c::1 =E<gt> 2a03:2880:2110:df07::"
+msgstr ""
+"クライアントIPアドレスを匿名化します。\n"
+"IP匿名化オプションはIPv4利用者IPアドレスの末尾オクテットとIPv6アドレスの末尾"
+"80ビットをゼロに設定します。\n"
+"例：192.168.20.100 =E<gt> 192.168.20.0\n"
+"例：2a03:2880:2110:df07:face:b00c::1 =E<gt> 2a03:2880:2110:df07::"
+
+#. type: TP
+#: ../goaccess.1:594
+#, no-wrap
+msgid "B<--anonymize-level>"
+msgstr "B<--anonymize-level>"
+
+#. type: Plain text
+#: ../goaccess.1:597
+msgid ""
+"Specifies the anonymization levels: 1 =E<gt> default, 2 =E<gt> strong, 3 "
+"=E<gt> pedantic."
+msgstr ""
+"匿名化水準を指定します。\n"
+"1 =E<gt> 既定、2 =E<gt> 強力、3 =E<gt> 神経質"
+
+#. type: tbl table
+#: ../goaccess.1:601
+#, no-wrap
+msgid "Bits-hidden"
+msgstr "隠れるビット数"
+
+#. type: tbl table
+#: ../goaccess.1:601
+#, no-wrap
+msgid "Level 1"
+msgstr "レベル1"
+
+#. type: tbl table
+#: ../goaccess.1:601
+#, no-wrap
+msgid "Level 2"
+msgstr "レベル2"
+
+#. type: tbl table
+#: ../goaccess.1:601
+#, no-wrap
+msgid "Level 3"
+msgstr "レベル3"
+
+#. type: tbl table
+#: ../goaccess.1:604
+#, no-wrap
+msgid "B<IPv4>"
+msgstr "B<IPv4>"
+
+#. type: tbl table
+#: ../goaccess.1:604
+#, no-wrap
+msgid "8"
+msgstr "8"
+
+#. type: tbl table
+#: ../goaccess.1:604
+#, no-wrap
+msgid "16"
+msgstr "16"
+
+#. type: tbl table
+#: ../goaccess.1:604
+#, no-wrap
+msgid "24"
+msgstr "24"
+
+#. type: tbl table
+#: ../goaccess.1:607
+#, no-wrap
+msgid "B<IPv6>"
+msgstr "B<IPv6>"
+
+#. type: tbl table
+#: ../goaccess.1:607
+#, no-wrap
+msgid "64"
+msgstr "64"
+
+#. type: tbl table
+#: ../goaccess.1:607
+#, no-wrap
+msgid "80"
+msgstr "80"
+
+#. type: tbl table
+#: ../goaccess.1:607
+#, no-wrap
+msgid "96"
+msgstr "96"
+
+#. type: TP
+#: ../goaccess.1:610
+#, no-wrap
+msgid "B<--all-static-files>"
+msgstr "B<--all-static-files>"
+
+#. type: Plain text
+#: ../goaccess.1:614
+msgid ""
+"Include static files that contain a query string. e.g., /fonts/fontawesome-"
+"webfont.woff?v=4.0.3"
+msgstr ""
+"クエリ文字列を含む静的ファイルを含めます。\n"
+"例：/fonts/fontawesome-webfont.woff?v=4.0.3"
+
+#. type: TP
+#: ../goaccess.1:614
+#, no-wrap
+msgid "B<--browsers-file=E<lt>pathE<gt>>"
+msgstr "B<--browsers-file=E<lt>パスE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:621
+msgid ""
+"By default GoAccess parses an \"essential/basic\" curated list of browsers & "
+"crawlers. If you need to add additional browsers, use this option.  Include "
+"an additional delimited list of browsers/crawlers/feeds etc.  See config/"
+"browsers.list for an example or https://raw.githubusercontent.com/allinurl/"
+"goaccess/master/config/browsers.list"
+msgstr ""
+"既定でGoAccessはブラウザとクローラーの「必須ないし基礎的な」厳選された一覧を"
+"解析します。\n"
+"もし追加のブラウザを加える必要があればこのオプションを使ってください。\n"
+"ブラウザやクローラーやフィードなどの追加の区切られた一覧を含めてください。\n"
+"例としてはconfig/browsers.listや https://raw.githubusercontent.com/allinurl/"
+"goaccess/master/config/browsers.list を参照してください。"
+
+#. type: TP
+#: ../goaccess.1:621
+#, no-wrap
+msgid "B<--date-spec=E<lt>date|hr|minE<gt>>"
+msgstr "B<--date-spec=E<lt>date|hr|minE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:625
+msgid ""
+"Set the date specificity to either date (default), hr to display hours or "
+"min to display minutes appended to the date."
+msgstr ""
+"日時の厳密さに関して、日付（既定）、何時かを表示する時、\n"
+"何分かを表示する分、のうちいずれかを日付に設定します。"
+
+#. type: Plain text
+#: ../goaccess.1:629
+msgid ""
+"This is used in the visitors panel. It's useful for tracking visitors at the "
+"hour level. For instance, an hour specificity would yield to display traffic "
+"as 18/Dec/2010:19 or minute specificity 18/Dec/2010:19:59."
+msgstr ""
+"これは訪問者数パネルで使われます。\n"
+"時水準で訪問者を把握するのに便利です。\n"
+"例えば時指定ではトラフィックを18/Dec/2010:19になり、\n"
+"分指定では18/Dec/2010:19:59が表示されます。"
+
+#. type: TP
+#: ../goaccess.1:629
+#, no-wrap
+msgid "B<--double-decode>"
+msgstr "B<--double-decode>"
+
+#. type: Plain text
+#: ../goaccess.1:632
+msgid ""
+"Decode double-encoded values. This includes, user-agent, request, and "
+"referrer."
+msgstr ""
+"二重に符号化された値を復号化します。\n"
+"これにはユーザーエージェント、リクエスト、リファラが含まれます。"
+
+#. type: TP
+#: ../goaccess.1:632
+#, no-wrap
+msgid "B<--enable-panel=E<lt>PANELE<gt>>"
+msgstr "B<--enable-panel=E<lt>パネルE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:635
+msgid "Enable parsing and displaying the given panel."
+msgstr "与えられたパネルについて解析と表示を有効にします。"
+
+#. type: Plain text
+#: ../goaccess.1:655 ../goaccess.1:701
+#, no-wrap
+msgid ""
+"I<Available panels:>\n"
+"  VISITORS\n"
+"  REQUESTS\n"
+"  REQUESTS_STATIC\n"
+"  NOT_FOUND\n"
+"  HOSTS\n"
+"  OS\n"
+"  BROWSERS\n"
+"  VISIT_TIMES\n"
+"  VIRTUAL_HOSTS\n"
+"  REFERRERS\n"
+"  REFERRING_SITES\n"
+"  KEYPHRASES\n"
+"  STATUS_CODES\n"
+"  REMOTE_USER\n"
+"  CACHE_STATUS\n"
+"  GEO_LOCATION\n"
+"  MIME_TYPE\n"
+"  TLS_TYPE\n"
+msgstr ""
+"I<利用できるパネル：>\n"
+"  VISITORS\n"
+"  REQUESTS\n"
+"  REQUESTS_STATIC\n"
+"  NOT_FOUND\n"
+"  HOSTS\n"
+"  OS\n"
+"  BROWSERS\n"
+"  VISIT_TIMES\n"
+"  VIRTUAL_HOSTS\n"
+"  REFERRERS\n"
+"  REFERRING_SITES\n"
+"  KEYPHRASES\n"
+"  STATUS_CODES\n"
+"  REMOTE_USER\n"
+"  CACHE_STATUS\n"
+"  GEO_LOCATION\n"
+"  MIME_TYPE\n"
+"  TLS_TYPE\n"
+
+#. type: TP
+#: ../goaccess.1:655
+#, no-wrap
+msgid "B<--fname-as-vhost=E<lt>regexE<gt>>"
+msgstr "B<--fname-as-vhost=E<lt>正規表現E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:661
+msgid ""
+"Use log filename(s) as virtual host(s). POSIX regex is passed to extract the "
+"virtual host from the filename. e.g., I<--fname-as-vhost='[a-z]*.[a-z]*'> "
+"can be used to extract awesome.com.log =E<gt> awesome.com."
+msgstr ""
+"ログファイル名に仮想ホストを使います。\n"
+"ファイル名から仮想ホストを抽出するためにPOSIX正規表現が渡されます。\n"
+"例：I<--fname-as-vhost='[a-z]*.[a-z]*'>はawesome.com.log =E<gt> awesome.com "
+"と抽出するのに使えます。"
+
+#. type: TP
+#: ../goaccess.1:661
+#, no-wrap
+msgid "B<--hide-referrer=E<lt>NEEDLEE<gt>>"
+msgstr "B<--hide-referrer=E<lt>探しものE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:665
+msgid ""
+"Hide a referrer but still count it. Wild cards are allowed in the needle. i."
+"e., *.bing.com."
+msgstr ""
+"リファラを隠しつつ計上はします。\n"
+"探しものの箇所ではワイルドカードが使えます。\n"
+"つまり *.bing.com です。"
+
+#. type: TP
+#: ../goaccess.1:665
+#, no-wrap
+msgid "B<--hour-spec=E<lt>hr|minE<gt>>"
+msgstr "B<--hour-spec=E<lt>hr|minE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:669
+msgid ""
+"Set the time specificity to either hour (default) or min to display the "
+"tenth of an hour appended to the hour."
+msgstr ""
+"時刻指定を時（既定）ないし分のいずれかに設定します。\n"
+"後者では時に1/10時間が後置されます。"
+
+#. type: Plain text
+#: ../goaccess.1:672
+msgid ""
+"This is used in the time distribution panel. It's useful for tracking peaks "
+"of traffic on your server at specific times."
+msgstr ""
+"これは時間分布パネルで使われます。\n"
+"サーバーで特定の時刻でトラフィックのピークを把握するのに役立ちます。"
+
+#. type: TP
+#: ../goaccess.1:672
+#, no-wrap
+msgid "B<--ignore-crawlers>"
+msgstr "B<--ignore-crawlers>"
+
+#. type: Plain text
+#: ../goaccess.1:675
+msgid "Ignore crawlers from being counted."
+msgstr "クローラーを計上から外します。"
+
+#. type: TP
+#: ../goaccess.1:675
+#, no-wrap
+msgid "B<--unknowns-as-crawlers>"
+msgstr "B<--unknowns-as-crawlers>"
+
+#. type: Plain text
+#: ../goaccess.1:678
+msgid "Classify unknown OS and browsers as crawlers."
+msgstr "不明なOSとブラウザをクローラーとして分類します。"
+
+#. type: TP
+#: ../goaccess.1:678
+#, no-wrap
+msgid "B<--ignore-panel=E<lt>PANELE<gt>>"
+msgstr "B<--ignore-panel=E<lt>パネルE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:681
+msgid "Ignore parsing and displaying the given panel."
+msgstr "与えられたパネルについて解析と表示から外します。"
+
+#. type: TP
+#: ../goaccess.1:701
+#, no-wrap
+msgid "B<--ignore-referrer=E<lt>referrerE<gt>>"
+msgstr "B<--ignore-referrer=E<lt>リファラE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:708
+msgid ""
+"Ignore referrers from being counted. Wildcards allowed. e.g., I<*.domain."
+"com> I<ww?.domain.*>"
+msgstr ""
+"リファラを計上から外します。\n"
+"ワイルドカードが使えます。\n"
+"例：I<*.domain.com> I<ww?.domain.*>"
+
+#. type: TP
+#: ../goaccess.1:708
+#, no-wrap
+msgid "B<--ignore-statics=E<lt>req|panelE<gt>>"
+msgstr "B<--ignore-statics=E<lt>req|panelE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:711
+msgid "Ignore static file requests."
+msgstr "静的ファイルのリクエストを無視します。"
+
+#. type: Plain text
+#: ../goaccess.1:714
+#, no-wrap
+msgid ""
+"I<req>\n"
+"  Only ignore request from valid requests\n"
+msgstr ""
+"I<req>\n"
+"  妥当なリクエスト由来のリクエストのみ無視します\n"
+
+#. type: Plain text
+#: ../goaccess.1:717
+#, no-wrap
+msgid ""
+"I<panels>\n"
+"  Ignore request from panels.\n"
+msgstr ""
+"I<panels>\n"
+"  パネル由来のリクエストを無視します\n"
+
+#. type: Plain text
+#: ../goaccess.1:719
+#, no-wrap
+msgid "  Note that it will count them towards the total number of requests\n"
+msgstr "  なおこれらはリクエストの総計に計上されます。\n"
+
+#. type: TP
+#: ../goaccess.1:719
+#, no-wrap
+msgid "B<--ignore-status=E<lt>CODEE<gt>>"
+msgstr "B<--ignore-status=E<lt>コードE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:723
+msgid ""
+"Ignore parsing and displaying one or multiple status code(s). For multiple "
+"status codes, use this option multiple times."
+msgstr ""
+"1つ以上のステータスコードを解析と表示から外します。\n"
+"複数のステータスコードについては、このオプションを複数回使用してください。"
+
+#. type: TP
+#: ../goaccess.1:723
+#, no-wrap
+msgid "B<--keep-last=E<lt>num_daysE<gt>>"
+msgstr "B<--keep-last=E<lt>日数E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:726
+msgid ""
+"Keep the last specified number of days in storage. This will recycle the "
+"storage tables. e.g., keep & show only the last 7 days."
+msgstr ""
+"ストレージに指定された日数分保持します。\n"
+"これによりストレージの周回表が巡回されます。\n"
+"例：直近7日間のみを保持して表示します。"
+
+#. type: TP
+#: ../goaccess.1:726
+#, no-wrap
+msgid "B<--no-ip-validation>"
+msgstr "B<--no-ip-validation>"
+
+#. type: Plain text
+#: ../goaccess.1:734
+msgid ""
+"Disable client IP validation. Useful if IP addresses have been obfuscated "
+"before being logged.  The log still needs to contain a placeholder for I<%h> "
+"usually it's a resolved IP. e.g.  I<ord37s19-in-f14.1e100.net.>"
+msgstr ""
+"クライアントのIPの検証を無効化します。\n"
+"ログ出力される前にIPアドレスが粉飾されている場合に便利です。\n"
+"それでもログにはI<%h>の場所取りがなされている必要があり、大抵は解決されたIPで"
+"す。\n"
+"例：I<ord37s19-in-f14.1e100.net.>"
+
+#. type: TP
+#: ../goaccess.1:734
+#, no-wrap
+msgid "B<--no-strict-status>"
+msgstr "B<--no-strict-status>"
+
+#. type: Plain text
+#: ../goaccess.1:739
+msgid ""
+"Disable HTTP status code validation. Some servers would record this value "
+"only if a connection was established to the target and the target sent a "
+"response.  Otherwise, it could be recorded as -."
+msgstr ""
+"HTTPステータスコードの検証を無効にします。\n"
+"対象との接続が確立され対象が応答を送ったときのみにこの値を記録するサーバーも"
+"あります。\n"
+"そうでない場合-として記録されます。"
+
+#. type: TP
+#: ../goaccess.1:739
+#, no-wrap
+msgid "B<--num-tests=E<lt>numberE<gt>>"
+msgstr "B<--num-tests=E<lt>数値E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:748
+msgid ""
+"Number of lines from the access log to test against the provided log/date/"
+"time format. By default, the parser is set to test 10 lines. If set to 0, "
+"the parser won't test any lines and will parse the whole access log. If a "
+"line matches the given log/date/time format before it reaches "
+"I<E<lt>numberE<gt>,> the parser will consider the log to be valid, otherwise "
+"GoAccess will return EXIT_FAILURE and display the relevant error messages."
+msgstr ""
+"与えられたログ・日付・時刻の書式に照らし合わせるアクセスログからの行数。\n"
+"既定では解析器は10行に対して検査するように設定されています。\n"
+"0に設定したときは解析器は一部の行のみの検査ではなくアクセスログ全体を解析しま"
+"す。\n"
+"I<E<lt>numberE<gt>>に到達するまでに与えられたログ・日付・時刻の書式がその行に"
+"照合したら、\n"
+"解析器はそのログを妥当と判断し、\n"
+"そうでなければGoAccessはEXIT_FAILUREを返して関係するエラー文言を表示します。"
+
+#. type: TP
+#: ../goaccess.1:748
+#, no-wrap
+msgid "B<--process-and-exit>"
+msgstr "B<--process-and-exit>"
+
+#. type: Plain text
+#: ../goaccess.1:753
+msgid ""
+"Parse log and exit without outputting data. Useful if we are looking to only "
+"add new data to the on-disk database without outputting to a file or a "
+"terminal."
+msgstr ""
+"ログを解析しデータ出力することなく終了します。\n"
+"ファイルや端末に出力することなくディスク上のデータベースに新規データを加えた"
+"いだけのときに便利です。"
+
+#. type: TP
+#: ../goaccess.1:753
+#, no-wrap
+msgid "B<--real-os>"
+msgstr "B<--real-os>"
+
+#. type: Plain text
+#: ../goaccess.1:756
+msgid "Display real OS names. e.g, Windows XP, Snow Leopard."
+msgstr ""
+"実際のOS名を表示します。\n"
+"例えばWindows XP、Snow Leopardです。"
+
+#. type: TP
+#: ../goaccess.1:756
+#, no-wrap
+msgid "B<--sort-panel=E<lt>PANEL,FIELD,ORDERE<gt>>"
+msgstr "B<--sort-panel=E<lt>パネル,フィールド,順序E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:760
+msgid ""
+"Sort panel on initial load. Sort options are separated by comma. Options are "
+"in the form: PANEL,METRIC,ORDER"
+msgstr ""
+"初期の読込でパネルを整列します。\n"
+"整列オプションは読点区切りです。\n"
+"オプションは、パネル,指標,順序、の形式です。"
+
+#. type: Plain text
+#: ../goaccess.1:771
+#, no-wrap
+msgid ""
+"I<Available metrics:>\n"
+"  BY_HITS     - Sort by hits\n"
+"  BY_VISITORS - Sort by unique visitors\n"
+"  BY_DATA     - Sort by data\n"
+"  BY_BW       - Sort by bandwidth\n"
+"  BY_AVGTS    - Sort by average time served\n"
+"  BY_CUMTS    - Sort by cumulative time served\n"
+"  BY_MAXTS    - Sort by maximum time served\n"
+"  BY_PROT     - Sort by http protocol\n"
+"  BY_MTHD     - Sort by http method\n"
+msgstr ""
+"I<使える指標：>\n"
+"  BY_HITS     - ヒット数により整列\n"
+"  BY_VISITORS - 正味訪問者で整列\n"
+"  BY_DATA     - データで整列\n"
+"  BY_BW       - 帯域幅で整列\n"
+"  BY_AVGTS    - 平均提供時間で整列\n"
+"  BY_CUMTS    - 累積提供時間で整列\n"
+"  BY_MAXTS    - 最大提供時間で整列\n"
+"  BY_PROT     - HTTPプロトコルで整列\n"
+"  BY_MTHD     - HTTPメソッドで整列\n"
+
+#. type: Plain text
+#: ../goaccess.1:775
+#, no-wrap
+msgid ""
+"I<Available orders:>\n"
+"  ASC\n"
+"  DESC\n"
+msgstr ""
+"I<使える順番：>\n"
+"  ASC\n"
+"  DESC\n"
+
+#. type: TP
+#: ../goaccess.1:775
+#, no-wrap
+msgid "B<--static-file=E<lt>extensionE<gt>>"
+msgstr "B<--static-file=E<lt>拡張子E<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:780
+msgid "Add static file extension. e.g.: I<.mp3> Extensions are case sensitive."
+msgstr ""
+"静的ファイルの拡張子を追加します。\n"
+"例：I<.mp3>\n"
+"拡張子は大文字小文字を区別しません。"
+
+#. type: SS
+#: ../goaccess.1:780
+#, no-wrap
+msgid "GEOLOCATION OPTIONS"
+msgstr "地理的位置のオプション"
+
+#. type: TP
+#: ../goaccess.1:782
+#, no-wrap
+msgid "B<-g --std-geoip>"
+msgstr "B<-g --std-geoip>"
+
+#. type: Plain text
+#: ../goaccess.1:785
+msgid "Standard GeoIP database for less memory usage."
+msgstr "メモリ使用量を抑えるため標準的なGeoIPデータベースにします。"
+
+#. type: TP
+#: ../goaccess.1:785
+#, no-wrap
+msgid "B<--geoip-database=E<lt>geofileE<gt>>"
+msgstr "B<--geoip-database=E<lt>地理情報ファイルE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:788
+msgid "Specify path to GeoIP database file. i.e., GeoLiteCity.dat."
+msgstr "GeoLiteCity.datのようなGeoIPデータベースファイルへのパスを指定します。"
+
+#. type: Plain text
+#: ../goaccess.1:795
+msgid ""
+"If using GeoIP2, you will need to download the GeoLite2 City or Country "
+"database from MaxMind.com and use the option --geoip-database to specify the "
+"database. You can also get updated database files for GeoIP legacy, you can "
+"find these as GeoLite Legacy Databases from MaxMind.com. IPv4 and IPv6 files "
+"are supported as well. For updated DB URLs, please see the default GoAccess "
+"configuration file."
+msgstr ""
+"GeoIP2を使用している場合、\n"
+"MaxMind.comからGeoLite2ないしCountryのデータベースをダウンロードし、\n"
+"データベースを指定するために--geoip-databaseオプションを使う必要があるでしょ"
+"う。\n"
+"過去のGeoIP用にデータベースファイルを更新することもでき、\n"
+"そのファイルはMaxMind.comのGeoLite Legacy Databasesにあります。\n"
+"IPv4とIPv6のファイルも同様に対応済みです。\n"
+"更新されたDBのURLについては、既定のGoAccess設定ファイルを参照してください。"
+
+#. type: Plain text
+#: ../goaccess.1:798
+msgid "I<Note:> --geoip-city-data is an alias of --geoip-database."
+msgstr "I<補足：> --geoip-city-dataは--geoip-databaseの別名です。"
+
+#. type: SS
+#: ../goaccess.1:798
+#, no-wrap
+msgid "OTHER OPTIONS"
+msgstr "他のオプション"
+
+#. type: TP
+#: ../goaccess.1:800
+#, no-wrap
+msgid "B<-h --help>"
+msgstr "B<-h --help>"
+
+#. type: Plain text
+#: ../goaccess.1:803
+msgid "The help."
+msgstr "ヘルプ。"
+
+#. type: TP
+#: ../goaccess.1:803
+#, no-wrap
+msgid "B<-s --storage>"
+msgstr "B<-s --storage>"
+
+#. type: Plain text
+#: ../goaccess.1:806
+msgid "Display current storage method. i.e., B+ Tree, Hash."
+msgstr "B+木やハッシュのような、現在のストレージメソッドを表示します。"
+
+#. type: TP
+#: ../goaccess.1:806
+#, no-wrap
+msgid "B<-V --version>"
+msgstr "B<-V --version>"
+
+#. type: Plain text
+#: ../goaccess.1:809
+msgid "Display version information and exit."
+msgstr "バージョン情報を表示して終了します。"
+
+#. type: TP
+#: ../goaccess.1:809
+#, no-wrap
+msgid "B<--dcf>"
+msgstr "B<--dcf>"
+
+#. type: Plain text
+#: ../goaccess.1:812
+msgid "Display the path of the default config file when `-p` is not used."
+msgstr "`-p`が使われていない場合既定の設定ファイルのパスを表示します。"
+
+#. type: SS
+#: ../goaccess.1:812
+#, no-wrap
+msgid "PERSISTENCE STORAGE OPTIONS"
+msgstr "永続ストレージオプション"
+
+#. type: TP
+#: ../goaccess.1:814
+#, no-wrap
+msgid "B<--persist>"
+msgstr "B<--persist>"
+
+#. type: Plain text
+#: ../goaccess.1:818
+msgid ""
+"Persist parsed data into disk. If database files exist, files will be "
+"overwritten. This should be set to the first dataset. See examples below."
+msgstr ""
+"解析されたデータをディスクに永続化します。\n"
+"データベースファイルが存在するときはファイルは上書きされます。\n"
+"これは最初のデータベースに対して設定されます。\n"
+"後述の例を参照してください。"
+
+#. type: TP
+#: ../goaccess.1:818
+#, no-wrap
+msgid "B<--restore>"
+msgstr "B<--restore>"
+
+#. type: Plain text
+#: ../goaccess.1:824
+msgid ""
+"Load previously stored data from disk. If reading persisted data only, the "
+"database files need to exist. See I<--persist> and examples below."
+msgstr ""
+"ディスクから以前格納されたデータを読み込みます。\n"
+"永続化されたデータのみを読む場合、データベースファイルが存在している必要があ"
+"ります。\n"
+"I<--persist>と後述の例を参照してください。"
+
+#. type: TP
+#: ../goaccess.1:824
+#, no-wrap
+msgid "B<--db-path=E<lt>dirE<gt>>"
+msgstr "B<--db-path=E<lt>ディレクトリE<gt>>"
+
+#. type: Plain text
+#: ../goaccess.1:829
+msgid ""
+"Path where the on-disk database files are stored. The default value is the "
+"I</tmp> directory."
+msgstr ""
+"ディスク上のデータベースファイルが保管されているパスです。\n"
+"既定値はI</tmp>ディレクトリです。"
+
+#. type: SH
+#: ../goaccess.1:830
+#, no-wrap
+msgid "CUSTOM LOG/DATE FORMAT"
+msgstr "独自のログ・日付書式"
+
+#. type: Plain text
+#: ../goaccess.1:832
+msgid "GoAccess can parse virtually any web log format."
+msgstr "GoAccessは理想的にはどんなwebのログ書式も解析できます。"
+
+#. type: Plain text
+#: ../goaccess.1:836
+msgid ""
+"Predefined options include, Common Log Format (CLF), Combined Log Format "
+"(XLF/ELF), including virtual host, Amazon CloudFront (Download "
+"Distribution), Google Cloud Storage and W3C format (IIS)."
+msgstr ""
+"予め定義されたオプションには\n"
+"Common Log Format (CLF)、\n"
+"Combined Log Format (XLF/ELF)、\n"
+"Amazon CloudFront (Download Distribution)、\n"
+"Google Cloud Storage、\n"
+"W3C形式 (IIS) が含まれます。\n"
+"前2者は仮想ホスト付きのものもあります。"
+
+#. type: Plain text
+#: ../goaccess.1:838
+msgid "GoAccess allows any custom format string as well."
+msgstr "GoAccessはどんな独自の書式文字列も受け付けます。"
+
+#. type: Plain text
+#: ../goaccess.1:844
+msgid ""
+"There are two ways to configure the log format.  The easiest is to run "
+"GoAccess with I<-c> to prompt a configuration window. Otherwise, it can be "
+"configured under ~/.goaccessrc or the %sysconfdir%."
+msgstr ""
+"ログ書式を設定するには2つの方法があります。\n"
+"最も簡単なのはGoAccessをI<-c>付きで走らせて、\n"
+"設定ウィンドウから指示に随って入力することです。\n"
+"他に~/.goaccessrcや%sysconfdir%以下で設定することもできます。"
+
+# これは変数名のため訳さないようにします。
+#. type: IP
+#: ../goaccess.1:844
+#, no-wrap
+msgid "time-format"
+msgstr "time-format"
+
+#. type: Plain text
+#: ../goaccess.1:851
+msgid ""
+"The I<time-format> variable followed by a space, specifies the log format "
+"time containing any combination of regular characters and special format "
+"specifiers.  They all begin with a percentage (%) sign. See `man strftime`.  "
+"I<%T or %H:%M:%S.>"
+msgstr ""
+"I<time-format>変数は空白1つに続いてログの書式の時刻を指定します。\n"
+"これには通常の文字と特殊な書式指定子の組み合わせが含まれます。\n"
+"指定子は全てパーセント記号 (%) 始まりです。\n"
+"`man strftime`を参照してください。\n"
+"I<%Tや%H:%M:%Sなどがあります。>"
+
+#. type: Plain text
+#: ../goaccess.1:863
+msgid ""
+"I<Note:> If a timestamp is given in microseconds, I<%f> must be used as "
+"I<time-format> or I<%*> if the timestamp is given in milliseconds."
+msgstr ""
+"I<補足：>タイムスタンプがマイクロ秒で与えられているとき、\n"
+"I<%f>はI<time-format>として使われていなければなりません。\n"
+"またタイムスタンプがミリ秒で与えられているときは、\n"
+"I<%f>はI<%*>として使われなければなりません。"
+
+# これは変数名のため訳さないようにします。
+#. type: IP
+#: ../goaccess.1:863
+#, no-wrap
+msgid "date-format"
+msgstr "date-format"
+
+#. type: Plain text
+#: ../goaccess.1:870
+msgid ""
+"The I<date-format> variable followed by a space, specifies the log format "
+"date containing any combination of regular characters and special format "
+"specifiers. They all begin with a percentage (%) sign. See `man strftime`. e."
+"g., I<%Y-%m-%d.>"
+msgstr ""
+"I<date-format>変数には空白1つが続き、\n"
+"ログの書式の日付を指定します。\n"
+"この書式には通常の文字と特殊な書式の指定子のあらゆる組み合わせを含められま"
+"す。\n"
+"指定子は全てパーセント記号 (%) 始まりです。\n"
+"`man strftime`を参照してください。\n"
+"例えばI<%Y-%m-%dです。>"
+
+#. type: Plain text
+#: ../goaccess.1:882
+msgid ""
+"I<Note:> If a timestamp is given in microseconds, I<%f> must be used as "
+"I<date-format> or I<%*> if the timestamp is given in milliseconds."
+msgstr ""
+"I<補足：>タイムスタンプがマイクロ秒で与えられているとき、\n"
+"I<%f>はI<date-format>として使われなければなりません。\n"
+"またタイムスタンプがミリ秒で与えられているときはI<%f>はI<%*>として使われなけ"
+"ればなりません。"
+
+# これは変数名なので訳しません。
+#. type: IP
+#: ../goaccess.1:882
+#, no-wrap
+msgid "log-format"
+msgstr "log-format"
+
+#. type: Plain text
+#: ../goaccess.1:888
+msgid ""
+"The I<log-format> variable followed by a space or I<\\et> , specifies the "
+"log format string."
+msgstr ""
+"I<log-format>変数には空白1つないしI<\\et>が続き、ログ書式の文字列を指定しま"
+"す。"
+
+#. type: IP
+#: ../goaccess.1:888
+#, no-wrap
+msgid "%x"
+msgstr "%x"
+
+#. type: Plain text
+#: ../goaccess.1:896
+msgid ""
+"A date and time field matching the I<time-format> and I<date-format> "
+"variables. This is used when given a timestamp or the date & time are "
+"concatenated as a single string (e.g., 1501647332 or 20170801235000) instead "
+"of the date and time being in two separated variables."
+msgstr ""
+"I<time-format>とI<date-format>変数に照合する日付と時刻のフィールドです。\n"
+"これは与えられたタイムスタンプや日付と時刻が、\n"
+"日付と時刻が2つの分離した変数ではなく、\n"
+"単一の文字列（例：1501647332や20170801235000）として結合されているときに使わ"
+"れます。"
+
+#. type: IP
+#: ../goaccess.1:896
+#, no-wrap
+msgid "%t"
+msgstr "%t"
+
+#. type: Plain text
+#: ../goaccess.1:900
+msgid "time field matching the I<time-format> variable."
+msgstr "I<time-format>変数に照合する時刻フィールドです。"
+
+#. type: IP
+#: ../goaccess.1:900
+#, no-wrap
+msgid "%d"
+msgstr "%d"
+
+#. type: Plain text
+#: ../goaccess.1:904
+msgid "date field matching the I<date-format> variable."
+msgstr "I<date-format>変数に照合する日付フィールドです。"
+
+#. type: IP
+#: ../goaccess.1:904
+#, no-wrap
+msgid "%v"
+msgstr "%v"
+
+#. type: Plain text
+#: ../goaccess.1:906
+msgid ""
+"The canonical Server Name of the server serving the request (Virtual Host)."
+msgstr "リクエストに応対するサーバー（仮想ホスト）の正統なServer Nameです。"
+
+#. type: IP
+#: ../goaccess.1:906
+#, no-wrap
+msgid "%e"
+msgstr "%e"
+
+#. type: Plain text
+#: ../goaccess.1:909
+msgid ""
+"This is the userid of the person requesting the document as determined by "
+"HTTP authentication."
+msgstr "これはHTTP認証により決定された文書を要求した人物のユーザーIDです。"
+
+#. type: IP
+#: ../goaccess.1:909
+#, no-wrap
+msgid "%C"
+msgstr "%C"
+
+#. type: Plain text
+#: ../goaccess.1:911
+msgid "The cache status of the object the server served."
+msgstr "サーバーが提供するオブジェクトのキャッシュ状態です。"
+
+#. type: IP
+#: ../goaccess.1:911
+#, no-wrap
+msgid "%h"
+msgstr "%h"
+
+#. type: Plain text
+#: ../goaccess.1:913
+msgid "host (the client IP address, either IPv4 or IPv6)"
+msgstr "ホスト（クライアントIPアドレスで、IPv4ないしIPv6のいずれかです）"
+
+#. type: IP
+#: ../goaccess.1:913
+#, no-wrap
+msgid "%r"
+msgstr "%r"
+
+#. type: Plain text
+#: ../goaccess.1:917
+msgid ""
+"The request line from the client. This requires specific delimiters around "
+"the request (as single quotes, double quotes, or anything else) to be "
+"parsable. If not, we have to use a combination of special format specifiers "
+"as %m %U %H."
+msgstr ""
+"クライアントからの要求の行です。\n"
+"解析できるようにするため要求の周囲の特定の区切文字\n"
+"（単一引用符、二重引用符、その他諸々）が必要です。\n"
+"さもなければ%m %U %Hといった特殊な書式指定子の組み合わせを使わねばなりませ"
+"ん。"
+
+#. type: IP
+#: ../goaccess.1:917
+#, no-wrap
+msgid "%q"
+msgstr "%q"
+
+#. type: Plain text
+#: ../goaccess.1:919
+msgid "The query string."
+msgstr "検索文字列です。"
+
+#. type: IP
+#: ../goaccess.1:919
+#, no-wrap
+msgid "%m"
+msgstr "%m"
+
+#. type: Plain text
+#: ../goaccess.1:921
+msgid "The request method."
+msgstr "リクエストメソッドです。"
+
+#. type: IP
+#: ../goaccess.1:921
+#, no-wrap
+msgid "%U"
+msgstr "%U"
+
+#. type: Plain text
+#: ../goaccess.1:923
+msgid "The URL path requested."
+msgstr "リクエストされたURLのパスです。"
+
+#. type: Plain text
+#: ../goaccess.1:930
+msgid ""
+"I<Note:> If the query string is in %U, there is no need to use I<%q.> "
+"However, if the URL path, does not include any query string, you may use "
+"I<%q> and the query string will be appended to the request."
+msgstr ""
+"I<補足：>クエリ文字列が%Uにあるとき、\n"
+"I<%q>を使う必要はありません。\n"
+"しかしURLパスが何らクエリ文字列を含んでいなければ、\n"
+"I<%q>を使うことでクエリ文字列をリクエストの後に付けることができます。"
+
+#. type: IP
+#: ../goaccess.1:930
+#, no-wrap
+msgid "%H"
+msgstr "%H"
+
+#. type: Plain text
+#: ../goaccess.1:932
+msgid "The request protocol."
+msgstr "リクエストされたプロトコルです。"
+
+#. type: IP
+#: ../goaccess.1:932
+#, no-wrap
+msgid "%s"
+msgstr "%s"
+
+#. type: Plain text
+#: ../goaccess.1:934
+msgid "The status code that the server sends back to the client."
+msgstr "サーバーがクライアントに送り返すステータスコードです。"
+
+#. type: IP
+#: ../goaccess.1:934
+#, no-wrap
+msgid "%b"
+msgstr "%b"
+
+#. type: Plain text
+#: ../goaccess.1:936
+msgid "The size of the object returned to the client."
+msgstr "クライアントに返されるオブジェクトの大きさです。"
+
+#. type: IP
+#: ../goaccess.1:936
+#, no-wrap
+msgid "%R"
+msgstr "%R"
+
+#. type: Plain text
+#: ../goaccess.1:938
+msgid "The \"Referrer\" HTTP request header."
+msgstr "「リファラ」のHTTPリクエストヘッダです。"
+
+#. type: IP
+#: ../goaccess.1:938
+#, no-wrap
+msgid "%u"
+msgstr "%u"
+
+#. type: Plain text
+#: ../goaccess.1:940
+msgid "The user-agent HTTP request header."
+msgstr "ユーザーエージェントのHTTPリクエストヘッダです。"
+
+#. type: IP
+#: ../goaccess.1:940
+#, no-wrap
+msgid "%K"
+msgstr "%K"
+
+#. type: Plain text
+#: ../goaccess.1:942
+msgid ""
+"The TLS encryption settings chosen for the connection. (In Apache LogFormat: "
+"%{SSL_PROTOCOL}x)"
+msgstr ""
+"接続に選ばれたTLS暗号設定です（Apache LogFormatでの%{SSL_PROTOCOL}xです）。"
+
+#. type: IP
+#: ../goaccess.1:942
+#, no-wrap
+msgid "%k"
+msgstr "%k"
+
+#. type: Plain text
+#: ../goaccess.1:944
+msgid ""
+"The TLS encryption settings chosen for the connection. (In Apache LogFormat: "
+"%{SSL_CIPHER}x)"
+msgstr ""
+"接続に選ばれたTLS暗号設定です（Apache LogFormatでの%{SSL_CIPHER}xです）。"
+
+#. type: IP
+#: ../goaccess.1:944
+#, no-wrap
+msgid "%M"
+msgstr "%M"
+
+#. type: Plain text
+#: ../goaccess.1:946
+msgid ""
+"The MIME-type of the requested resource. (In Apache LogFormat: %{Content-"
+"Type}o)"
+msgstr ""
+"リクエストされたリソースのMIME種別です（Apache LogFormatでの%{Content-Type}o"
+"です）。"
+
+#. type: IP
+#: ../goaccess.1:946
+#, no-wrap
+msgid "%D"
+msgstr "%D"
+
+#. type: Plain text
+#: ../goaccess.1:948
+msgid ""
+"The time taken to serve the request, in microseconds as a decimal number."
+msgstr ""
+"リクエストに応対するまでに掛かった時間であり、10進整数のミリ秒で指定します。"
+
+#. type: IP
+#: ../goaccess.1:948
+#, no-wrap
+msgid "%T"
+msgstr "%T"
+
+#. type: Plain text
+#: ../goaccess.1:950
+msgid ""
+"The time taken to serve the request, in seconds with milliseconds resolution."
+msgstr ""
+"リクエストに応対するのに掛かった時間で、ミリ秒精度の秒単位で指定します。"
+
+#. type: IP
+#: ../goaccess.1:950
+#, no-wrap
+msgid "%L"
+msgstr "%L"
+
+#. type: Plain text
+#: ../goaccess.1:952
+msgid ""
+"The time taken to serve the request, in milliseconds as a decimal number."
+msgstr "リクエストに応対するのに掛かった時間で、10進整数のミリ秒で指定します。"
+
+#. type: IP
+#: ../goaccess.1:952
+#, no-wrap
+msgid "%n"
+msgstr "%n"
+
+#. type: Plain text
+#: ../goaccess.1:954
+msgid "The time taken to serve the request, in nanoseconds."
+msgstr "リクエストに応対するまでに掛かった時間であり、ミリ秒で指定します。"
+
+#. type: IP
+#: ../goaccess.1:954
+#, no-wrap
+msgid "%^"
+msgstr "%^"
+
+#. type: Plain text
+#: ../goaccess.1:956
+msgid "Ignore this field."
+msgstr "このフィールドを無視します。"
+
+#. type: IP
+#: ../goaccess.1:956
+#, no-wrap
+msgid "%~"
+msgstr "%~"
+
+#. type: Plain text
+#: ../goaccess.1:958
+msgid ""
+"Move forward through the log string until a non-space (!isspace) char is "
+"found."
+msgstr "空白でない (!isspace) 文字が見付かるまでログ文字列を読み進めます。"
+
+#. type: IP
+#: ../goaccess.1:958
+#, no-wrap
+msgid "~h"
+msgstr "~h"
+
+#. type: Plain text
+#: ../goaccess.1:960
+msgid ""
+"The host (the client IP address, either IPv4 or IPv6) in a X-Forwarded-For "
+"(XFF) field."
+msgstr ""
+"X-Forwarded-For (XFF) フィールド中のホスト\n"
+"（クライアントIPアドレスで、IPv4ないしIPv6のいずれか）です。"
+
+#. type: Plain text
+#: ../goaccess.1:964
+msgid ""
+"It uses a special specifier which consists of a tilde before the host "
+"specifier, followed by the character(s) that delimit the XFF field, which "
+"are enclosed by curly braces. i.e., \"~h{, }"
+msgstr ""
+"ホスト指定子の前にチルダが付いたものとなっている特別な指定子を使います。\n"
+"XFFフィールドを区切る文字が続きます。\n"
+"この区切り文字は中括弧で囲まれます。\n"
+"つまり\"~h{, }\"のようになります。"
+
+#. type: Plain text
+#: ../goaccess.1:967
+msgid ""
+"For example, \"~h{, }\" is used in order to parse \"11.25.11.53, "
+"17.68.33.17\" field which is delimited by a comma and a space (enclosed by "
+"double quotes)."
+msgstr ""
+"例えば\"~h{, }\"はコンマと空白（二重引用符で囲まれたところ）で区切られた\n"
+"\"11.25.11.53, 17.68.33.17\"フィールドを解析するために使われます。"
+
+#. type: tbl table
+#: ../goaccess.1:972
+#, no-wrap
+msgid "XFF field"
+msgstr "XFFフィールド"
+
+#. type: tbl table
+#: ../goaccess.1:972
+#, no-wrap
+msgid "specifier"
+msgstr "指定子"
+
+#. type: tbl table
+#: ../goaccess.1:975
+#, no-wrap
+msgid "B<\\[dq]192.1.2.3,>\\~192.68.33.17,\\~192.1.1.2\\[dq]"
+msgstr "B<\\[dq]192.1.2.3,>\\~192.68.33.17,\\~192.1.1.2\\[dq]"
+
+#. type: tbl table
+#: ../goaccess.1:975
+#, no-wrap
+msgid "\\[dq]~h{, }\\[dq]"
+msgstr "\\[dq]~h{, }\\[dq]"
+
+#. type: tbl table
+#: ../goaccess.1:978
+#, no-wrap
+msgid "B<\\[dq]192.1.2.12\\[dq],\\~\\[dq]192.68.33.17\\[dq]>"
+msgstr "B<\\[dq]192.1.2.12\\[dq],\\~\\[dq]192.68.33.17\\[dq]>"
+
+#. type: tbl table
+#: ../goaccess.1:978
+#, no-wrap
+msgid "~h{\\[dq], }"
+msgstr "~h{\\[dq], }"
+
+#. type: tbl table
+#: ../goaccess.1:981
+#, no-wrap
+msgid "B<192.1.2.12,\\~192.68.33.17>"
+msgstr "B<192.1.2.12,\\~192.68.33.17>"
+
+#. type: tbl table
+#: ../goaccess.1:981
+#, no-wrap
+msgid "~h{, }"
+msgstr "~h{, }"
+
+#. type: tbl table
+#: ../goaccess.1:984
+#, no-wrap
+msgid "B<192.1.2.14\\~192.68.33.17\\~192.1.1.2>"
+msgstr "B<192.1.2.14\\~192.68.33.17\\~192.1.1.2>"
+
+#. type: tbl table
+#: ../goaccess.1:984
+#, no-wrap
+msgid "~h{ }"
+msgstr "~h{ }"
+
+#. type: Plain text
+#: ../goaccess.1:997
+msgid ""
+"I<Note:> In order to get the average, cumulative and maximum time served in "
+"GoAccess, you will need to start logging response times in your web server. "
+"In Nginx you can add I<$request_time> to your log format, or I<%D> in Apache."
+msgstr ""
+"I<補足：>GoAccessで提供時間の累計と最大値の平均を取得するためには、\n"
+"webサーバーで応答時間のログ出力を開始する必要があります。\n"
+"Nginxではログ書式にI<$request_time>を追加でき、\n"
+"ApacheではI<%D>を追加できます。"
+
+#. type: Plain text
+#: ../goaccess.1:1001
+msgid ""
+"I<Important:> If multiple time served specifiers are used at the same time, "
+"the first option specified in the format string will take priority over the "
+"other specifiers."
+msgstr ""
+"I<重要：>複数の提供時間の指定子が同時に使われた場合、\n"
+"書式文字列で指定された最初のオプションが他の指定子よりも優先されます。"
+
+#. type: Plain text
+#: ../goaccess.1:1005
+msgid "GoAccess I<requires> the following fields:"
+msgstr "GoAccessには以下のフィールドがI<必須>です。"
+
+#. type: Plain text
+#: ../goaccess.1:1008
+msgid "I<%h> a valid IPv4/6"
+msgstr "I<%h> 妥当なIPv4ないしIPv6"
+
+#. type: Plain text
+#: ../goaccess.1:1011
+msgid "I<%d> a valid date"
+msgstr "I<%d> 妥当な日付"
+
+#. type: Plain text
+#: ../goaccess.1:1014
+msgid "I<%r> the request"
+msgstr "I<%r> リクエスト"
+
+#. type: SH
+#: ../goaccess.1:1014
+#, no-wrap
+msgid "INTERACTIVE MENU"
+msgstr "対話的メニュー"
+
+#. type: IP
+#: ../goaccess.1:1015
+#, no-wrap
+msgid "F1 or h"
+msgstr "F1またはh"
+
+#. type: Plain text
+#: ../goaccess.1:1017
+msgid "Main help."
+msgstr "メインのヘルプです。"
+
+#. type: IP
+#: ../goaccess.1:1017
+#, no-wrap
+msgid "F5"
+msgstr "F5"
+
+#. type: Plain text
+#: ../goaccess.1:1019
+msgid "Redraw main window."
+msgstr "メインのウィンドウを再描画します。"
+
+#. type: IP
+#: ../goaccess.1:1019
+#, no-wrap
+msgid "q"
+msgstr "q"
+
+#. type: Plain text
+#: ../goaccess.1:1021
+msgid "Quit the program, current window or collapse active module"
+msgstr ""
+"プログラムまたは現在のウィンドウを終了するか、活性のモジュールを折り畳みま"
+"す。"
+
+#. type: IP
+#: ../goaccess.1:1021
+#, no-wrap
+msgid "o or ENTER"
+msgstr "oまたはエンター"
+
+#. type: Plain text
+#: ../goaccess.1:1023
+msgid "Expand selected module or open window"
+msgstr "選択されたモジュールを展開ないしウィンドウを開きます。"
+
+#. type: IP
+#: ../goaccess.1:1023
+#, no-wrap
+msgid "0-9 and Shift + 0"
+msgstr "0-9とShift + 0"
+
+#. type: Plain text
+#: ../goaccess.1:1025
+msgid "Set selected module to active"
+msgstr "選択されたモジュールを活性に設定します"
+
+#. type: IP
+#: ../goaccess.1:1025
+#, no-wrap
+msgid "j"
+msgstr "j"
+
+#. type: Plain text
+#: ../goaccess.1:1027
+msgid "Scroll down within expanded module"
+msgstr "展開されたモジュール内でスクロールを下に移動します。"
+
+#. type: IP
+#: ../goaccess.1:1027
+#, no-wrap
+msgid "k"
+msgstr "k"
+
+#. type: Plain text
+#: ../goaccess.1:1029
+msgid "Scroll up within expanded module"
+msgstr "展開されたモジュール内でスクロールを上に移動します。"
+
+#. type: IP
+#: ../goaccess.1:1029
+#, no-wrap
+msgid "c"
+msgstr "c"
+
+#. type: Plain text
+#: ../goaccess.1:1031
+msgid "Set or change scheme color."
+msgstr "カラースキームを設定したり変更したりします。"
+
+#. type: IP
+#: ../goaccess.1:1031
+#, no-wrap
+msgid "TAB"
+msgstr "タブ"
+
+#. type: Plain text
+#: ../goaccess.1:1033
+msgid "Forward iteration of modules. Starts from current active module."
+msgstr "モジュールの巡回を先に進めます。現在の活性なモジュールから開始します。"
+
+#. type: IP
+#: ../goaccess.1:1033
+#, no-wrap
+msgid "SHIFT + TAB"
+msgstr "シフトキーとタブ"
+
+#. type: Plain text
+#: ../goaccess.1:1035
+msgid "Backward iteration of modules. Starts from current active module."
+msgstr ""
+"モジュールの巡回を後ろに戻します。現在の活性なモジュールから開始します。"
+
+#. type: IP
+#: ../goaccess.1:1035
+#, no-wrap
+msgid "^f"
+msgstr "^f"
+
+#. type: Plain text
+#: ../goaccess.1:1037
+msgid "Scroll forward one screen within an active module."
+msgstr "活性モジュールの中で1画面スクロールを前に進めます。"
+
+#. type: IP
+#: ../goaccess.1:1037
+#, no-wrap
+msgid "^b"
+msgstr "^b"
+
+#. type: Plain text
+#: ../goaccess.1:1039
+msgid "Scroll backward one screen within an active module."
+msgstr "活性モジュールの中で1画面スクロールを後ろに戻します。"
+
+#. type: IP
+#: ../goaccess.1:1039
+#, no-wrap
+msgid "s"
+msgstr "s"
+
+#. type: Plain text
+#: ../goaccess.1:1041
+msgid "Sort options for active module"
+msgstr "活性モジュールの並び替えオプションです"
+
+#. type: IP
+#: ../goaccess.1:1041
+#, no-wrap
+msgid "/"
+msgstr "/"
+
+#. type: Plain text
+#: ../goaccess.1:1043
+msgid "Search across all modules (regex allowed)"
+msgstr "全てのモジュールを検索します（正規表現が使えます）"
+
+#. type: IP
+#: ../goaccess.1:1043
+#, no-wrap
+msgid "n"
+msgstr "n"
+
+#. type: Plain text
+#: ../goaccess.1:1045
+msgid "Find the position of the next occurrence across all modules."
+msgstr "全てのモジュールを通じて次の発生位置を見つけ出します。"
+
+#. type: IP
+#: ../goaccess.1:1045
+#, no-wrap
+msgid "g"
+msgstr "g"
+
+#. type: Plain text
+#: ../goaccess.1:1047
+msgid "Move to the first item or top of screen."
+msgstr "最初の項目や画面の一番上に移動します。"
+
+#. type: IP
+#: ../goaccess.1:1047
+#, no-wrap
+msgid "G"
+msgstr "G"
+
+#. type: Plain text
+#: ../goaccess.1:1049
+msgid "Move to the last item or bottom of screen."
+msgstr "最後の項目や画面の一番下に移動します。"
+
+#. type: SH
+#: ../goaccess.1:1049
+#, no-wrap
+msgid "EXAMPLES"
+msgstr "例"
+
+#. type: SS
+#: ../goaccess.1:1055
+#, no-wrap
+msgid "DIFFERENT OUTPUTS"
+msgstr "異なる出力"
+
+#. type: Plain text
+#: ../goaccess.1:1059
+msgid "To output to a terminal and generate an interactive report:"
+msgstr "端末に出力して対話的なレポートを生成するには以下のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1061
+msgid "# goaccess access.log"
+msgstr "# goaccess access.log"
+
+#. type: Plain text
+#: ../goaccess.1:1063
+msgid "To generate an HTML report:"
+msgstr "HTMLレポートを生成するには以下のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1065
+msgid "# goaccess access.log -a -o report.html"
+msgstr "# goaccess access.log -a -o report.html"
+
+#. type: Plain text
+#: ../goaccess.1:1067
+msgid "To generate a JSON report:"
+msgstr "JSONでレポートを生成するには以下のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1069
+msgid "# goaccess access.log -a -d -o report.json"
+msgstr "# goaccess access.log -a -d -o report.json"
+
+#. type: Plain text
+#: ../goaccess.1:1071
+msgid "To generate a CSV file:"
+msgstr "CSVファイルを生成するには以下のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1073
+msgid "# goaccess access.log --no-csv-summary -o report.csv"
+msgstr "# goaccess access.log --no-csv-summary -o report.csv"
+
+#. type: Plain text
+#: ../goaccess.1:1077
+msgid ""
+"GoAccess also allows great flexibility for real-time filtering and parsing. "
+"For instance, to quickly diagnose issues by monitoring logs since goaccess "
+"was started:"
+msgstr ""
+"GoAccessは実時間の絞り込みと解析を行う上で、\n"
+"非常に柔軟性が高い側面もあります。\n"
+"例えばgoaccessが起動したあとのログを監視することによって素早く問題を診断でき"
+"ます。"
+
+#. type: Plain text
+#: ../goaccess.1:1079
+msgid "# tail -f access.log | goaccess -"
+msgstr "# tail -f access.log | goaccess -"
+
+#. type: Plain text
+#: ../goaccess.1:1087
+msgid ""
+"And even better, to filter while maintaining opened a pipe to preserve real-"
+"time analysis, we can make use of I<tail -f> and a matching pattern tool "
+"such as I<grep, awk, sed,> etc:"
+msgstr ""
+"そしてさらに良くするために、\n"
+"実時間解析を保存するためのパイプを空けたままを維持しつつ、\n"
+"I<tail -f>とI<grep、awk、sedなど>のようなパターン照合ツールを活用することがで"
+"きます。"
+
+#. type: Plain text
+#: ../goaccess.1:1089
+msgid ""
+"# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-"
+"format=COMBINED -"
+msgstr ""
+"# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-"
+"format=COMBINED -"
+
+#. type: Plain text
+#: ../goaccess.1:1092
+msgid ""
+"or to parse from the beginning of the file while maintaining the pipe opened "
+"and applying a filter"
+msgstr ""
+"もしくはパイプを開きフィルタを適用しつつ、\n"
+"ファイルの冒頭から解析するにはこのようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1094
+msgid ""
+"# tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess --"
+"log-format=COMBINED -o report.html --real-time-html -"
+msgstr ""
+"# tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess --"
+"log-format=COMBINED -o report.html --real-time-html -"
+
+#. type: Plain text
+#: ../goaccess.1:1096
+msgid ""
+"or to convert the log date timezone to a different timezone, e.g., Europe/"
+"Berlin"
+msgstr ""
+"もしくはログの日時のタイムゾーンを異なるタイムゾーン、\n"
+"例えばEurope/Berlin、に変換するには次のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1098
+msgid ""
+"# goaccess access.log --log-format='%h %^[%x] \"%r\" %s %b \"%R\" \"%u\"' --"
+"datetime-format='%d/%b/%Y:%H:%M:%S %z' --tz=Europe/Berlin --date-spec=min"
+msgstr ""
+"# goaccess access.log --log-format='%h %^[%x] \"%r\" %s %b \"%R\" \"%u\"' --"
+"datetime-format='%d/%b/%Y:%H:%M:%S %z' --tz=Europe/Berlin --date-spec=min"
+
+#. type: SS
+#: ../goaccess.1:1098
+#, no-wrap
+msgid "MULTIPLE LOG FILES"
+msgstr "複数のログファイル"
+
+#. type: Plain text
+#: ../goaccess.1:1103
+msgid ""
+"There are several ways to parse multiple logs with GoAccess. The simplest is "
+"to pass multiple log files to the command line:"
+msgstr ""
+"GoAccessで複数のログを解析するにはいくつかの方法があります。\n"
+"最も単純なのはコマンドラインに複数のログファイルを渡すことです。"
+
+#. type: Plain text
+#: ../goaccess.1:1105
+msgid "# goaccess access.log access.log.1"
+msgstr "# goaccess access.log access.log.1"
+
+#. type: Plain text
+#: ../goaccess.1:1107
+msgid ""
+"It's even possible to parse files from a pipe while reading regular files:"
+msgstr ""
+"通常のファイルから読み込みつつパイプからファイルを解析することさえできます。"
+
+#. type: Plain text
+#: ../goaccess.1:1109
+msgid "# cat access.log.2 | goaccess access.log access.log.1 -"
+msgstr "# cat access.log.2 | goaccess access.log access.log.1 -"
+
+#. type: Plain text
+#: ../goaccess.1:1113
+msgid ""
+"I<Note> that the single dash is appended to the command line to let GoAccess "
+"know that it should read from the pipe."
+msgstr ""
+"I<補足>となりますが、\n"
+"単一ダッシュがコマンドラインの後ろに付いていることで、\n"
+"GoAccessにパイプから読み込むことが伝わります。"
+
+#. type: Plain text
+#: ../goaccess.1:1118
+msgid ""
+"Now if we want to add more flexibility to GoAccess, we can do a series of "
+"pipes. For instance, if we would like to process all compressed log files "
+"I<access.log.*.gz> in addition to the current log file, we can do:"
+msgstr ""
+"さらにGoAccessの柔軟性を上げたければ一連のパイプにすることができます。\n"
+"例として現在のログファイルに加えて、\n"
+"全ての圧縮されたログファイルI<access.log.*.gz>を処理したければ、\n"
+"次のようにできます。"
+
+#. type: Plain text
+#: ../goaccess.1:1120
+msgid "# zcat access.log.*.gz | goaccess access.log -"
+msgstr "# zcat access.log.*.gz | goaccess access.log -"
+
+#. type: Plain text
+#: ../goaccess.1:1123
+msgid "I<Note:> On Mac OS X, use gunzip -c instead of zcat."
+msgstr "I<補足：>Mac OS Xではzcatではなくgunzip -cを使ってください。"
+
+#. type: SS
+#: ../goaccess.1:1123
+#, no-wrap
+msgid "REAL TIME HTML OUTPUT"
+msgstr "実時間HTML出力"
+
+#. type: Plain text
+#: ../goaccess.1:1129
+msgid ""
+"GoAccess has the ability to output real-time data in the HTML report. You "
+"can even email the HTML file since it is composed of a single file with no "
+"external file dependencies, how neat is that!"
+msgstr ""
+"GoAccessではHTMLレポートに実時間データを出力することができます。\n"
+"外部ファイル依存のない単一ファイルからなるため、\n"
+"HTMLファイルをEメールで送ることさえできるのです。\n"
+"やったぜ！"
+
+#. type: Plain text
+#: ../goaccess.1:1133
+msgid ""
+"The process of generating a real-time HTML report is very similar to the "
+"process of creating a static report. Only --real-time-html is needed to make "
+"it real-time."
+msgstr ""
+"実時間HTMLレポートを生成する工程は、\n"
+"静的なレポートを作る過程と大変似ています。\n"
+"実時間にするのに必要なのは--real-time-htmlだけです。"
+
+#. type: Plain text
+#: ../goaccess.1:1135
+msgid ""
+"# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-"
+"html"
+msgstr ""
+"# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-"
+"html"
+
+#. type: Plain text
+#: ../goaccess.1:1139
+msgid ""
+"By default, GoAccess will use the host name of the generated report.  "
+"Optionally, you can specify the URL to which the client's browser will "
+"connect to. See https://goaccess.io/faq for a more detailed example."
+msgstr ""
+"既定ではGoAccessは生成されたレポートのホスト名を使います。\n"
+"オプションとしてクライアントのブラウザが接続するURLを指定することができま"
+"す。\n"
+"詳細な例は https://goaccess.io/faq を参照してください。"
+
+#. type: Plain text
+#: ../goaccess.1:1141
+msgid ""
+"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+msgstr ""
+"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+
+#. type: Plain text
+#: ../goaccess.1:1144
+msgid ""
+"By default, GoAccess listens on port 7890, to use a different port other "
+"than 7890, you can specify it as (make sure the port is opened):"
+msgstr ""
+"既定ではGoAccessはポート7890で待ち受けます。\n"
+"7890以外の別のポートを使うためには以下のように指定することができます\n"
+"（ポートの穴開けができていることを確かめてください）。"
+
+#. type: Plain text
+#: ../goaccess.1:1146
+msgid "# goaccess access.log -o report.html --real-time-html --port=9870"
+msgstr "# goaccess access.log -o report.html --real-time-html --port=9870"
+
+#. type: Plain text
+#: ../goaccess.1:1149
+msgid ""
+"And to bind the WebSocket server to a different address other than 0.0.0.0, "
+"you can specify it as:"
+msgstr ""
+"またWebSocketサーバーを0.0.0.0以外の別のアドレスに束縛したければ以下のように"
+"指定することができます。"
+
+#. type: Plain text
+#: ../goaccess.1:1151
+msgid "# goaccess access.log -o report.html --real-time-html --addr=127.0.0.1"
+msgstr "# goaccess access.log -o report.html --real-time-html --addr=127.0.0.1"
+
+#. type: Plain text
+#: ../goaccess.1:1157
+msgid ""
+"I<Note:> To output real time data over a TLS/SSL connection, you need to use "
+"I<--ssl-cert=E<lt>cert.crtE<gt>> and I<--ssl-key=E<lt>priv.keyE<gt>.>"
+msgstr ""
+"I<補足：>TLS/SSL接続上で実時間データを出力するにはI<--ssl-cert=E<lt>cert."
+"crtE<gt>>とI<--ssl-key=E<lt>priv.keyE<gt>>を使う必要があります。"
+
+#. type: SS
+#: ../goaccess.1:1157
+#, no-wrap
+msgid "WORKING WITH DATES"
+msgstr "日付の扱い"
+
+#. type: Plain text
+#: ../goaccess.1:1161
+msgid "Another useful pipe would be filtering dates out of the web log"
+msgstr "別のパイプの有用な点はwebのログから日付で絞り込むことでしょう。"
+
+#. type: Plain text
+#: ../goaccess.1:1164
+msgid ""
+"The following will get all HTTP requests starting on 05/Dec/2010 until the "
+"end of the file."
+msgstr ""
+"以下は05/Dec/2010からファイル末尾までの全てのHTTPリクエストを取得します。"
+
+#. type: Plain text
+#: ../goaccess.1:1166
+msgid "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
+msgstr "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
+
+#. type: Plain text
+#: ../goaccess.1:1168
+msgid "or using relative dates such as yesterdays or tomorrows day:"
+msgstr "または昨日や明日のような相対的な日にちを使うと以下です。"
+
+#. type: Plain text
+#: ../goaccess.1:1170
+msgid ""
+"# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | "
+"goaccess -a -"
+msgstr ""
+"# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | "
+"goaccess -a -"
+
+#. type: Plain text
+#: ../goaccess.1:1172
+msgid ""
+"If we want to parse only a certain time-frame from DATE a to DATE b, we can "
+"do:"
+msgstr ""
+"日付aから日付bまでの特定の時刻間隔のみを解析したければ以下のようにできます。"
+
+#. type: Plain text
+#: ../goaccess.1:1174
+msgid ""
+"# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+msgstr ""
+"# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+
+#. type: Plain text
+#: ../goaccess.1:1178
+msgid ""
+"If we want to preserve only certain amount of data and recycle storage, we "
+"can keep only a certain number of days. For instance to keep & show the last "
+"5 days:"
+msgstr ""
+"特定の量のデータのみを保存し容量上で古いものから再利用されている場合は、\n"
+"特定の日数のみ保持するようにできます。\n"
+"例えば直近5日間を保持して表示するには次のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1180
+msgid "# goaccess access.log --keep-last=5"
+msgstr "# goaccess access.log --keep-last=5"
+
+#. type: SS
+#: ../goaccess.1:1180
+#, no-wrap
+msgid "VIRTUAL HOSTS"
+msgstr "仮想ホスト"
+
+#. type: Plain text
+#: ../goaccess.1:1185
+msgid ""
+"Assuming your log contains the virtual host (server blocks) field. For "
+"instance:"
+msgstr ""
+"ログに仮想ホスト（サーバーブロック）フィールドがあるものとします。例えば次の"
+"通り。"
+
+#. type: Plain text
+#: ../goaccess.1:1188
+msgid ""
+"vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/bag-"
+"p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
+msgstr ""
+"vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/bag-"
+"p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
+
+#. type: Plain text
+#: ../goaccess.1:1191
+msgid ""
+"And you would like to append the virtual host to the request in order to see "
+"which virtual host the top urls belong to"
+msgstr ""
+"そしてどの仮想ホストに最頻のURLが属しているのかを見るために、仮想ホストをリク"
+"エストに加えたいことがあるでしょう。"
+
+#. type: Plain text
+#: ../goaccess.1:1193
+msgid "awk '$8=$1$8' access.log | goaccess -a -"
+msgstr "awk '$8=$1$8' access.log | goaccess -a -"
+
+#. type: Plain text
+#: ../goaccess.1:1195
+msgid "To exclude a list of virtual hosts you can do the following:"
+msgstr "仮想ホストのリストを除外するためには以下のようにできます。"
+
+#. type: Plain text
+#: ../goaccess.1:1197
+msgid ""
+"# grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -"
+msgstr ""
+"# grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -"
+
+#. type: SS
+#: ../goaccess.1:1197
+#, no-wrap
+msgid "FILES & STATUS CODES"
+msgstr "ファイルとステータスコード"
+
+#. type: Plain text
+#: ../goaccess.1:1202
+msgid ""
+"To parse specific pages, e.g., page views, html, htm, php, etc. within a "
+"request:"
+msgstr ""
+"リクエストのうち、html、htm、phpなどの閲覧ページなどで、\n"
+"特定のページを解析するには次のようにします。"
+
+#. type: Plain text
+#: ../goaccess.1:1204
+msgid "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
+msgstr "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
+
+#. type: Plain text
+#: ../goaccess.1:1211
+msgid ""
+"Note, I<$7> is the request field for the common and combined log format, "
+"(without Virtual Host), if your log includes Virtual Host, then you probably "
+"want to use I<$8> instead. It's best to check which field you are shooting "
+"for, e.g.:"
+msgstr ""
+"なおI<$7>はログ書式がcommonやcombinedのもの（仮想ホストなし）のリクエスト"
+"フィールドであり、\n"
+"ログに仮想ホストが含まれるのであれば代わりにI<$8>を使うことになるでしょう。\n"
+"注目しているフィールドを確認しておくのが一番です。\n"
+"例えば次のように。"
+
+#. type: Plain text
+#: ../goaccess.1:1213
+msgid "# tail -10 access.log | awk '{print $8}'"
+msgstr "# tail -10 access.log | awk '{print $8}'"
+
+#. type: Plain text
+#: ../goaccess.1:1215
+msgid "Or to parse a specific status code, e.g., 500 (Internal Server Error):"
+msgstr ""
+"または特定のステータスコードを解析するには次のようにします。\n"
+"ここでは500 (Internal Server Error) を例に挙げます。"
+
+#. type: Plain text
+#: ../goaccess.1:1217
+msgid "# awk '$9~/500/' access.log | goaccess -"
+msgstr "# awk '$9~/500/' access.log | goaccess -"
+
+#. type: SS
+#: ../goaccess.1:1217
+#, no-wrap
+msgid "SERVER"
+msgstr "サーバー"
+
+#. type: Plain text
+#: ../goaccess.1:1222
+msgid ""
+"Also, it is worth pointing out that if we want to run GoAccess at lower "
+"priority, we can run it as:"
+msgstr ""
+"また、GoAccessを低い優先度で走らせたければ次のようにできることは書いておいた"
+"ほうがよいでしょう。"
+
+#. type: Plain text
+#: ../goaccess.1:1224
+msgid "# nice -n 19 goaccess -f access.log -a"
+msgstr "# nice -n 19 goaccess -f access.log -a"
+
+#. type: Plain text
+#: ../goaccess.1:1227
+msgid ""
+"and if you don't want to install it on your server, you can still run it "
+"from your local machine:"
+msgstr ""
+"そしてサーバーにインストールしたくない場合であってもローカルマシンから走らせ"
+"られます。"
+
+#. type: Plain text
+#: ../goaccess.1:1229
+msgid "# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -"
+msgstr ""
+"# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -"
+
+#. type: Plain text
+#: ../goaccess.1:1234
+msgid ""
+"Note: SSH requires I<-n> so GoAccess can read from stdin. Also, make sure to "
+"use SSH keys for authentication as it won't work if a passphrase is required."
+msgstr ""
+"補足：SSHにはI<-n>が必要で、\n"
+"こうすることでGoAccessが標準入力から読むことができます。\n"
+"またパスフレーズが要求されるとうまく動かないため認証には必ずSSH鍵を使うように"
+"してください。"
+
+#. type: SS
+#: ../goaccess.1:1234
+#, no-wrap
+msgid "INCREMENTAL LOG PROCESSING"
+msgstr "漸進的ログ処理"
+
+#. type: Plain text
+#: ../goaccess.1:1239
+msgid ""
+"GoAccess has the ability to process logs incrementally through its internal "
+"storage and dump its data to disk. It works in the following way:"
+msgstr ""
+"GoAccessには内部的な容量を通じて漸進的にログを処理してディスクにデータを吐き"
+"出す能力があります。\n"
+"これは以下のように動作します。"
+
+#. type: IP
+#: ../goaccess.1:1241
+#, no-wrap
+msgid "\\n[step]"
+msgstr "\\n[step]"
+
+# 2つ後のI<--restore>をこちらに移動しました。
+#. type: Plain text
+#: ../goaccess.1:1245
+msgid ""
+"A dataset must be persisted first with I<--persist,> then the same dataset "
+"can be loaded with"
+msgstr ""
+"データセットは最初にI<--persist>で永続化されていなければならず、\n"
+"それから同じデータセットをI<--restore>を使って読み込むことができます。"
+
+#. type: IP
+#: ../goaccess.1:1245
+#, no-wrap
+msgid "\\n+[step]"
+msgstr "\\n+[step]"
+
+# I<--restore>は2つ前の方に移動しました。
+#. type: Plain text
+#: ../goaccess.1:1249
+msgid ""
+"I<--restore.> If new data is passed (piped or through a log file), it will "
+"append it to the original dataset."
+msgstr ""
+"新しいデータが（パイプやログファイルを通じて）渡されたら、元のデータセットに"
+"追記します。"
+
+#. type: SH
+#: ../goaccess.1:1252 ../goaccess.1:1287
+#, no-wrap
+msgid "NOTES"
+msgstr "補足"
+
+#. type: Plain text
+#: ../goaccess.1:1258
+msgid ""
+"GoAccess keeps track of inodes of all the files processed (assuming files "
+"will stay on the same partition), in addition, it extracts a snippet of data "
+"from the log along with the last line parsed of each file and the timestamp "
+"of the last line parsed. e.g., inode:29627417|line:20012|ts:20171231235059"
+msgstr ""
+"GoAccessは処理対象の全てのファイル（ファイルが同じパーティションにあるものと"
+"しています）のiノードを把握しており、\n"
+"それに加えてログからそれぞれのファイルの解析された最後の行数と、\n"
+"解析された最後の行のタイムスタンプを含むデータスニペットの抽出を行っていま"
+"す。\n"
+"例：inode:29627417|line:20012|ts:20171231235059"
+
+#. type: Plain text
+#: ../goaccess.1:1265
+msgid ""
+"First it compares if the snippet matches the log being parsed, if it does, "
+"it assumes the log hasn't changed dramatically, e.g., hasn't been truncated. "
+"If the inode does not match the current file, it parses all lines. If the "
+"current file matches the inode, it then reads the remaining lines and "
+"updates the count of lines parsed and the timestamp. As an extra precaution, "
+"it won't parse log lines with a timestamp ≤ than the one stored."
+msgstr ""
+"最初にスニペットが解析されたログと照合するか比較し、\n"
+"もし合っていればログが劇的に変化していないものとします。\n"
+"例えば末尾の空行が切り詰められていないといったことです。\n"
+"iノードが現在のファイルに照合しなければ全ての行を解析します。\n"
+"現在のファイルがiノードに照合した場合ファイルの残りを読み、\n"
+"解析済みの行数とタイムスタンプを更新します。\n"
+"もう1つ注意が必要なのは、\n"
+"タイムスタンプが格納されているタイムスタンプより若いログの行は解析されないと"
+"いうことです。"
+
+# based offはbased onの誤植かもしれません
+#. type: Plain text
+#: ../goaccess.1:1269
+msgid ""
+"Piped data works based off the timestamp of the last line read. For "
+"instance, it will parse and discard all incoming entries until it finds a "
+"timestamp E<gt>= than the one stored."
+msgstr ""
+"パイプされたデータは最後に読んだ行のタイムスタンプに基づいて扱われます。\n"
+"例えばタイムスタンプが格納されているものより古いものを見付けるまで、\n"
+"入ってくる全てのエントリを解析後に無視します。"
+
+#. type: Plain text
+#: ../goaccess.1:1272
+msgid "For instance:"
+msgstr "例えば、"
+
+#. type: Plain text
+#: ../goaccess.1:1274
+msgid "// last month access log"
+msgstr "// 先月のアクセスログ"
+
+#. type: Plain text
+#: ../goaccess.1:1276
+msgid "# goaccess access.log.1 --persist"
+msgstr "# goaccess access.log.1 --persist"
+
+#. type: Plain text
+#: ../goaccess.1:1278
+msgid "then, load it with"
+msgstr "として、次のように読み込みます。"
+
+#. type: Plain text
+#: ../goaccess.1:1280
+msgid "// append this month access log, and preserve new data"
+msgstr "// この月のアクセスログを追記し新しいデータを保存します。"
+
+#. type: Plain text
+#: ../goaccess.1:1282
+msgid "# goaccess access.log --restore --persist"
+msgstr "# goaccess access.log --restore --persist"
+
+#. type: Plain text
+#: ../goaccess.1:1284
+msgid "To read persisted data only (without parsing new data)"
+msgstr ""
+"（新しいデータを解析することなく）永続化されたデータのみを読むには次のように"
+"します。"
+
+#. type: Plain text
+#: ../goaccess.1:1286
+msgid "# goaccess --restore"
+msgstr "# goaccess --restore"
+
+#. type: Plain text
+#: ../goaccess.1:1293
+msgid ""
+"Each active panel has a total of 366 items or 50 in the real-time HTML "
+"report.  The number of items is customizable using I<max-items> Note that "
+"HTML, CSV and JSON output allow a maximum number greater than the default "
+"value of 366 items per panel."
+msgstr ""
+"実時間HTMLレポートのそれぞれの活性パネルには合計360個ないし50個の項目が含まれ"
+"ます。\n"
+"項目数はI<max-items>を使って調節できます。\n"
+"HTML、CSV、JSON出力については1パネルにつき、\n"
+"366項目の既定値より大きい最大値を入れることができます。"
+
+#. type: Plain text
+#: ../goaccess.1:1296
+msgid ""
+"A hit is a request (line in the access log), e.g., 10 requests = 10 hits. "
+"HTTP requests with the same IP, date, and user agent are considered a unique "
+"visit."
+msgstr ""
+"ヒットとはリクエストのことで、\n"
+"例えば10リクエストは10ヒットと同じです。\n"
+"特にIP、日付、ユーザーエージェントが同じHTTPリクエストは1つの正味の訪問者と見"
+"なします。"
+
+#. type: Plain text
+#: ../goaccess.1:1299
+msgid ""
+"The generated report will attempt to reconnect to the WebSocket server after "
+"1 second with exponential backoff. It will attempt to connect 20 times."
+msgstr ""
+"生成されたレポートはWebSocketサーバーへの再接続を試み、\n"
+"最初は1秒後でその後は指数関数的な間隔で試行されます。\n"
+"20回試行は繰り返されます。"
+
+#. type: SH
+#: ../goaccess.1:1299
+#, no-wrap
+msgid "BUGS"
+msgstr "バグ"
+
+#. type: Plain text
+#: ../goaccess.1:1303
+msgid ""
+"If you think you have found a bug, please send me an email to "
+"I<goaccess@prosoftcorp.com> or use the issue tracker in https://github.com/"
+"allinurl/goaccess/issues"
+msgstr ""
+"バグを発見したと思ったら I<goaccess@prosoftcorp.com> まで私にEメールを送る"
+"か、\n"
+"https://github.com/allinurl/goaccess/issues のイシュートラッカーを使ってくだ"
+"さい。"
+
+#. type: SH
+#: ../goaccess.1:1303
+#, no-wrap
+msgid "AUTHOR"
+msgstr "作者"
+
+#. type: Plain text
+#: ../goaccess.1:1306
+msgid ""
+"Gerardo Orellana E<lt>hello@goaccess.ioE<gt> For more details about it, or "
+"new releases, please visit https://goaccess.io"
+msgstr ""
+"Gerardo Orellana E<lt>hello@goaccess.ioE<gt>\n"
+"詳細や新しいリリースについては https://goaccess.io にお越しください。"
