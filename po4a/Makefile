@@ -1,6 +1,7 @@
 VERSION := .po4a-version
 HTML	:= ja/goaccess.1.html
 MAN	:= ja/goaccess.1
+STYLE	:= https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 
 # About prerequisite record-po4a-version:
 #   po4a version might be upgraded in the future,
@@ -29,4 +30,4 @@ record-po4a-version:
 .PHONY: record-po4a-version
 
 $(HTML): ja/goaccess.1
-	mandoc -Thtml $< > $@
+	mandoc -Thtml -O toc -O style='$(STYLE)' $< > $@
