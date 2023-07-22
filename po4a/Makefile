@@ -10,6 +10,10 @@ MAN	:= ja/goaccess.1
 all: $(MAN) $(HTML)
 .PHONY: all
 
+clean:
+	rm -r $(MAN) $(HTML)
+.PHONY: clean
+
 serve:
 	ruby -run -e httpd ja
 .PHONY: serve
