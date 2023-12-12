@@ -7,7 +7,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
-"POT-Creation-Date: 2023-07-15 16:39+0900\n"
+"POT-Creation-Date: 2023-12-12 21:32+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. type: TH
 #: ../goaccess.1:1
 #, no-wrap
-msgid "MARCH 2023"
+msgid "SEPTEMBER 2023"
 msgstr ""
 
 #. type: TH
@@ -3404,20 +3404,27 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:1299
+#: ../goaccess.1:1302
+msgid ""
+"If you want to enable dual-stack support, please use I<--addr=::> instead of "
+"the default I<--addr=0.0.0.0.>"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1305
 msgid ""
 "The generated report will attempt to reconnect to the WebSocket server after "
 "1 second with exponential backoff. It will attempt to connect 20 times."
 msgstr ""
 
 #. type: SH
-#: ../goaccess.1:1299
+#: ../goaccess.1:1305
 #, no-wrap
 msgid "BUGS"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:1303
+#: ../goaccess.1:1309
 msgid ""
 "If you think you have found a bug, please send me an email to "
 "I<goaccess@prosoftcorp.com> or use the issue tracker in "
@@ -3425,13 +3432,13 @@ msgid ""
 msgstr ""
 
 #. type: SH
-#: ../goaccess.1:1303
+#: ../goaccess.1:1309
 #, no-wrap
 msgid "AUTHOR"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:1306
+#: ../goaccess.1:1312
 msgid ""
 "Gerardo Orellana E<lt>hello@goaccess.ioE<gt> For more details about it, or "
 "new releases, please visit https://goaccess.io"
