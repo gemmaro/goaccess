@@ -3,7 +3,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH goaccess 1 2023年9月 GNU+Linux 利用者の手引
+.TH goaccess 1 "MAY 2024" GNU+Linux 利用者の手引
 .SH 名称
 goaccess \- 高速なwebログ解析器と対話的な閲覧器
 .SH 処方
@@ -209,20 +209,28 @@ GoAccessでは、
 別の変数に別の定義済みの名前を、
 というように扱うこともできます。
 .IP
-  COMBINED     \- Combined Log Format
-  VCOMBINED    \- 仮想ホスト付きCombined Log Format
-  COMMON       \- Common Log Format
-  VCOMMON      \- 仮想ホスト付きCommon Log Format
-  W3C          \- W3C Extended Log File Format
-  SQUID        \- Native Squid Log Format
-  CLOUDFRONT   \- Amazon CloudFront Web Distribution
-  CLOUDSTORAGE \- Google Cloud Storage
-  AWSELB       \- Amazon Elastic Load Balancing
+  COMBINED     \- Combined Log Format,
+  VCOMBINED    \- Combined Log Format with Virtual Host,
+  COMMON       \- Common Log Format,
+  VCOMMON      \- Common Log Format with Virtual Host,
+  W3C          \- W3C Extended Log File Format,
+  SQUID        \- Native Squid Log Format,
+  CLOUDFRONT   \- Amazon CloudFront Web Distribution,
+  CLOUDSTORAGE \- Google Cloud Storage,
+  AWSELB       \- Amazon Elastic Load Balancing,
   AWSS3        \- Amazon Simple Storage Service (S3)
   AWSALB       \- Amazon Application Load Balancer
-  CADDY        \- CaddyのJSON Structured format
+  CADDY        \- Caddy's JSON Structured format (local/info format)
+  TRAEFIKCLF   \- Traefik's CLF flavor
+.IP
+\fINote:\fP Generally, you need quotes around values that include white spaces,
+commas, pipes, quotes, and/or brackets. Inner quotes must be escaped.
 .IP
 \fI補足：\fPデータをGoAccessにパイプで流し込むときはログ、日付、時刻設定ダイアログは質問されないので、予め設定ファイルかコマンドラインで定義しておく必要があります。
+.IP
+\fINote:\fP The default GoAccess format for CADDY is the 'local/info'
+format. Nevertheless, if needed, you have the option to utilize a custom
+GoAccess log format to match your particular configuration.
 .SS 利用者用対話的オプション
 .TP 
 \fB\-c \-\-config\-dialog\fP
@@ -493,14 +501,23 @@ report.htmlファイルと同じディレクトリに2つの分離されたフ�
 HTMLないしJSON出力におけるIPリゾルバを有効にします。
 .TP 
 \fB\-e \-\-exclude\-ip=<IPまたはIPの範囲>\fP
-IPv4やIPv6の計上対象から除外します。
-範囲についてはIPの間にダッシュを使う（開始\-終了）ことで含められます。
+Exclude an IPv4 or IPv6 from being counted. Applicable solely during access
+log data processing, it does not exclude persisted data.  Ranges can be
+included as well using a dash in between the IPs (start\-end).
 .IP
 \fI例：\fP
   exclude\-ip 127.0.0.1
   exclude\-ip 192.168.0.1\-192.168.0.100
   exclude\-ip ::1
   exclude\-ip 0:0:0:0:0:ffff:808:804\-0:0:0:0:0:ffff:808:808
+.TP 
+\fB\-j \-\-jobs=<1\-6>\fP
+This specifies the number of parallel processing threads to be used during
+the execution of the program. It determines the degree of concurrency when
+analyzing log data, allowing for parallel processing of multiple tasks
+simultaneously. It defaults to 1 thread. It's common to set the number of
+jobs based on the available hardware resources, such as the number of CPU
+cores.
 .TP 
 \fB\-H \-\-http\-protocol=<yes|no>\fP
 HTTPリクエストのプロトコルを設定したり外したりします。
@@ -538,6 +555,29 @@ HTTPリクエストのメソッドを設定したり外したりします。
 IP匿名化オプションはIPv4利用者IPアドレスの末尾オクテットとIPv6アドレスの末尾80ビットをゼロに設定します。
 例：192.168.20.100 => 192.168.20.0
 例：2a03:2880:2110:df07:face:b00c::1 => 2a03:2880:2110:df07::
+.IP
+\fINote:\fP This deactivates \-a.
+.TP 
+\fB\-\-chunk\-size=<256\-32768>\fP
+This determines the number of lines that form a chunk. This parameter
+influences the size of the data processed concurrently by each thread,
+allowing for parallelization of the file reading and processing tasks. The
+value of chunk\-size affects the efficiency of the parallel processing and
+can be adjusted based on factors such as system resources and the
+characteristics of the input data.
+
+.IP
+Low Values: If chunk\-size is set too low, it might result in inefficient
+processing. For instance, if each chunk contains a very small number of
+lines, the overhead of managing and coordinating parallel processing might
+outweigh the benefits.
+
+.IP
+Large Values: Conversely, if chunk\-size is set too high, it could lead to
+resource exhaustion. Each chunk represents a portion of data that a thread
+processes in parallel. Setting chunk\-size to an excessively large value
+might cause memory issues, particularly if there are many parallel threads
+running simultaneously.
 .TP 
 \fB\-\-anonymize\-level\fP
 匿名化水準を指定します。
@@ -894,16 +934,16 @@ lb lb
 l l.
 XFFフィールド	指定子
 T{
-\fB\[dq]192.1.2.3,\fP\~192.68.33.17,\~192.1.1.2\[dq]
+\fB\[dq]192.1.2.3,\fP\ 192.68.33.17,\ 192.1.1.2\[dq]
 T}	\[dq]~h{, }\[dq]
 T{
-\fB\[dq]192.1.2.12\[dq],\~\[dq]192.68.33.17\[dq]\fP
+\fB\[dq]192.1.2.12\[dq],\ \[dq]192.68.33.17\[dq]\fP
 T}	~h{\[dq], }
 T{
-\fB192.1.2.12,\~192.68.33.17\fP
+\fB192.1.2.12,\ 192.68.33.17\fP
 T}	~h{, }
 T{
-\fB192.1.2.14\~192.68.33.17\~192.1.1.2\fP
+\fB192.1.2.14\ 192.68.33.17\ 192.1.1.2\fP
 T}	~h{ }
 .TE
 
