@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+dir=$(mktemp -d)
+mv po4a/ja/goaccess.1.html "$dir/index.html"
+git switch gh-pages
+mv "$dir/index.html" index.html
+git add index.html
+git commit --message="Update contents."
+git switch ja
