@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -121,7 +121,7 @@ const httpmethods http_methods[] = {
   { "MKACTIVITY"       , 10 } ,
   { "ORDERPATCH"       , 10 } ,
 };
-size_t http_methods_len = ARRAY_SIZE (http_methods);
+const size_t http_methods_len = ARRAY_SIZE (http_methods);
 
 const httpprotocols http_protocols[] = {
   { "HTTP/1.0" , 8 } ,
@@ -129,9 +129,9 @@ const httpprotocols http_protocols[] = {
   { "HTTP/2"   , 6 } ,
   { "HTTP/3"   , 6 } ,
 };
-size_t http_protocols_len = ARRAY_SIZE (http_protocols);
+const size_t http_protocols_len = ARRAY_SIZE (http_protocols);
 
-static GParse paneling[] = {
+static const GParse paneling[] = {
   {
     VISITORS,
     gen_visitor_key,
@@ -408,7 +408,7 @@ new_modulekey (GKeyData *kdata) {
  *
  * On error, or if not found, NULL is returned.
  * On success, the panel value is returned. */
-static GParse *
+static const GParse *
 panel_lookup (GModule module) {
   int i, num_panels = ARRAY_SIZE (paneling);
 
@@ -445,10 +445,10 @@ free_gmetrics (GMetrics *metric) {
  *
  * On error, NULL is returned.
  * On success, the string module value is returned. */
-char *
+const char *
 get_mtr_str (GSMetric metric) {
   /* String modules to enumerated modules */
-  GEnum enum_metrics[] = {
+  static const GEnum enum_metrics[] = {
     {"MTRC_KEYMAP", MTRC_KEYMAP},
     {"MTRC_ROOTMAP", MTRC_ROOTMAP},
     {"MTRC_DATAMAP", MTRC_DATAMAP},
@@ -558,7 +558,7 @@ count_bw (int numdate, uint64_t resp_size) {
 
 /* Keep track of all invalid log strings. */
 static void
-count_invalid (GLog *glog, const char *line) {
+count_invalid (GLog *glog, GLogItem *logitem, const char *line) {
   glog->invalid++;
   ht_inc_cnt_overall ("failed_requests", 1);
 
@@ -566,8 +566,8 @@ count_invalid (GLog *glog, const char *line) {
     LOG_INVALID (("%s", line));
   }
 
-  if (glog->items->errstr && glog->log_erridx < MAX_LOG_ERRORS) {
-    glog->errors[glog->log_erridx++] = xstrdup (glog->items->errstr);
+  if (logitem->errstr && glog->log_erridx < MAX_LOG_ERRORS) {
+    glog->errors[glog->log_erridx++] = xstrdup (logitem->errstr);
   }
 }
 
@@ -610,16 +610,16 @@ count_valid (int numdate) {
 /* Keep track of all valid and processed log strings. */
 void
 count_process (GLog *glog) {
+  __sync_add_and_fetch (&glog->processed, 1);
   lock_spinner ();
-  glog->processed++;
   ht_inc_cnt_overall ("total_requests", 1);
   unlock_spinner ();
 }
 
 void
-count_process_and_invalid (GLog *glog, const char *line) {
+count_process_and_invalid (GLog *glog, GLogItem *logitem, const char *line) {
   count_process (glog);
-  count_invalid (glog, line);
+  count_invalid (glog, logitem, line);
 }
 
 /* Keep track of all excluded log strings (IPs).
@@ -727,16 +727,14 @@ insert_maxts (GModule module, GKeyData *kdata, uint64_t ts) {
 
 static void
 insert_method (GModule module, GKeyData *kdata, const char *data) {
-  ht_insert_method (module, kdata->numdate, kdata->data_nkey, data ? data : "---",
-                    kdata->cdnkey);
+  ht_insert_method (module, kdata->numdate, kdata->data_nkey, data ? data : "---", kdata->cdnkey);
 }
 
 /* A wrapper call to insert a method given an uint32_t key and string
  * value. */
 static void
 insert_protocol (GModule module, GKeyData *kdata, const char *data) {
-  ht_insert_protocol (module, kdata->numdate, kdata->data_nkey, data ? data : "---",
-                      kdata->cdnkey);
+  ht_insert_protocol (module, kdata->numdate, kdata->data_nkey, data ? data : "---", kdata->cdnkey);
 }
 
 /* A wrapper call to insert an agent for a hostname given an uint32_t
@@ -1321,11 +1319,11 @@ static int
 gen_status_code_key (GKeyData *kdata, GLogItem *logitem) {
   const char *status = NULL, *type = NULL;
 
-  if (!logitem->status)
+  if (logitem->status == -1)
     return 1;
 
-  type = verify_status_code_type (logitem->status);
   status = verify_status_code (logitem->status);
+  type = verify_status_code_type (logitem->status);
 
   get_kdata (kdata, status, status);
   get_kroot (kdata, type, type);
@@ -1390,7 +1388,7 @@ static int
 include_uniq (GLogItem *logitem) {
   int u = conf.client_err_to_unique_count;
 
-  if (!logitem->status || logitem->status[0] != '4' || (u && logitem->status[0] == '4'))
+  if (!logitem->status || (logitem->status / 100) != 4 || (u && (logitem->status / 100) == '4'))
     return 1;
   return 0;
 }

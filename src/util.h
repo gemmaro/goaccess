@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,16 +84,18 @@ char *u322str (uint32_t d, int width);
 char *u642str (uint64_t d, int width);
 char *unescape_str (const char *src);
 char *usecs_to_str (unsigned long long usec);
-const char *verify_status_code (char *str);
-const char *verify_status_code_type (const char *str);
+const char *verify_status_code (int code);
+const char *verify_status_code_type (int code);
 int convert_date (char *res, const char *data, const char *from, const char *to, int size);
 int count_matches (const char *s1, char c);
 int find_output_type (char **filename, const char *ext, int alloc);
 int hide_referer (const char *host);
 int ignore_referer (const char *host);
 int intlen (uint64_t num);
-int invalid_ipaddr (char *str, int *ipvx);
+int invalid_ipaddr (const char *str, int *ipvx);
 int ip_in_range (const char *ip);
+int is_valid_http_status (int code);
+int is_writable_path (const char *path);
 int ptr2int (char *ptr);
 int str2int (const char *date);
 int str_inarray (const char *s, const char *arr[], int size);

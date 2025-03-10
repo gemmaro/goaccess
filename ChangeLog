@@ -1,3 +1,62 @@
+Changes to GoAccess 1.9.3 - Friday, May 31, 2024
+
+  - Added additional common bots to the list.
+  - Added Address Sanitizer via '--enable-asan' to the configure options for
+    debugging purposes.
+  - Fixed inability to parse JSON keys containing dots.
+  - Fixed out-of-bounds access for invalid HTTP status codes.
+  - Fixed out-of-bounds access when parsing a log in serial processing mode.
+  - Fixed regression introduced in 8f570c, which caused duplicate counts upon
+    restoring from disk via '--restore'.
+
+Changes to GoAccess 1.9.2 - Friday, April 12, 2024
+
+  - Added World Map to the Geo Location panel on the HTML report.
+  - Added additional non-official/standard HTTP status codes such as Caddy's 0
+    HTTP status among others.
+  - Added support for '%z' on strptime for non-glibc systems, such as musl libc
+    in Alpine Linux (Docker container), enabling the use of '--tz'
+  - Changed the '--hide/ignore-referrer' options to filter by hostname directly
+    without the use of wildcards, e.g., '--ignore-referrer=wiki.google.com'.
+  - Fixed inability to parse duplicate specifiers during log format parsing.
+  - Fixed regression which previously hindered the ability to modify log, date,
+    and time formats within the TUI dialog. i.e., '# goaccess access.log -c'.
+  - Replaced 'remote_ip' with 'client_ip' for Caddy's JSON format, allowing the
+    use of trusted proxies.
+  - Updated Caddy JSON example log format to handle headers correctly.
+  - Updated Swedish i18n.
+
+Changes to GoAccess 1.9.1 - Tuesday, February 05, 2024
+
+  - Added support for macOS to the OS detection.
+  - Fixed C99 mode issue with initial declarations [CentOS7].
+  - Fixed minor typographical, orthographic, and grammatical errors in the
+    German translation.
+  - Fixed a regression issue wherein parsing would halt at the first empty log
+    file.
+
+Changes to GoAccess 1.9 - Tuesday, January 30, 2024
+
+  - Added multi-threaded log processing with '--jobs=<num>' for a boost in
+    parsing speed, achieving an improvement ranging from 1.26 to 3.65x faster.
+  - Added the 'SEARCH' method to the list of HTTP request methods.
+  - Added compatibility to include the Traefik log format.
+  - Added the ability to gracefully handle SIGQUIT as a signal for shutdown.
+  - Altered WebSocket server initialization, ensuring it takes place after
+    log-format checks.
+  - Deprecated '--output-format'; now, only the '--output' option is
+    permissible.
+  - Implemented mutex locking to prevent a TZ environment race condition.
+  - Fixed a potential heap overflow when checking a request for bots.
+  - Fixed sorting of child items on HTML panels when sorting a column via the
+    UI.
+  - Fixed an issue where, in some cases, the referer host wouldn't be extracted
+    properly
+  - Fixed the miscategorization of Android 12.1 under operating systems.
+  - Fixed TUI and temporarily ignored SIGINT during subdialog execution via
+    Ctrl+C.
+  - Updated the list of browsers/bots.
+
 Changes to GoAccess 1.8.1 - Tuesday, October 31, 2023
 
   - Added latest Android and macOS versions to the list of OSs.

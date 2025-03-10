@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -50,7 +50,7 @@ static char **nargv;
 static int nargc = 0;
 
 /* *INDENT-OFF* */
-static GEnum LOGTYPE[] = {
+static const GEnum LOGTYPE[] = {
   {"COMBINED"     , COMBINED}     ,
   {"VCOMBINED"    , VCOMBINED}    ,
   {"COMMON"       , COMMON}       ,
@@ -63,6 +63,7 @@ static GEnum LOGTYPE[] = {
   {"AWSS3"        , AWSS3}        ,
   {"CADDY"        , CADDY}        ,
   {"AWSALB"       , AWSALB}       ,
+  {"TRAEFIKCLF"   , TRAEFIKCLF}   ,
 };
 
 static const GPreConfLog logs = {
@@ -78,13 +79,15 @@ static const GPreConfLog logs = {
   "%^ %v [%d:%t %^] %h %^\"%r\" %s %^ %b %^ %L %^ \"%R\" \"%u\"", /* Amazon S3 */
 
   /* Caddy JSON */
-  "{ \"ts\": \"%x.%^\", \"request\": { \"remote_ip\": \"%h\", \"proto\":"
+  "{ \"ts\": \"%x.%^\", \"request\": { \"client_ip\": \"%h\", \"proto\":"
   "\"%H\", \"method\": \"%m\", \"host\": \"%v\", \"uri\": \"%U\", \"headers\": {"
   "\"User-Agent\": [\"%u\"], \"Referer\": [\"%R\"] }, \"tls\": { \"cipher_suite\":"
   "\"%k\", \"proto\": \"%K\" } }, \"duration\": \"%T\", \"size\": \"%b\","
   "\"status\": \"%s\", \"resp_headers\": { \"Content-Type\": [\"%M\"] } }",
 
-  "%^ %dT%t.%^ %v %h:%^ %^ %^ %T %^ %s %^ %^ %b \"%r\" \"%u\" %k %K %^" /* Amazon ALB */
+  "%^ %dT%t.%^ %v %h:%^ %^ %^ %T %^ %s %^ %^ %b \"%r\" \"%u\" %k %K %^", /* Amazon ALB */
+
+  "%h - %e [%d:%t %^] \"%r\" %s %b \"%R\" \"%u\" %^ \"%v\" \"%U\" %Lms" /* Traefik's CLF flavor with header */
 };
 
 static const GPreConfTime times = {
@@ -102,7 +105,7 @@ static const GPreConfDate dates = {
 /* *INDENT-ON* */
 
 /* Ignore the following options */
-static const char *ignore_cmd_opts[] = {
+static const char *const ignore_cmd_opts[] = {
   "help",
   "storage",
   "version",
@@ -169,7 +172,7 @@ get_config_file_path (void) {
 void
 set_default_static_files (void) {
   size_t i;
-  const char *exts[] = {
+  const char *const exts[] = {
     ".css",
     ".js ",
     ".jpg",
@@ -399,6 +402,8 @@ get_selected_format_idx (void) {
     return CADDY;
   else if (strcmp (conf.log_format, logs.awsalb) == 0)
     return AWSALB;
+  else if (strcmp (conf.log_format, logs.traefikclf) == 0)
+    return TRAEFIKCLF;
   else
     return (size_t) -1;
 }
@@ -448,6 +453,9 @@ get_selected_format_str (size_t idx) {
   case AWSALB:
     fmt = alloc_string (logs.awsalb);
     break;
+  case TRAEFIKCLF:
+    fmt = alloc_string (logs.traefikclf);
+    break;
   }
 
   return fmt;
@@ -467,6 +475,7 @@ get_selected_date_str (size_t idx) {
   case COMBINED:
   case VCOMBINED:
   case AWSS3:
+  case TRAEFIKCLF:
     fmt = alloc_string (dates.apache);
     break;
   case AWSELB:
@@ -505,6 +514,7 @@ get_selected_time_str (size_t idx) {
   case VCOMMON:
   case W3C:
   case AWSS3:
+  case TRAEFIKCLF:
     fmt = alloc_string (times.fmt24);
     break;
   case CLOUDSTORAGE:
@@ -697,7 +707,7 @@ set_date_num_format (void) {
   }
 
   flen = strlen (fdate) + 1;
-  flen = MAX (MIN_DATENUM_FMT_LEN, flen);       /* at least %Y%m%d + 1 */
+  flen = MAX (MIN_DATENUM_FMT_LEN, flen); /* at least %Y%m%d + 1 */
   buf = xcalloc (flen, sizeof (char));
 
   /* always add a %Y */
@@ -739,13 +749,27 @@ is_json_log_format (const char *fmt) {
 
 /* Delete the given key from a nested object key or empty the key. */
 static void
-dec_json_key (char *key) {
-  char *ptr = NULL;
-  if (key && (ptr = strrchr (key, '.')))
-    *ptr = '\0';
-  else if (key && !(ptr = strrchr (key, '.')))
-    key[0] = '\0';
+dec_json_key (char *key, int has_dot) {
+  if (!key || has_dot < 0)
+    return;
+
+  /* Designed to iterate has_dot + 1 times */
+  /* if has_dot is 2, the loop will run three times (when i is 0, 1, and 2). Each
+   * iteration of the loop removes one dot from the end of the key string.
+   * Therefore, if has_dot is 2, it will remove up to three dots from the end of
+   * the key string. */
+  for (int i = 0; i <= has_dot; i++) {
+    char *last_dot = strrchr (key, '.');
+    if (last_dot)
+      *last_dot = '\0';
+    else {
+      *key = '\0';
+      return;
+    }
+  }
 }
+
+
 
 /* Given a JSON string, parse it and call the given function pointer after each
  * value.
@@ -756,7 +780,7 @@ int
 parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, char *)) {
   char *key = NULL, *val = NULL;
   enum json_type ctx = JSON_ERROR, t = JSON_ERROR;
-  int ret = 0;
+  int ret = 0, has_dot = 0;
   size_t len = 0, level = 0;
   json_stream json;
 
@@ -771,7 +795,7 @@ parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, c
       break;
     case JSON_ARRAY_END:
     case JSON_OBJECT_END:
-      dec_json_key (key);
+      dec_json_key (key, 0);
       break;
     case JSON_TRUE:
       val = xstrdup ("true");
@@ -779,7 +803,7 @@ parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, c
         goto clean;
       ctx = json_get_context (&json, &level);
       if (ctx != JSON_ARRAY)
-        dec_json_key (key);
+        dec_json_key (key, 0);
       free (val);
       val = NULL;
       break;
@@ -789,7 +813,7 @@ parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, c
         goto clean;
       ctx = json_get_context (&json, &level);
       if (ctx != JSON_ARRAY)
-        dec_json_key (key);
+        dec_json_key (key, 0);
       free (val);
       val = NULL;
       break;
@@ -799,7 +823,7 @@ parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, c
         goto clean;
       ctx = json_get_context (&json, &level);
       if (ctx != JSON_ARRAY)
-        dec_json_key (key);
+        dec_json_key (key, 0);
       free (val);
       val = NULL;
       break;
@@ -808,6 +832,9 @@ parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, c
       ctx = json_get_context (&json, &level);
       /* key */
       if ((level % 2) != 0 && ctx != JSON_ARRAY) {
+        /* check if key contains a dot, to account for it on dec_json_key */
+        has_dot = count_matches (json_get_string (&json, &len), '.');
+
         if (strlen (key) != 0)
           append_str (&key, ".");
         append_str (&key, json_get_string (&json, &len));
@@ -818,7 +845,7 @@ parse_json_string (void *ptr_data, const char *str, int (*cb) (void *, char *, c
         if (!key || (ret = (*cb) (ptr_data, key, val)))
           goto clean;
         if (ctx != JSON_ARRAY)
-          dec_json_key (key);
+          dec_json_key (key, has_dot);
 
         free (val);
         val = NULL;
@@ -923,18 +950,18 @@ set_time_format_str (const char *oarg) {
 /* Determine if some global flags were set through log-format. */
 static void
 contains_specifier (void) {
-  conf.serve_usecs = conf.bandwidth = 0;        /* flag */
+  conf.serve_usecs = conf.bandwidth = 0; /* flag */
   if (!conf.log_format)
     return;
 
   if (strstr (conf.log_format, "%b"))
     conf.bandwidth = 1; /* flag */
   if (strstr (conf.log_format, "%D"))
-    conf.serve_usecs = 1;       /* flag */
+    conf.serve_usecs = 1; /* flag */
   if (strstr (conf.log_format, "%T"))
-    conf.serve_usecs = 1;       /* flag */
+    conf.serve_usecs = 1; /* flag */
   if (strstr (conf.log_format, "%L"))
-    conf.serve_usecs = 1;       /* flag */
+    conf.serve_usecs = 1; /* flag */
 }
 
 /* Attempt to set the log format given a command line option argument.
@@ -952,14 +979,14 @@ set_log_format_str (const char *oarg) {
   if (type == -1 && is_json_log_format (oarg)) {
     conf.is_json_log_format = 1;
     conf.log_format = unescape_str (oarg);
-    contains_specifier ();      /* set flag */
+    contains_specifier (); /* set flag */
     return;
   }
 
   /* type not found, use whatever was given by the user then */
   if (type == -1) {
     conf.log_format = unescape_str (oarg);
-    contains_specifier ();      /* set flag */
+    contains_specifier (); /* set flag */
     return;
   }
 
@@ -973,7 +1000,7 @@ set_log_format_str (const char *oarg) {
     conf.is_json_log_format = 1;
 
   conf.log_format = unescape_str (fmt);
-  contains_specifier ();        /* set flag */
+  contains_specifier (); /* set flag */
 
   /* assume we are using the default date/time formats */
   set_time_format_str (oarg);

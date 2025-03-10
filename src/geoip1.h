@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -36,10 +36,10 @@
 
 #include "commons.h"
 
-#define CITY_LEN       47 + 1   /* max string length for a city */
-#define CONTINENT_LEN  47 + 1   /* max string length for a country */
-#define COUNTRY_LEN    48 + 3   /* Country + two-letter Code */
-#define ASN_LEN        64 + 6   /* ASN + 5 digit/16-bit number/code */
+#define CITY_LEN       47 + 1 /* max string length for a city */
+#define CONTINENT_LEN  47 + 1 /* max string length for a country */
+#define COUNTRY_LEN    48 + 3 /* Country + two-letter Code */
+#define ASN_LEN        64 + 6 /* ASN + 5 digit/16-bit number/code */
 
 /* Type of IP */
 typedef enum {

@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@
 #define __attribute__(x) /**/
 #endif
 #define GO_UNUSED __attribute__((unused))
-#define GO_VERSION 		"1.8.1"
+#define GO_VERSION 		"1.9.3"
 #define GO_WEBSITE 		"https://goaccess.io/"
 extern struct tm now_tm;
 
@@ -62,7 +62,7 @@ extern struct tm now_tm;
 /* real-time */
 #define MAX_CHOICES_RT        50
 /* max default items when date-spec = min */
-#define MAX_CHOICES_MINUTE  1440        /* 24hrs */
+#define MAX_CHOICES_MINUTE  1440 /* 24hrs */
 
 /* date and time length - e.g., 2016/12/12 12:12:12 -0600 */
 #define DATE_TIME     25 + 1
@@ -262,8 +262,8 @@ extern int module_list[TOTAL_MODULES];
 GAgents *new_gagents (uint32_t size);
 void free_agents_array (GAgents *agents);
 
-char *enum2str (const GEnum map[], int len, int idx);
-char *get_module_str (GModule module);
+const char *enum2str (const GEnum map[], int len, int idx);
+const char *get_module_str (GModule module);
 float get_percentage (unsigned long long total, unsigned long long hit);
 int get_max_choices (void);
 int get_module_enum (const char *str);

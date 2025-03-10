@@ -1,4 +1,4 @@
-.TH goaccess 1 "SEPTEMBER 2023" GNU+Linux "User Manuals"
+.TH goaccess 1 "MAY 2024" GNU+Linux "User Manuals"
 .SH NAME
 goaccess \- fast web log analyzer and interactive viewer.
 .SH SYNOPSIS
@@ -244,12 +244,22 @@ one variable and another predefined name in another variable.
   AWSELB       - Amazon Elastic Load Balancing,
   AWSS3        - Amazon Simple Storage Service (S3)
   AWSALB       - Amazon Application Load Balancer
-  CADDY        - Caddy's JSON Structured format
+  CADDY        - Caddy's JSON Structured format (local/info format)
+  TRAEFIKCLF   - Traefik's CLF flavor
+.IP
+.I Note:
+Generally, you need quotes around values that include white spaces, commas,
+pipes, quotes, and/or brackets. Inner quotes must be escaped.
 .IP
 .I Note:
 Piping data into GoAccess won't prompt a log/date/time configuration dialog,
 you will need to previously define it in your configuration file or in the
 command line.
+.IP
+.I Note:
+The default GoAccess format for CADDY is the 'local/info' format. Nevertheless,
+if needed, you have the option to utilize a custom GoAccess log format to match
+your particular configuration.
 .SS
 USER INTERFACE OPTIONS
 .TP
@@ -543,7 +553,8 @@ flag.
 Enable IP resolver on HTML|JSON output.
 .TP
 \fB\-e \-\-exclude-ip=<IP|IP-range>
-Exclude an IPv4 or IPv6 from being counted.
+Exclude an IPv4 or IPv6 from being counted. Applicable solely during access log
+data processing, it does not exclude persisted data.
 Ranges can be included as well using a dash in between the IPs (start-end).
 .IP
 .I Examples:
@@ -551,6 +562,13 @@ Ranges can be included as well using a dash in between the IPs (start-end).
   exclude-ip 192.168.0.1-192.168.0.100
   exclude-ip ::1
   exclude-ip 0:0:0:0:0:ffff:808:804-0:0:0:0:0:ffff:808:808
+.TP
+\fB\-j \-\-jobs=<1-6>
+This specifies the number of parallel processing threads to be used during the
+execution of the program. It determines the degree of concurrency when
+analyzing log data, allowing for parallel processing of multiple tasks
+simultaneously. It defaults to 1 thread. It's common to set the number of jobs
+based on the available hardware resources, such as the number of CPU cores.
 .TP
 \fB\-H \-\-http-protocol=<yes|no>
 Set/unset HTTP request protocol. This will create a request key containing the
@@ -591,6 +609,30 @@ octet of IPv4 user IP addresses and the last 80 bits of IPv6 addresses to
 zeros.
 e.g., 192.168.20.100 => 192.168.20.0
 e.g., 2a03:2880:2110:df07:face:b00c::1 => 2a03:2880:2110:df07::
+.IP
+.I Note:
+This deactivates -a.
+.TP
+\fB\-\-chunk-size=<256-32768>
+This determines the number of lines that form a chunk. This parameter
+influences the size of the data processed concurrently by each thread, allowing
+for parallelization of the file reading and processing tasks. The value of
+chunk-size affects the efficiency of the parallel processing and can be
+adjusted based on factors such as system resources and the characteristics of
+the input data.
+
+.IP
+Low Values: If chunk-size is set too low, it might result in inefficient
+processing. For instance, if each chunk contains a very small number of lines,
+the overhead of managing and coordinating parallel processing might outweigh
+the benefits.
+
+.IP
+Large Values: Conversely, if chunk-size is set too high, it could lead to
+resource exhaustion. Each chunk represents a portion of data that a thread
+processes in parallel. Setting chunk-size to an excessively large value might
+cause memory issues, particularly if there are many parallel threads running
+simultaneously.
 .TP
 \fB\-\-anonymize-level
 Specifies the anonymization levels: 1 => default, 2 => strong, 3 => pedantic.
@@ -1296,8 +1338,8 @@ requests with the same IP, date, and user agent are considered a unique visit.
 .P
 
 If you want to enable dual-stack support, please use
-.I --addr=:: 
-instead of the default 
+.I --addr=::
+instead of the default
 .I --addr=0.0.0.0.
 .P
 The generated report will attempt to reconnect to the WebSocket server after 1

@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -71,9 +71,9 @@ new_gkdb (void) {
  *
  * On error, NULL is returned.
  * On success, the string module value is returned. */
-char *
+const char *
 get_mtr_type_str (GSMetricType type) {
-  GEnum enum_metric_types[] = {
+  static const GEnum enum_metric_types[] = {
     {"II32", MTRC_TYPE_II32},
     {"IS32", MTRC_TYPE_IS32},
     {"IU64", MTRC_TYPE_IU64},
@@ -541,7 +541,7 @@ const GKHashMetric app_metrics[] = {
   { .metric.dbm=MTRC_DB_PROPS    , MTRC_TYPE_SI32 , new_si32_ht , des_si32_free , del_si32_free , 1 , NULL , "SI32_DB_PROPS.db"    } ,
 };
 
-size_t app_metrics_len = ARRAY_SIZE (app_metrics);
+const size_t app_metrics_len = ARRAY_SIZE (app_metrics);
 /* *INDENT-ON* */
 
 /* Destroys malloc'd module metrics */
@@ -623,7 +623,7 @@ init_gkhashdb (void) {
  * On error, -1 is returned.
  * On success 0 is returned */
 int
-ins_iglp (khash_t (iglp) *hash, uint64_t key, GLastParse lp) {
+ins_iglp (khash_t (iglp) *hash, uint64_t key, const GLastParse *lp) {
   khint_t k;
   int ret;
 
@@ -634,7 +634,7 @@ ins_iglp (khash_t (iglp) *hash, uint64_t key, GLastParse lp) {
   if (ret == -1)
     return -1;
 
-  kh_val (hash, k) = lp;
+  kh_val (hash, k) = *lp;
 
   return 0;
 }
@@ -996,31 +996,28 @@ ins_u648 (khash_t (u648) *hash, uint64_t key, uint8_t value) {
 }
 
 /* Increase an uint32_t value given an uint32_t key.
- * Note: If the key exists, its value is increased by the given inc.
  *
  * On error, 0 is returned.
- * On success the inserted value is returned */
+ * On success the increased value is returned */
 uint32_t
 inc_ii32 (khash_t (ii32) *hash, uint32_t key, uint32_t inc) {
   khint_t k;
   int ret;
-  uint32_t value = inc;
 
   if (!hash)
     return 0;
 
   k = kh_get (ii32, hash, key);
-  /* key found, increment current value by the given `inc` */
-  if (k != kh_end (hash))
-    value = kh_val (hash, k) + inc;
+  /* key not found, put a new hash with val=0 */
+  if (k == kh_end (hash)) {
+    k = kh_put (ii32, hash, key, &ret);
+    /* operation failed */
+    if (ret == -1)
+      return 0;
+    kh_val (hash, k) = 0;
+  }
 
-  k = kh_put (ii32, hash, key, &ret);
-  if (ret == -1)
-    return 0;
-
-  kh_val (hash, k) = value;
-
-  return value;
+  return __sync_add_and_fetch (&kh_val (hash, k), inc);
 }
 
 /* Increase a uint64_t value given a string key.
@@ -1043,8 +1040,10 @@ inc_su64 (khash_t (su64) *hash, const char *key, uint64_t inc) {
     dupkey = xstrdup (key);
     k = kh_put (su64, hash, dupkey, &ret);
     /* operation failed */
-    if (ret == -1)
+    if (ret == -1) {
+      free (dupkey);
       return -1;
+    }
   } else {
     value = kh_val (hash, k) + inc;
   }
@@ -1082,7 +1081,7 @@ inc_iu64 (khash_t (iu64) *hash, uint32_t key, uint64_t inc) {
   return 0;
 }
 
-/* Increase a uint32_t value given a string key.
+/* Increase an uint32_t value given a string key.
  *
  * On error, 0 is returned.
  * On success the increased value is returned */
@@ -1090,25 +1089,28 @@ static uint32_t
 inc_si32 (khash_t (si32) *hash, const char *key, uint32_t inc) {
   khint_t k;
   int ret;
-  uint32_t value = inc;
+  char *dupkey = NULL;
 
   if (!hash)
     return 0;
 
   k = kh_get (si32, hash, key);
-  /* key not found, set new value to the given `inc` */
+  /* key not found, put a new hash with val=0 */
   if (k == kh_end (hash)) {
-    k = kh_put (si32, hash, key, &ret);
+    dupkey = xstrdup (key);
+    k = kh_put (si32, hash, dupkey, &ret);
     /* operation failed */
-    if (ret == -1)
+    if (ret == -1) {
+      free (dupkey);
       return 0;
-  } else {
-    value = kh_val (hash, k) + inc;
+    }
+    /* concurrently added */
+    if (ret == 0)
+      free (dupkey);
+    kh_val (hash, k) = 0;
   }
 
-  kh_val (hash, k) = value;
-
-  return value;
+  return __sync_add_and_fetch (&kh_val (hash, k), inc);
 }
 
 /* Insert a string key and auto increment int value.
@@ -1200,7 +1202,7 @@ get_si32 (khash_t (si32) *hash, const char *key) {
   k = kh_get (si32, hash, key);
   /* key found, return current value */
   if (k != kh_end (hash))
-    return kh_val (hash, k);
+    return __sync_add_and_fetch (&kh_val (hash, k), 0);
 
   return 0;
 }
@@ -1291,15 +1293,14 @@ get_ss32 (khash_t (ss32) *hash, const char *key) {
 uint32_t
 get_ii32 (khash_t (ii32) *hash, uint32_t key) {
   khint_t k;
-  uint32_t value = 0;
 
   if (!hash)
     return 0;
 
   k = kh_get (ii32, hash, key);
   /* key found, return current value */
-  if (k != kh_end (hash) && (value = kh_val (hash, k)))
-    return value;
+  if (k != kh_end (hash))
+    return __sync_add_and_fetch (&kh_val (hash, k), 0);
 
   return 0;
 }
@@ -1371,7 +1372,7 @@ get_iglp (khash_t (iglp) *hash, uint64_t key) {
  * and set the maximum and minimum values found on an integer key and
  * integer value.
  *
- * Note: This are expensive calls since it has to iterate over all
+ * Note: These are expensive calls since it has to iterate over all
  * key-value pairs
  *
  * If the hash structure is empty, no values are set.
@@ -1400,7 +1401,7 @@ get_ii32_min_max (khash_t (ii32) *hash, uint32_t *min, uint32_t *max) {
  * and set the maximum and minimum values found on an integer key and
  * a uint64_t value.
  *
- * Note: This are expensive calls since it has to iterate over all
+ * Note: These are expensive calls since it has to iterate over all
  * key-value pairs
  *
  * If the hash structure is empty, no values are set.
@@ -1492,13 +1493,11 @@ ht_inc_cnt_overall (const char *key, uint32_t val) {
   if (!hash)
     return 0;
 
-  if (get_si32 (hash, key) != 0)
-    return inc_si32 (hash, key, val);
-  return inc_si32 (hash, xstrdup (key), val);
+  return inc_si32 (hash, key, val);
 }
 
 int
-ht_insert_last_parse (uint64_t key, GLastParse lp) {
+ht_insert_last_parse (uint64_t key, const GLastParse *lp) {
   GKDB *db = get_db_instance (DB_INSTANCE);
   khash_t (iglp) * hash = get_hdb (db, MTRC_LAST_PARSE);
 
@@ -1517,9 +1516,7 @@ ht_ins_seq (khash_t (si32) *hash, const char *key) {
   if (!hash)
     return 0;
 
-  if (get_si32 (hash, key) != 0)
-    return inc_si32 (hash, key, 1);
-  return inc_si32 (hash, xstrdup (key), 1);
+  return inc_si32 (hash, key, 1);
 }
 
 /* Insert an IP hostname mapped to the corresponding hostname.

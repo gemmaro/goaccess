@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,7 +60,7 @@ static void add_host_to_holder (GRawDataItem item, GHolder * h, datatype type, c
 static void add_root_to_holder (GRawDataItem item, GHolder * h, datatype type, const GPanel * panel);
 static void add_host_child_to_holder (GHolder * h);
 
-static GPanel paneling[] = {
+static const GPanel paneling[] = {
   {VISITORS        , add_data_to_holder , NULL},
   {REQUESTS        , add_data_to_holder , NULL},
   {REQUESTS_STATIC , add_data_to_holder , NULL},
@@ -90,7 +90,7 @@ static GPanel paneling[] = {
  *
  * On error, or if not found, NULL is returned.
  * On success, the panel value is returned. */
-static GPanel *
+static const GPanel *
 panel_lookup (GModule module) {
   int i, num_panels = ARRAY_SIZE (paneling);
 
@@ -526,8 +526,8 @@ add_host_to_holder (GRawDataItem item, GHolder *h, datatype type, const GPanel *
     "ffff:ffff:0000:0000:0000:0000:0000:0000"
   };
 
-  char *m4 = (char *) arr4[0];
-  char *m6 = (char *) arr6[0];
+  const char *m4 = arr4[0];
+  const char *m6 = arr6[0];
 
   if (map_data (h->module, item, type, &data, &hits) == 1)
     return;
@@ -539,8 +539,8 @@ add_host_to_holder (GRawDataItem item, GHolder *h, datatype type, const GPanel *
   }
 
   if (conf.anonymize_level == ANONYMIZE_STRONG || conf.anonymize_level == ANONYMIZE_PEDANTIC) {
-    m4 = (char *) arr4[conf.anonymize_level - 1];
-    m6 = (char *) arr6[conf.anonymize_level - 1];
+    m4 = arr4[conf.anonymize_level - 1];
+    m6 = arr6[conf.anonymize_level - 1];
   }
 
   if (1 == inet_pton (AF_INET, data, &addr4)) {
@@ -599,8 +599,7 @@ set_root_metrics (GRawDataItem item, GModule module, datatype type, GMetrics **n
 
 /* Set all root panel data, including sub list items. */
 static void
-add_root_to_holder (GRawDataItem item, GHolder *h, datatype type,
-                    GO_UNUSED const GPanel *panel) {
+add_root_to_holder (GRawDataItem item, GHolder *h, datatype type, GO_UNUSED const GPanel *panel) {
   GSubList *sub_list;
   GMetrics *metrics, *nmetrics;
   char *root = NULL;
@@ -639,8 +638,7 @@ add_root_to_holder (GRawDataItem item, GHolder *h, datatype type,
   h->items[idx].metrics->bw.nbw += nmetrics->bw.nbw;
   h->items[idx].metrics->hits += nmetrics->hits;
   h->items[idx].metrics->visitors += nmetrics->visitors;
-  h->items[idx].metrics->avgts.nts =
-    h->items[idx].metrics->cumts.nts / h->items[idx].metrics->hits;
+  h->items[idx].metrics->avgts.nts = h->items[idx].metrics->cumts.nts / h->items[idx].metrics->hits;
 
   if (nmetrics->maxts.nts > h->items[idx].metrics->maxts.nts)
     h->items[idx].metrics->maxts.nts = nmetrics->maxts.nts;
@@ -658,7 +656,7 @@ load_holder_data (GRawData *raw_data, GHolder *h, GModule module, GSort sort) {
 #ifdef _DEBUG
   clock_t begin = clock ();
   double taken;
-  char *modstr = NULL;
+  const char *modstr = NULL;
   LOG_DEBUG (("== load_holder_data ==\n"));
 #endif
 
@@ -682,6 +680,5 @@ load_holder_data (GRawData *raw_data, GHolder *h, GModule module, GSort sort) {
   modstr = get_module_str (module);
   taken = (double) (clock () - begin) / CLOCKS_PER_SEC;
   LOG_DEBUG (("== %-30s%f\n\n", modstr, taken));
-  free (modstr);
 #endif
 }

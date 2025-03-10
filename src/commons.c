@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ int module_list[TOTAL_MODULES] = {[0 ... TOTAL_MODULES - 1] = -1 };
 
 /* *INDENT-OFF* */
 /* String modules to enumerated modules */
-static GEnum enum_modules[] = {
+static const GEnum enum_modules[] = {
   {"VISITORS"        , VISITORS}        ,
   {"REQUESTS"        , REQUESTS}        ,
   {"REQUESTS_STATIC" , REQUESTS_STATIC} ,
@@ -154,7 +154,7 @@ void
 display_version (void) {
   fprintf (stdout, "GoAccess - %s.\n", GO_VERSION);
   fprintf (stdout, "%s: %s\n", INFO_MORE_INFO, GO_WEBSITE);
-  fprintf (stdout, "Copyright (C) 2009-2023 by Gerardo Orellana\n");
+  fprintf (stdout, "Copyright (C) 2009-2024 by Gerardo Orellana\n");
   fprintf (stdout, "\nBuild configure arguments:\n");
 #ifdef DEBUG
   fprintf (stdout, "  --enable-debug\n");
@@ -196,13 +196,13 @@ str2enum (const GEnum map[], int len, const char *str) {
  *
  * On error, -1 is returned.
  * On success, the enumerated module value is returned. */
-char *
+const char *
 enum2str (const GEnum map[], int len, int idx) {
   int i;
 
   for (i = 0; i < len; ++i) {
     if (idx == map[i].idx)
-      return xstrdup (map[i].str);
+      return map[i].str;
   }
 
   return NULL;
@@ -221,7 +221,7 @@ get_module_enum (const char *str) {
  *
  * On error, NULL is returned.
  * On success, the string module value is returned. */
-char *
+const char *
 get_module_str (GModule module) {
   return enum2str (enum_modules, ARRAY_SIZE (enum_modules), module);
 }
@@ -400,8 +400,7 @@ verify_panels (void) {
   if (!conf.log_format)
     return;
 
-  if (!strstr (conf.log_format, "%v") && ignore_panel_idx < TOTAL_MODULES &&
-      !conf.fname_as_vhost) {
+  if (!strstr (conf.log_format, "%v") && ignore_panel_idx < TOTAL_MODULES && !conf.fname_as_vhost) {
     if (str_inarray ("VIRTUAL_HOSTS", conf.ignore_panels, ignore_panel_idx) < 0)
       remove_module (VIRTUAL_HOSTS);
   }

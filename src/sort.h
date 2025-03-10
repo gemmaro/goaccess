@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,9 +40,9 @@
 #define SORT_MAX_OPTS   11
 
 /* See GEnum for mapping */
-#define SORT_FIELD_LEN  11 + 1  /* longest metric name */
-#define SORT_MODULE_LEN 15 + 1  /* longest module name */
-#define SORT_ORDER_LEN   4 + 1  /* length of ASC or DESC */
+#define SORT_FIELD_LEN  11 + 1 /* longest metric name */
+#define SORT_MODULE_LEN 15 + 1 /* longest module name */
+#define SORT_ORDER_LEN   4 + 1 /* length of ASC or DESC */
 
 /* Enumerated sorting metrics */
 typedef enum GSortField_ {

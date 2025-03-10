@@ -6,7 +6,7 @@
  * \____/  |__/|__//____/\____/\___/_/|_|\___/\__/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -88,6 +88,12 @@
 #  define be16toh(x) OSSwapBigToHostInt16(x)
 #  define be32toh(x) OSSwapBigToHostInt32(x)
 #  define be64toh(x) OSSwapBigToHostInt64(x)
+#elif __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+#  define htobe16(x) (x)
+#  define htobe64(x) (x)
+#  define be16toh(x) (x)
+#  define be32toh(x) (x)
+#  define be64toh(x) (x)
 #else
 #  error Platform not supported!
 #endif
@@ -104,15 +110,15 @@
 
 /* packet header is 3 unit32_t : type, size, listener */
 #define HDR_SIZE              3 * 4
-#define WS_MAX_FRM_SZ         1048576   /* 1 MiB max frame size */
-#define WS_THROTTLE_THLD      2097152   /* 2 MiB throttle threshold */
-#define WS_MAX_HEAD_SZ        8192      /* a reasonable size for request headers */
+#define WS_MAX_FRM_SZ         1048576 /* 1 MiB max frame size */
+#define WS_THROTTLE_THLD      2097152 /* 2 MiB throttle threshold */
+#define WS_MAX_HEAD_SZ        8192 /* a reasonable size for request headers */
 
 #define WS_MAGIC_STR "258EAFA5-E914-47DA-95CA-C5AB0DC85B11"
 #define WS_PAYLOAD_EXT16      126
 #define WS_PAYLOAD_EXT64      127
 #define WS_PAYLOAD_FULL       125
-#define WS_FRM_HEAD_SZ         16       /* frame header size */
+#define WS_FRM_HEAD_SZ         16 /* frame header size */
 
 #define WS_FRM_FIN(x)         (((x) >> 7) & 0x01)
 #define WS_FRM_MASK(x)        (((x) >> 7) & 0x01)
@@ -220,7 +226,7 @@ typedef struct WSMessage_ {
 typedef struct WSClient_ {
   /* socket data */
   int listener;                 /* socket */
-  char remote_ip[INET6_ADDRSTRLEN];     /* client IP */
+  char remote_ip[INET6_ADDRSTRLEN]; /* client IP */
 
   WSQueue *sockqueue;           /* sending buffer */
   WSHeaders *headers;           /* HTTP headers */

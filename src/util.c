@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -46,6 +46,10 @@
 #include <time.h>
 #include <inttypes.h>
 #include <regex.h>
+#include <pthread.h>
+#include <unistd.h>
+#include <libgen.h>
+#include <limits.h>
 
 #include <netinet/in.h>
 #include <sys/socket.h>
@@ -56,81 +60,51 @@
 #include "labels.h"
 #include "xmalloc.h"
 
+pthread_mutex_t tz_mutex = PTHREAD_MUTEX_INITIALIZER;
+
 /* HTTP status codes categories */
-static const char *code_type[][2] = {
-  {"1", STATUS_CODE_1XX},
-  {"2", STATUS_CODE_2XX},
-  {"3", STATUS_CODE_3XX},
-  {"4", STATUS_CODE_4XX},
-  {"5", STATUS_CODE_5XX},
+static const char *const code_type[] = {
+  STATUS_CODE_0XX,
+  STATUS_CODE_1XX,
+  STATUS_CODE_2XX,
+  STATUS_CODE_3XX,
+  STATUS_CODE_4XX,
+  STATUS_CODE_5XX,
 };
 
 /* HTTP status codes */
-static const char *codes[][2] = {
-  {"100", STATUS_CODE_100},
-  {"101", STATUS_CODE_101},
-  {"200", STATUS_CODE_200},
-  {"201", STATUS_CODE_201},
-  {"202", STATUS_CODE_202},
-  {"203", STATUS_CODE_203},
-  {"204", STATUS_CODE_204},
-  {"205", STATUS_CODE_205},
-  {"206", STATUS_CODE_206},
-  {"207", STATUS_CODE_207},
-  {"208", STATUS_CODE_208},
-  {"300", STATUS_CODE_300},
-  {"301", STATUS_CODE_301},
-  {"302", STATUS_CODE_302},
-  {"303", STATUS_CODE_303},
-  {"304", STATUS_CODE_304},
-  {"305", STATUS_CODE_305},
-  {"307", STATUS_CODE_307},
-  {"308", STATUS_CODE_308},
-  {"400", STATUS_CODE_400},
-  {"401", STATUS_CODE_401},
-  {"402", STATUS_CODE_402},
-  {"403", STATUS_CODE_403},
-  {"404", STATUS_CODE_404},
-  {"405", STATUS_CODE_405},
-  {"406", STATUS_CODE_406},
-  {"407", STATUS_CODE_407},
-  {"408", STATUS_CODE_408},
-  {"409", STATUS_CODE_409},
-  {"410", STATUS_CODE_410},
-  {"411", STATUS_CODE_411},
-  {"412", STATUS_CODE_412},
-  {"413", STATUS_CODE_413},
-  {"414", STATUS_CODE_414},
-  {"415", STATUS_CODE_415},
-  {"416", STATUS_CODE_416},
-  {"417", STATUS_CODE_417},
-  {"418", STATUS_CODE_418},
-  {"421", STATUS_CODE_421},
-  {"422", STATUS_CODE_422},
-  {"423", STATUS_CODE_423},
-  {"424", STATUS_CODE_424},
-  {"426", STATUS_CODE_426},
-  {"428", STATUS_CODE_428},
-  {"429", STATUS_CODE_429},
-  {"431", STATUS_CODE_431},
-  {"444", STATUS_CODE_444},
-  {"451", STATUS_CODE_451},
-  {"494", STATUS_CODE_494},
-  {"495", STATUS_CODE_495},
-  {"496", STATUS_CODE_496},
-  {"497", STATUS_CODE_497},
-  {"499", STATUS_CODE_499},
-  {"500", STATUS_CODE_500},
-  {"501", STATUS_CODE_501},
-  {"502", STATUS_CODE_502},
-  {"503", STATUS_CODE_503},
-  {"504", STATUS_CODE_504},
-  {"505", STATUS_CODE_505},
-  {"520", STATUS_CODE_520},
-  {"521", STATUS_CODE_521},
-  {"522", STATUS_CODE_522},
-  {"523", STATUS_CODE_523},
-  {"524", STATUS_CODE_524}
+static const char *const codes[600] = {
+  [0] = STATUS_CODE_0,
+  [100] = STATUS_CODE_100, STATUS_CODE_101,
+  [200] = STATUS_CODE_200, STATUS_CODE_201, STATUS_CODE_202, STATUS_CODE_203, STATUS_CODE_204,
+  [205] = STATUS_CODE_205, STATUS_CODE_206, STATUS_CODE_207, STATUS_CODE_208,
+  [218] = STATUS_CODE_218,
+  [300] = STATUS_CODE_300, STATUS_CODE_301, STATUS_CODE_302, STATUS_CODE_303, STATUS_CODE_304,
+  [305] = STATUS_CODE_305, NULL, STATUS_CODE_307, STATUS_CODE_308,
+  [400] = STATUS_CODE_400, STATUS_CODE_401, STATUS_CODE_402, STATUS_CODE_403, STATUS_CODE_404,
+  [405] = STATUS_CODE_405, STATUS_CODE_406, STATUS_CODE_407, STATUS_CODE_408, STATUS_CODE_409,
+  [410] = STATUS_CODE_410, STATUS_CODE_411, STATUS_CODE_412, STATUS_CODE_413, STATUS_CODE_414,
+  [415] = STATUS_CODE_415, STATUS_CODE_416, STATUS_CODE_417, STATUS_CODE_418, STATUS_CODE_419,
+  [420] = STATUS_CODE_420, STATUS_CODE_421, STATUS_CODE_422, STATUS_CODE_423, STATUS_CODE_424,
+  [425] = NULL, STATUS_CODE_426, NULL, STATUS_CODE_428, STATUS_CODE_429, STATUS_CODE_430,
+  [431] = STATUS_CODE_431,
+  [440] = STATUS_CODE_440,
+  [444] = STATUS_CODE_444,
+  [449] = STATUS_CODE_449,
+  [450] = STATUS_CODE_450,
+  [451] = STATUS_CODE_451,
+  [460] = STATUS_CODE_460, STATUS_CODE_463, STATUS_CODE_464,
+  [494] = STATUS_CODE_494,
+  [495] = STATUS_CODE_495, STATUS_CODE_496, STATUS_CODE_497, STATUS_CODE_498, STATUS_CODE_499,
+  [500] = STATUS_CODE_500, STATUS_CODE_501, STATUS_CODE_502, STATUS_CODE_503, STATUS_CODE_504,
+  [505] = STATUS_CODE_505,
+  [509] = STATUS_CODE_509,
+  [520] = STATUS_CODE_520, STATUS_CODE_521, STATUS_CODE_522, STATUS_CODE_523, STATUS_CODE_524,
+  STATUS_CODE_525, STATUS_CODE_526, STATUS_CODE_527, STATUS_CODE_529,
+  [530] = STATUS_CODE_530,
+  [540] = STATUS_CODE_540,
+  [561] = STATUS_CODE_561,
+  [598] = STATUS_CODE_598, STATUS_CODE_599,
 };
 
 /* Return part of a string
@@ -220,7 +194,7 @@ djb2 (const unsigned char *str) {
   int c;
 
   while ((c = *str++))
-    hash = ((hash << 5) + hash) + c;    /* hash * 33 + c */
+    hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
 
   return hash;
 }
@@ -250,6 +224,37 @@ wc_match (const char *wc, char *str) {
   if (!*wc && !*str)
     return 1;
   return 0;
+}
+
+/**
+ * Extracts the hostname part from a given URL.
+ *
+ * On error, NULL is returned.
+ * On success, a dynamically allocated string containing the hostname is returned.
+ */
+static char *
+extract_hostname (const char *url) {
+  const char *start, *end;
+  char *hostname = NULL;
+
+  start = strstr (url, "://");
+  if (start != NULL) {
+    start += 3;
+  } else {
+    start = url;
+  }
+
+  end = strchr (start, '/');
+  if (end == NULL) {
+    /* no path, use the entire string */
+    end = start + strlen (start);
+  }
+
+  hostname = xmalloc (end - start + 1);
+  strncpy (hostname, start, end - start);
+  hostname[end - start] = '\0';
+
+  return hostname;
 }
 
 /* Generic routine to extract all groups from a string given a POSIX regex.
@@ -302,6 +307,43 @@ out:
   return ret == 0 ? dest : NULL;
 }
 
+static int
+handle_referer (const char *host, const char **referers, int referer_idx) {
+  char *needle = NULL, *hostname = NULL;
+  int i, ignore = 0;
+
+  if (referer_idx == 0)
+    return 0;
+
+  if (host == NULL || *host == '\0')
+    return 0;
+
+  needle = xstrdup (host);
+  for (i = 0; i < referer_idx; ++i) {
+    if (referers[i] == NULL || *referers[i] == '\0')
+      continue;
+
+    if (strchr (referers[i], '*') != NULL || strchr (referers[i], '?') != NULL) {
+      if (wc_match (referers[i], needle)) {
+        ignore = 1;
+        goto out;
+      }
+    } else {
+      hostname = extract_hostname (host);
+      if (strcmp (referers[i], hostname) == 0) {
+        ignore = 1;
+        free (hostname);
+        goto out;
+      }
+      free (hostname);
+    }
+  }
+
+out:
+  free (needle);
+  return ignore;
+}
+
 /* Determine if the given host needs to be ignored given the list of
  * referrers to ignore.
  *
@@ -309,28 +351,7 @@ out:
  * On success, or if the host needs to be ignored, 1 is returned */
 int
 ignore_referer (const char *host) {
-  char *needle = NULL;
-  int i, ignore = 0;
-
-  if (conf.ignore_referer_idx == 0)
-    return 0;
-  if (host == NULL || *host == '\0')
-    return 0;
-
-  needle = xstrdup (host);
-  for (i = 0; i < conf.ignore_referer_idx; ++i) {
-    if (conf.ignore_referers[i] == NULL || *conf.ignore_referers[i] == '\0')
-      continue;
-
-    if (wc_match (conf.ignore_referers[i], needle)) {
-      ignore = 1;
-      goto out;
-    }
-  }
-out:
-  free (needle);
-
-  return ignore;
+  return handle_referer (host, conf.ignore_referers, conf.ignore_referer_idx);
 }
 
 /* Determine if the given host needs to be hidden given the list of
@@ -340,28 +361,7 @@ out:
  * On success, or if the host needs to be ignored, 1 is returned */
 int
 hide_referer (const char *host) {
-  char *needle = NULL;
-  int i, ignore = 0;
-
-  if (conf.hide_referer_idx == 0)
-    return 0;
-  if (host == NULL || *host == '\0')
-    return 0;
-
-  needle = xstrdup (host);
-  for (i = 0; i < conf.hide_referer_idx; ++i) {
-    if (conf.hide_referers[i] == NULL || *conf.hide_referers[i] == '\0')
-      continue;
-
-    if (wc_match (conf.hide_referers[i], needle)) {
-      ignore = 1;
-      goto out;
-    }
-  }
-out:
-  free (needle);
-
-  return ignore;
+  return handle_referer (host, conf.hide_referers, conf.hide_referer_idx);
 }
 
 /* Determine if the given ip is within a range of IPs.
@@ -569,18 +569,83 @@ tm2time (const struct tm *src) {
 
 void
 set_tz (void) {
-  char tz[TZ_NAME_LEN] = { 0 };
+  /* this will persist for the duration of the program but also assumes that all
+   * threads have the same conf.tz_name values */
+  static char tz[TZ_NAME_LEN] = { 0 };
 
   if (!conf.tz_name)
     return;
 
-  snprintf (tz, TZ_NAME_LEN, "TZ=%s", conf.tz_name);
-  if ((putenv (tz)) != 0) {
-    LOG_DEBUG (("Can't set TZ env variable %s: %s\n", tz, strerror (errno)));
+  if (pthread_mutex_lock (&tz_mutex) != 0) {
+    LOG_DEBUG (("Failed to acquire tz_mutex"));
     return;
   }
+
+  snprintf (tz, TZ_NAME_LEN, "TZ=%s", conf.tz_name);
+  if ((putenv (tz)) != 0) {
+    int old_errno = errno;
+    LOG_DEBUG (("Can't set TZ env variable %s: %s: %d\n", tz, strerror (old_errno), old_errno));
+    goto release;
+  }
+
   tzset ();
+
+release:
+
+  if (pthread_mutex_unlock (&tz_mutex) != 0) {
+    LOG_DEBUG (("Failed to release tz_mutex"));
+  }
+
+  return;
 }
+
+#if defined(__linux__) && !defined(__GLIBC__)
+static int
+parse_tz_specifier (const char *str, const char *fmt, struct tm *tm) {
+  char *fmt_notz = NULL, *p = NULL, *end = NULL, *ptr = NULL;
+  int tz_offset_hours = 0, tz_offset_minutes = 0, neg = 0;
+
+  /* new format string that excludes %z */
+  fmt_notz = xstrdup (fmt);
+
+  p = strstr (fmt_notz, "%z");
+  if (p != NULL)
+    *p = '\0';
+
+  /* parse date/time without timezone offset */
+  end = strptime (str, fmt_notz, tm);
+  free (fmt_notz);
+  if (end == NULL)
+    return 1;
+
+  /* bail early if no timezone offset is expected */
+  if (*end == '\0') {
+    tm->tm_gmtoff = 0;
+    return 0;
+  }
+
+  /* try to parse timezone offset else bail early, +/-0500 */
+  if ((*end != '+' && *end != '-') || strlen (end) < 4)
+    return 1;
+
+  /* divide by 100 to extract the hours part (e.g., 400 / 100 = 4) */
+  tz_offset_hours = labs (strtol (end, &ptr, 10)) / 100;
+  if (*ptr != '\0')
+    return 1;
+
+  if (strlen (end) >= 5) {
+    /* minutes part of the offset is present */
+    tz_offset_minutes = strtol (end + 3, &ptr, 10);
+    if (*ptr != '\0')
+      return 1;
+  }
+
+  neg = (*end == '-');
+  tm->tm_gmtoff = (tz_offset_hours * 3600 + tz_offset_minutes * 60) * (neg ? -1 : 1);
+
+  return 0;
+}
+#endif
 
 /* Format the given date/time according the given format.
  *
@@ -631,10 +696,14 @@ str_to_time (const char *str, const char *fmt, struct tm *tm, int tz) {
 
     return 0;
   }
-
+#if defined(__linux__) && !defined(__GLIBC__)
+  if (parse_tz_specifier (str, fmt, tm))
+    return -1;
+#else
   end = strptime (str, fmt, tm);
   if (end == NULL || *end != '\0')
     return 1;
+#endif
 
   if (!tz || !conf.tz_name)
     return 0;
@@ -683,7 +752,7 @@ convert_date (char *res, const char *data, const char *from, const char *to, int
  * On error, 1 is returned.
  * On success, 0 is returned. */
 int
-invalid_ipaddr (char *str, int *ipvx) {
+invalid_ipaddr (const char *str, int *ipvx) {
   union {
     struct sockaddr addr;
     struct sockaddr_in6 addr6;
@@ -745,13 +814,11 @@ file_size (const char *filename) {
  * If not found, "Unknown" is returned.
  * On success, the status code type/category is returned. */
 const char *
-verify_status_code_type (const char *str) {
-  size_t i;
-  for (i = 0; i < ARRAY_SIZE (code_type); i++)
-    if (strchr (code_type[i][0], str[0]) != NULL)
-      return _(code_type[i][1]);
+verify_status_code_type (int code) {
+  if (code < 0 || code > 599 || code_type[code / 100] == NULL)
+    return "Unknown";
 
-  return "Unknown";
+  return code_type[code / 100];
 }
 
 /* Determine if the given status code is within the list of status
@@ -760,13 +827,16 @@ verify_status_code_type (const char *str) {
  * If not found, "Unknown" is returned.
  * On success, the status code is returned. */
 const char *
-verify_status_code (char *str) {
-  size_t i;
-  for (i = 0; i < ARRAY_SIZE (codes); i++)
-    if (strstr (str, codes[i][0]) != NULL)
-      return _(codes[i][1]);
+verify_status_code (int code) {
+  if (code < 0 || code > 599 || code_type[code / 100] == NULL || codes[code] == NULL)
+    return "Unknown";
 
-  return "Unknown";
+  return codes[code];
+}
+
+int
+is_valid_http_status (int code) {
+  return code >= 0 && code <= 599 && code_type[code / 100] != NULL && codes[code] != NULL;
 }
 
 /* Checks if the given string is within the given array.
@@ -791,7 +861,7 @@ char *
 ltrim (char *s) {
   char *begin = s;
 
-  while (isspace (*begin))
+  while (isspace ((unsigned char) *begin))
     ++begin;
   memmove (s, begin, strlen (begin) + 1);
 
@@ -806,7 +876,7 @@ char *
 rtrim (char *s) {
   char *end = s + strlen (s);
 
-  while ((end != s) && isspace (*(end - 1)))
+  while ((end != s) && isspace ((unsigned char) *(end - 1)))
     --end;
   *end = '\0';
 
@@ -1023,7 +1093,7 @@ strtoupper (char *str) {
     return str;
 
   while (*p != '\0') {
-    *p = toupper (*p);
+    *p = toupper ((unsigned char) *p);
     p++;
   }
 
@@ -1153,4 +1223,51 @@ out:
   *q = 0;
 
   return dest;
+}
+
+int
+is_writable_path (const char *path) {
+  char *copy = NULL, *dir_path = NULL;
+  char dir_path_copy[PATH_MAX] = { 0 };
+  int result = 0;
+
+  if (path == NULL) {
+    fprintf (stderr, "Path is NULL\n");
+    return 0;
+  }
+  /* Make a copy of the path because dirname might modify it */
+  copy = strdup (path);
+  if (copy == NULL) {
+    fprintf (stderr, "Memory allocation failed\n");
+    return 0;
+  }
+  /* Get the directory part of the path */
+  dir_path = dirname (copy);
+  strncpy (dir_path_copy, dir_path, PATH_MAX);
+
+  /* Check if the directory is writable */
+  result = access (dir_path, W_OK);
+  free (copy);
+
+  if (result == 0) {
+    /* Directory exists and is writable */
+    return 1;
+  }
+
+  switch (errno) {
+  case ENOENT:
+    fprintf (stderr, "Directory does not exist: %s\n", dir_path_copy);
+    break;
+  case EACCES:
+    fprintf (stderr, "No write permission for directory: %s\n", dir_path_copy);
+    break;
+  case EROFS:
+    fprintf (stderr, "Directory is on a read-only file system: %s\n", dir_path_copy);
+    break;
+  default:
+    fprintf (stderr, "Unknown error (errno %d) for directory: %s\n", errno, dir_path_copy);
+    break;
+  }
+
+  return 0;
 }

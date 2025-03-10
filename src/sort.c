@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -85,7 +85,7 @@ const int sort_choices[][SORT_MAX_OPTS] = {
   {SORT_BY_HITS, SORT_BY_DATA, SORT_BY_VISITORS, SORT_BY_BW, -1},
 };
 
-static GEnum FIELD[] = {
+static const GEnum FIELD[] = {
   {"BY_HITS"     , SORT_BY_HITS     } ,
   {"BY_VISITORS" , SORT_BY_VISITORS } ,
   {"BY_DATA"     , SORT_BY_DATA     } ,
@@ -97,7 +97,7 @@ static GEnum FIELD[] = {
   {"BY_MTHD"     , SORT_BY_MTHD     } ,
 };
 
-static GEnum ORDER[] = {
+static const GEnum ORDER[] = {
   {"ASC"  , SORT_ASC  } ,
   {"DESC" , SORT_DESC } ,
 };
@@ -350,15 +350,16 @@ cmp_mthd_desc (const void *a, const void *b) {
 #if defined(__clang__) && defined(__clang_major__) && (__clang_major__ >= 4)
 __attribute__((no_sanitize ("implicit-conversion", "unsigned-integer-overflow")))
 #endif
-  int cmp_ui32_asc (const void *a, const void *b) {
-  const uint32_t *ia = (const uint32_t *) a;    // casting pointer types
+int
+cmp_ui32_asc (const void *a, const void *b) {
+  const uint32_t *ia = (const uint32_t *) a; // casting pointer types
   const uint32_t *ib = (const uint32_t *) b;
   return *ia - *ib;
-  }
+}
 
 int
 cmp_ui32_desc (const void *a, const void *b) {
-  const uint32_t *ia = (const uint32_t *) a;    // casting pointer types
+  const uint32_t *ia = (const uint32_t *) a; // casting pointer types
   const uint32_t *ib = (const uint32_t *) b;
   return *ib - *ia;
 }
@@ -402,7 +403,7 @@ get_sort_field_str (GSortField field) {
  * The key corresponding to the enumerated field value is returned. */
 const char *
 get_sort_field_key (GSortField field) {
-  static const char *field2key[][2] = {
+  static const char *const field2key[][2] = {
     {"BY_HITS", "hits"},
     {"BY_VISITORS", "visitors"},
     {"BY_DATA", "data"},

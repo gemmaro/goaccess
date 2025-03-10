@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,7 +42,7 @@
  * which makes this pretty slow */
 
 /* {"search string", "belongs to"} */
-static const char *os[][2] = {
+static const char *const os[][2] = {
   {"Android", "Android"},
   {"Windows NT 10.0", "Windows"},
   {"Windows NT 6.3; ARM", "Windows"},
@@ -76,17 +76,25 @@ static const char *os[][2] = {
   {"AppleTV", "iOS"},
   {"iTunes", "macOS"},
   {"OS X", "macOS"},
+  {"macOS", "macOS"},
   {"Darwin", "Darwin"},
 
+  {"AlmaLinux", "Linux"},
+  {"Amazon Linux", "Linux"},
+  {"CloudLinux", "Linux"},
   {"Debian", "Linux"},
   {"Ubuntu", "Linux"},
   {"Fedora", "Linux"},
   {"Mint", "Linux"},
   {"SUSE", "Linux"},
   {"Mandriva", "Linux"},
-  {"Red Hat", "Linux"},
+  {"MIRACLE LINUX", "Linux"},
+  {"Oracle Linux", "Linux"},
+  {"Red Hat Enterprise Linux", "Linux"},
+  {"Rocky Linux", "Linux"},
   {"Gentoo", "Linux"},
-  {"CentOS", "Linux"},
+  {"CentOS Stream", "Linux"},
+  {"CentOS Linux", "Linux"},
   {"PCLinuxOS", "Linux"},
   {"Arch", "Linux"},
   {"Parabola", "Linux"},
@@ -132,6 +140,8 @@ get_real_android (const char *droid) {
     return alloc_string ("Android 13");
   else if (strstr (droid, "12"))
     return alloc_string ("Android 12");
+  else if (strstr (droid, "12.1"))
+    return alloc_string ("Android 12.1");
   else if (strstr (droid, "11"))
     return alloc_string ("Android 11");
   else if (strstr (droid, "10"))
@@ -377,7 +387,7 @@ parse_os (char *str, char *tkn, char *os_type, int idx) {
   if (strstr (tkn, "iPhone"))
     return xstrdup (parse_ios (tkn, 6));
   /* Mac OS X */
-  if ((strstr (tkn, "OS X")) != NULL) {
+  if (strstr (tkn, "OS X") || strstr (tkn, "macOS")) {
     tkn = parse_osx (tkn);
     return conf.real_os ? get_real_mac_osx (tkn) : xstrdup (tkn);
   }

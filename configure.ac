@@ -2,8 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([goaccess],[1.8.1],[hello@goaccess.io],[],[https://goaccess.io])
-AM_INIT_AUTOMAKE
+AC_INIT([goaccess],[1.9.3],[hello@goaccess.io],[],[https://goaccess.io])
+AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_SRCDIR([src/goaccess.c])
 AC_CONFIG_HEADERS([src/config.h])
 
@@ -47,6 +47,19 @@ case "$host_os" in
 esac
 AC_MSG_RESULT([$with_rdyanimc])
 AM_CONDITIONAL([WITH_RDYNAMIC], [test "x$with_rdyanimc" = "xyes"])
+
+# Add ASAN
+AC_CANONICAL_HOST
+AC_ARG_ENABLE([asan],
+  [AS_HELP_STRING([--enable-asan], [Enable address sanitizer])],
+  [with_asan=$enableval], [with_asan=no])
+AC_MSG_CHECKING([whether to build with address sanitizer])
+case "$host_os" in
+  *cygwin*|*aix*|*mingw*) with_asan=no
+  ;;
+esac
+AC_MSG_RESULT([$with_asan])
+AM_CONDITIONAL([WITH_ASAN], [test "x$with_asan" = "xyes"])
 
 # Check for libc implementation on NetBSD
 AC_CHECK_HEADERS([sha.h sha1.h])
@@ -259,6 +272,7 @@ Your build configuration:
   Linker flags   : $LIBS $LDFLAGS
   UTF-8 support  : $utf8
   Dynamic buffer : $with_getline
+  ASan           : $with_asan
   Geolocation    : $geolocation
   Storage method : $storage
   TLS/SSL        : $openssl

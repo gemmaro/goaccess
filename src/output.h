@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@
 #ifndef OUTPUT_H_INCLUDED
 #define OUTPUT_H_INCLUDED
 
-#define MAX_PLOTS 5     /* number of metrics we can plot */
+#define MAX_PLOTS 5 /* number of metrics we can plot */
 #define FILENAME_JS  "goaccess.js"
 #define FILENAME_CSS "goaccess.css"
 
@@ -46,6 +46,7 @@ typedef enum GChartType_ {
   CHART_NONE,
   CHART_VBAR,
   CHART_AREASPLINE,
+  CHART_WMAP,
 } GChartType;
 
 /* Chart axis structure */
@@ -74,6 +75,7 @@ typedef struct GHTMLPlot_ {
 typedef struct GHTML_ {
   GModule module;
   int8_t table;
+  int8_t has_map;
   void (*metrics) (FILE * fp, const struct GHTML_ * def, int sp);
   GHTMLPlot chart[MAX_PLOTS];
 } GHTML;

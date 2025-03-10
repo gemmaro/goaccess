@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -34,7 +34,7 @@
 
 #define STDIN_FILENO  0
 #ifndef _BSD_SOURCE
-#define _BSD_SOURCE     /* include stuff from 4.3 BSD */
+#define _BSD_SOURCE /* include stuff from 4.3 BSD */
 #endif
 #ifndef _DEFAULT_SOURCE
 #define _DEFAULT_SOURCE
@@ -68,7 +68,7 @@
 
 /* *INDENT-OFF* */
 /* Determine which metrics should be displayed per module/panel */
-static GOutput outputting[] = {
+static const GOutput outputting[] = {
   {VISITORS        , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 0 , 0 , 1 , 1 , 1} ,
   {REQUESTS        , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 0 , 0} ,
   {REQUESTS_STATIC , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 1 , 0 , 0} ,
@@ -107,7 +107,7 @@ typedef struct Field_ {
  *
  * On error, or if not found, NULL is returned.
  * On success, the panel value is returned. */
-GOutput *
+const GOutput *
 output_lookup (GModule module) {
   int i, num_panels = ARRAY_SIZE (outputting);
 
@@ -259,7 +259,7 @@ term_size (WINDOW *main_win, int *main_win_height) {
  * On success, a string containing the label name is returned. */
 const char *
 module_to_label (GModule module) {
-  static const char *modules[] = {
+  static const char *const modules[] = {
     VISITORS_LABEL,
     REQUESTS_LABEL,
     REQUESTS_STATIC_LABEL,
@@ -291,7 +291,7 @@ module_to_label (GModule module) {
  * On success, a string containing the label id is returned. */
 const char *
 module_to_id (GModule module) {
-  static const char *modules[] = {
+  static const char *const modules[] = {
     VISITORS_ID,
     REQUESTS_ID,
     REQUESTS_STATIC_ID,
@@ -359,7 +359,7 @@ module_to_head (GModule module) {
  * On success, a string containing the label description is returned. */
 const char *
 module_to_desc (GModule module) {
-  static const char *modules[] = {
+  static const char *const modules[] = {
     VISITORS_DESC,
     REQUESTS_DESC,
     REQUESTS_STATIC_DESC,
@@ -805,7 +805,7 @@ input_string (WINDOW *win, int pos_y, int pos_x, size_t max_width, const char *s
     default:
       if (strlen (s) == max_width)
         break;
-      if (!isprint (c))
+      if (!isprint ((unsigned char) c))
         break;
 
       if (strlen (s) == pos) {
@@ -935,10 +935,10 @@ load_agent_list (WINDOW *main_win, char *addr) {
     return;
 
   getmaxyx (stdscr, y, x);
-  list_h = y / 2;       /* list window - height */
-  list_w = x - 4;       /* list window - width */
-  menu_h = list_h - AGENTS_MENU_Y - 1;  /* menu window - height */
-  menu_w = list_w - AGENTS_MENU_X - AGENTS_MENU_X;      /* menu window - width */
+  list_h = y / 2; /* list window - height */
+  list_w = x - 4; /* list window - width */
+  menu_h = list_h - AGENTS_MENU_Y - 1; /* menu window - height */
+  menu_w = list_w - AGENTS_MENU_X - AGENTS_MENU_X; /* menu window - width */
 
   win = newwin (list_h, list_w, (y - list_h) / 2, (x - list_w) / 2);
   keypad (win, TRUE);
@@ -1040,7 +1040,7 @@ ui_spinner (void *ptr_data) {
       wrefresh (sp->win);
     } else if (!conf.no_progress) {
       /* STDOUT */
-      fprintf (stderr, " %s\r", buf);
+      fprintf (stderr, " \033[K%s\r", buf);
     }
 
     pthread_mutex_unlock (&sp->mutex);
@@ -1298,7 +1298,7 @@ render_confdlg (Logs *logs, GSpinner *spinner) {
   size_t i, n, sel;
 
   /* conf dialog menu options */
-  const char *choices[] = {
+  static const char *const choices[] = {
     "NCSA Combined Log Format",
     "NCSA Combined Log Format with Virtual Host",
     "Common Log Format (CLF)",
@@ -1311,6 +1311,7 @@ render_confdlg (Logs *logs, GSpinner *spinner) {
     "AWS Simple Storage Service (S3)",
     "CADDY JSON Structured",
     "AWS Application Load Balancer",
+    "Traefik CLF flavor"
   };
   n = ARRAY_SIZE (choices);
   getmaxyx (stdscr, y, x);
@@ -1382,9 +1383,7 @@ render_confdlg (Logs *logs, GSpinner *spinner) {
       if (!log_format)
         log_format = get_input_log_format ();
 
-      cstm_log =
-        input_string (win, 12, 2, log_format ? strlen (log_format) : CONF_MAX_LEN_DLG,
-                      log_format, 0, 0);
+      cstm_log = input_string (win, 12, 2, CONF_MAX_LEN_DLG, log_format, 0, 0);
       if (cstm_log != NULL && *cstm_log != '\0') {
         if (log_format)
           free (log_format);
@@ -1818,8 +1817,8 @@ load_sort_win (WINDOW *main_win, GModule module, GSort *sort) {
 }
 
 /* Help menu data (F1/h). */
-static const char *help_main[] = {
-  "Copyright (C) 2009-2023 by Gerardo Orellana",
+static const char *const help_main[] = {
+  "Copyright (C) 2009-2024 by Gerardo Orellana",
   "https://goaccess.io - <hello@goaccess.io>",
   "Released under the MIT License.",
   "",

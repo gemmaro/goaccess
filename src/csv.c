@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -60,7 +60,7 @@ static void print_csv_data (FILE * fp, GHolder * h, GPercTotals totals);
 
 /* *INDENT-OFF* */
 /* A function pointer for each panel */
-static GPanel paneling[] = {
+static const GPanel paneling[] = {
   {VISITORS        , print_csv_data} ,
   {REQUESTS        , print_csv_data} ,
   {REQUESTS_STATIC , print_csv_data} ,
@@ -89,7 +89,7 @@ static GPanel paneling[] = {
  *
  * On error, or if not found, NULL is returned.
  * On success, the panel value is returned. */
-static GPanel *
+static const GPanel *
 panel_lookup (GModule module) {
   int i, num_panels = ARRAY_SIZE (paneling);
 
@@ -175,7 +175,7 @@ print_csv_sub_items (FILE *fp, GHolder *h, int idx, GPercTotals totals) {
     set_data_metrics (iter->metrics, &nmetrics, totals);
 
     fprintf (fp, "\"%d\",", i); /* idx */
-    fprintf (fp, "\"%d\",", idx);       /* parent idx */
+    fprintf (fp, "\"%d\",", idx); /* parent idx */
     fprintf (fp, "\"%s\",", module_to_id (h->module));
 
     /* output metrics */
@@ -196,7 +196,7 @@ print_csv_data (FILE *fp, GHolder *h, GPercTotals totals) {
     set_data_metrics (h->items[i].metrics, &nmetrics, totals);
 
     fprintf (fp, "\"%d\",", i); /* idx */
-    fprintf (fp, ",");  /* no parent */
+    fprintf (fp, ","); /* no parent */
     fprintf (fp, "\"%s\",", module_to_id (h->module));
 
     /* output metrics */

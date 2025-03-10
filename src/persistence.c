@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -174,7 +174,7 @@ restore_global_iglp (khash_t (iglp) *hash, const char *fn) {
   tn = tpl_map (fmt, &key, &val, READ_BYTES);
   tpl_load (tn, TPL_FILE, fn);
   while (tpl_unpack (tn, 1) > 0) {
-    ins_iglp (hash, key, val);
+    ins_iglp (hash, key, &val);
   }
   tpl_free (tn);
 }
@@ -232,7 +232,8 @@ build_filename (const char *type, const char *modstr, const char *mtrstr) {
  * On success, the filename is returned */
 static char *
 get_filename (GModule module, GKHashMetric mtrc) {
-  char *mtrstr = NULL, *modstr = NULL, *type = NULL, *fn = NULL;
+  const char *mtrstr, *modstr, *type;
+  char *fn = NULL;
 
   if (!(mtrstr = get_mtr_str (mtrc.metric.storem)))
     FATAL ("Unable to allocate metric name.");
@@ -242,10 +243,6 @@ get_filename (GModule module, GKHashMetric mtrc) {
     FATAL ("Unable to allocate module name.");
 
   fn = build_filename (type, modstr, mtrstr);
-
-  free (mtrstr);
-  free (type);
-  free (modstr);
 
   return fn;
 }
@@ -332,7 +329,7 @@ migrate_si32_to_ii32 (GSMetric metric, const char *path, int module) {
       break;
 
     while (tpl_unpack (tn, 2) > 0) {
-      ins_ii32 (hash, djb2 ((unsigned char *) key), val);
+      ins_ii32 (hash, djb2 ((const unsigned char *) key), val);
       free (key);
     }
   }
@@ -342,7 +339,7 @@ migrate_si32_to_ii32 (GSMetric metric, const char *path, int module) {
 }
 
 static char *
-migrate_unique_key (char *key) {
+migrate_unique_key (const char *key) {
   char *nkey = NULL, *token = NULL, *ptr = NULL;
   char agent_hex[64] = { 0 };
   uint32_t delims = 0;
@@ -364,7 +361,7 @@ migrate_unique_key (char *key) {
     delims++;
   }
   if (delims == 2) {
-    sprintf (agent_hex, "%" PRIx32, djb2 ((unsigned char *) key));
+    sprintf (agent_hex, "%" PRIx32, djb2 ((const unsigned char *) key));
     append_str (&nkey, agent_hex);
   }
 
@@ -945,7 +942,7 @@ migrate_metric (GModule module, GKHashMetric mtrc) {
 
   int ret = 0;
   char *fn = NULL, *path = NULL;
-  char *modstr = NULL, *mtrstr = NULL;
+  const char *modstr, *mtrstr;
   khint_t k;
 
   k = kh_get (si32, db_props, "version");
@@ -1001,8 +998,6 @@ migrate_metric (GModule module, GKHashMetric mtrc) {
   }
 
   free (fn);
-  free (modstr);
-  free (mtrstr);
   free (path);
 
   return ret;

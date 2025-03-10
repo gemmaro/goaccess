@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2023 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -64,8 +64,7 @@ new_gmenu (WINDOW *parent, int h, int w, int y, int x) {
 
 /* Render actual menu item */
 static void
-draw_menu_item (GMenu *menu, char *s, int x, int y, int w, int checked,
-                GColors *(*func) (void)) {
+draw_menu_item (GMenu *menu, char *s, int x, int y, int w, int checked, GColors *(*func) (void)) {
   char check, *lbl = NULL;
 
   if (menu->selectable) {
