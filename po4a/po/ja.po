@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2025-03-10 14:19+0900\n"
-"PO-Revision-Date: 2023-12-12 21:51+0900\n"
+"PO-Revision-Date: 2025-03-10 14:26+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -27,10 +27,9 @@ msgstr "goaccess"
 
 #. type: TH
 #: ../goaccess.1:1
-#, fuzzy, no-wrap
-#| msgid "MARCH 2023"
+#, no-wrap
 msgid "MAY 2024"
-msgstr "2023年3月"
+msgstr "2024年5月"
 
 #. type: TH
 #: ../goaccess.1:1
@@ -810,20 +809,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:249
-#, fuzzy, no-wrap
-#| msgid ""
-#| "  COMBINED     - Combined Log Format,\n"
-#| "  VCOMBINED    - Combined Log Format with Virtual Host,\n"
-#| "  COMMON       - Common Log Format,\n"
-#| "  VCOMMON      - Common Log Format with Virtual Host,\n"
-#| "  W3C          - W3C Extended Log File Format,\n"
-#| "  SQUID        - Native Squid Log Format,\n"
-#| "  CLOUDFRONT   - Amazon CloudFront Web Distribution,\n"
-#| "  CLOUDSTORAGE - Google Cloud Storage,\n"
-#| "  AWSELB       - Amazon Elastic Load Balancing,\n"
-#| "  AWSS3        - Amazon Simple Storage Service (S3)\n"
-#| "  AWSALB       - Amazon Application Load Balancer\n"
-#| "  CADDY        - Caddy's JSON Structured format\n"
+#, no-wrap
 msgid ""
 "  COMBINED     - Combined Log Format,\n"
 "  VCOMBINED    - Combined Log Format with Virtual Host,\n"
@@ -850,7 +836,8 @@ msgstr ""
 "  AWSELB       - Amazon Elastic Load Balancing\n"
 "  AWSS3        - Amazon Simple Storage Service (S3)\n"
 "  AWSALB       - Amazon Application Load Balancer\n"
-"  CADDY        - CaddyのJSON Structured format\n"
+"  CADDY        - CaddyのJSON構造形式（local/info形式）\n"
+"  TRAEFIKCLF   - TraefikのCLFフレーバー\n"
 
 #. type: Plain text
 #: ../goaccess.1:253
@@ -1781,17 +1768,14 @@ msgstr "B<-e --exclude-ip=E<lt>IPまたはIPの範囲E<gt>>"
 
 #. type: Plain text
 #: ../goaccess.1:559
-#, fuzzy
-#| msgid ""
-#| "Exclude an IPv4 or IPv6 from being counted.  Ranges can be included as "
-#| "well using a dash in between the IPs (start-end)."
 msgid ""
 "Exclude an IPv4 or IPv6 from being counted. Applicable solely during access "
 "log data processing, it does not exclude persisted data.  Ranges can be "
 "included as well using a dash in between the IPs (start-end)."
 msgstr ""
-"IPv4やIPv6の計上対象から除外します。\n"
-"範囲についてはIPの間にダッシュを使う（開始-終了）ことで含められます。"
+"IPv4やIPv6を計上の対象から除外します。\n"
+"アクセスログのデータ処理中でのみ適用でき、永続化されたデータは除外されません。\n"
+"範囲についても、IPの間にダッシュを使う（開始-終了）ことで含められます。"
 
 #. type: Plain text
 #: ../goaccess.1:565
@@ -1811,10 +1795,9 @@ msgstr ""
 
 #. type: TP
 #: ../goaccess.1:565
-#, fuzzy, no-wrap
-#| msgid "B<-S --log-size=E<lt>bytesE<gt>>"
+#, no-wrap
 msgid "B<-j --jobs=E<lt>1-6E<gt>>"
-msgstr "B<-S --log-size=E<lt>バイト数E<gt>>"
+msgstr "B<-j --jobs=E<lt>1-6E<gt>>"
 
 #. type: Plain text
 #: ../goaccess.1:572
@@ -1970,10 +1953,9 @@ msgstr ""
 
 #. type: TP
 #: ../goaccess.1:615
-#, fuzzy, no-wrap
-#| msgid "B<--color-scheme=E<lt>1|2|3E<gt>>"
+#, no-wrap
 msgid "B<--chunk-size=E<lt>256-32768E<gt>>"
-msgstr "B<--color-scheme=E<lt>1|2|3E<gt>>"
+msgstr "B<--chunk-size=E<lt>256-32768E<gt>>"
 
 #. type: Plain text
 #: ../goaccess.1:623
@@ -3219,10 +3201,9 @@ msgstr "指定子"
 
 #. type: tbl table
 #: ../goaccess.1:1017
-#, fuzzy, no-wrap
-#| msgid "B<\\[dq]192.1.2.3,>\\~192.68.33.17,\\~192.1.1.2\\[dq]"
+#, no-wrap
 msgid "B<\\[dq]192.1.2.3,>\\ 192.68.33.17,\\ 192.1.1.2\\[dq]"
-msgstr "B<\\[dq]192.1.2.3,>\\~192.68.33.17,\\~192.1.1.2\\[dq]"
+msgstr "B<\\[dq]192.1.2.3,>\\ 192.68.33.17,\\ 192.1.1.2\\[dq]"
 
 #. type: tbl table
 #: ../goaccess.1:1017
@@ -3232,10 +3213,9 @@ msgstr "\\[dq]~h{, }\\[dq]"
 
 #. type: tbl table
 #: ../goaccess.1:1020
-#, fuzzy, no-wrap
-#| msgid "B<\\[dq]192.1.2.12\\[dq],\\~\\[dq]192.68.33.17\\[dq]>"
+#, no-wrap
 msgid "B<\\[dq]192.1.2.12\\[dq],\\ \\[dq]192.68.33.17\\[dq]>"
-msgstr "B<\\[dq]192.1.2.12\\[dq],\\~\\[dq]192.68.33.17\\[dq]>"
+msgstr "B<\\[dq]192.1.2.12\\[dq],\\ \\[dq]192.68.33.17\\[dq]>"
 
 #. type: tbl table
 #: ../goaccess.1:1020
@@ -3245,10 +3225,9 @@ msgstr "~h{\\[dq], }"
 
 #. type: tbl table
 #: ../goaccess.1:1023
-#, fuzzy, no-wrap
-#| msgid "B<192.1.2.12,\\~192.68.33.17>"
+#, no-wrap
 msgid "B<192.1.2.12,\\ 192.68.33.17>"
-msgstr "B<192.1.2.12,\\~192.68.33.17>"
+msgstr "B<192.1.2.12,\\ 192.68.33.17>"
 
 #. type: tbl table
 #: ../goaccess.1:1023
@@ -3258,10 +3237,9 @@ msgstr "~h{, }"
 
 #. type: tbl table
 #: ../goaccess.1:1026
-#, fuzzy, no-wrap
-#| msgid "B<192.1.2.14\\~192.68.33.17\\~192.1.1.2>"
+#, no-wrap
 msgid "B<192.1.2.14\\ 192.68.33.17\\ 192.1.1.2>"
-msgstr "B<192.1.2.14\\~192.68.33.17\\~192.1.1.2>"
+msgstr "B<192.1.2.14\\ 192.68.33.17\\ 192.1.1.2>"
 
 #. type: tbl table
 #: ../goaccess.1:1026

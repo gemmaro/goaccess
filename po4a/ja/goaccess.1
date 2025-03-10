@@ -3,7 +3,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH goaccess 1 "MAY 2024" GNU+Linux 利用者の手引
+.TH goaccess 1 2024年5月 GNU+Linux 利用者の手引
 .SH 名称
 goaccess \- 高速なwebログ解析器と対話的な閲覧器
 .SH 処方
@@ -209,19 +209,19 @@ GoAccessでは、
 別の変数に別の定義済みの名前を、
 というように扱うこともできます。
 .IP
-  COMBINED     \- Combined Log Format,
-  VCOMBINED    \- Combined Log Format with Virtual Host,
-  COMMON       \- Common Log Format,
-  VCOMMON      \- Common Log Format with Virtual Host,
-  W3C          \- W3C Extended Log File Format,
-  SQUID        \- Native Squid Log Format,
-  CLOUDFRONT   \- Amazon CloudFront Web Distribution,
-  CLOUDSTORAGE \- Google Cloud Storage,
-  AWSELB       \- Amazon Elastic Load Balancing,
+  COMBINED     \- Combined Log Format
+  VCOMBINED    \- 仮想ホスト付きCombined Log Format
+  COMMON       \- Common Log Format
+  VCOMMON      \- 仮想ホスト付きCommon Log Format
+  W3C          \- W3C Extended Log File Format
+  SQUID        \- Native Squid Log Format
+  CLOUDFRONT   \- Amazon CloudFront Web Distribution
+  CLOUDSTORAGE \- Google Cloud Storage
+  AWSELB       \- Amazon Elastic Load Balancing
   AWSS3        \- Amazon Simple Storage Service (S3)
   AWSALB       \- Amazon Application Load Balancer
-  CADDY        \- Caddy's JSON Structured format (local/info format)
-  TRAEFIKCLF   \- Traefik's CLF flavor
+  CADDY        \- CaddyのJSON構造形式（local/info形式）
+  TRAEFIKCLF   \- TraefikのCLFフレーバー
 .IP
 \fINote:\fP Generally, you need quotes around values that include white spaces,
 commas, pipes, quotes, and/or brackets. Inner quotes must be escaped.
@@ -501,9 +501,9 @@ report.htmlファイルと同じディレクトリに2つの分離されたフ�
 HTMLないしJSON出力におけるIPリゾルバを有効にします。
 .TP 
 \fB\-e \-\-exclude\-ip=<IPまたはIPの範囲>\fP
-Exclude an IPv4 or IPv6 from being counted. Applicable solely during access
-log data processing, it does not exclude persisted data.  Ranges can be
-included as well using a dash in between the IPs (start\-end).
+IPv4やIPv6を計上の対象から除外します。
+アクセスログのデータ処理中でのみ適用でき、永続化されたデータは除外されません。
+範囲についても、IPの間にダッシュを使う（開始\-終了）ことで含められます。
 .IP
 \fI例：\fP
   exclude\-ip 127.0.0.1
