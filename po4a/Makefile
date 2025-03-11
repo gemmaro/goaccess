@@ -8,7 +8,7 @@ STYLE	:= https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 #   so file task .po4a-version cannot be used here.
 #   Command task record-po4a-version always run,
 #   so current user's po4a version is tracked.
-all: $(MAN) $(HTML)
+all: $(MAN) $(HTML) ja/README.html
 .PHONY: all
 
 clean:
@@ -31,3 +31,8 @@ record-po4a-version:
 
 $(HTML): ja/goaccess.1
 	mandoc -Thtml -O toc -O style='$(STYLE)' $< > $@
+
+ja/README.html: ja/README.md
+	echo "<!doctype html><head><meta charset='UTF-8'></head><body>" > $@
+	cmark-gfm < $< >> $@
+	echo "</body></html>" >> $@
