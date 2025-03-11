@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2025-03-11 08:49+0900\n"
-"PO-Revision-Date: 2025-03-11 09:44+0900\n"
+"PO-Revision-Date: 2025-03-11 10:05+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -844,7 +844,7 @@ msgstr ""
 msgid ""
 "I<Note:> Generally, you need quotes around values that include white spaces, "
 "commas, pipes, quotes, and/or brackets. Inner quotes must be escaped."
-msgstr ""
+msgstr "I<補足：>一般に、空白文字、コンマ、パイプ、引用符、中括弧を含む値は、引用符で囲む必要があります。内部の引用符はエスケープしなければなりません。"
 
 #. type: Plain text
 #: ../goaccess.1:258 ../goaccess.1:1096
@@ -863,7 +863,7 @@ msgid ""
 "I<Note:> The default GoAccess format for CADDY is the 'local/info' format. "
 "Nevertheless, if needed, you have the option to utilize a custom GoAccess "
 "log format to match your particular configuration."
-msgstr ""
+msgstr "I<補足：>GoAccessでの既定のCADDYの形式は、「local/info」形式です。それでも、必要であれば、独自のGoAccessのログ形式を活用して、特定の構成に合致するようにする選択肢があります。"
 
 #. type: SS
 #: ../goaccess.1:263
@@ -1809,7 +1809,7 @@ msgid ""
 "simultaneously. It defaults to 1 thread. It's common to set the number of "
 "jobs based on the available hardware resources, such as the number of CPU "
 "cores."
-msgstr ""
+msgstr "これは、プログラムの実行時に使われる並列処理スレッド数を指定します。ログデータを解析するときの並行性の度合いを決定し、複数の作業を同時に並列処理することができるようになります。既定では1スレッドです。利用できるハードウェア資源に基づいてジョブ数を設定するのが一般的です。例えば、CPUコア数です。"
 
 #. type: TP
 #: ../goaccess.1:572
@@ -1950,7 +1950,7 @@ msgstr ""
 #. type: Plain text
 #: ../goaccess.1:615
 msgid "I<Note:> This deactivates -a."
-msgstr ""
+msgstr "I<補足：>これは -a を非活性にします。"
 
 #. type: TP
 #: ../goaccess.1:615
@@ -1967,7 +1967,7 @@ msgid ""
 "value of chunk-size affects the efficiency of the parallel processing and "
 "can be adjusted based on factors such as system resources and the "
 "characteristics of the input data."
-msgstr ""
+msgstr "これは、チャンクを構成する行数を決定します。この引数は各スレッドで平行して処理されるデータの大きさに影響し、ファイルの読込と処理のタスクの並列化が可能になります。チャンクの大きさの値は、並列処理の効率性に影響し、システム資源や入力データの特性のような要因に基づいて調整できます。"
 
 #. type: Plain text
 #: ../goaccess.1:629
@@ -1976,7 +1976,7 @@ msgid ""
 "processing. For instance, if each chunk contains a very small number of "
 "lines, the overhead of managing and coordinating parallel processing might "
 "outweigh the benefits."
-msgstr ""
+msgstr "低い値：チャンクの大きさが低すぎる値に設定されると、非効率な処理となる可能性があります。例えば、各チャンクにごく小数の行が含まれているとき、並列処理の管理と協調に掛かるオーバーヘッドがその利点を打ち消す可能性があります。"
 
 #. type: Plain text
 #: ../goaccess.1:636
@@ -1986,7 +1986,7 @@ msgid ""
 "processes in parallel. Setting chunk-size to an excessively large value "
 "might cause memory issues, particularly if there are many parallel threads "
 "running simultaneously."
-msgstr ""
+msgstr "大きな値：逆に、チャンクの大きさが高すぎに設定されると、資源の枯渇に繋がりかねません。各チャンクはデータの一部を表し、それをスレッドが平行に処理します。チャンクの大きさを著しく大きい値に設定すると、メモリの問題を引き起こす可能性があります。とりわけ、同時に多くの並列スレッドが走っている場合がそうです。"
 
 #. type: TP
 #: ../goaccess.1:636
@@ -4215,6 +4215,8 @@ msgid ""
 "GoAccess [![C build](https://github.com/allinurl/goaccess/actions/workflows/build-test.yml/badge.svg)](https://github.com/allinurl/goaccess/actions/workflows/build-test.yml) [![GoAccess](https://goaccess.io/badge)](https://goaccess.io)\n"
 "========\n"
 msgstr ""
+"GoAccess [![Cのビルド](https://github.com/allinurl/goaccess/actions/workflows/build-test.yml/badge.svg)](https://github.com/allinurl/goaccess/actions/workflows/build-test.yml) [![GoAccess](https://goaccess.io/badge)](https://goaccess.io)\n"
+"========\n"
 
 #. type: Title ##
 #: ../README.md:4

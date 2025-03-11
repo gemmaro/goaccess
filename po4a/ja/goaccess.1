@@ -223,14 +223,11 @@ GoAccessでは、
   CADDY        \- CaddyのJSON構造形式（local/info形式）
   TRAEFIKCLF   \- TraefikのCLFフレーバー
 .IP
-\fINote:\fP Generally, you need quotes around values that include white spaces,
-commas, pipes, quotes, and/or brackets. Inner quotes must be escaped.
+\fI補足：\fP一般に、空白文字、コンマ、パイプ、引用符、中括弧を含む値は、引用符で囲む必要があります。内部の引用符はエスケープしなければなりません。
 .IP
 \fI補足：\fPデータをGoAccessにパイプで流し込むときはログ、日付、時刻設定ダイアログは質問されないので、予め設定ファイルかコマンドラインで定義しておく必要があります。
 .IP
-\fINote:\fP The default GoAccess format for CADDY is the 'local/info'
-format. Nevertheless, if needed, you have the option to utilize a custom
-GoAccess log format to match your particular configuration.
+\fI補足：\fPGoAccessでの既定のCADDYの形式は、「local/info」形式です。それでも、必要であれば、独自のGoAccessのログ形式を活用して、特定の構成に合致するようにする選択肢があります。
 .SS 利用者用対話的オプション
 .TP 
 \fB\-c \-\-config\-dialog\fP
@@ -512,12 +509,7 @@ IPv4やIPv6を計上の対象から除外します。
   exclude\-ip 0:0:0:0:0:ffff:808:804\-0:0:0:0:0:ffff:808:808
 .TP 
 \fB\-j \-\-jobs=<1\-6>\fP
-This specifies the number of parallel processing threads to be used during
-the execution of the program. It determines the degree of concurrency when
-analyzing log data, allowing for parallel processing of multiple tasks
-simultaneously. It defaults to 1 thread. It's common to set the number of
-jobs based on the available hardware resources, such as the number of CPU
-cores.
+これは、プログラムの実行時に使われる並列処理スレッド数を指定します。ログデータを解析するときの並行性の度合いを決定し、複数の作業を同時に並列処理することができるようになります。既定では1スレッドです。利用できるハードウェア資源に基づいてジョブ数を設定するのが一般的です。例えば、CPUコア数です。
 .TP 
 \fB\-H \-\-http\-protocol=<yes|no>\fP
 HTTPリクエストのプロトコルを設定したり外したりします。
@@ -556,28 +548,16 @@ IP匿名化オプションはIPv4利用者IPアドレスの末尾オクテット
 例：192.168.20.100 => 192.168.20.0
 例：2a03:2880:2110:df07:face:b00c::1 => 2a03:2880:2110:df07::
 .IP
-\fINote:\fP This deactivates \-a.
+\fI補足：\fPこれは \-a を非活性にします。
 .TP 
 \fB\-\-chunk\-size=<256\-32768>\fP
-This determines the number of lines that form a chunk. This parameter
-influences the size of the data processed concurrently by each thread,
-allowing for parallelization of the file reading and processing tasks. The
-value of chunk\-size affects the efficiency of the parallel processing and
-can be adjusted based on factors such as system resources and the
-characteristics of the input data.
+これは、チャンクを構成する行数を決定します。この引数は各スレッドで平行して処理されるデータの大きさに影響し、ファイルの読込と処理のタスクの並列化が可能になります。チャンクの大きさの値は、並列処理の効率性に影響し、システム資源や入力データの特性のような要因に基づいて調整できます。
 
 .IP
-Low Values: If chunk\-size is set too low, it might result in inefficient
-processing. For instance, if each chunk contains a very small number of
-lines, the overhead of managing and coordinating parallel processing might
-outweigh the benefits.
+低い値：チャンクの大きさが低すぎる値に設定されると、非効率な処理となる可能性があります。例えば、各チャンクにごく小数の行が含まれているとき、並列処理の管理と協調に掛かるオーバーヘッドがその利点を打ち消す可能性があります。
 
 .IP
-Large Values: Conversely, if chunk\-size is set too high, it could lead to
-resource exhaustion. Each chunk represents a portion of data that a thread
-processes in parallel. Setting chunk\-size to an excessively large value
-might cause memory issues, particularly if there are many parallel threads
-running simultaneously.
+大きな値：逆に、チャンクの大きさが高すぎに設定されると、資源の枯渇に繋がりかねません。各チャンクはデータの一部を表し、それをスレッドが平行に処理します。チャンクの大きさを著しく大きい値に設定すると、メモリの問題を引き起こす可能性があります。とりわけ、同時に多くの並列スレッドが走っている場合がそうです。
 .TP 
 \fB\-\-anonymize\-level\fP
 匿名化水準を指定します。
