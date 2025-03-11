@@ -1,7 +1,7 @@
 GoAccess [![Cのビルド](https://github.com/allinurl/goaccess/actions/workflows/build-test.yml/badge.svg)](https://github.com/allinurl/goaccess/actions/workflows/build-test.yml) [![GoAccess](https://goaccess.io/badge)](https://goaccess.io)
 ========
 
-## What is it? ##
+## GoAccessとは ##
 GoAccess is an open source **real-time web log analyzer** and interactive
 viewer that runs in a **terminal** on &ast;nix systems or through your
 **browser**. It provides **fast** and valuable HTTP statistics for system
@@ -13,7 +13,7 @@ Dashboard](https://goaccess.io/images/goaccess-real-time-term-gh.png?2022011901)
 [![GoAccess HTML
 Dashboard](https://goaccess.io/images/goaccess-real-time-html-gh.png?202201190)](https://rt.goaccess.io/?src=gh)
 
-## Features ##
+## 機能 ##
 GoAccessは指定されたwebログファイルを解析しX端末にデータを出力します。
 含まれている機能は以下です：
 
@@ -65,7 +65,7 @@ GoAccessは指定されたwebログファイルを解析しX端末にデータ�
   There is also documentation how to use
   [docker-compose](./docker-compose/README.md).
 
-### Nearly all web log formats... ###
+### ほぼ全てのウェブのログ形式がここに…… ###
 GoAccessでは、任意の独自ログ形式の文字列を処理できます。以下の定義済みオプションが含まれていますが、これに限りません。
 
 * Amazon CloudFront (Download Distribution).
@@ -80,7 +80,7 @@ GoAccessでは、任意の独自ログ形式の文字列を処理できます。
 * Caddy's JSON Structured format.
 * Traefik's CLF flavor
 
-## Why GoAccess? ##
+## なぜGoAccessなのか ##
 GoAccess was designed to be a fast, terminal-based log analyzer. Its core
 idea is to quickly analyze and view web server statistics in real time
 without needing to use your browser (_great if you want to do a quick
@@ -95,9 +95,9 @@ generate a complete, self-contained, real-time
 
 You can see it more of a monitor command tool than anything else.
 
-## Installation ##
+## インストール ##
 
-### Build from release
+### リリースからのビルド
 
 GoAccess can be compiled and used on *nix systems.
 
@@ -110,7 +110,7 @@ Download, extract and compile GoAccess with:
     $ make
     # make install
 
-### Build from GitHub (Development) ###
+### GitHubからのビルド（開発版） ###
 
     $ git clone https://github.com/allinurl/goaccess.git
     $ cd goaccess
@@ -119,7 +119,7 @@ Download, extract and compile GoAccess with:
     $ make
     # make install
 
-### Distributions ###
+### 配布物 ###
 
 It is easiest to install GoAccess on GNU+Linux using the preferred package
 manager of your GNU+Linux distribution. Please note that not all
@@ -133,7 +133,7 @@ distributions will have the latest version of GoAccess available.
 make sure that you're running the latest stable version of GoAccess see
 alternative option below.
 
-#### Official GoAccess Debian & Ubuntu repository ####
+#### 公式のGoAccessのDebianとUbuntuのリポジトリ ####
 
     $ wget -O - https://deb.goaccess.io/gnugpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/goaccess.gpg >/dev/null
     $ echo "deb [signed-by=/usr/share/keyrings/goaccess.gpg arch=$(dpkg --print-architecture)] https://deb.goaccess.io/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/goaccess.list
@@ -188,7 +188,7 @@ GoAccess can be used in Windows through Cygwin. See Cygwin's <a
 href="https://goaccess.io/faq#installation">packages</a>.  Or through the
 GNU+Linux Subsystem on Windows 10.
 
-#### Distribution Packages ####
+#### 配布パッケージ ####
 
 GoAccess has minimal requirements, it's written in C and requires only
 ncurses.  However, below is a table of some optional dependencies in some
@@ -222,7 +222,7 @@ OR real-time
 There is also documentation how to use
 [docker-compose](./docker-compose/README.md).
 
-##### Build in isolated container
+##### 隔離されたコンテナでのビルド
 
 You can also build the binary for Debian based systems in an isolated
 container environment to prevent cluttering your local system with the
@@ -235,20 +235,20 @@ development libraries:
 You can read more about using the docker image in
 [DOCKER.md](https://github.com/allinurl/goaccess/blob/master/DOCKER.md).
 
-## Storage ##
+## 保存領域 ##
 
 #### 既定のハッシュテーブル ####
 
 インメモリ容量により、データセットの大きさと利用できる物理記憶領域の容量に制限するコストと引き換えに、より良い効率性がもたらされます。GoAccessではインメモリのハッシュテーブルが使われています。適度なメモリ使用で、かなり良い効率性があります。この保存領域には、ディスク上の永続化の対応もされています。
 
-## Command Line / Config Options ##
+## コマンドラインと構成オプション ##
 コマンドに与えたり、構成ファイルで指定したりできる[**オプション**](https://goaccess.io/man#options)をご参照ください。構成ファイルで指定するときは、長いオプションは前に
 `--` を付けずに使う必要があります。
 
-## Usage / Examples ##
+## 使い方と例 ##
 **補足**：GoAccessにデータをパイプで流し込むときは、ログ、日付、時刻の構成ダイアログは尋ねられません。構成ファイルかコマンドラインで予め定義する必要があります。
 
-### Getting Started ###
+### 初めの一歩 ###
 
 端末に出力して対話的なレポートを生成するには以下のようにします。
 
@@ -283,7 +283,7 @@ GoAccessは実時間の絞り込みと解析を行う上で、
     # tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess -o report.html --real-time-html -
 
 
-### Multiple Log files ###
+### 複数のログファイル ###
 
 GoAccessで複数のログを解析するにはいくつかの方法があります。
 最も単純なのはコマンドラインに複数のログファイルを渡すことです。
@@ -303,7 +303,7 @@ GoAccessにもっと柔軟性を持たせたければ、`zcat
 
 _補足_ ：Mac OS Xでは、`zcat`の代わりに`gunzip -c`を使ってください。
 
-### Multi-thread Support ###
+### 複数スレッドへの対応 ###
 
 Use `--jobs=<count>` (or `-j`) to enable multi-thread parsing. For example:
 
@@ -341,9 +341,9 @@ To view the report you can navigate to `http://your_site/report.html`.
 
 **補足**：TLS/SSL接続越しに実時間データを出力するには、`--ssl-cert=<証明書.crt>`と`--ssl-key=<秘密鍵.key>`を使う必要があります。
 
-### Filtering ###
+### 絞り込み ###
 
-#### Working with dates ####
+#### 日付の扱い ####
 
 別のパイプの有用な点はwebのログから日付で絞り込むことでしょう。
 
@@ -383,7 +383,7 @@ To do the same, but also use real-time filtering and parsing:
 
     # grep -v "`cat exclude_vhost_list_file`" vhost_access.log | goaccess -
 
-#### Files, status codes and bots ####
+#### ファイル、状態コード、ボット ####
 
 要求のうち、ページの閲覧、`html`、`htm`、`php`などの、特定のページを解析するには、以下のようにします。
 
@@ -407,7 +407,7 @@ your server:
 
     # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -
 
-### Tips ###
+### コツ ###
 
 また、GoAccessを低い優先度で走らせたければ次のようにできることは書いておいたほうがよいでしょう。
 
@@ -419,7 +419,7 @@ your server:
 
 **補足：**GoAccessが標準入力を読めるようにするため、SSHには`-n`が必要です。また、パスフレーズが必要なときはうまく機能しないため、必ず認証のためのSSHキーを使ってください。
 
-#### Troubleshooting ####
+#### 困ったときは ####
 
 We receive many questions and issues that have been answered previously.
 
@@ -436,7 +436,7 @@ We receive many questions and issues that have been answered previously.
   processing](https://github.com/allinurl/goaccess/issues?q=is%3Aissue+is%3Aclosed+label%3Alog-processing)
 
 
-#### Incremental log processing ####
+#### 漸進的なログ処理 ####
 
 GoAccessには内部的な容量を通じて漸進的にログを処理してディスクにデータを吐き出す能力があります。
 これは以下のように動作します。
@@ -452,7 +452,7 @@ GoAccessでは処理される全てのファイルのinodeが追跡されてい�
 
 パイプで流し込まれたデータは、読み込まれた最後の行の時間記録に基づいて扱われます。例えば、解析の際、保存された時間記録より新しいものが見つかるまで、全ての入ってくる項目は無視されます。
 
-##### Examples #####
+##### 例 #####
 
     // 先月のアクセスログ
     # goaccess access.log.1 --persist
@@ -466,7 +466,7 @@ GoAccessでは処理される全てのファイルのinodeが追跡されてい�
 
     # goaccess --restore
 
-## Contributing ##
+## 貢献 ##
 
 Any help on GoAccess is welcome. The most helpful way is to try it out and
 give feedback. Feel free to use the GitHub issue tracker and pull requests
@@ -479,4 +479,4 @@ GitHub or using the visual interface
 [![translation
 badge](https://inlang.com/badge?url=github.com/allinurl/goaccess)](https://inlang.com/editor/github.com/allinurl/goaccess?ref=badge)
 
-Enjoy!
+お楽しみください！

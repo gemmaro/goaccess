@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2025-03-11 08:49+0900\n"
-"PO-Revision-Date: 2025-03-11 10:05+0900\n"
+"PO-Revision-Date: 2025-03-11 10:14+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -4222,7 +4222,7 @@ msgstr ""
 #: ../README.md:4
 #, no-wrap
 msgid "What is it?"
-msgstr ""
+msgstr "GoAccessとは"
 
 #. type: Plain text
 #: ../README.md:10
@@ -4247,7 +4247,7 @@ msgstr ""
 #: ../README.md:14
 #, no-wrap
 msgid "Features"
-msgstr ""
+msgstr "機能"
 
 #. type: Bullet: '* '
 #: ../README.md:21
@@ -4349,7 +4349,7 @@ msgstr ""
 #: ../README.md:68
 #, no-wrap
 msgid "Nearly all web log formats..."
-msgstr ""
+msgstr "ほぼ全てのウェブのログ形式がここに……"
 
 #. type: Plain text
 #: ../README.md:71
@@ -4417,7 +4417,7 @@ msgstr ""
 #: ../README.md:84
 #, no-wrap
 msgid "Why GoAccess?"
-msgstr ""
+msgstr "なぜGoAccessなのか"
 
 #. type: Plain text
 #: ../README.md:89
@@ -4448,13 +4448,13 @@ msgstr ""
 #: ../README.md:97
 #, no-wrap
 msgid "Installation"
-msgstr ""
+msgstr "インストール"
 
 #. type: Title ###
 #: ../README.md:99
 #, no-wrap
 msgid "Build from release"
-msgstr ""
+msgstr "リリースからのビルド"
 
 #. type: Plain text
 #: ../README.md:102
@@ -4482,7 +4482,7 @@ msgstr ""
 #: ../README.md:112
 #, no-wrap
 msgid "Build from GitHub (Development)"
-msgstr ""
+msgstr "GitHubからのビルド（開発版）"
 
 #. type: Plain text
 #: ../README.md:120
@@ -4500,7 +4500,7 @@ msgstr ""
 #: ../README.md:121
 #, no-wrap
 msgid "Distributions"
-msgstr ""
+msgstr "配布物"
 
 #. type: Plain text
 #: ../README.md:126
@@ -4514,7 +4514,7 @@ msgstr ""
 #: ../README.md:127
 #, no-wrap
 msgid "Debian/Ubuntu"
-msgstr ""
+msgstr "Debian/Ubuntu"
 
 #. type: Plain text
 #: ../README.md:130
@@ -4535,7 +4535,7 @@ msgstr ""
 #: ../README.md:135
 #, no-wrap
 msgid "Official GoAccess Debian & Ubuntu repository"
-msgstr ""
+msgstr "公式のGoAccessのDebianとUbuntuのリポジトリ"
 
 #. type: Plain text
 #: ../README.md:141
@@ -4559,7 +4559,7 @@ msgstr ""
 #: ../README.md:145
 #, no-wrap
 msgid "Fedora"
-msgstr ""
+msgstr "Fedora"
 
 #. type: Plain text
 #: ../README.md:148
@@ -4571,7 +4571,7 @@ msgstr ""
 #: ../README.md:149
 #, no-wrap
 msgid "Arch"
-msgstr ""
+msgstr "Arch"
 
 #. type: Plain text
 #: ../README.md:152
@@ -4583,7 +4583,7 @@ msgstr ""
 #: ../README.md:153
 #, no-wrap
 msgid "Gentoo"
-msgstr ""
+msgstr "Gentoo"
 
 #. type: Plain text
 #: ../README.md:156
@@ -4595,7 +4595,7 @@ msgstr ""
 #: ../README.md:157
 #, no-wrap
 msgid "OS X / Homebrew"
-msgstr ""
+msgstr "OS X / Homebrew"
 
 #. type: Plain text
 #: ../README.md:160
@@ -4607,7 +4607,7 @@ msgstr ""
 #: ../README.md:161
 #, no-wrap
 msgid "FreeBSD"
-msgstr ""
+msgstr "FreeBSD"
 
 #. type: Plain text
 #: ../README.md:165
@@ -4621,7 +4621,7 @@ msgstr ""
 #: ../README.md:166
 #, no-wrap
 msgid "OpenBSD"
-msgstr ""
+msgstr "OpenBSD"
 
 #. type: Plain text
 #: ../README.md:170
@@ -4635,7 +4635,7 @@ msgstr ""
 #: ../README.md:171
 #, no-wrap
 msgid "openSUSE"
-msgstr ""
+msgstr "openSUSE"
 
 #. type: Plain text
 #: ../README.md:175
@@ -4649,31 +4649,31 @@ msgstr ""
 #: ../README.md:176
 #, no-wrap
 msgid "OpenIndiana"
-msgstr ""
+msgstr "OpenIndiana"
 
 #. type: Plain text
 #: ../README.md:179
 #, no-wrap
 msgid "    # pkg install goaccess\n"
-msgstr ""
+msgstr "    # pkg install goaccess\n"
 
 #. type: Title ####
 #: ../README.md:180
 #, no-wrap
 msgid "pkgsrc (NetBSD, Solaris, SmartOS, ...)"
-msgstr ""
+msgstr "pkgsrc (NetBSD, Solaris, SmartOS, ...)"
 
 #. type: Plain text
 #: ../README.md:183
 #, no-wrap
 msgid "    # pkgin install goaccess\n"
-msgstr ""
+msgstr "    # pkgin install goaccess\n"
 
 #. type: Title ####
 #: ../README.md:184
 #, no-wrap
 msgid "Windows"
-msgstr ""
+msgstr "Windows"
 
 #. type: Plain text
 #: ../README.md:189
@@ -4688,7 +4688,7 @@ msgstr ""
 #: ../README.md:190
 #, no-wrap
 msgid "Distribution Packages"
-msgstr ""
+msgstr "配布パッケージ"
 
 #. type: Plain text
 #: ../README.md:195
@@ -4724,7 +4724,7 @@ msgstr ""
 #: ../README.md:208
 #, no-wrap
 msgid "Docker"
-msgstr ""
+msgstr "Docker"
 
 #. type: Plain text
 #: ../README.md:211
@@ -4764,7 +4764,7 @@ msgstr ""
 #: ../README.md:221
 #, no-wrap
 msgid "Build in isolated container"
-msgstr ""
+msgstr "隔離されたコンテナでのビルド"
 
 #. type: Plain text
 #: ../README.md:224
@@ -4782,6 +4782,9 @@ msgid ""
 "    $ docker build -t goaccess/build.debian-12 -f Dockerfile.debian-12 .\n"
 "    $ docker run -i --rm -v $PWD:/goaccess goaccess/build.debian-12 > goaccess\n"
 msgstr ""
+"    $ curl -L \"https://github.com/allinurl/goaccess/archive/refs/heads/master.tar.gz\" | tar -xz && cd goaccess-master\n"
+"    $ docker build -t goaccess/build.debian-12 -f Dockerfile.debian-12 .\n"
+"    $ docker run -i --rm -v $PWD:/goaccess goaccess/build.debian-12 > goaccess\n"
 
 #. type: Plain text
 #: ../README.md:230
@@ -4794,7 +4797,7 @@ msgstr ""
 #: ../README.md:231
 #, no-wrap
 msgid "Storage"
-msgstr ""
+msgstr "保存領域"
 
 #. type: Plain text
 #: ../README.md:239
@@ -4809,7 +4812,7 @@ msgstr "インメモリ容量により、データセットの大きさと利用
 #: ../README.md:240
 #, no-wrap
 msgid "Command Line / Config Options"
-msgstr ""
+msgstr "コマンドラインと構成オプション"
 
 #. type: Plain text
 #: ../README.md:244
@@ -4823,7 +4826,7 @@ msgstr "コマンドに与えたり、構成ファイルで指定したりでき
 #: ../README.md:245
 #, no-wrap
 msgid "Usage / Examples"
-msgstr ""
+msgstr "使い方と例"
 
 #. type: Plain text
 #: ../README.md:249
@@ -4838,7 +4841,7 @@ msgstr "**補足**：GoAccessにデータをパイプで流し込むときは、
 #: ../README.md:250
 #, no-wrap
 msgid "Getting Started"
-msgstr ""
+msgstr "初めの一歩"
 
 #. type: Plain text
 #: ../README.md:255
@@ -4904,7 +4907,7 @@ msgstr "    # tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goa
 #: ../README.md:286
 #, no-wrap
 msgid "Multiple Log files"
-msgstr ""
+msgstr "複数のログファイル"
 
 #. type: Plain text
 #: ../README.md:292
@@ -4949,7 +4952,7 @@ msgstr "_補足_ ：Mac OS Xでは、`zcat`の代わりに`gunzip -c`を使っ�
 #: ../README.md:308
 #, no-wrap
 msgid "Multi-thread Support"
-msgstr ""
+msgstr "複数スレッドへの対応"
 
 #. type: Plain text
 #: ../README.md:311
@@ -5046,13 +5049,13 @@ msgstr "**補足**：TLS/SSL接続越しに実時間データを出力するに�
 #: ../README.md:353
 #, no-wrap
 msgid "Filtering"
-msgstr ""
+msgstr "絞り込み"
 
 #. type: Title ####
 #: ../README.md:355
 #, no-wrap
 msgid "Working with dates"
-msgstr ""
+msgstr "日付の扱い"
 
 #. type: Plain text
 #: ../README.md:361
@@ -5136,7 +5139,7 @@ msgstr "    # grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goacc
 #: ../README.md:397
 #, no-wrap
 msgid "Files, status codes and bots"
-msgstr ""
+msgstr "ファイル、状態コード、ボット"
 
 #. type: Plain text
 #: ../README.md:401
@@ -5200,7 +5203,7 @@ msgstr "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goacces
 #: ../README.md:423
 #, no-wrap
 msgid "Tips"
-msgstr ""
+msgstr "コツ"
 
 #. type: Plain text
 #: ../README.md:429
@@ -5233,7 +5236,7 @@ msgstr "**補足：**GoAccessが標準入力を読めるようにするため、
 #: ../README.md:438
 #, no-wrap
 msgid "Troubleshooting"
-msgstr ""
+msgstr "困ったときは"
 
 #. type: Plain text
 #: ../README.md:441
@@ -5277,7 +5280,7 @@ msgstr ""
 #: ../README.md:448
 #, no-wrap
 msgid "Incremental log processing"
-msgstr ""
+msgstr "漸進的なログ処理"
 
 # I<--restore>は2つ前の方に移動しました。
 #. type: Plain text
@@ -5326,7 +5329,7 @@ msgstr "パイプで流し込まれたデータは、読み込まれた最後の
 #: ../README.md:476
 #, no-wrap
 msgid "Examples"
-msgstr ""
+msgstr "例"
 
 #. type: Plain text
 #: ../README.md:480
@@ -5358,7 +5361,7 @@ msgstr "    # goaccess --restore\n"
 #: ../README.md:490
 #, no-wrap
 msgid "Contributing"
-msgstr ""
+msgstr "貢献"
 
 #. type: Plain text
 #: ../README.md:495
@@ -5386,7 +5389,7 @@ msgstr ""
 #. type: Plain text
 #: ../README.md:500
 msgid "Enjoy!"
-msgstr ""
+msgstr "お楽しみください！"
 
 #, no-wrap
 #~ msgid "SEPTEMBER 2023"
