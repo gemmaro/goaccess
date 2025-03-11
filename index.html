@@ -291,15 +291,11 @@
      TRAEFIKCLF -
     Traefik&#x306E;CLF&#x30D5;&#x30EC;&#x30FC;&#x30D0;&#x30FC;</dd>
   <dt></dt>
-  <dd><i>Note:</i> Generally, you need quotes around values that include white
-      spaces, commas, pipes, quotes, and/or brackets. Inner quotes must be
-      escaped.</dd>
+  <dd><i>&#x88DC;&#x8DB3;&#xFF1A;</i>&#x4E00;&#x822C;&#x306B;&#x3001;&#x7A7A;&#x767D;&#x6587;&#x5B57;&#x3001;&#x30B3;&#x30F3;&#x30DE;&#x3001;&#x30D1;&#x30A4;&#x30D7;&#x3001;&#x5F15;&#x7528;&#x7B26;&#x3001;&#x4E2D;&#x62EC;&#x5F27;&#x3092;&#x542B;&#x3080;&#x5024;&#x306F;&#x3001;&#x5F15;&#x7528;&#x7B26;&#x3067;&#x56F2;&#x3080;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x5185;&#x90E8;&#x306E;&#x5F15;&#x7528;&#x7B26;&#x306F;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
   <dt></dt>
   <dd><i>&#x88DC;&#x8DB3;&#xFF1A;</i>&#x30C7;&#x30FC;&#x30BF;&#x3092;GoAccess&#x306B;&#x30D1;&#x30A4;&#x30D7;&#x3067;&#x6D41;&#x3057;&#x8FBC;&#x3080;&#x3068;&#x304D;&#x306F;&#x30ED;&#x30B0;&#x3001;&#x65E5;&#x4ED8;&#x3001;&#x6642;&#x523B;&#x8A2D;&#x5B9A;&#x30C0;&#x30A4;&#x30A2;&#x30ED;&#x30B0;&#x306F;&#x8CEA;&#x554F;&#x3055;&#x308C;&#x306A;&#x3044;&#x306E;&#x3067;&#x3001;&#x4E88;&#x3081;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</dd>
   <dt></dt>
-  <dd><i>Note:</i> The default GoAccess format for CADDY is the 'local/info'
-      format. Nevertheless, if needed, you have the option to utilize a custom
-      GoAccess log format to match your particular configuration.</dd>
+  <dd><i>&#x88DC;&#x8DB3;&#xFF1A;</i>GoAccess&#x3067;&#x306E;&#x65E2;&#x5B9A;&#x306E;CADDY&#x306E;&#x5F62;&#x5F0F;&#x306F;&#x3001;&#x300C;local/info&#x300D;&#x5F62;&#x5F0F;&#x3067;&#x3059;&#x3002;&#x305D;&#x308C;&#x3067;&#x3082;&#x3001;&#x5FC5;&#x8981;&#x3067;&#x3042;&#x308C;&#x3070;&#x3001;&#x72EC;&#x81EA;&#x306E;GoAccess&#x306E;&#x30ED;&#x30B0;&#x5F62;&#x5F0F;&#x3092;&#x6D3B;&#x7528;&#x3057;&#x3066;&#x3001;&#x7279;&#x5B9A;&#x306E;&#x69CB;&#x6210;&#x306B;&#x5408;&#x81F4;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x3059;&#x308B;&#x9078;&#x629E;&#x80A2;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 </section>
 <section class="Ss">
@@ -634,12 +630,7 @@
 </dl>
 <dl class="Bl-tag">
   <dt><b>-j --jobs=&lt;1-6&gt;</b></dt>
-  <dd>This specifies the number of parallel processing threads to be used during
-      the execution of the program. It determines the degree of concurrency when
-      analyzing log data, allowing for parallel processing of multiple tasks
-      simultaneously. It defaults to 1 thread. It's common to set the number of
-      jobs based on the available hardware resources, such as the number of CPU
-      cores.</dd>
+  <dd>&#x3053;&#x308C;&#x306F;&#x3001;&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x5B9F;&#x884C;&#x6642;&#x306B;&#x4F7F;&#x308F;&#x308C;&#x308B;&#x4E26;&#x5217;&#x51E6;&#x7406;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x6570;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x30ED;&#x30B0;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x89E3;&#x6790;&#x3059;&#x308B;&#x3068;&#x304D;&#x306E;&#x4E26;&#x884C;&#x6027;&#x306E;&#x5EA6;&#x5408;&#x3044;&#x3092;&#x6C7A;&#x5B9A;&#x3057;&#x3001;&#x8907;&#x6570;&#x306E;&#x4F5C;&#x696D;&#x3092;&#x540C;&#x6642;&#x306B;&#x4E26;&#x5217;&#x51E6;&#x7406;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x3088;&#x3046;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x65E2;&#x5B9A;&#x3067;&#x306F;1&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x3067;&#x3059;&#x3002;&#x5229;&#x7528;&#x3067;&#x304D;&#x308B;&#x30CF;&#x30FC;&#x30C9;&#x30A6;&#x30A7;&#x30A2;&#x8CC7;&#x6E90;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x30B8;&#x30E7;&#x30D6;&#x6570;&#x3092;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x306E;&#x304C;&#x4E00;&#x822C;&#x7684;&#x3067;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;CPU&#x30B3;&#x30A2;&#x6570;&#x3067;&#x3059;&#x3002;</dd>
   <dt id="H"><a class="permalink" href="#H"><b>-H
     --http-protocol=&lt;yes|no&gt;</b></a></dt>
   <dd>HTTP&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x30D7;&#x30ED;&#x30C8;&#x30B3;&#x30EB;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x308A;&#x5916;&#x3057;&#x305F;&#x308A;&#x3057;&#x307E;&#x3059;&#x3002;
@@ -690,33 +681,22 @@
 </dl>
 <dl class="Bl-tag">
   <dt></dt>
-  <dd><i>Note:</i> This deactivates -a.</dd>
+  <dd><i>&#x88DC;&#x8DB3;&#xFF1A;</i>&#x3053;&#x308C;&#x306F; -a
+      &#x3092;&#x975E;&#x6D3B;&#x6027;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
   <dt id="chunk"><a class="permalink" href="#chunk"><b>--chunk-size=&lt;256-32768&gt;</b></a></dt>
-  <dd>This determines the number of lines that form a chunk. This parameter
-      influences the size of the data processed concurrently by each thread,
-      allowing for parallelization of the file reading and processing tasks. The
-      value of chunk-size affects the efficiency of the parallel processing and
-      can be adjusted based on factors such as system resources and the
-      characteristics of the input data.
+  <dd>&#x3053;&#x308C;&#x306F;&#x3001;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#x884C;&#x6570;&#x3092;&#x6C7A;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x5F15;&#x6570;&#x306F;&#x5404;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x3067;&#x5E73;&#x884C;&#x3057;&#x3066;&#x51E6;&#x7406;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5927;&#x304D;&#x3055;&#x306B;&#x5F71;&#x97FF;&#x3057;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x8FBC;&#x3068;&#x51E6;&#x7406;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x4E26;&#x5217;&#x5316;&#x304C;&#x53EF;&#x80FD;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x306E;&#x5024;&#x306F;&#x3001;&#x4E26;&#x5217;&#x51E6;&#x7406;&#x306E;&#x52B9;&#x7387;&#x6027;&#x306B;&#x5F71;&#x97FF;&#x3057;&#x3001;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x8CC7;&#x6E90;&#x3084;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x7279;&#x6027;&#x306E;&#x3088;&#x3046;&#x306A;&#x8981;&#x56E0;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x8ABF;&#x6574;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
     <p class="Pp"></p>
   </dd>
 </dl>
 <dl class="Bl-tag">
   <dt></dt>
-  <dd>Low Values: If chunk-size is set too low, it might result in inefficient
-      processing. For instance, if each chunk contains a very small number of
-      lines, the overhead of managing and coordinating parallel processing might
-      outweigh the benefits.
+  <dd>&#x4F4E;&#x3044;&#x5024;&#xFF1A;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x304C;&#x4F4E;&#x3059;&#x304E;&#x308B;&#x5024;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x975E;&#x52B9;&#x7387;&#x306A;&#x51E6;&#x7406;&#x3068;&#x306A;&#x308B;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x4F8B;&#x3048;&#x3070;&#x3001;&#x5404;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306B;&#x3054;&#x304F;&#x5C0F;&#x6570;&#x306E;&#x884C;&#x304C;&#x542B;&#x307E;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x3001;&#x4E26;&#x5217;&#x51E6;&#x7406;&#x306E;&#x7BA1;&#x7406;&#x3068;&#x5354;&#x8ABF;&#x306B;&#x639B;&#x304B;&#x308B;&#x30AA;&#x30FC;&#x30D0;&#x30FC;&#x30D8;&#x30C3;&#x30C9;&#x304C;&#x305D;&#x306E;&#x5229;&#x70B9;&#x3092;&#x6253;&#x3061;&#x6D88;&#x3059;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
     <p class="Pp"></p>
   </dd>
   <dt></dt>
-  <dd>Large Values: Conversely, if chunk-size is set too high, it could lead to
-      resource exhaustion. Each chunk represents a portion of data that a thread
-      processes in parallel. Setting chunk-size to an excessively large value
-      might cause memory issues, particularly if there are many parallel threads
-      running simultaneously.</dd>
+  <dd>&#x5927;&#x304D;&#x306A;&#x5024;&#xFF1A;&#x9006;&#x306B;&#x3001;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x304C;&#x9AD8;&#x3059;&#x304E;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x8CC7;&#x6E90;&#x306E;&#x67AF;&#x6E07;&#x306B;&#x7E4B;&#x304C;&#x308A;&#x304B;&#x306D;&#x307E;&#x305B;&#x3093;&#x3002;&#x5404;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E00;&#x90E8;&#x3092;&#x8868;&#x3057;&#x3001;&#x305D;&#x308C;&#x3092;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x304C;&#x5E73;&#x884C;&#x306B;&#x51E6;&#x7406;&#x3057;&#x307E;&#x3059;&#x3002;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x3092;&#x8457;&#x3057;&#x304F;&#x5927;&#x304D;&#x3044;&#x5024;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;&#x3001;&#x30E1;&#x30E2;&#x30EA;&#x306E;&#x554F;&#x984C;&#x3092;&#x5F15;&#x304D;&#x8D77;&#x3053;&#x3059;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x3068;&#x308A;&#x308F;&#x3051;&#x3001;&#x540C;&#x6642;&#x306B;&#x591A;&#x304F;&#x306E;&#x4E26;&#x5217;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x304C;&#x8D70;&#x3063;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x304C;&#x305D;&#x3046;&#x3067;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
   <dt id="anonymize~2"><a class="permalink" href="#anonymize~2"><b>--anonymize-level</b></a></dt>
