@@ -215,7 +215,7 @@ external environment to a Docker-based process:
     touch report.html
     cat access.log | docker run --rm -i -v ./report.html:/report.html -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED -
 
-OR real-time
+もしくは、実時間の場合は次の通りです。
 
     tail -F access.log | docker run -p 7890:7890 --rm -i -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED --real-time-html -
 
@@ -305,7 +305,7 @@ _補足_ ：Mac OS Xでは、`zcat`の代わりに`gunzip -c`を使ってくだ�
 
 ### 複数スレッドへの対応 ###
 
-Use `--jobs=<count>` (or `-j`) to enable multi-thread parsing. For example:
+`--jobs=<count>`（ないし`-j`）を使うと、複数スレッドでの解析が有効になります。例えば以下の通りです。
 
     # goaccess access.log -o report.html -j 4
 

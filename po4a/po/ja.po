@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2025-03-11 08:49+0900\n"
-"PO-Revision-Date: 2025-03-11 10:14+0900\n"
+"PO-Revision-Date: 2025-03-11 10:18+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -4477,6 +4477,12 @@ msgid ""
 "    $ make\n"
 "    # make install\n"
 msgstr ""
+"    $ wget https://tar.goaccess.io/goaccess-1.9.3.tar.gz\n"
+"    $ tar -xzvf goaccess-1.9.3.tar.gz\n"
+"    $ cd goaccess-1.9.3/\n"
+"    $ ./configure --enable-utf8 --enable-geoip=mmdb\n"
+"    $ make\n"
+"    # make install\n"
 
 #. type: Title ###
 #: ../README.md:112
@@ -4495,6 +4501,12 @@ msgid ""
 "    $ make\n"
 "    # make install\n"
 msgstr ""
+"    $ git clone https://github.com/allinurl/goaccess.git\n"
+"    $ cd goaccess\n"
+"    $ autoreconf -fiv\n"
+"    $ ./configure --enable-utf8 --enable-geoip=mmdb\n"
+"    $ make\n"
+"    # make install\n"
 
 #. type: Title ###
 #: ../README.md:121
@@ -4520,7 +4532,7 @@ msgstr "Debian/Ubuntu"
 #: ../README.md:130
 #, no-wrap
 msgid "    # apt-get install goaccess\n"
-msgstr ""
+msgstr "    # apt-get install goaccess\n"
 
 #. type: Plain text
 #: ../README.md:134
@@ -4546,6 +4558,10 @@ msgid ""
 "    $ sudo apt-get update\n"
 "    $ sudo apt-get install goaccess\n"
 msgstr ""
+"    $ wget -O - https://deb.goaccess.io/gnugpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/goaccess.gpg >/dev/null\n"
+"    $ echo \"deb [signed-by=/usr/share/keyrings/goaccess.gpg arch=$(dpkg --print-architecture)] https://deb.goaccess.io/ $(lsb_release -cs) main\" | sudo tee /etc/apt/sources.list.d/goaccess.list\n"
+"    $ sudo apt-get update\n"
+"    $ sudo apt-get install goaccess\n"
 
 #. type: Plain text
 #: ../README.md:144
@@ -4565,7 +4581,7 @@ msgstr "Fedora"
 #: ../README.md:148
 #, no-wrap
 msgid "    # yum install goaccess\n"
-msgstr ""
+msgstr "    # yum install goaccess\n"
 
 #. type: Title ####
 #: ../README.md:149
@@ -4577,7 +4593,7 @@ msgstr "Arch"
 #: ../README.md:152
 #, no-wrap
 msgid "    # pacman -S goaccess\n"
-msgstr ""
+msgstr "    # pacman -S goaccess\n"
 
 #. type: Title ####
 #: ../README.md:153
@@ -4589,7 +4605,7 @@ msgstr "Gentoo"
 #: ../README.md:156
 #, no-wrap
 msgid "    # emerge net-analyzer/goaccess\n"
-msgstr ""
+msgstr "    # emerge net-analyzer/goaccess\n"
 
 #. type: Title ####
 #: ../README.md:157
@@ -4601,7 +4617,7 @@ msgstr "OS X / Homebrew"
 #: ../README.md:160
 #, no-wrap
 msgid "    # brew install goaccess\n"
-msgstr ""
+msgstr "    # brew install goaccess\n"
 
 #. type: Title ####
 #: ../README.md:161
@@ -4616,6 +4632,8 @@ msgid ""
 "    # cd /usr/ports/sysutils/goaccess/ && make install clean\n"
 "    # pkg install sysutils/goaccess\n"
 msgstr ""
+"    # cd /usr/ports/sysutils/goaccess/ && make install clean\n"
+"    # pkg install sysutils/goaccess\n"
 
 #. type: Title ####
 #: ../README.md:166
@@ -4630,6 +4648,8 @@ msgid ""
 "    # cd /usr/ports/www/goaccess && make install clean\n"
 "    # pkg_add goaccess\n"
 msgstr ""
+"    # cd /usr/ports/www/goaccess && make install clean\n"
+"    # pkg_add goaccess\n"
 
 #. type: Title ####
 #: ../README.md:171
@@ -4644,6 +4664,8 @@ msgid ""
 "    # zypper ar -f obs://server:http http\n"
 "    # zypper in goaccess\n"
 msgstr ""
+"    # zypper ar -f obs://server:http http\n"
+"    # zypper in goaccess\n"
 
 #. type: Title ####
 #: ../README.md:176
@@ -4710,6 +4732,13 @@ msgid ""
 "| **Gentoo**             | sys-libs/ncurses | dev-libs/geoip   | dev-libs/libmaxminddb |  dev-libs/openssl  |\n"
 "| **Slackware**          | ncurses          | GeoIP            | libmaxminddb          |  openssl           |\n"
 msgstr ""
+"| Distro                 | NCurses          | GeoIP (opt)      | GeoIP2 (opt)          |  OpenSSL (opt)     |\n"
+"| ---------------------- | ---------------- | ---------------- | --------------------- | -------------------|\n"
+"| **Ubuntu/Debian**      | libncurses-dev   | libgeoip-dev     | libmaxminddb-dev      |  libssl-dev        |\n"
+"| **RHEL/CentOS**        | ncurses-devel    | geoip-devel      | libmaxminddb-devel    |  openssl-devel     |\n"
+"| **Arch**               | ncurses          | geoip            | libmaxminddb          |  openssl           |\n"
+"| **Gentoo**             | sys-libs/ncurses | dev-libs/geoip   | dev-libs/libmaxminddb |  dev-libs/openssl  |\n"
+"| **Slackware**          | ncurses          | GeoIP            | libmaxminddb          |  openssl           |\n"
 
 #. type: Plain text
 #: ../README.md:207
@@ -4741,17 +4770,19 @@ msgid ""
 "    touch report.html\n"
 "    cat access.log | docker run --rm -i -v ./report.html:/report.html -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED -\n"
 msgstr ""
+"    touch report.html\n"
+"    cat access.log | docker run --rm -i -v ./report.html:/report.html -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED -\n"
 
 #. type: Plain text
 #: ../README.md:216
 msgid "OR real-time"
-msgstr ""
+msgstr "もしくは、実時間の場合は次の通りです。"
 
 #. type: Plain text
 #: ../README.md:218
 #, no-wrap
 msgid "    tail -F access.log | docker run -p 7890:7890 --rm -i -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED --real-time-html -\n"
-msgstr ""
+msgstr "    tail -F access.log | docker run -p 7890:7890 --rm -i -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED --real-time-html -\n"
 
 #. type: Plain text
 #: ../README.md:220
@@ -4958,7 +4989,7 @@ msgstr "複数スレッドへの対応"
 #: ../README.md:311
 #, no-wrap
 msgid "Use `--jobs=<count>` (or `-j`) to enable multi-thread parsing. For example:\n"
-msgstr ""
+msgstr "`--jobs=<count>`（ないし`-j`）を使うと、複数スレッドでの解析が有効になります。例えば以下の通りです。\n"
 
 #. type: Plain text
 #: ../README.md:313
@@ -5184,7 +5215,7 @@ msgstr ""
 #: ../README.md:418
 #, no-wrap
 msgid "    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o out.html -\n"
-msgstr ""
+msgstr "    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o out.html -\n"
 
 #. type: Plain text
 #: ../README.md:420
