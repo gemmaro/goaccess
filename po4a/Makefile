@@ -34,5 +34,5 @@ $(HTML): ja/goaccess.1
 
 ja/README.html: ja/README.md
 	echo "<!doctype html><head><meta charset='UTF-8'></head><body>" > $@
-	cmark-gfm < $< >> $@
+	cmark-gfm --extension table < $< >> $@
 	echo "</body></html>" >> $@
