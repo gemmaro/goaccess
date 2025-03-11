@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2025-03-11 08:49+0900\n"
-"PO-Revision-Date: 2025-03-10 14:26+0900\n"
+"PO-Revision-Date: 2025-03-11 09:44+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -4311,18 +4311,10 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../README.md:52
-#, fuzzy
-#| msgid ""
-#| "This panel displays ASN (Autonomous System Numbers) data for GeoIP2 and "
-#| "legacy databases. Great for detecting malicious traffic and blocking "
-#| "accordingly."
 msgid ""
 "**ASN (Autonomous System Number mapping)**<br> Great for detecting malicious "
 "traffic patterns and block them accordingly."
-msgstr ""
-"このパネルにはGeoIP2と旧式のデータベース用にASN (Autonomous System Numbers) "
-"のデータが表示されます。\n"
-"悪意のあるトラフィックを検知しそれに伴ってブロックするのに優れています。"
+msgstr "**自律システム番号（AS番号；Autonomous System Numbers; ASN）**<br> 悪意のあるトラフィックのパターンを検出し、それに対応して阻止する上で好適です。"
 
 #. type: Bullet: '* '
 #: ../README.md:56
@@ -4334,24 +4326,12 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../README.md:61
-#, fuzzy
-#| msgid ""
-#| "In-memory storage provides better performance at the cost of limiting the "
-#| "dataset size to the amount of available physical memory. GoAccess uses in-"
-#| "memory hash tables. It has very good memory usage and pretty good "
-#| "performance. This storage has support for on-disk persistence."
 msgid ""
 "**Support for Large Datasets**<br> GoAccess features the ability to parse "
 "large logs due to its optimized in-memory hash tables. It has very good "
 "memory usage and pretty good performance. This storage has support for on-"
 "disk persistence as well."
-msgstr ""
-"インメモリ容量はデータセットの大きさを利用できる物理記憶容量に制限するコスト"
-"と引き換えに、\n"
-"よりよいパフォーマンスが得られます。\n"
-"GoAccessはインメモリハッシュテーブルを使用します。\n"
-"とても多いメモリ使用でかなり良いパフォーマンスを発揮します。\n"
-"この容量はディスク上の永続性に対応します。"
+msgstr "**大規模データセットへの対応**<br> GoAccessには、最適化されたインメモリのハッシュテーブルによる、大きなログを解析する機能が備わっています。適度なメモリの使用で、かなり良い効率性があります。この容量では、ディスク上への永続化の対応もされています。"
 
 #. type: Bullet: '* '
 #: ../README.md:67
@@ -4371,12 +4351,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:71
-#, fuzzy
-#| msgid "GoAccess allows any custom format string as well."
 msgid ""
 "GoAccess allows any custom log format string. Predefined options include, "
 "but not limited to:"
-msgstr "GoAccessはどんな独自の書式文字列も受け付けます。"
+msgstr "GoAccessでは、任意の独自ログ形式の文字列を処理できます。以下の定義済みオプションが含まれていますが、これに限りません。"
 
 #. type: Bullet: '* '
 #: ../README.md:83
@@ -4410,10 +4388,8 @@ msgstr ""
 
 #. type: Bullet: '* '
 #: ../README.md:83
-#, fuzzy
-#| msgid "Virtual Hosts"
 msgid "Apache virtual hosts"
-msgstr "仮想ホスト"
+msgstr "Apache仮想ホスト"
 
 #. type: Bullet: '* '
 #: ../README.md:83
@@ -4820,24 +4796,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:239
-#, fuzzy
-#| msgid ""
-#| "In-memory storage provides better performance at the cost of limiting the "
-#| "dataset size to the amount of available physical memory. GoAccess uses in-"
-#| "memory hash tables. It has very good memory usage and pretty good "
-#| "performance. This storage has support for on-disk persistence."
 msgid ""
 "In-memory storage provides better performance at the cost of limiting the "
 "dataset size to the amount of available physical memory. GoAccess uses in-"
 "memory hash tables.  It has very good memory usage and pretty good "
 "performance. This storage has support for on-disk persistence as well."
-msgstr ""
-"インメモリ容量はデータセットの大きさを利用できる物理記憶容量に制限するコスト"
-"と引き換えに、\n"
-"よりよいパフォーマンスが得られます。\n"
-"GoAccessはインメモリハッシュテーブルを使用します。\n"
-"とても多いメモリ使用でかなり良いパフォーマンスを発揮します。\n"
-"この容量はディスク上の永続性に対応します。"
+msgstr "インメモリ容量により、データセットの大きさと利用できる物理記憶領域の容量に制限するコストと引き換えに、より良い効率性がもたらされます。GoAccessではインメモリのハッシュテーブルが使われています。適度なメモリ使用で、かなり良い効率性があります。この保存領域には、ディスク上の永続化の対応もされています。"
 
 #. type: Title ##
 #: ../README.md:240
@@ -4847,19 +4811,11 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:244
-#, fuzzy
-#| msgid ""
-#| "The following options can be supplied to the command or specified in the "
-#| "configuration file. If specified in the configuration file, long options "
-#| "need to be used without prepending -- and without using the equal sign =."
 msgid ""
 "See [**options**](https://goaccess.io/man#options) that can be supplied to "
 "the command or specified in the configuration file. If specified in the "
 "configuration file, long options need to be used without prepending `--`."
-msgstr ""
-"以下のオプションはコマンドに与えたり設定ファイルで指定したりできます。\n"
-"設定ファイルで指定された場合、長いオプション名は--を前に付けず、等号=を使わず"
-"に使用する必要があります。"
+msgstr "コマンドに与えたり、構成ファイルで指定したりできる[**オプション**](https://goaccess.io/man#options)をご参照ください。構成ファイルで指定するときは、長いオプションは前に `--` を付けずに使う必要があります。"
 
 #. type: Title ##
 #: ../README.md:245
@@ -4869,13 +4825,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:249
-#, fuzzy, no-wrap
-#| msgid "I<Note:> Piping data into GoAccess won't prompt a log/date/time configuration dialog, you will need to previously define it in your configuration file or in the command line."
+#, no-wrap
 msgid ""
 "**Note**: Piping data into GoAccess won't prompt a log/date/time\n"
 "configuration dialog, you will need to previously define it in your\n"
 "configuration file or in the command line.\n"
-msgstr "I<補足：>データをGoAccessにパイプで流し込むときはログ、日付、時刻設定ダイアログは質問されないので、予め設定ファイルかコマンドラインで定義しておく必要があります。"
+msgstr "**補足**：GoAccessにデータをパイプで流し込むときは、ログ、日付、時刻の構成ダイアログは尋ねられません。構成ファイルかコマンドラインで予め定義する必要があります。\n"
 
 #. type: Title ###
 #: ../README.md:250
@@ -4885,83 +4840,63 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:255
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log"
+#, no-wrap
 msgid "    # goaccess access.log\n"
-msgstr "# goaccess access.log"
+msgstr "    # goaccess access.log\n"
 
 #. type: Plain text
 #: ../README.md:259
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -a -o report.html"
+#, no-wrap
 msgid "    # goaccess access.log -a > report.html\n"
-msgstr "# goaccess access.log -a -o report.html"
+msgstr "    # goaccess access.log -a > report.html\n"
 
 #. type: Plain text
 #: ../README.md:261
-#, fuzzy
-#| msgid "To generate a JSON report:"
 msgid "To generate a JSON report file:"
-msgstr "JSONでレポートを生成するには以下のようにします。"
+msgstr "JSONの報告ファイルを生成するには、以下のようにします。"
 
 #. type: Plain text
 #: ../README.md:263
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -a -d -o report.json"
+#, no-wrap
 msgid "    # goaccess access.log -a -d -o report.json\n"
-msgstr "# goaccess access.log -a -d -o report.json"
+msgstr "    # goaccess access.log -a -d -o report.json\n"
 
 #. type: Plain text
 #: ../README.md:265
-#, fuzzy
-#| msgid "To generate a JSON report:"
 msgid "To generate a CSV report to stdout:"
-msgstr "JSONでレポートを生成するには以下のようにします。"
+msgstr "CSVの報告を標準出力に生成するには、以下のようにします。"
 
 #. type: Plain text
 #: ../README.md:267
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log --no-csv-summary -o report.csv"
+#, no-wrap
 msgid "    # goaccess access.log --no-csv-summary -o csv\n"
-msgstr "# goaccess access.log --no-csv-summary -o report.csv"
+msgstr "    # goaccess access.log --no-csv-summary -o csv\n"
 
 #. type: Plain text
 #: ../README.md:273
-#, fuzzy, no-wrap
-#| msgid "# tail -f access.log | goaccess -"
+#, no-wrap
 msgid "    # tail -f access.log | goaccess -\n"
-msgstr "# tail -f access.log | goaccess -"
+msgstr "    # tail -f access.log | goaccess -\n"
 
 #. type: Plain text
 #: ../README.md:277
-#, fuzzy
-#| msgid ""
-#| "And even better, to filter while maintaining opened a pipe to preserve "
-#| "real-time analysis, we can make use of I<tail -f> and a matching pattern "
-#| "tool such as I<grep, awk, sed,> etc:"
 msgid ""
 "And even better, to filter while maintaining opened a pipe to preserve real-"
 "time analysis, we can make use of `tail -f` and a matching pattern tool such "
 "as `grep`, `awk`, `sed`, etc.:"
-msgstr ""
-"そしてさらに良くするために、\n"
-"実時間解析を保存するためのパイプを空けたままを維持しつつ、\n"
-"I<tail -f>とI<grep、awk、sedなど>のようなパターン照合ツールを活用することがで"
-"きます。"
+msgstr "さらに、実時間解析を保存するためにパイプを開いたまま絞り込むときは、`tail -f`と、`grep`、`awk`、`sed`などのパターン合致ツールを活用できます。"
 
 #. type: Plain text
 #: ../README.md:279
-#, fuzzy, no-wrap
-#| msgid "# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -"
+#, no-wrap
 msgid "    # tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -\n"
-msgstr "# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -"
+msgstr "    # tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -\n"
 
 #. type: Plain text
 #: ../README.md:284
-#, fuzzy, no-wrap
-#| msgid "# tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -o report.html --real-time-html -"
+#, no-wrap
 msgid "    # tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess -o report.html --real-time-html -\n"
-msgstr "# tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -o report.html --real-time-html -"
+msgstr "    # tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess -o report.html --real-time-html -\n"
 
 #. type: Title ###
 #: ../README.md:286
@@ -4971,60 +4906,42 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:292
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log access.log.1"
+#, no-wrap
 msgid "    # goaccess access.log access.log.1\n"
-msgstr "# goaccess access.log access.log.1"
+msgstr "    # goaccess access.log access.log.1\n"
 
 #. type: Plain text
 #: ../README.md:296
-#, fuzzy, no-wrap
-#| msgid "# cat access.log.2 | goaccess access.log access.log.1 -"
+#, no-wrap
 msgid "    # cat access.log.2 | goaccess access.log access.log.1 -\n"
-msgstr "# cat access.log.2 | goaccess access.log access.log.1 -"
+msgstr "    # cat access.log.2 | goaccess access.log access.log.1 -\n"
 
 #. type: Plain text
 #: ../README.md:299
-#, fuzzy, no-wrap
-#| msgid "I<Note> that the single dash is appended to the command line to let GoAccess know that it should read from the pipe."
+#, no-wrap
 msgid ""
 "**Note**: the single dash is appended to the command line to let GoAccess\n"
 "know that it should read from the pipe.\n"
-msgstr ""
-"I<補足>となりますが、\n"
-"単一ダッシュがコマンドラインの後ろに付いていることで、\n"
-"GoAccessにパイプから読み込むことが伝わります。"
+msgstr "**補足**：コマンドラインにダッシュが1つ付いています。これにより、GoAccessにパイプから読むべきことが伝わります。\n"
 
 #. type: Plain text
 #: ../README.md:303
-#, fuzzy
-#| msgid ""
-#| "Now if we want to add more flexibility to GoAccess, we can do a series of "
-#| "pipes. For instance, if we would like to process all compressed log files "
-#| "I<access.log.*.gz> in addition to the current log file, we can do:"
 msgid ""
 "Now if we want to add more flexibility to GoAccess, we can use `zcat --"
 "force` to read compressed and uncompressed files. For instance, if we would "
 "like to process all log files `access.log*`, we can do:"
-msgstr ""
-"さらにGoAccessの柔軟性を上げたければ一連のパイプにすることができます。\n"
-"例として現在のログファイルに加えて、\n"
-"全ての圧縮されたログファイルI<access.log.*.gz>を処理したければ、\n"
-"次のようにできます。"
+msgstr "GoAccessにもっと柔軟性を持たせたければ、`zcat --force`を使い、圧縮されている可能性のあるファイルを読むことができます。例えば、`access.log*`の全てのログファイルを処理したければ、以下のようにできます。"
 
 #. type: Plain text
 #: ../README.md:305
-#, fuzzy, no-wrap
-#| msgid "# tail -f access.log | goaccess -"
+#, no-wrap
 msgid "    # zcat --force access.log* | goaccess -\n"
-msgstr "# tail -f access.log | goaccess -"
+msgstr "    # zcat --force access.log* | goaccess -\n"
 
 #. type: Plain text
 #: ../README.md:307
-#, fuzzy
-#| msgid "I<Note:> On Mac OS X, use gunzip -c instead of zcat."
 msgid "_Note_: On Mac OS X, use `gunzip -c` instead of `zcat`."
-msgstr "I<補足：>Mac OS Xではzcatではなくgunzip -cを使ってください。"
+msgstr "_補足_ ：Mac OS Xでは、`zcat`の代わりに`gunzip -c`を使ってください。"
 
 #. type: Title ###
 #: ../README.md:308
@@ -5040,10 +4957,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:313
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -a -o report.html"
+#, no-wrap
 msgid "    # goaccess access.log -o report.html -j 4\n"
-msgstr "# goaccess access.log -a -o report.html"
+msgstr "    # goaccess access.log -o report.html -j 4\n"
 
 #. type: Plain text
 #: ../README.md:316
@@ -5053,57 +4969,37 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:318
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -a -o report.html"
+#, no-wrap
 msgid "    # goaccess access.log -o report.html -j 4 --chunk-size=8192\n"
-msgstr "# goaccess access.log -a -o report.html"
+msgstr "    # goaccess access.log -o report.html -j 4 --chunk-size=8192\n"
 
 #. type: Title ###
 #: ../README.md:320
-#, fuzzy, no-wrap
-#| msgid "Enable real-time HTML output."
+#, no-wrap
 msgid "Real-time HTML outputs"
-msgstr "実時間HTML出力を有効にします。"
+msgstr "実時間のHTML出力"
 
 #. type: Plain text
 #: ../README.md:325
-#, fuzzy
-#| msgid ""
-#| "GoAccess has the ability to output real-time data in the HTML report. You "
-#| "can even email the HTML file since it is composed of a single file with "
-#| "no external file dependencies, how neat is that!"
 msgid ""
 "GoAccess has the ability the output real-time data in the HTML report. You "
 "can even email the HTML file since it is composed of a single file with no "
 "external file dependencies, how neat is that!"
-msgstr ""
-"GoAccessではHTMLレポートに実時間データを出力することができます。\n"
-"外部ファイル依存のない単一ファイルからなるため、\n"
-"HTMLファイルをEメールで送ることさえできるのです。\n"
-"やったぜ！"
+msgstr "GoAccessには、HTMLの報告ファイルに実時間データを出力する機能があります。このHTMLファイルは、Eメールで送ることさえできます。外部のファイルに依存しない、単一のファイルからなっているからです。やったね！"
 
 #. type: Plain text
 #: ../README.md:329
-#, fuzzy
-#| msgid ""
-#| "The process of generating a real-time HTML report is very similar to the "
-#| "process of creating a static report. Only --real-time-html is needed to "
-#| "make it real-time."
 msgid ""
 "The process of generating a real-time HTML report is very similar to the "
 "process of creating a static report. Only `--real-time-html` is needed to "
 "make it real-time."
-msgstr ""
-"実時間HTMLレポートを生成する工程は、\n"
-"静的なレポートを作る過程と大変似ています。\n"
-"実時間にするのに必要なのは--real-time-htmlだけです。"
+msgstr "実時間のHTMLの報告ファイルを生成する工程は、静的な報告を作成する工程ととても似ています。実時間にするには、`--real-time-html`さえあればよいのです。"
 
 #. type: Plain text
 #: ../README.md:331
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-html"
+#, no-wrap
 msgid "    # goaccess access.log -o /usr/share/nginx/html/your_site/report.html --real-time-html\n"
-msgstr "# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-html"
+msgstr "    # goaccess access.log -o /usr/share/nginx/html/your_site/report.html --real-time-html\n"
 
 #. type: Plain text
 #: ../README.md:333
@@ -5112,50 +5008,37 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:337
-#, fuzzy
-#| msgid ""
-#| "By default, GoAccess will use the host name of the generated report.  "
-#| "Optionally, you can specify the URL to which the client's browser will "
-#| "connect to. See https://goaccess.io/faq for a more detailed example."
 msgid ""
 "By default, GoAccess will use the host name of the generated report.  "
 "Optionally, you can specify the URL to which the client's browser will "
 "connect to. See [FAQ](https://goaccess.io/faq) for a more detailed example."
-msgstr ""
-"既定ではGoAccessは生成されたレポートのホスト名を使います。\n"
-"オプションとしてクライアントのブラウザが接続するURLを指定することができま"
-"す。\n"
-"詳細な例は https://goaccess.io/faq を参照してください。"
+msgstr "既定では、GoAccessは生成された報告のホスト名を使います。クライアントのブラウザが接続するURLを指定することもできますが、省けます。より詳しい例については、[FAQ](https://goaccess.io/faq)をご参照ください。"
 
 #. type: Plain text
 #: ../README.md:339
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+#, no-wrap
 msgid "    # goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io\n"
-msgstr "# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+msgstr "    # goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io\n"
 
 #. type: Plain text
 #: ../README.md:344
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -o report.html --real-time-html --port=9870"
+#, no-wrap
 msgid "    # goaccess access.log -o report.html --real-time-html --port=9870\n"
-msgstr "# goaccess access.log -o report.html --real-time-html --port=9870"
+msgstr "    # goaccess access.log -o report.html --real-time-html --port=9870\n"
 
 #. type: Plain text
 #: ../README.md:349
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log -o report.html --real-time-html --addr=127.0.0.1"
+#, no-wrap
 msgid "    # goaccess access.log -o report.html --real-time-html --addr=127.0.0.1\n"
-msgstr "# goaccess access.log -o report.html --real-time-html --addr=127.0.0.1"
+msgstr "    # goaccess access.log -o report.html --real-time-html --addr=127.0.0.1\n"
 
 #. type: Plain text
 #: ../README.md:352
-#, fuzzy, no-wrap
-#| msgid "I<Note:> To output real time data over a TLS/SSL connection, you need to use I<--ssl-cert=E<lt>cert.crtE<gt>> and I<--ssl-key=E<lt>priv.keyE<gt>.>"
+#, no-wrap
 msgid ""
 "**Note**: To output real time data over a TLS/SSL connection, you need to use\n"
 "`--ssl-cert=<cert.crt>` and `--ssl-key=<priv.key>`.\n"
-msgstr "I<補足：>TLS/SSL接続上で実時間データを出力するにはI<--ssl-cert=E<lt>cert.crtE<gt>>とI<--ssl-key=E<lt>priv.keyE<gt>>を使う必要があります。"
+msgstr "**補足**：TLS/SSL接続越しに実時間データを出力するには、`--ssl-cert=<証明書.crt>`と`--ssl-key=<秘密鍵.key>`を使う必要があります。\n"
 
 #. type: Title ###
 #: ../README.md:353
@@ -5171,88 +5054,64 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:361
-#, fuzzy
-#| msgid ""
-#| "The following will get all HTTP requests starting on 05/Dec/2010 until "
-#| "the end of the file."
 msgid ""
 "The following will get all HTTP requests starting on `05/Dec/2010` until the "
 "end of the file."
-msgstr ""
-"以下は05/Dec/2010からファイル末尾までの全てのHTTPリクエストを取得します。"
+msgstr "以下では、ファイルの末尾までの、`05/Dec/2010`から始まる全てのHTTP要求が得られます。"
 
 #. type: Plain text
 #: ../README.md:363
-#, fuzzy, no-wrap
-#| msgid "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
+#, no-wrap
 msgid "    # sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -\n"
-msgstr "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
+msgstr "    # sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -\n"
 
 #. type: Plain text
 #: ../README.md:367
-#, fuzzy, no-wrap
-#| msgid "# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | goaccess -a -"
+#, no-wrap
 msgid "    # sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | goaccess -a -\n"
-msgstr "# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | goaccess -a -"
+msgstr "    # sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | goaccess -a -\n"
 
 #. type: Plain text
 #: ../README.md:371
-#, fuzzy, no-wrap
-#| msgid "# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+#, no-wrap
 msgid "    # sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -\n"
-msgstr "# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+msgstr "    # sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -\n"
 
 #. type: Plain text
 #: ../README.md:377
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log --keep-last=5"
+#, no-wrap
 msgid "    # goaccess access.log --keep-last=5\n"
-msgstr "# goaccess access.log --keep-last=5"
+msgstr "    # goaccess access.log --keep-last=5\n"
 
 #. type: Title ####
 #: ../README.md:378
-#, fuzzy, no-wrap
-#| msgid "Virtual Hosts"
+#, no-wrap
 msgid "Virtual hosts"
 msgstr "仮想ホスト"
 
 #. type: Plain text
 #: ../README.md:381
-#, fuzzy
-#| msgid ""
-#| "Assuming your log contains the virtual host (server blocks) field. For "
-#| "instance:"
 msgid "Assuming your log contains the virtual host field. For instance:"
-msgstr ""
-"ログに仮想ホスト（サーバーブロック）フィールドがあるものとします。例えば次の"
-"通り。"
+msgstr "ログに仮想ホストのフィールドが含まれているとします。例えば次の通りです。"
 
 #. type: Plain text
 #: ../README.md:383
-#, fuzzy, no-wrap
-#| msgid "vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/bag-p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
+#, no-wrap
 msgid "    vhost.io:80 8.8.4.4 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop HTTP/1.1\" 200 615 \"-\" \"Googlebot-Image/1.0\"\n"
-msgstr "vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/bag-p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
+msgstr "    vhost.io:80 8.8.4.4 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop HTTP/1.1\" 200 615 \"-\" \"Googlebot-Image/1.0\"\n"
 
 #. type: Plain text
 #: ../README.md:386
-#, fuzzy
-#| msgid ""
-#| "And you would like to append the virtual host to the request in order to "
-#| "see which virtual host the top urls belong to"
 msgid ""
 "And you would like to append the virtual host to the request in order to see "
 "which virtual host the top urls belong to:"
-msgstr ""
-"そしてどの仮想ホストに最頻のURLが属しているのかを見るために、仮想ホストをリク"
-"エストに加えたいことがあるでしょう。"
+msgstr "そして、仮想ホストを要求に付けて、どの仮想ホストに上位のURLが属しているか知りたいとします。"
 
 #. type: Plain text
 #: ../README.md:388
-#, fuzzy, no-wrap
-#| msgid "awk '$8=$1$8' access.log | goaccess -a -"
+#, no-wrap
 msgid "    awk '$8=$1$8' access.log | goaccess -a -\n"
-msgstr "awk '$8=$1$8' access.log | goaccess -a -"
+msgstr "    awk '$8=$1$8' access.log | goaccess -a -\n"
 
 #. type: Plain text
 #: ../README.md:390
@@ -5261,17 +5120,15 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:392
-#, fuzzy, no-wrap
-#| msgid "# tail -f access.log | goaccess -"
+#, no-wrap
 msgid "    tail -f  access.log | unbuffer -p awk '$8=$1$8' | goaccess -a -\n"
-msgstr "# tail -f access.log | goaccess -"
+msgstr "    tail -f  access.log | unbuffer -p awk '$8=$1$8' | goaccess -a -\n"
 
 #. type: Plain text
 #: ../README.md:396
-#, fuzzy, no-wrap
-#| msgid "# grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -"
+#, no-wrap
 msgid "    # grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -\n"
-msgstr "# grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -"
+msgstr "    # grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -\n"
 
 #. type: Title ####
 #: ../README.md:397
@@ -5281,57 +5138,37 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:401
-#, fuzzy
-#| msgid ""
-#| "To parse specific pages, e.g., page views, html, htm, php, etc. within a "
-#| "request:"
 msgid ""
 "To parse specific pages, e.g., page views, `html`, `htm`, `php`, etc. within "
 "a request:"
-msgstr ""
-"リクエストのうち、html、htm、phpなどの閲覧ページなどで、\n"
-"特定のページを解析するには次のようにします。"
+msgstr "要求のうち、ページの閲覧、`html`、`htm`、`php`などの、特定のページを解析するには、以下のようにします。"
 
 #. type: Plain text
 #: ../README.md:403
-#, fuzzy, no-wrap
-#| msgid "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
+#, no-wrap
 msgid "    # awk '$7~/\\.html|\\.htm|\\.php/' access.log | goaccess -\n"
-msgstr "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
+msgstr "    # awk '$7~/\\.html|\\.htm|\\.php/' access.log | goaccess -\n"
 
 #. type: Plain text
 #: ../README.md:408
-#, fuzzy
-#| msgid ""
-#| "Note, I<$7> is the request field for the common and combined log format, "
-#| "(without Virtual Host), if your log includes Virtual Host, then you "
-#| "probably want to use I<$8> instead. It's best to check which field you "
-#| "are shooting for, e.g.:"
 msgid ""
 "Note, `$7` is the request field for the common and combined log format, "
 "(without Virtual Host), if your log includes Virtual Host, then you probably "
 "want to use `$8` instead. It's best to check which field you are shooting "
 "for, e.g.:"
-msgstr ""
-"なおI<$7>はログ書式がcommonやcombinedのもの（仮想ホストなし）のリクエスト"
-"フィールドであり、\n"
-"ログに仮想ホストが含まれるのであれば代わりにI<$8>を使うことになるでしょう。\n"
-"注目しているフィールドを確認しておくのが一番です。\n"
-"例えば次のように。"
+msgstr "なお、`$7`は一般的な結合ログ形式（仮想ホストなし）の要求フィールドです。ログに仮想ホストが含まれるのであれば、恐らく`$8`を代わりに使うとよいでしょう。どのフィールドを選ぶべきかは確認しておくのが一番です。例えば以下です。"
 
 #. type: Plain text
 #: ../README.md:410
-#, fuzzy, no-wrap
-#| msgid "# tail -10 access.log | awk '{print $8}'"
+#, no-wrap
 msgid "    # tail -10 access.log | awk '{print $8}'\n"
-msgstr "# tail -10 access.log | awk '{print $8}'"
+msgstr "    # tail -10 access.log | awk '{print $8}'\n"
 
 #. type: Plain text
 #: ../README.md:414
-#, fuzzy, no-wrap
-#| msgid "# awk '$9~/500/' access.log | goaccess -"
+#, no-wrap
 msgid "    # awk '$9~/500/' access.log | goaccess -\n"
-msgstr "# awk '$9~/500/' access.log | goaccess -"
+msgstr "    # awk '$9~/500/' access.log | goaccess -\n"
 
 #. type: Plain text
 #: ../README.md:416
@@ -5353,10 +5190,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:422
-#, fuzzy, no-wrap
-#| msgid "# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -"
+#, no-wrap
 msgid "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -\n"
-msgstr "# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -"
+msgstr "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -\n"
 
 #. type: Title ###
 #: ../README.md:423
@@ -5366,42 +5202,30 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:429
-#, fuzzy, no-wrap
-#| msgid "# nice -n 19 goaccess -f access.log -a"
+#, no-wrap
 msgid "    # nice -n 19 goaccess -f access.log -a\n"
-msgstr "# nice -n 19 goaccess -f access.log -a"
+msgstr "    # nice -n 19 goaccess -f access.log -a\n"
 
 #. type: Plain text
 #: ../README.md:432
-#, fuzzy
-#| msgid ""
-#| "and if you don't want to install it on your server, you can still run it "
-#| "from your local machine:"
 msgid ""
 "and if you don't want to install it on your server, you can still run it "
 "from your local machine!"
-msgstr ""
-"そしてサーバーにインストールしたくない場合であってもローカルマシンから走らせ"
-"られます。"
+msgstr "また、サーバーにインストールしたくなければ、ローカルマシンからも走らせられます！"
 
 #. type: Plain text
 #: ../README.md:434
-#, fuzzy, no-wrap
-#| msgid "# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -"
+#, no-wrap
 msgid "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
-msgstr "# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -"
+msgstr "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
 
 #. type: Plain text
 #: ../README.md:437
-#, fuzzy, no-wrap
-#| msgid "Note: SSH requires I<-n> so GoAccess can read from stdin. Also, make sure to use SSH keys for authentication as it won't work if a passphrase is required."
+#, no-wrap
 msgid ""
 "**Note:** SSH requires `-n` so GoAccess can read from stdin. Also, make sure to\n"
 "use SSH keys for authentication as it won't work if a passphrase is required.\n"
-msgstr ""
-"補足：SSHにはI<-n>が必要で、\n"
-"こうすることでGoAccessが標準入力から読むことができます。\n"
-"またパスフレーズが要求されるとうまく動かないため認証には必ずSSH鍵を使うようにしてください。"
+msgstr "**補足：**GoAccessが標準入力を読めるようにするため、SSHには`-n`が必要です。また、パスフレーズが必要なときはうまく機能しないため、必ず認証のためのSSHキーを使ってください。\n"
 
 #. type: Title ####
 #: ../README.md:438
@@ -5456,48 +5280,27 @@ msgstr ""
 # I<--restore>は2つ前の方に移動しました。
 #. type: Plain text
 #: ../README.md:457
-#, fuzzy, no-wrap
-#| msgid "I<--restore.> If new data is passed (piped or through a log file), it will append it to the original dataset."
+#, no-wrap
 msgid ""
 "1. A dataset must be persisted first with `--persist`, then the same dataset\n"
 "can be loaded with.\n"
 "2. `--restore`.  If new data is passed (piped or through a log file), it will\n"
 "append it to the original dataset.\n"
-msgstr "新しいデータが（パイプやログファイルを通じて）渡されたら、元のデータセットに追記します。"
+msgstr ""
+"1. データセットはまず`--persist`で永続化されなければなりません。それからは、同じデータセットを読み込むために……\n"
+"2. ……`--restore`が使えます。（パイプで流し込んだり、ログファイルを通したりして）新しいデータが渡されたときは、元のデータセットに追記されます。\n"
 
 #. type: Plain text
 #: ../README.md:464
-#, fuzzy
-#| msgid ""
-#| "GoAccess keeps track of inodes of all the files processed (assuming files "
-#| "will stay on the same partition), in addition, it extracts a snippet of "
-#| "data from the log along with the last line parsed of each file and the "
-#| "timestamp of the last line parsed. e.g., inode:29627417|line:20012|"
-#| "ts:20171231235059"
 msgid ""
 "GoAccess keeps track of inodes of all the files processed (assuming files "
 "will stay on the same partition), in addition, it extracts a snippet of data "
 "from the log along with the last line parsed of each file and the timestamp "
 "of the last line parsed. e.g., `inode:29627417|line:20012|ts:20171231235059`"
-msgstr ""
-"GoAccessは処理対象の全てのファイル（ファイルが同じパーティションにあるものと"
-"しています）のiノードを把握しており、\n"
-"それに加えてログからそれぞれのファイルの解析された最後の行数と、\n"
-"解析された最後の行のタイムスタンプを含むデータスニペットの抽出を行っていま"
-"す。\n"
-"例：inode:29627417|line:20012|ts:20171231235059"
+msgstr "GoAccessでは処理される全てのファイルのinodeが追跡されています（ファイルが同じパーティションにあり続けることを仮定しています）。加えて、ログからデータの一部と共に、各ファイルの解析された最後の行と、解析された最後の行の時間記録が抽出されます。例えば、`inode:29627417|line:20012|ts:20171231235059`です。"
 
 #. type: Plain text
 #: ../README.md:471
-#, fuzzy
-#| msgid ""
-#| "First it compares if the snippet matches the log being parsed, if it "
-#| "does, it assumes the log hasn't changed dramatically, e.g., hasn't been "
-#| "truncated. If the inode does not match the current file, it parses all "
-#| "lines. If the current file matches the inode, it then reads the remaining "
-#| "lines and updates the count of lines parsed and the timestamp. As an "
-#| "extra precaution, it won't parse log lines with a timestamp ≤ than the "
-#| "one stored."
 msgid ""
 "First, it compares if the snippet matches the log being parsed, if it does, "
 "it assumes the log hasn't changed drastically, e.g., hasn't been truncated. "
@@ -5505,30 +5308,17 @@ msgid ""
 "current file matches the inode, it then reads the remaining lines and "
 "updates the count of lines parsed and the timestamp. As an extra precaution, "
 "it won't parse log lines with a timestamp ≤ than the one stored."
-msgstr ""
-"最初にスニペットが解析されたログと照合するか比較し、\n"
-"もし合っていればログが劇的に変化していないものとします。\n"
-"例えば末尾の空行が切り詰められていないといったことです。\n"
-"iノードが現在のファイルに照合しなければ全ての行を解析します。\n"
-"現在のファイルがiノードに照合した場合ファイルの残りを読み、\n"
-"解析済みの行数とタイムスタンプを更新します。\n"
-"もう1つ注意が必要なのは、\n"
-"タイムスタンプが格納されているタイムスタンプより若いログの行は解析されないと"
-"いうことです。"
+msgstr "まず、データの一部が解析されたログと合致するか比較します。合致したら、ログが劇的には変化していないと仮定されます。例えば、切り詰められたりはしていないとされます。inodeが現在のファイルと合致しなければ、全ての行が解析されます。現在のファイルがinodeに合致すれば、残りの行を読み込み、解析された行数と時間記録を更新します。もう1つ予め注意が必要なのは、保存された時間記録より古いログの行は解析されないということです。"
 
 # based offはbased onの誤植かもしれません
 #. type: Plain text
 #: ../README.md:475
-#, fuzzy, no-wrap
-#| msgid "Piped data works based off the timestamp of the last line read. For instance, it will parse and discard all incoming entries until it finds a timestamp E<gt>= than the one stored."
+#, no-wrap
 msgid ""
 "Piped  data works based off the timestamp of the last line read. For instance,\n"
 "it will parse and discard all incoming entries until it finds a timestamp >=\n"
 "than the one stored.\n"
-msgstr ""
-"パイプされたデータは最後に読んだ行のタイムスタンプに基づいて扱われます。\n"
-"例えばタイムスタンプが格納されているものより古いものを見付けるまで、\n"
-"入ってくる全てのエントリを解析後に無視します。"
+msgstr "パイプで流し込まれたデータは、読み込まれた最後の行の時間記録に基づいて扱われます。例えば、解析の際、保存された時間記録より新しいものが見つかるまで、全ての入ってくる項目は無視されます。\n"
 
 #. type: Title #####
 #: ../README.md:476
@@ -5538,28 +5328,29 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:480
-#, fuzzy, no-wrap
-#| msgid "# goaccess access.log.1 --persist"
+#, no-wrap
 msgid ""
 "    // last month access log\n"
 "    # goaccess access.log.1 --persist\n"
-msgstr "# goaccess access.log.1 --persist"
+msgstr ""
+"    // 先月のアクセスログ\n"
+"    # goaccess access.log.1 --persist\n"
 
 #. type: Plain text
 #: ../README.md:485
-#, fuzzy, no-wrap
-#| msgid "// append this month access log, and preserve new data"
+#, no-wrap
 msgid ""
 "    // append this month access log, and preserve new data\n"
 "    # goaccess access.log --restore --persist\n"
-msgstr "// この月のアクセスログを追記し新しいデータを保存します。"
+msgstr ""
+"    // この月のアクセスログを追記し新しいデータを保存します。\n"
+"    # goaccess access.log --restore --persist\n"
 
 #. type: Plain text
 #: ../README.md:489
-#, fuzzy, no-wrap
-#| msgid "# goaccess --restore"
+#, no-wrap
 msgid "    # goaccess --restore\n"
-msgstr "# goaccess --restore"
+msgstr "    # goaccess --restore\n"
 
 #. type: Title ##
 #: ../README.md:490
