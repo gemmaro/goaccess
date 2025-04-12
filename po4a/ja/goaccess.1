@@ -3,7 +3,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH goaccess 1 2024年5月 GNU+Linux 利用者の手引
+.TH goaccess 1 2025年3月 GNU+Linux 利用者の手引
 .SH 名称
 goaccess \- 高速なwebログ解析器と対話的な閲覧器
 .SH 処方
@@ -413,6 +413,163 @@ GoAccessはSSLプロキシの背後で走らせることをお勧めします。
 .IP
 GoAccessは自前のWebSocketサーバーを使ってサーバーからクライエントへのデータを送信します。
 WebSocketサーバーの仕組みの詳細については http://gwsocket.io を参照してください。
+
+.TP 
+\fB\-\-ws\-auth=<jwt[:secret]> | jwt:verify:secret\fP
+JSON Web Token (JWT) を使って、WebSocket認証を有効にします。
+このオプションは、JSONがローカルで生成されるものと、外部から取得して検証されたものの、2つの形式に対応しています。
+.IP
+\fB<jwt[:シークレット]>\fP:WebSocket認証の静的JWTを指定します。
+ローカル生成または検証のためのシークレットを付けられますが、省けます。
+「jwt」だけ与えられるとき（例： \fB\-\-ws\-auth=jwt\fP ）、環境変数 \fBGOACCESS_WSAUTH_SECRET\fP
+をソースとするシークレット、またはシークレットが未設定であればHS256互換の既定のシークレットを使って、JWTを生成します。
+シークレットが含まれるとき（例： \fB\-\-ws\-auth=jwt:mysecret\fP
+）、直接HS256署名キーとして使われるか、その値が有効なパスであればファイルから読まれます（例：
+\fB\-\-ws\-auth=jwt:/path/to/secret.key\fP ）。
+.IP
+\fBjwt:verify:secret\fP: （例えば \fB\-\-ws\-auth\-url\fP を介して）外部から取得されるJWTの検証を有効にします。
+「verify」キーワードにより、JWTが外部のソースから与えられることが示されており、検証用にシークレットを指定しなければなりません。
+シークレットは直接的なHS256キー（例えば \fB\-\-ws\-auth=jwt:verify:自分のシークレット\fP です）、ファイルパス（例えば
+\fB\-\-ws\-auth=jwt:verify:シークレットキーへのパス\fP です）、環境変数名（例えば
+\fB\-\-ws\-auth=jwt:verify:$JWT_SECRET\fP です）にできます。
+この形式は、 \fB\-\-ws\-auth\-url\fP を使うときは必須で、 \fB\-\-ws\-auth\-refresh\-url\fP
+を使って外部エンドポイントからJWTを取得して検証するときは省けます。
+.IP
+このオプションが使われているとき、HTML報告書は最初に解析されたデータでブートスラップされません。
+その代わり、認証が成功したときにのみ報告書を表示し、実時間データへの安全なアクセスを担保します。
+.IP
+システムはこのオプションを以下のように処理します。
+.IP
+\fB<jwt[:シークレット]>\fPの場合：シークレットが与えられていなければ、 \fBGOACCESS_WSAUTH_SECRET\fP
+環境変数または既定のシークレットを使ってローカルでJWTが生成されます。
+（直接またはファイルで）シークレットが指定されているとき、それがJWTの署名に使われます。
+.IP
+\fBjwt:verify:シークレット\fP の場合：シークレットは必須で、外部から取得したJWTを検証するために使われます。
+（例えば \fB\-\-ws\-auth\-url\fP にある）外部認証サーバで使われる署名キーと合致しなければなりません。
+.IP
+GoAccessをビルドするときに \fI\-\-with\-openssl\fP を付ける必要があります。
+.TP 
+\fB\-\-ws\-auth\-expire=<secs>\fP
+JWTが期限切れになるまでの時間を設定します。
+指定されなければ既定で8時間（28800秒）です。
+.IP
+ローカルで生成されるJWT \fIのみ\fP で使えます。
+.IP
+利用者は期限が切れる時間を様々な形式で指定できます。
+値はJWTの期限の検証用に秒数に変換されます。
+対応している形式は次の通りです。
+.RS
+.IP \(bu 4
+"3600" \-> 3600秒
+.IP \(bu 4
+"120s" \-> 2分
+.IP \(bu 4
+"24h" \-> 24時間 = 86,400秒
+.IP \(bu 4
+"10m" \-> 10分 = 600秒
+.IP \(bu 4
+"10d" \-> 10日 = 864,000秒
+.RE
+.IP
+期限切れまでの時間は、JWTが発行されてからどの程度有効であり続けるかを制御します。
+これにより、安全なWebSocket接続が担保されます。
+.TP 
+\fB\-\-ws\-auth\-url=<url>\fP
+WebSocket接続を認証するために、最初のJWTを取得するURLを指定します。
+.IP
+このオプションが使われたとき、GoAccessから指定されたURLに対してGET要求が送られ、最初のJWTが取得されます。
+応答はJSONオブジェクトでなければならず、フィールドは \fBstatus\fP と \fBaccess_token\fP と \fBrefresh_token\fP
+と \fBexpires_in\fP がなければなりません。
+.IP
+例： \fB\-\-ws\-auth\-url=https://site.com/api/get\-auth\-token\fP
+.IP
+トークンを取得するとき、要求の一部に \fI{ credentials: 'include' }\fP が使われます。
+システム内にある利用者の既存の認証セッションに基づき、アクセストークンを安全に取得するためです。
+これにより、利用者が認証している限り、トークンの取得は安全であることが担保されます。
+.IP
+このオプションにより、トークン取得エンドポイントを使って、既存の認証システムをGoAccessのダッシュボードに統合できます。
+.TP 
+\fB\-\-ws\-auth\-refresh\-url=<url>\fP
+現在のJWTトークンが間もなく期限切れしそうになったときに、新しいJWTが取得されるURLを取得します。
+.IP
+GoAccessは先制的に、期限切れになる60秒前に、このURLへ refresh_token 付きのPOST要求を送って、JWTをリフレッシュします。
+与えられていなければ、既定で \fB\-\-ws\-auth\-url\fP と同じURLです。
+.IP
+例： \fB\-\-ws\-auth\-refresh\-url=https://site.com/api/refresh\-token\fP
+.IP
+要求形式は最初の認証URLのものと合致させてください。
+.SS "WebSocket Authentication Flow"
+.IP
+GoAccess offers flexible authentication options, supporting both stateless
+and stateful approaches. In the stateless approach, the refresh token is
+obtained without cookies or CSRF protection; your backend validates the
+refresh token’s signature and issues a new access token. Alternatively, the
+stateful approach allows the initial fetch to issue JWTs along with a
+`csrf_token`, which is stored in the session. The subsequent refresh request
+(POST) then performs a CSRF check, requiring the `X\-CSRF\-TOKEN` header to
+match the session’s token.
+.IP
+\fBInitial Authentication:\fP
+.RS
+.IP \(bu 4
+When started with \fB\-\-ws\-auth\-url=<url>\fP, GoAccess sends a GET
+request to fetch an initial JWT.
+.IP \(bu 4
+The expected successful response format:
+.IP
+    {
+        "status"        : "success",
+        "access_token"  : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+        "csrf_token"    : "3RRjNeR4RTXHmrV1cECkyUmmKeRxm4lzkI0eq41o",
+        "refresh_token" : "refresh123xyz",
+        "expires_in"    : 3600
+    }
+.IP \(bu 4
+If authentication fails, the endpoint should return:
+.IP
+    {
+        "status": "error",
+        "message": "User not authenticated"
+    }
+.RE
+.IP
+\fBToken Refreshing:\fP
+.RS
+.IP \(bu 4
+GoAccess refreshes the JWT 60 seconds before expiration by sending a POST
+request to the specified URL (defaults to \fB\-\-ws\-auth\-url\fP if
+\fB\-\-ws\-auth\-refresh\-url\fP is not set):
+.IP
+    { "refresh_token": "refresh123xyz" }
+.IP
+GoAccess supports both stateless and stateful authentication. For stateless,
+no cookies or CSRF are required; your backend validates the refresh token
+signature. For stateful, include a \fBcsrf_token\fP in the initial response;
+GoAccess sends it as \fBX\-CSRF\-TOKEN\fP in the refresh request, which your
+backend must validate against the session.
+.RE
+.IP
+\fBPeriodic Token Validation:\fP
+.RS
+.IP \(bu 4
+After refreshing, GoAccess confirms the updated JWT’s validity with the
+WebSocket server by sending:
+.IP
+    { "action": "validate_token", "token": "current\-jwt" }
+.RE
+.IP
+\fBImportant Note:\fP For these options to function, you must specify
+\fB\-\-ws\-auth=jwt:verify:<secret>\fP where <secret> can be:
+.RS
+.IP \(bu 4
+A path to a file containing the secret key (e.g., /path/to/secret.key)
+.IP \(bu 4
+An environment variable name that holds the secret (e.g., $JWT_SECRET)
+.IP \(bu 4
+The actual HS256 secret key as a string (e.g., mysecretkey123)
+.RE
+.IP
+Example: \fB\-\-ws\-auth=jwt:verify:/path/to/secret.key\fP
 .TP 
 \fB\-\-ws\-url=<[scheme://]url[:port]>\fP
 WebSocketサーバーが応答するURLです。

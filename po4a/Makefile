@@ -29,10 +29,10 @@ record-po4a-version:
 	po4a --version > $(VERSION)
 .PHONY: record-po4a-version
 
-$(HTML): ja/goaccess.1
+$(HTML): ja/goaccess.1 po/ja.po
 	mandoc -Thtml -O toc -O style='$(STYLE)' $< > $@
 
-ja/README.html: ja/README.md
+ja/README.html: ja/README.md po/ja.po
 	echo "<!doctype html><head><meta charset='UTF-8'></head><body>" > $@
 	cmark-gfm --extension table < $< >> $@
 	echo "</body></html>" >> $@

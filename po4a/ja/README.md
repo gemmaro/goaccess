@@ -29,6 +29,11 @@ GoAccessは指定されたwebログファイルを解析しX端末にデータ�
   request. Extremely useful if you want to track pages that are slowing down
   your site.
 
+* **WebSocket Authentication:**<br> GoAccess offers enhanced WebSocket
+  authentication, supporting local and external JWT verification, with
+  secure token refresh capabilities and seamless integration with external
+  authentication systems.
+
 * **Nearly All Web Log Formats**<br> GoAccess allows any custom log format
   string.  Predefined options include, Apache, Nginx, Amazon S3, Elastic
   Load Balancing, CloudFront, etc.
@@ -96,6 +101,9 @@ generate a complete, self-contained, real-time
 You can see it more of a monitor command tool than anything else.
 
 ## インストール ##
+<a href="https://repology.org/project/goaccess/versions">
+    <img src="https://repology.org/badge/vertical-allrepos/goaccess.svg" alt="Packaging status" align="right">
+</a>
 
 ### リリースからのビルド
 
@@ -103,9 +111,9 @@ GoAccess can be compiled and used on *nix systems.
 
 Download, extract and compile GoAccess with:
 
-    $ wget https://tar.goaccess.io/goaccess-1.9.3.tar.gz
-    $ tar -xzvf goaccess-1.9.3.tar.gz
-    $ cd goaccess-1.9.3/
+    $ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz
+    $ tar -xzvf goaccess-1.9.4.tar.gz
+    $ cd goaccess-1.9.4/
     $ ./configure --enable-utf8 --enable-geoip=mmdb
     $ make
     # make install
@@ -188,24 +196,6 @@ GoAccess can be used in Windows through Cygwin. See Cygwin's <a
 href="https://goaccess.io/faq#installation">packages</a>.  Or through the
 GNU+Linux Subsystem on Windows 10.
 
-#### 配布パッケージ ####
-
-GoAccess has minimal requirements, it's written in C and requires only
-ncurses.  However, below is a table of some optional dependencies in some
-distros to build GoAccess from source.
-
-| Distro                 | NCurses          | GeoIP (opt)      | GeoIP2 (opt)          |  OpenSSL (opt)     |
-| ---------------------- | ---------------- | ---------------- | --------------------- | -------------------|
-| **Ubuntu/Debian**      | libncurses-dev   | libgeoip-dev     | libmaxminddb-dev      |  libssl-dev        |
-| **RHEL/CentOS**        | ncurses-devel    | geoip-devel      | libmaxminddb-devel    |  openssl-devel     |
-| **Arch**               | ncurses          | geoip            | libmaxminddb          |  openssl           |
-| **Gentoo**             | sys-libs/ncurses | dev-libs/geoip   | dev-libs/libmaxminddb |  dev-libs/openssl  |
-| **Slackware**          | ncurses          | GeoIP            | libmaxminddb          |  openssl           |
-
-**Note**: You may need to install build tools like `gcc`, `autoconf`,
-`gettext`, `autopoint` etc. for compiling/building software from source. e.g.,
-`base-devel`, `build-essential`, `"Development Tools"`.
-
 #### Docker ####
 
 A Docker image has been updated, capable of directing output from an access
@@ -234,6 +224,24 @@ development libraries:
 
 You can read more about using the docker image in
 [DOCKER.md](https://github.com/allinurl/goaccess/blob/master/DOCKER.md).
+
+#### 配布パッケージ ####
+
+GoAccess has minimal requirements, it's written in C and requires only
+ncurses.  However, below is a table of some optional dependencies in some
+distros to build GoAccess from source.
+
+| Distro                 | NCurses          | GeoIP (opt)      | GeoIP2 (opt)          |  OpenSSL (opt)     |
+| ---------------------- | ---------------- | ---------------- | --------------------- | -------------------|
+| **Ubuntu/Debian**      | libncurses-dev   | libgeoip-dev     | libmaxminddb-dev      |  libssl-dev        |
+| **RHEL/CentOS**        | ncurses-devel    | geoip-devel      | libmaxminddb-devel    |  openssl-devel     |
+| **Arch**               | ncurses          | geoip            | libmaxminddb          |  openssl           |
+| **Gentoo**             | sys-libs/ncurses | dev-libs/geoip   | dev-libs/libmaxminddb |  dev-libs/openssl  |
+| **Slackware**          | ncurses          | GeoIP            | libmaxminddb          |  openssl           |
+
+**Note**: You may need to install build tools like `gcc`, `autoconf`,
+`gettext`, `autopoint` etc. for compiling/building software from source. e.g.,
+`base-devel`, `build-essential`, `"Development Tools"`.
 
 ## 保存領域 ##
 
