@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -358,26 +358,6 @@ free_glog (GLogItem *logitem) {
   free (logitem);
 }
 
-/* Decodes the given URL-encoded string.
- *
- * On success, the decoded string is assigned to the output buffer. */
-#define B16210(x) (((x) >= '0' && (x) <= '9') ? ((x) - '0') : (toupper((unsigned char) (x)) - 'A' + 10))
-static void
-decode_hex (char *url, char *out) {
-  char *ptr;
-  const char *c;
-
-  for (c = url, ptr = out; *c; c++) {
-    if (*c != '%' || !isxdigit ((unsigned char) c[1]) || !isxdigit ((unsigned char) c[2])) {
-      *ptr++ = *c;
-    } else {
-      *ptr++ = (char) ((B16210 (c[1]) * 16) + (B16210 (c[2])));
-      c += 2;
-    }
-  }
-  *ptr = 0;
-}
-
 /* Entry point to decode the given URL-encoded string.
  *
  * On success, the decoded trimmed string is assigned to the output
@@ -390,10 +370,10 @@ decode_url (char *url) {
     return NULL;
 
   out = decoded = xstrdup (url);
-  decode_hex (url, out);
+  decode_hex (url, out, 0);
   /* double encoded URL? */
   if (conf.double_decode)
-    decode_hex (decoded, out);
+    decode_hex (decoded, out, 0);
   strip_newlines (out);
 
   return trim_str (out);
@@ -890,6 +870,87 @@ handle_default_case_token (const char **str, const char *p) {
   return 0;
 }
 
+static void
+normalize_mime_type (const char *mime, char *out, size_t out_size) {
+  size_t mime_len = 0, remaining = 0;
+  char *temp = NULL, *dest = NULL, *ptr = NULL, *token = NULL, *end = NULL, *sep = NULL, *c = NULL;
+  const char *delims = NULL;
+  int first = 0, n = 0;
+
+  if (!mime || !out || out_size == 0)
+    return;
+
+  mime_len = strlen (mime);
+  temp = xmalloc (mime_len + 1);
+  memcpy (temp, mime, mime_len + 1);
+
+  out[0] = '\0';
+  dest = out;
+  remaining = out_size;
+
+  /* Set the delimiters; both ';' and ',' are significant separators */
+  delims = ";,";
+  first = 1;
+  ptr = temp;
+
+  /* Process each token */
+  while (*ptr != '\0') {
+    /* Skip leading whitespace */
+    while (*ptr && isspace ((unsigned char) *ptr))
+      ptr++;
+    if (*ptr == '\0')
+      break;
+
+    token = ptr;
+    /* Find next delimiter */
+    sep = strpbrk (ptr, delims);
+    if (sep != NULL) {
+      *sep = '\0';
+      ptr = sep + 1;
+    } else {
+      ptr += strlen (ptr);
+    }
+
+    /* Trim trailing whitespace on token */
+    end = token + strlen (token) - 1;
+    while (end >= token && isspace ((unsigned char) *end)) {
+      *end = '\0';
+      end--;
+    }
+    if (*token == '\0')
+      continue;
+
+    /* Convert token to lower-case in place */
+    for (c = token; *c; c++)
+      *c = (char) tolower ((unsigned char) *c);
+
+    /* Append separator if this is not the first token */
+    if (!first) {
+      n = snprintf (dest, remaining, "; ");
+      if (n < 0 || (size_t) n >= remaining) {
+        dest[remaining - 1] = '\0';
+        free (temp);
+        return;
+      }
+      dest += n;
+      remaining -= n;
+    } else {
+      first = 0;
+    }
+
+    /* Append the normalized token safely */
+    n = snprintf (dest, remaining, "%s", token);
+    if (n < 0 || (size_t) n >= remaining) {
+      dest[remaining - 1] = '\0';
+      free (temp);
+      return;
+    }
+    dest += n;
+    remaining -= n;
+  }
+  free (temp);
+}
+
 #pragma GCC diagnostic warning "-Wformat-nonliteral"
 
 /* Parse the log string given log format rule.
@@ -901,6 +962,7 @@ parse_specifier (GLogItem *logitem, const char **str, const char *p, const char 
   struct tm tm;
   const char *dfmt = conf.date_format;
   const char *tfmt = conf.time_format;
+  char norm_mime[MAX_MIME_OUT] = { 0 };
 
   char *pch, *sEnd, *bEnd, *tkn = NULL;
   double serve_secs = 0.0;
@@ -1306,7 +1368,12 @@ parse_specifier (GLogItem *logitem, const char **str, const char *p, const char 
     if (!(tkn = parse_string (&(*str), end, 1)))
       return spec_err (logitem, ERR_SPEC_TOKN_NUL, *p, NULL);
 
-    logitem->mime_type = tkn;
+    normalize_mime_type (tkn, norm_mime, sizeof (norm_mime));
+    if (norm_mime[0] != '\0')
+      logitem->mime_type = strdup (norm_mime);
+    else
+      logitem->mime_type = NULL;
+    free (tkn);
 
     break;
     /* move forward through str until not a space */
@@ -1578,6 +1645,7 @@ output_logerrors (void) {
   }
   fprintf (stderr, "==%d==\n", pid);
   fprintf (stderr, "==%d== %s\n", pid, ERR_FORMAT_HEADER);
+  fprintf (stderr, "==%d== %s\n", pid, HINT_INVALID_REQUESTS);
 }
 
 /* Ensure we have the following fields. */

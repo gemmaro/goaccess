@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -43,7 +43,7 @@
 #define __attribute__(x) /**/
 #endif
 #define GO_UNUSED __attribute__((unused))
-#define GO_VERSION 		"1.9.3"
+#define GO_VERSION 		"1.9.4"
 #define GO_WEBSITE 		"https://goaccess.io/"
 extern struct tm now_tm;
 

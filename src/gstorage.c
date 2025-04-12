@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -1019,7 +1019,8 @@ set_browser_os (GLogItem *logitem) {
   logitem->browser = verify_browser (a1, browser_type);
   logitem->browser_type = xstrdup (browser_type);
 
-  if (!strncmp (logitem->browser_type, "Crawlers", 9)) {
+  if (!strncmp (logitem->browser_type, "Crawlers", 8) ||
+      !strncmp (logitem->browser_type, "Others", 6)) {
     logitem->os = xstrdup (logitem->browser);
     logitem->os_type = xstrdup (browser_type);
   } else {
@@ -1388,7 +1389,7 @@ static int
 include_uniq (GLogItem *logitem) {
   int u = conf.client_err_to_unique_count;
 
-  if (!logitem->status || (logitem->status / 100) != 4 || (u && (logitem->status / 100) == '4'))
+  if (!logitem->status || (logitem->status / 100) != 4 || (u && (logitem->status / 100) == 4))
     return 1;
   return 0;
 }

@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -973,6 +973,29 @@ u642str (uint64_t d, int width) {
   return s;
 }
 
+/* Decodes the given URL-encoded string.
+ *
+ * On success, the decoded string is assigned to the output buffer. */
+#define B16TOD(x) (((x) >= '0' && (x) <= '9') ? ((x) - '0') : (toupper((unsigned char) (x)) - 'A' + 10))
+void
+decode_hex (char *url, char *out, int decode_plus) {
+  char *ptr;
+  const char *c;
+  for (c = url, ptr = out; *c; c++) {
+    if (*c != '%' || !isxdigit ((unsigned char) c[1]) || !isxdigit ((unsigned char) c[2])) {
+      if (decode_plus && *c == '+') {
+        *ptr++ = ' ';
+      } else {
+        *ptr++ = *c;
+      }
+    } else {
+      *ptr++ = (char) ((B16TOD (c[1]) * 16) + (B16TOD (c[2])));
+      c += 2;
+    }
+  }
+  *ptr = 0;
+}
+
 /* Convert the given float to a string with the ability to add some
  * padding.
  *
@@ -1235,15 +1258,17 @@ is_writable_path (const char *path) {
     fprintf (stderr, "Path is NULL\n");
     return 0;
   }
+
   /* Make a copy of the path because dirname might modify it */
   copy = strdup (path);
   if (copy == NULL) {
     fprintf (stderr, "Memory allocation failed\n");
     return 0;
   }
+
   /* Get the directory part of the path */
   dir_path = dirname (copy);
-  strncpy (dir_path_copy, dir_path, PATH_MAX);
+  snprintf (dir_path_copy, sizeof (dir_path_copy), "%s", dir_path);
 
   /* Check if the directory is writable */
   result = access (dir_path, W_OK);

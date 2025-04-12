@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,10 +33,13 @@
 #endif
 
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <string.h>
 #include <getopt.h>
 #include <errno.h>
+#include <sys/stat.h>
 
 #ifdef HAVE_LIBGEOIP
 #include <GeoIP.h>
@@ -47,6 +50,7 @@
 #include "error.h"
 #include "labels.h"
 #include "util.h"
+#include "wsauth.h"
 
 #include "xmalloc.h"
 
@@ -153,6 +157,12 @@ static const struct option long_opts[] = {
 #endif
   {"time-format"          , required_argument , 0 ,  0  } ,
   {"ws-url"               , required_argument , 0 ,  0  } ,
+#ifdef HAVE_LIBSSL
+  {"ws-auth"              , required_argument , 0 ,  0  } ,
+  {"ws-auth-expire"       , required_argument , 0 ,  0  } ,
+  {"ws-auth-url"          , required_argument , 0 ,  0  } ,
+  {"ws-auth-refresh-url"  , required_argument , 0 ,  0  } ,
+#endif
   {"ping-interval"        , required_argument , 0 ,  0  } ,
 #ifdef HAVE_GEOLOCATION
   {"geoip-database"       , required_argument , 0 ,  0  } ,
@@ -234,6 +244,16 @@ cmd_help (void)
   "  --ssl-key=<priv.key>            - Path to TLS/SSL private key.\n"
   "  --user-name=<username>          - Run as the specified user.\n"
   "  --ws-url=<url>                  - URL to which the WebSocket server responds.\n"
+#ifdef HAVE_LIBSSL
+  "  --ws-auth=<jwt[:secret]>        - Enables WebSocket authentication using a\n"
+  "                                    JSON Web Token (JWT). Optionally, a secret key\n"
+  "                                    can be provided for verification.\n"
+  "  --ws-auth-expire=<secs>         - Time after which the JWT expires.\n"
+  "  --ws-auth-url=<url>             - URL to fetch the initial JWT .\n"
+  "                                    e.g., https://site.com/api/get-auth-token\n"
+  "  --ws-auth-refresh-url=<url>     - URL to fetch a new JWT when initial expires.\n"
+  "                                    e.g., https://site.com/api/refresh-token\n"
+#endif
   "  --ping-interval=<secs>          - Enable WebSocket ping with specified\n"
   "                                    interval in seconds.\n"
   "\n"
@@ -364,6 +384,241 @@ set_array_opt (const char *oarg, const char *arr[], int *size, int max) {
   if (str_inarray (oarg, arr, *size) < 0 && *size < max)
     arr[(*size)++] = oarg;
 }
+
+#ifdef HAVE_LIBSSL
+/*
+ * parse_ws_auth_expire_option:
+ *   Parses a time duration string and converts it to seconds.
+ *
+ * Supported formats:
+ *   "3600"       -> 3600 seconds
+ *   "24h"        -> 24 hours = 24 * 3600 seconds
+ *   "10m"        -> 10 minutes = 10 * 60 seconds
+ *   "10d"        -> 10 days = 10 * 86400 seconds
+ *
+ * Returns 0 on success, nonzero on failure.
+ */
+static int
+parse_ws_auth_expire_option (const char *input) {
+  char *endptr = NULL;
+  double value = 0, multiplier = 0, total_seconds = 0;
+
+  if (!input || *input == '\0')
+    return -1;  // Empty or NULL string
+
+  value = strtod (input, &endptr);
+  if (endptr == input) {
+    // No conversion could be performed
+    return -1;
+  }
+
+  multiplier = 1.0;
+  /* Skip any whitespace after the number */
+  while (isspace ((unsigned char) *endptr))
+    endptr++;
+
+  if (*endptr != '\0') {
+    /* Expect a single unit character; any extra characters are not allowed */
+    char unit = *endptr;
+    endptr++;
+    while (isspace ((unsigned char) *endptr))
+      endptr++;
+
+    if (*endptr != '\0') {
+      // Extra unexpected characters
+      return -1;
+    }
+
+    switch (unit) {
+    case 's':
+    case 'S':
+      multiplier = 1.0;
+      break;
+    case 'm':
+    case 'M':
+      multiplier = 60.0;
+      break;
+    case 'h':
+    case 'H':
+      multiplier = 3600.0;
+      break;
+    case 'd':
+    case 'D':
+      multiplier = 86400.0;
+      break;
+    default:
+      // Unknown unit
+      return -1;
+    }
+  }
+
+  total_seconds = value * multiplier;
+  if (total_seconds < 0)
+    return -1;  // Negative durations are not allowed
+
+  /* Store the result in your global configuration */
+  conf.ws_auth_expire = (long) total_seconds;
+  return 0;
+}
+
+ /**
+ * Reads a JWT secret from a file path
+ * @param path File path containing the secret
+ * @return 0 on success, 1 on failure
+ */
+static int
+parse_jwt_from_file (const char *path) {
+  conf.ws_auth_secret = read_secret_from_file (path);
+  if (conf.ws_auth_secret == NULL) {
+    fprintf (stderr, "Failed to read secret from file: %s\n", path);
+    return 1;
+  }
+  conf.ws_auth_verify_only = 1;
+  return 0;
+}
+
+/**
+ * Retrieves a JWT secret from an environment variable
+ * @param env_var Environment variable name (without '$' prefix)
+ * @return 0 on success, 1 on failure
+ */
+static int
+parse_jwt_from_env (const char *env_var) {
+  const char *env_secret = getenv (env_var);
+  if (env_secret != NULL) {
+    conf.ws_auth_secret = strdup (env_secret);
+    conf.ws_auth_verify_only = 1;
+    return 0;
+  }
+  fprintf (stderr, "Environment variable %s not found\n", env_var);
+  return 1;
+}
+
+/**
+ * Handles the 'verify:' prefix for JWT authentication
+ * @param secret_spec Secret specification string
+ * @return 0 on success, 1 on failure
+ */
+static int
+parse_jwt_verify_option (const char *secret_spec) {
+  /* First try to read from file */
+  if (access (secret_spec, F_OK) == 0) {
+    return parse_jwt_from_file (secret_spec);
+  }
+
+  /* Then try environment variable if path contains '$' */
+  if (*secret_spec == '$') {
+    return parse_jwt_from_env (secret_spec + 1);
+  }
+
+  /* Finally use as direct secret string */
+  conf.ws_auth_verify_only = 1;
+  conf.ws_auth_secret = strdup (secret_spec);
+  return 0;
+}
+
+/**
+ * Handles the legacy JWT format without 'verify:' prefix
+ * @param remainder String after 'jwt:' prefix
+ * @return 0 on success
+ */
+static int
+parse_legacy_jwt_option (const char *remainder) {
+  if (access (remainder, F_OK) == 0) {
+    conf.ws_auth_secret = read_secret_from_file (remainder);
+  } else {
+    conf.ws_auth_secret = strdup (remainder);
+  }
+  return 0;
+}
+
+/**
+ * Handles the plain 'jwt' option with no additional parameters
+ * @return 0 on success
+ */
+static int
+parse_plain_jwt_option (void) {
+  /* Try to get secret from environment variable */
+  const char *env_secret = getenv ("GOACCESS_WSAUTH_SECRET");
+  if (env_secret != NULL) {
+    conf.ws_auth_secret = strdup (env_secret);
+  } else {
+    /* Fallback to generating a secret */
+    conf.ws_auth_secret = generate_ws_auth_secret ();
+  }
+  return 0;
+}
+
+/**
+ * Options:
+ * # Read secret from file
+ * --ws-auth="jwt:verify:/etc/ws_secret.txt"
+ *
+ * # Get secret from environment variable
+ * --ws-auth="jwt:verify:$GOACCESS_WSAUTH_SECRET"
+ *
+ * # Use direct secret string
+ * --ws-auth="jwt:verify:my_super_secret_key"
+ *
+ * # Legacy formats still work
+ * --ws-auth="jwt:/path/to/secret"
+ * --ws-auth="jwt:super_secret_key"
+ * --ws-auth="jwt" // generate one
+ *
+ * Parses websocket authentication options
+ * @param optarg Option argument string
+ * @return 0 on success, 1 on failure/invalid option
+ */
+static int
+parse_ws_auth_option (const char *optarg) {
+  /* Handle cases where it starts with "jwt:" */
+  const char *remainder = NULL;
+  /* First check for plain "jwt" option (no colon) */
+  if (strcmp (optarg, "jwt") == 0)
+    return parse_plain_jwt_option ();
+
+  /* If it doesn't start with "jwt:", it's invalid */
+  if (strncmp (optarg, "jwt:", 4) != 0)
+    return 1;
+
+  /* Handle cases where it starts with "jwt:" */
+  remainder = optarg + 4;
+
+  /* If the remainder is exactly "verify", that's reserved – error out */
+  if (strcmp (remainder, "verify") == 0)
+    return 1;
+
+  /* Check for "verify:" prefix */
+  if (strncmp (remainder, "verify:", 7) == 0) {
+    // Ensure that there is a secret specification after "verify:"
+    if (remainder[7] == '\0') {
+      return 1; /* "verify:" with nothing following is invalid */
+    }
+    return parse_jwt_verify_option (remainder + 7);
+  }
+
+  /* Legacy jwt:secret format */
+  return parse_legacy_jwt_option (remainder);
+}
+
+static int
+validate_url_basic (const char *url) {
+  /* Check for NULL */
+  if (!url)
+    return 0;
+
+  /* Check for http:// or https:// protocol */
+  if (strncmp (url, "http://", 7) == 0) {
+    /* Make sure there's something after http:// */
+    return url[7] != '\0';
+  } else if (strncmp (url, "https://", 8) == 0) {
+    /* Make sure there's something after https:// */
+    return url[8] != '\0';
+  }
+
+  return 0;     /* No valid protocol */
+}
+#endif
 
 /* Parse command line long options. */
 static void
@@ -525,12 +780,24 @@ parse_long_opt (const char *name, const char *oarg) {
     conf.restore = 1;
 
   /* TLS/SSL certificate */
-  if (!strcmp ("ssl-cert", name))
+  if (!strcmp ("ssl-cert", name)) {
+    // Check if the SSL certificate file exists and is readable
+    if (access (oarg, F_OK) != 0)
+      FATAL ("SSL certificate file does not exist");
+    if (access (oarg, R_OK) != 0)
+      FATAL ("SSL certificate file is not accessible");
     conf.sslcert = oarg;
+  }
 
   /* TLS/SSL private key */
-  if (!strcmp ("ssl-key", name))
+  if (!strcmp ("ssl-key", name)) {
+    // Check if the SSL private key file exists and is readable
+    if (access (oarg, F_OK) != 0)
+      FATAL ("SSL key file does not exist");
+    if (access (oarg, R_OK) != 0)
+      FATAL ("SSL key file is not accessible");
     conf.sslkey = oarg;
+  }
 
   /* timezone */
   if (!strcmp ("tz", name))
@@ -539,6 +806,30 @@ parse_long_opt (const char *name, const char *oarg) {
   /* URL to which the WebSocket server responds. */
   if (!strcmp ("ws-url", name))
     conf.ws_url = oarg;
+
+#ifdef HAVE_LIBSSL
+  /* WebSocket auth */
+  if (!strcmp ("ws-auth", name) && parse_ws_auth_option (oarg) != 0)
+    FATAL ("Invalid --ws-auth option.");
+
+  /* WebSocket auth JWT expires */
+  if (!strcmp ("ws-auth-expire", name) && parse_ws_auth_expire_option (oarg) != 0)
+    FATAL ("Invalid --ws-auth-expire option.");
+
+  /* WebSocket auth JWT URL */
+  if (!strcmp ("ws-auth-url", name)) {
+    if (validate_url_basic (oarg) == 0)
+      FATAL ("Invalid --ws-auth-url option (check URL validity).");
+    conf.ws_auth_url = oarg;
+  }
+
+  /* WebSocket auth JWT URL refresh */
+  if (!strcmp ("ws-auth-refresh-url", name)) {
+    if (validate_url_basic (oarg) == 0)
+      FATAL ("Invalid --ws-auth-refresh-url option (check URL validity).");
+    conf.ws_auth_refresh_url = oarg;
+  }
+#endif
 
   /* WebSocket ping interval in seconds */
   if (!strcmp ("ping-interval", name))
@@ -684,8 +975,13 @@ parse_long_opt (const char *name, const char *oarg) {
   }
 
   /* specifies the path of the database file */
-  if (!strcmp ("db-path", name))
+  if (!strcmp ("db-path", name)) {
+    struct stat st;
+    // Check if the directory exists and is accessible
+    if (stat (oarg, &st) != 0 || !S_ISDIR (st.st_mode))
+      FATAL ("Database path does not exist or is not a directory");
     conf.db_path = oarg;
+  }
 
   /* specifies the regex to extract the virtual host */
   if (!strcmp ("fname-as-vhost", name) && oarg && *oarg != '\0')
@@ -892,5 +1188,24 @@ read_option_args (int argc, char **argv) {
       if (conf.filenames_idx < MAX_FILENAMES)
         conf.filenames[conf.filenames_idx++] = argv[idx];
     }
+  }
+
+  /* Final validation:
+   * When using JWT verify mode, the ws-auth-url must be provided.
+   * And if a ws-auth-refresh-url is set, then both ws_auth_verify_only and ws_auth_url must be set.
+   */
+  if (conf.ws_auth_verify_only && !conf.ws_auth_url) {
+    FATAL ("--ws-auth with verify requires --ws-auth-url to be set.");
+  }
+
+  if (conf.ws_auth_refresh_url) {
+    if (!conf.ws_auth_verify_only || !conf.ws_auth_url) {
+      FATAL
+        ("--ws-auth-refresh-url requires both --ws-auth with verify and --ws-auth-url to be set.");
+    }
+  }
+  // Ensure that both ssl-cert and ssl-key are either both set or both unset
+  if ((conf.sslcert && !conf.sslkey) || (!conf.sslcert && conf.sslkey)) {
+    FATAL ("Both --ssl-cert and --ssl-key must be set and accessible.");
   }
 }

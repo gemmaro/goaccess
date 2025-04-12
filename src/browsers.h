@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@
 #ifndef BROWSERS_H_INCLUDED
 #define BROWSERS_H_INCLUDED
 
-#define BROWSER_TYPE_LEN     13
+#define BROWSER_TYPE_LEN     24
 #define MAX_LINE_BROWSERS   128
 #define MAX_CUSTOM_BROWSERS 256
 

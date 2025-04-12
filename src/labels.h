@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -290,6 +290,8 @@
 /* Common UI Errors */
 #define ERR_FORMAT_HEADER              \
   _("Format Errors - Verify your log/date/time format")
+#define HINT_INVALID_REQUESTS          \
+  _("Use --invalid-requests option to store such lines in a file.")
 #define ERR_FORMAT_NO_DATE_FMT         \
   _("No date format was found on your conf file.")
 #define ERR_FORMAT_NO_LOG_FMT          \
@@ -394,6 +396,8 @@
   N_("Bar")
 #define HTML_REPORT_PANEL_WMAP         \
   N_("World Map")
+#define HTML_REPORT_PANEL_GMAP         \
+  N_("Azimuthal/Globe")
 #define HTML_REPORT_PANEL_PLOT_METRIC  \
   N_("Plot Metric")
 #define HTML_REPORT_PANEL_TABLE_COLS   \

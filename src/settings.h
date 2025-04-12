@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -146,6 +146,11 @@ typedef struct GConf_
   const char *ws_url;               /* WebSocket URL */
   const char *ping_interval;        /* WebSocket ping interval in seconds */
   const char *unix_socket;          /* unix socket to bind to */
+  const char *ws_auth_url;          /* URL to fetch the initial JWT */
+  const char *ws_auth_refresh_url;  /* URL to fetch the refreh JWT */
+  char *ws_auth_secret;             /* WebSocket AUTH */
+  long ws_auth_expire;              /* WebSocket AUTH JWT expire in seconds */
+  int ws_auth_verify_only;          /* WebSocket AUTH verify only */
 
   /* User flags */
   int all_static_files;             /* parse all static files */

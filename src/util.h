@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -105,6 +105,7 @@ off_t file_size (const char *filename);
 size_t append_str (char **dest, const char *src);
 uint32_t djb2 (const unsigned char *str);
 uint64_t u64encode (uint32_t x, uint32_t y);
+void decode_hex(char *url, char *out, int decode_plus);
 void genstr (char *dest, size_t len);
 void set_tz (void);
 void strip_newlines (char *str);

@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2024 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,7 @@
 #define MAX_LOG_ERRORS  20
 #define READ_BYTES      4096u
 #define MAX_BATCH_LINES 8192u /* max number of lines to read per batch before a reflow */
+#define MAX_MIME_OUT    256
 
 #define LINE_LEN          23
 #define ERROR_LEN        255

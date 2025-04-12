@@ -22,11 +22,6 @@ h3 {
 	justify-content: space-between;
 	flex-wrap: wrap;
 	gap: 0.5rem;
-	align-items: center;
-}
-.page-header #last-updated {
-    margin: 0;
-    font-size: 1.35rem;
 }
 .pagination {
 	margin: 5px 0;
@@ -35,11 +30,26 @@ h3 {
 .expandable>td {
 	cursor: pointer;
 }
+.loading-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
 .spinner {
 	color: #999;
-	left: 50%;
-	position: absolute;
-	top: 50%;
+	margin-bottom: 10px; /* Space between spinner and text */
+}
+.app-loading-status {
+	color: #999;
+	text-align: center;
+	text-shadow: 1px 1px 0 #FFF;
+	text-transform: uppercase;
 }
 .powered {
 	bottom: 190px;
@@ -61,109 +71,126 @@ h3 {
 	padding: 3px 25px;
 	text-transform: uppercase;
 }
-.gheader {
-	letter-spacing: -1px;
+hgroup h2,
+hgroup small {
 	text-transform: uppercase;
+}
+hgroup h2 {
+	letter-spacing: -1px;
 }
 
 /* NAVIGATION */
 nav {
-	-webkit-transition: left .2s;
 	background: #1C1C1C;
 	border-color: #5bc0de;
 	border-style: solid;
-	border-width: 0;
-	border-block-end-width: 3px;
+	border-width: 0 3px 3px 0;
+	/* Combined border properties */
+	height: 100%;
+	left: -236px;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 300px;
+	z-index: 2;
 	transition: left .2s;
 }
+
+/* Navigation List */
 nav .nav-list {
 	visibility: hidden;
 	display: none;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: -17px;
+	top: 0;
+	overflow-y: scroll;
 }
 
+/* Show Navigation List on Active */
 nav.active .nav-list {
-    margin-block-start: -64px;
-    visibility: visible;
-    display: block;
+	visibility: visible;
+	display: block;
 }
+
+/* Media Query for Large Screens */
 @media only screen and (min-width: 993px) {
-    nav {
-    	border-width: 0;
-    	border-inline-end-width: 3px;
-    	height: 100%;
-    	left: -236px;
-    	overflow: hidden;
-    	position: fixed;
-    	top: 0;
-    	width: 300px;
-    	z-index: 2;
-    }
-    nav .nav-bars,
-    nav .nav-gears,
-    nav .nav-ws-status {
-	left: 0;
-	position: fixed;
-	top: 1.5rem;
-	transition: opacity .2s;
-    }
-    nav .nav-gears {
-	top: 7.9rem;
-    }
-    nav .nav-ws-status {
-	left: 46px;
-    top: 12.3rem;
-    }
-    nav.active .nav-list {
-        margin-block-start: 0;
-       	bottom: 0;
-        left: 0;
-        display: block;
-        overflow-y: scroll;
-        position: absolute;
-        right: -17px;
-        top: 0;
-    }
+
+	nav .nav-bars,
+	nav .nav-gears,
+	nav .nav-ws-status {
+		left: 0;
+		position: fixed;
+		top: 1.5rem;
+		transition: opacity .2s;
+	}
+
+	nav .nav-gears {
+		top: 7.9rem;
+	}
+
+	nav .nav-ws-status {
+		left: 38px;
+		top: 12.3rem;
+	}
+
+	nav.active .nav-list {
+		margin-block-start: 0;
+	}
 }
+
+/* Navigation Header */
 nav header {
 	margin: 40px 20px 30px;
 }
+
 nav header a {
-	color: rgba(240,240,240,.7);
+	color: rgba(240, 240, 240, .7);
 	font-size: 2.7em;
 	font-weight: 300;
 	text-transform: uppercase;
 }
+
 nav header a:hover {
 	color: #eee;
 }
+
+/* Active Navigation */
 nav.active {
 	display: block !important;
 	left: 0;
 	opacity: .97;
 }
+
 nav.active .nav-bars,
 nav.active .nav-gears,
 nav.active .nav-ws-status {
 	opacity: 0;
 	visibility: hidden;
 }
+
+/* Navigation Icons */
 nav .nav-bars,
 nav .nav-gears,
 nav .nav-ws-status {
-	-webkit-transition: opacity .2s;
 	background: none;
 	border: none;
 	color: #9E9E9E;
 	font-size: 36px;
-	height: 64px;
+	height: 60px;
+	width: 60px;
 	transition: opacity .2s;
-	width: 64px;
 }
+
 nav .nav-bars:hover,
 nav .nav-gears:hover {
 	color: gainsboro;
 }
-nav .nav-ws-status {
+
+/* WebSocket Status */
+nav .nav-ws-status,
+.nav-ws-status.mini {
 	color: crimson;
 	cursor: help;
 	display: none;
@@ -172,12 +199,21 @@ nav .nav-ws-status {
 	width: 12px;
 }
 
+.nav-ws-status.mini {
+	top: 14px;
+	left: 40px;
+	position: absolute;
+}
+
 .nav-ws-status.fa-circle {
 	color: #5DB56A;
 }
+
+/* Navigation List Items */
 nav li {
 	position: relative;
 }
+
 nav li .toggle-panel {
 	cursor: pointer;
 	opacity: 0;
@@ -188,24 +224,31 @@ nav li .toggle-panel {
 	transition: all .2s;
 	visibility: hidden;
 }
+
 nav li .toggle-panel i {
-	color: rgba(200,200,200,.5);
+	color: rgba(200, 200, 200, .5);
 	opacity: 0;
 }
+
 nav li .toggle-panel.active i {
 	color: #eee;
 	opacity: 1;
 }
+
+/* Show Toggle Panel in Active Navigation */
 nav.active li .toggle-panel {
 	visibility: visible;
 	opacity: 1;
 }
+
 nav.active li:hover .toggle-panel i {
 	opacity: 1;
 }
+
+/* Navigation Links */
 nav li a {
 	border-left: 3px solid transparent;
-	color: rgba(200,200,200,.5);
+	color: rgba(200, 200, 200, .5);
 	display: block;
 	font-size: smaller;
 	max-width: 235px;
@@ -217,25 +260,32 @@ nav li a {
 	transition: opacity .2s;
 	white-space: nowrap;
 }
+
 nav.active li a {
 	max-width: 90%;
 	opacity: 1;
 }
+
 nav li:hover a,
 nav li.active a {
-	background: rgba(0,0,0,.1);
+	background: rgba(0, 0, 0, .1);
 	border-color: #5BC0DE;
 	color: #eee;
 }
+
+/* Unordered List */
 nav ul {
 	padding-left: 0;
 	list-style: none;
 }
-/* Navigation  -- Icon */
+
+/* Navigation Links */
 nav a,
 nav a:hover {
 	text-decoration: none;
 }
+
+/* Navigation Section Titles */
 nav h3 {
 	color: #FFF !important;
 	font-size: medium;
@@ -277,10 +327,10 @@ nav h3 {
 
 /* PANEL STYLES */
 #panels {
-    margin-block-end: 10px;
+	margin-block-end: 10px;
 }
 article header {
-    margin-block-end: 15px;
+	margin-block-end: 15px;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
@@ -441,9 +491,6 @@ article table>thead>tr.thead-cols {
 article table tbody.tbody-data tr.shaded {
 	background-color: #F7F7F7;
 }
-article table tbody.tbody-data tr. {
-	background-color: #F7F7F7;
-}
 article table tbody.tbody-data tr.child td:nth-child(1),
 article table tbody.tbody-data tr.child td:nth-child(2) {
 	border-right: none;
@@ -457,7 +504,7 @@ article .row:nth-child(2):not(.table-wrapper)>.col-md-12 {
 
 /* GENERAL */
 .report-title {
-    margin: 0;
+	margin: 0;
 	background: #FFF;
 	border-radius: 4px;
 	bottom: -10px;
@@ -471,32 +518,32 @@ article .row:nth-child(2):not(.table-wrapper)>.col-md-12 {
 
 ul[role="list"],
 ol[role="list"] {
-    padding: 0;
-    list-style: none;
+	padding: 0;
+	list-style: none;
 }
 
 #overall h2,
 #overall p {
-    margin: 0;
+	margin: 0;
 }
 
 #overall hgroup {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 0.75em;
-    margin-block-end: 4px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 0.75em;
+	margin-block-end: 4px;
 }
 
 #overall hgroup p {
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: 18px;
+	font-weight: 400;
+	text-transform: uppercase;
+	font-size: 18px;
 }
 
 #overall ul {
-    margin-block-end: 0;
-    padding: 0;
+	margin-block-end: 0;
+	padding: 0;
 }
 
 #overall li div {
@@ -547,6 +594,12 @@ ol[role="list"] {
 		bottom: 10px;
 		left: 25px;
 		transform: initial;
+	}
+	header hgroup {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		width: 70%
 	}
 }
 
@@ -621,7 +674,7 @@ rect.legend.y1 {
 	stroke: #007BC3;
 }
 .line1 {
-    stroke: #FF303E;
+	stroke: #FF303E;
 }
 .axis text,
 .axis-label,
@@ -743,6 +796,9 @@ rect.legend {
 }
 .dark article table .cell-hl.d4 {
 	background: #7e7e7e;
+}
+.dark.graticule {
+	stroke: #DDD;
 }
 
 /* DARK BLUE THEME */
@@ -1009,6 +1065,15 @@ html.dark.gray,
 .dark .chart-tooltip tr {
 	border: 1px solid #363737;
 }
+.dark .sphere {
+	fill: #0076d433;
+}
+.dark.gray .sphere {
+	fill: #52646733;
+}
+.graticule {
+	stroke: #8f8f8f;
+}
 
 /* DARK PURPLE THEME */
 html.dark.purple,
@@ -1067,7 +1132,7 @@ html.dark.purple,
 .dark.purple h3,
 .dark.purple h4,
 .dark.purple h5 {
-    color: #9a9a9a;
+	color: #9a9a9a;
 }
 .dark.purple #overall li div {
 	background: #27293d;
@@ -1152,6 +1217,9 @@ html.dark.purple,
 }
 .dark.purple .line1 {
 	stroke: #d048b6;
+}
+.dark.purple .sphere {
+	fill: #2196f317;
 }
 .country {
 	fill: #ccc;
