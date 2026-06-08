@@ -3,21 +3,21 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH goaccess 1 2025年3月 GNU+Linux 利用者の手引
+.TH goaccess 1 "MAR 2026" GNU+Linux 利用者の手引
 .SH 名称
 goaccess \- 高速なwebログ解析器と対話的な閲覧器
 .SH 処方
 .LP
 \fBgoaccess [ファイル名] [オプション...] [\-c][\-M][\-H][\-q][\-d][...]\fP
 .SH 説明
-\fBgoaccess\fP GoAccessはオープンソースの実時間webログ解析器と対話的な閲覧器を兼ねており、
-*nixシステムの\fI端末\fPや\fIブラウザ\fP上で走ります。
-.P
-サーバーレポートで思うがままにデータの可視化を行う必要があるシステム管理者のために、
-高速で価値のあるHTTPの統計情報を提供します。
-.P
-GoAccessは指定されたwebログファイルを解析しX端末にデータを出力します。
-含まれている機能は以下です：
+\fBgoaccess\fP is an open source, real\-time log analyzer and interactive viewer
+that runs in a \fIterminal\fP on *nix systems or directly in your \fIbrowser.\fP
+Designed with system administrators, DevOps engineers, and security
+professionals in mind, it delivers fast, actionable HTTP statistics and
+visual server reports on the fly. GoAccess parses your web server logs in
+real time and presents the data directly in the terminal or via a live HTML
+dashboard, making it easy to monitor traffic, detect anomalies, and
+troubleshoot issues instantly.
 
 .IP 一般的な統計：
 このパネルにはいくつかの指標の概要があります。
@@ -88,9 +88,10 @@ Google翻訳で使われたキーフレーズが報告されます。
 有効にするには設定ファイル中の`\-\-ignore\-panel`を参照してください。
 既定では\fI無効\fPになっています。
 .IP 地理的位置
-IPアドレスが地理的にどこに位置しているかを定められます。
-統計は大陸と国家に細分化されます。
-GeoLocation対応とともにコンパイルする必要があります。
+Determines where an IP address is geographically located. Statistics are
+broken down by continent and country, and when city\-level GeoIP data is
+available it also lists the individual cities for each hit. It needs to be
+compiled with GeoLocation support.
 .IP HTTPステータスコード
 HTTPリクエストに対する数値的なステータスコードの値です。
 .IP ASN
@@ -116,6 +117,12 @@ HTTP認証により定められるような、文書をリクエストする人�
 .IP 暗号化設定
 このパネルには暗号スート間で使用されたSSL/TLSプロトコルが示されます。
 このパネルはログ書式変数中で\fI%K\fPが与えられていない限り有効ではありません。
+
+.P
+GoAccess panels can be reordered and their subitems expanded or collapsed
+from the terminal interface, keeping the most important metrics front and
+center.  Chart metrics and scales are also adjustable on the fly via the
+interactive menu described below.
 
 .P
 \fI補足：\fPおまけで、設定された際には、
@@ -154,8 +161,12 @@ MaxMindのGeoIPが必要です。
 \fB\-\-with\-getline\fP
 4096の固定大バッファを使う代わりに、フルラインリクエストを解析するために動的にラインバッファを拡張します。
 .TP 
+\fB\-\-with\-zlib\fP
+Build with zlib support for reading gzipped logs. Disabled by default.
+.TP 
 \fB\-\-with\-openssl\fP
-WebSocketサーバー用にGoAccessをOpenSSL対応付きでコンパイルします。
+Compile GoAccess with OpenSSL support for its WebSocket server.
+\fB\-\-with\-zlib Enables optional zlib support to allow parsing of compressed log files (e.g., .gz) directly without manual decompression.\fP
 .SH オプション
 .P
 以下のオプションはコマンドに与えたり設定ファイルで指定したりできます。
@@ -339,10 +350,6 @@ HTML設定を含む妥当なJSONオブジェクトを与えてください。
 \fB\-\-no\-color\fP
 色付きの出力にします。
 これは彩色に対応していない端末では既定の出力です。
-.TP 
-\fB\-\-no\-column\-names\fP
-端末の出力で列名を書き入れません。
-既定ではパネル毎にそれぞれの使える指標について列名が表示されます。
 .TP 
 \fB\-\-no\-csv\-summary\fP
 CSVの出力で指標の概要を無効にします。
@@ -1110,14 +1117,29 @@ GoAccessには以下のフィールドが\fI必須\fPです。
 プログラムまたは現在のウィンドウを終了するか、活性のモジュールを折り畳みます。
 .IP oまたはエンター
 選択されたモジュールを展開ないしウィンドウを開きます。
+.IP +
+Expand the selected item's children when a module is already expanded.
+.IP \-
+Collapse the selected item's children when a module is already expanded.
 .IP "0\-9とShift + 0"
 選択されたモジュールを活性に設定します
+.IP p
+Reorder the dashboard panels interactively (press `p` or `P`).
 .IP j
 展開されたモジュール内でスクロールを下に移動します。
 .IP k
 展開されたモジュール内でスクロールを上に移動します。
 .IP c
 カラースキームを設定したり変更したりします。
+.IP r
+Toggle reverse order of chart bars for the active module.
+.IP m
+Cycle chart metric forward for the active module (hits, visitors,
+bandwidth).
+.IP M
+Cycle chart metric backward for the active module.
+.IP l
+Toggle logarithmic scale for chart bars in the active module.
 .IP タブ
 モジュールの巡回を先に進めます。現在の活性なモジュールから開始します。
 .IP シフトキーとタブ
@@ -1157,38 +1179,32 @@ CSVファイルを生成するには以下のようにします。
 .IP
 # goaccess access.log \-\-no\-csv\-summary \-o report.csv
 .P
-GoAccessは実時間の絞り込みと解析を行う上で、
-非常に柔軟性が高い側面もあります。
-例えばgoaccessが起動したあとのログを監視することによって素早く問題を診断できます。
+GoAccess also allows real\-time monitoring from stdin:
 .IP
 # tail \-f access.log | goaccess \-
 .P
-そしてさらに良くするために、
-実時間解析を保存するためのパイプを空けたままを維持しつつ、
-\fItail \-f\fPと\fIgrep、awk、sedなど\fPのようなパターン照合ツールを活用することができます。
+To filter while keeping the pipe open for real\-time analysis:
 .IP
 # tail \-f access.log | grep \-i \-\-line\-buffered 'firefox' | goaccess
 \-\-log\-format=COMBINED \-
 .P
-もしくはパイプを開きフィルタを適用しつつ、
-ファイルの冒頭から解析するにはこのようにします。
+Parse from the beginning of the file while maintaining the pipe:
 .IP
 # tail \-f \-n +0 access.log | grep \-i \-\-line\-buffered 'firefox' | goaccess
 \-\-log\-format=COMBINED \-o report.html \-\-real\-time\-html \-
 .P
-もしくはログの日時のタイムゾーンを異なるタイムゾーン、
-例えばEurope/Berlin、に変換するには次のようにします。
+Convert log date timezone to Europe/Berlin:
 .IP
 # goaccess access.log \-\-log\-format='%h %^[%x] "%r" %s %b "%R" "%u"'
 \-\-datetime\-format='%d/%b/%Y:%H:%M:%S %z' \-\-tz=Europe/Berlin \-\-date\-spec=min
+
 .SS 複数のログファイル
 .P
-GoAccessで複数のログを解析するにはいくつかの方法があります。
-最も単純なのはコマンドラインに複数のログファイルを渡すことです。
+Parse multiple logs by passing them to the command line:
 .IP
 # goaccess access.log access.log.1
 .P
-通常のファイルから読み込みつつパイプからファイルを解析することさえできます。
+Parse from a pipe while also reading regular files (append \fB\-\fP for stdin):
 .IP
 # cat access.log.2 | goaccess access.log access.log.1 \-
 .P
@@ -1196,123 +1212,137 @@ GoAccessで複数のログを解析するにはいくつかの方法がありま
 単一ダッシュがコマンドラインの後ろに付いていることで、
 GoAccessにパイプから読み込むことが伝わります。
 .P
-さらにGoAccessの柔軟性を上げたければ一連のパイプにすることができます。
-例として現在のログファイルに加えて、
-全ての圧縮されたログファイル\fIaccess.log.*.gz\fPを処理したければ、
-次のようにできます。
+Process all compressed log files plus the current log:
 .IP
 # zcat access.log.*.gz | goaccess access.log \-
 .P
-\fI補足：\fPMac OS Xではzcatではなくgunzip \-cを使ってください。
-.SS 実時間HTML出力
+\fINote:\fP On macOS, use \fBgunzip \-c\fP instead of \fBzcat\fP.  \fINote:\fP If
+GoAccess was built with \fB\-\-with\-zlib\fP, it can parse \fB.gz\fP files directly
+without external decompression:
+.IP
+# goaccess access.log access.log.1.gz access.log.2.gz
+
+.SS "REAL\-TIME HTML OUTPUT"
 .P
-GoAccessではHTMLレポートに実時間データを出力することができます。
-外部ファイル依存のない単一ファイルからなるため、
-HTMLファイルをEメールで送ることさえできるのです。
-やったぜ！
-.P
-実時間HTMLレポートを生成する工程は、
-静的なレポートを作る過程と大変似ています。
-実時間にするのに必要なのは\-\-real\-time\-htmlだけです。
+Generate a real\-time HTML report:
 .IP
 # goaccess access.log \-o /usr/share/nginx/html/site/report.html
 \-\-real\-time\-html
 .P
-既定ではGoAccessは生成されたレポートのホスト名を使います。
-オプションとしてクライアントのブラウザが接続するURLを指定することができます。
-詳細な例は https://goaccess.io/faq を参照してください。
+Specify the WebSocket URL explicitly:
 .IP
 # goaccess access.log \-o report.html \-\-real\-time\-html \-\-ws\-url=goaccess.io
 .P
-既定ではGoAccessはポート7890で待ち受けます。
-7890以外の別のポートを使うためには以下のように指定することができます
-（ポートの穴開けができていることを確かめてください）。
+Use a custom port:
 .IP
 # goaccess access.log \-o report.html \-\-real\-time\-html \-\-port=9870
 .P
-またWebSocketサーバーを0.0.0.0以外の別のアドレスに束縛したければ以下のように指定することができます。
+Bind WebSocket to a specific address:
 .IP
 # goaccess access.log \-o report.html \-\-real\-time\-html \-\-addr=127.0.0.1
 .P
-\fI補足：\fPTLS/SSL接続上で実時間データを出力するには\fI\-\-ssl\-cert=<cert.crt>\fPと\fI\-\-ssl\-key=<priv.key>\fPを使う必要があります。
+\fINote:\fP For TLS/SSL real\-time output, use \fB\-\-ssl\-cert=<cert.crt>\fP
+and \fB\-\-ssl\-key=<priv.key>\fP.  If GoAccess is running behind a
+reverse proxy, set the WebSocket URL to include the proxy path and port,
+e.g.:
+.IP
+# goaccess access.log \-o report.html \-\-real\-time\-html
+\-\-ws\-url=goaccess.io:8080/ws
+
 .SS 日付の扱い
 .P
-別のパイプの有用な点はwebのログから日付で絞り込むことでしょう。
-.P
-以下は05/Dec/2010からファイル末尾までの全てのHTTPリクエストを取得します。
+All requests from a specific date to end of file:
 .IP
 # sed \-n '/05\/Dec\/2010/,$ p' access.log | goaccess \-a \-
 .P
-または昨日や明日のような相対的な日にちを使うと以下です。
+Using a relative date (one week ago):
 .IP
 # sed \-n '/'$(date '+%d\/%b\/%Y' \-d '1 week ago')'/,$ p' access.log |
 goaccess \-a \-
 .P
-日付aから日付bまでの特定の時刻間隔のみを解析したければ以下のようにできます。
+Parse a specific date range:
 .IP
 # sed \-n '/5\/Nov\/2010/,/5\/Dec\/2010/ p' access.log | goaccess \-a \-
 .P
-特定の量のデータのみを保存し容量上で古いものから再利用されている場合は、
-特定の日数のみ保持するようにできます。
-例えば直近5日間を保持して表示するには次のようにします。
+Keep only the last 5 days of data:
 .IP
 # goaccess access.log \-\-keep\-last=5
+
 .SS 仮想ホスト
 .P
-ログに仮想ホスト（サーバーブロック）フィールドがあるものとします。例えば次の通り。
-.IP
-vhost.com:80 10.131.40.139 \- \- [02/Mar/2016:08:14:04 \-0600] "GET
-/shop/bag\-p\-20 HTTP/1.1" 200 6715 "\-" "Apache (internal dummy connection)"
+Use \fB\-\-concat\-vhost\-req\fP to prepend the virtual host or server block (%v)
+to the request field.
 .P
-そしてどの仮想ホストに最頻のURLが属しているのかを見るために、仮想ホストをリクエストに加えたいことがあるでしょう。
+Append virtual host manually:
 .IP
-awk '$8=$1$8' access.log | goaccess \-a \-
+# awk '$8=$1$8' access.log | goaccess \-a \-
 .P
-仮想ホストのリストを除外するためには以下のようにできます。
+Exclude a list of virtual hosts:
 .IP
 # grep \-v "`cat exclude_vhost_list_file`" vhost_access.log | goaccess \-
-.SS ファイルとステータスコード
+
+.SS "FILES, STATUS CODES & BOTS"
 .P
-リクエストのうち、html、htm、phpなどの閲覧ページなどで、
-特定のページを解析するには次のようにします。
+Parse only specific page types (html, htm, php):
 .IP
 # awk '$7~/.html|.htm|.php/' access.log | goaccess \-
 .P
-なお\fI$7\fPはログ書式がcommonやcombinedのもの（仮想ホストなし）のリクエストフィールドであり、
-ログに仮想ホストが含まれるのであれば代わりに\fI$8\fPを使うことになるでしょう。
-注目しているフィールドを確認しておくのが一番です。
-例えば次のように。
+Parse page views without extensions:
 .IP
-# tail \-10 access.log | awk '{print $8}'
+# awk '$7!~/..*$/' access.log | goaccess \-
 .P
-または特定のステータスコードを解析するには次のようにします。
-ここでは500 (Internal Server Error) を例に挙げます。
+Filter by a single status code (e.g., 500):
 .IP
 # awk '$9~/500/' access.log | goaccess \-
+.P
+Filter by multiple status codes (3xx or 5xx):
+.IP
+# tail \-f \-n +0 access.log | awk '$9~/3[0\-9]{2}|5[0\-9]{2}/' | goaccess \-o
+out.html \-
+.P
+Estimate bot traffic:
+.IP
+# tail \-F \-n +0 access.log | grep \-i \-\-line\-buffered 'bot' | goaccess \-
+
 .SS サーバー
 .P
-また、GoAccessを低い優先度で走らせたければ次のようにできることは書いておいたほうがよいでしょう。
+Run GoAccess at lower CPU priority:
 .IP
 # nice \-n 19 goaccess \-f access.log \-a
 .P
-そしてサーバーにインストールしたくない場合であってもローカルマシンから走らせられます。
+Pipe logs from a remote server:
 .IP
 # ssh \-n root@server 'tail \-f /var/log/apache2/access.log' | goaccess \-
 .P
-補足：SSHには\fI\-n\fPが必要で、
-こうすることでGoAccessが標準入力から読むことができます。
-またパスフレーズが要求されるとうまく動かないため認証には必ずSSH鍵を使うようにしてください。
+\fINote:\fP SSH requires \fB\-n\fP so GoAccess can read from stdin. Use SSH keys
+for authentication.
+
 .SS 漸進的ログ処理
 .P
-GoAccessには内部的な容量を通じて漸進的にログを処理してディスクにデータを吐き出す能力があります。
-これは以下のように動作します。
-
-.nr step 1 1
-.IP \n[step] 3
-データセットは最初に\fI\-\-persist\fPで永続化されていなければならず、
-それから同じデータセットを\fI\-\-restore\fPを使って読み込むことができます。
-.IP \n+[step]
-新しいデータが（パイプやログファイルを通じて）渡されたら、元のデータセットに追記します。
+GoAccess can process logs incrementally by persisting data to disk, then
+restoring it and appending new data. GoAccess tracks inodes, the last line
+parsed, and the last timestamp per file.
+.P
+\fINote:\fP If the inode doesn't match, all lines are parsed. If it matches,
+remaining lines are read and the count/timestamp updated. Log lines with a
+timestamp ≤ the stored timestamp are skipped. Piped data works off the
+timestamp of the last line read.
+.P
+\fIWarning:\fP Piped data may produce duplicate entries since multiple
+consecutive lines can share the same timestamp. Best practice is to parse
+directly with GoAccess rather than piping for incremental processing.
+.P
+Persist last month's log:
+.IP
+# goaccess access.log.1 \-\-persist
+.P
+Append this month's log and preserve:
+.IP
+# goaccess access.log \-\-restore \-\-persist
+.P
+Read persisted data only:
+.IP
+# goaccess \-\-restore
 
 .P
 補足

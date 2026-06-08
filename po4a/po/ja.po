@@ -9,7 +9,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
-"POT-Creation-Date: 2025-04-13 07:34+0900\n"
+"POT-Creation-Date: 2026-06-09 08:37+0900\n"
 "PO-Revision-Date: 2025-04-13 08:26+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
@@ -27,8 +27,9 @@ msgstr "goaccess"
 
 #. type: TH
 #: ../goaccess.1:1
-#, no-wrap
-msgid "MAR 2025"
+#, fuzzy, no-wrap
+#| msgid "MAR 2025"
+msgid "MAR 2026"
 msgstr "2025年3月"
 
 #. type: TH
@@ -72,34 +73,17 @@ msgid "DESCRIPTION"
 msgstr "説明"
 
 #. type: Plain text
-#: ../goaccess.1:14
+#: ../goaccess.1:20
 msgid ""
-"B<goaccess> GoAccess is an open source real-time web log analyzer and "
-"interactive viewer that runs in a I<terminal> in *nix systems or through "
-"your I<browser.>"
+"B<goaccess> is an open source, real-time log analyzer and interactive viewer "
+"that runs in a I<terminal> on *nix systems or directly in your I<browser.> "
+"Designed with system administrators, DevOps engineers, and security "
+"professionals in mind, it delivers fast, actionable HTTP statistics and "
+"visual server reports on the fly. GoAccess parses your web server logs in "
+"real time and presents the data directly in the terminal or via a live HTML "
+"dashboard, making it easy to monitor traffic, detect anomalies, and "
+"troubleshoot issues instantly."
 msgstr ""
-"B<goaccess> GoAccessはオープンソースの実時間webログ解析器と対話的な閲覧器を兼"
-"ねており、\n"
-"*nixシステムのI<端末>やI<ブラウザ>上で走ります。"
-
-#. type: Plain text
-#: ../goaccess.1:17
-msgid ""
-"It provides fast and valuable HTTP statistics for system administrators that "
-"require a visual server report on the fly."
-msgstr ""
-"サーバーレポートで思うがままにデータの可視化を行う必要があるシステム管理者の"
-"ために、\n"
-"高速で価値のあるHTTPの統計情報を提供します。"
-
-#. type: Plain text
-#: ../goaccess.1:20 ../README.md:17
-msgid ""
-"GoAccess parses the specified web log file and outputs the data to the X "
-"terminal. Features include:"
-msgstr ""
-"GoAccessは指定されたwebログファイルを解析しX端末にデータを出力します。\n"
-"含まれている機能は以下です："
 
 #. type: IP
 #: ../goaccess.1:21
@@ -378,35 +362,41 @@ msgid "Geo Location"
 msgstr "地理的位置"
 
 #. type: Plain text
-#: ../goaccess.1:98
+#: ../goaccess.1:99
+#, fuzzy
+#| msgid ""
+#| "Determines where an IP address is geographically located. Statistics are "
+#| "broken down by continent and country. It needs to be compiled with "
+#| "GeoLocation support."
 msgid ""
 "Determines where an IP address is geographically located. Statistics are "
-"broken down by continent and country. It needs to be compiled with "
-"GeoLocation support."
+"broken down by continent and country, and when city-level GeoIP data is "
+"available it also lists the individual cities for each hit. It needs to be "
+"compiled with GeoLocation support."
 msgstr ""
 "IPアドレスが地理的にどこに位置しているかを定められます。\n"
 "統計は大陸と国家に細分化されます。\n"
 "GeoLocation対応とともにコンパイルする必要があります。"
 
 #. type: IP
-#: ../goaccess.1:98
+#: ../goaccess.1:99
 #, no-wrap
 msgid "HTTP Status Codes"
 msgstr "HTTPステータスコード"
 
 #. type: Plain text
-#: ../goaccess.1:100
+#: ../goaccess.1:101
 msgid "The values of the numeric status code to HTTP requests."
 msgstr "HTTPリクエストに対する数値的なステータスコードの値です。"
 
 #. type: IP
-#: ../goaccess.1:100
+#: ../goaccess.1:101
 #, no-wrap
 msgid "ASN"
 msgstr "ASN"
 
 #. type: Plain text
-#: ../goaccess.1:103
+#: ../goaccess.1:104
 msgid ""
 "This panel displays ASN (Autonomous System Numbers) data for GeoIP2 and "
 "legacy databases. Great for detecting malicious traffic and blocking "
@@ -417,13 +407,13 @@ msgstr ""
 "悪意のあるトラフィックを検知しそれに伴ってブロックするのに優れています。"
 
 #. type: IP
-#: ../goaccess.1:103
+#: ../goaccess.1:104
 #, no-wrap
 msgid "Remote User (HTTP authentication)"
 msgstr "リモートユーザー（HTTP認証）"
 
 #. type: Plain text
-#: ../goaccess.1:109
+#: ../goaccess.1:110
 msgid ""
 "This is the userid of the person requesting the document as determined by "
 "HTTP authentication. If the document is not password protected, this part "
@@ -437,13 +427,13 @@ msgstr ""
 "このパネルはログ書式変数中にI<%e>が与えられていなければ有効になりません。"
 
 #. type: IP
-#: ../goaccess.1:109
+#: ../goaccess.1:110
 #, no-wrap
 msgid "Cache Status"
 msgstr "キャッシュ状態"
 
 #. type: Plain text
-#: ../goaccess.1:117
+#: ../goaccess.1:118
 #, no-wrap
 msgid ""
 "If you are using caching on your server, you may be at the point where you\n"
@@ -462,13 +452,13 @@ msgstr ""
 "状態は`MISS`、`BYPASS`、`EXPIRED`、`STALE`、`UPDATING`、`REVALIDATED`、`HIT`のいずれかです。\n"
 
 #. type: IP
-#: ../goaccess.1:117
+#: ../goaccess.1:118
 #, no-wrap
 msgid "MIME Types"
 msgstr "MIME種別"
 
 #. type: Plain text
-#: ../goaccess.1:125
+#: ../goaccess.1:126
 msgid ""
 "This panel specifies Media Types (formerly known as MIME types) and Media "
 "Subtypes which will be assigned and listed underneath. This panel is not "
@@ -483,13 +473,13 @@ msgstr ""
 "してください。"
 
 #. type: IP
-#: ../goaccess.1:125
+#: ../goaccess.1:126
 #, no-wrap
 msgid "Encryption Settings"
 msgstr "暗号化設定"
 
 #. type: Plain text
-#: ../goaccess.1:130
+#: ../goaccess.1:131
 msgid ""
 "This panel shows the SSL/TLS protocol used along the Cipher Suites. This "
 "panel is not enabled unless I<%K> is given within the log-format variable."
@@ -498,7 +488,16 @@ msgstr ""
 "このパネルはログ書式変数中でI<%K>が与えられていない限り有効ではありません。"
 
 #. type: Plain text
-#: ../goaccess.1:135
+#: ../goaccess.1:137
+msgid ""
+"GoAccess panels can be reordered and their subitems expanded or collapsed "
+"from the terminal interface, keeping the most important metrics front and "
+"center.  Chart metrics and scales are also adjustable on the fly via the "
+"interactive menu described below."
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:142
 msgid ""
 "I<NOTE:> Optionally and if configured, all panels can display the average "
 "time taken to serve the request."
@@ -508,13 +507,13 @@ msgstr ""
 "す。"
 
 #. type: SH
-#: ../goaccess.1:136
+#: ../goaccess.1:143
 #, no-wrap
 msgid "STORAGE"
 msgstr "容量"
 
 #. type: Plain text
-#: ../goaccess.1:140
+#: ../goaccess.1:147
 msgid ""
 "There are three storage options that can be used with GoAccess. Choosing one "
 "will depend on your environment and needs."
@@ -523,13 +522,13 @@ msgstr ""
 "環境と要件により選択は変わってきます。"
 
 #. type: Title ####
-#: ../goaccess.1:140 ../README.md:241
+#: ../goaccess.1:147 ../README.md:249
 #, no-wrap
 msgid "Default Hash Tables"
 msgstr "既定のハッシュテーブル"
 
 #. type: Plain text
-#: ../goaccess.1:146
+#: ../goaccess.1:153
 msgid ""
 "In-memory storage provides better performance at the cost of limiting the "
 "dataset size to the amount of available physical memory. GoAccess uses in-"
@@ -544,13 +543,13 @@ msgstr ""
 "この容量はディスク上の永続性に対応します。"
 
 #. type: SH
-#: ../goaccess.1:146
+#: ../goaccess.1:153
 #, no-wrap
 msgid "CONFIGURATION"
 msgstr "コンパイル時の設定"
 
 #. type: Plain text
-#: ../goaccess.1:151
+#: ../goaccess.1:158
 msgid ""
 "Multiple options can be used to configure GoAccess. For a complete up-to-"
 "date list of configure options, run I<./configure --help>"
@@ -560,39 +559,39 @@ msgstr ""
 "さい。"
 
 #. type: TP
-#: ../goaccess.1:151
+#: ../goaccess.1:158
 #, no-wrap
 msgid "B<--enable-debug>"
 msgstr "B<--enable-debug>"
 
 #. type: Plain text
-#: ../goaccess.1:154
+#: ../goaccess.1:161
 msgid "Compile with debugging symbols and turn off compiler optimizations."
 msgstr ""
 "デバッグシンボル有りでコンパイルし、\n"
 "コンパイラの最適化を切ります。"
 
 #. type: TP
-#: ../goaccess.1:154
+#: ../goaccess.1:161
 #, no-wrap
 msgid "B<--enable-utf8>"
 msgstr "B<--enable-utf8>"
 
 #. type: Plain text
-#: ../goaccess.1:157
+#: ../goaccess.1:164
 msgid "Compile with wide character support. Ncursesw is required."
 msgstr ""
 "全角文字対応有りでコンパイルします。\n"
 "Ncurseswが必要です。"
 
 #. type: TP
-#: ../goaccess.1:157
+#: ../goaccess.1:164
 #, no-wrap
 msgid "B<--enable-geoip=E<lt>legacy|mmdbE<gt>>"
 msgstr "B<--enable-geoip=E<lt>legacy|mmdbE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:164
+#: ../goaccess.1:171
 msgid ""
 "Compile with GeoLocation support. MaxMind's GeoIP is required.  I<legacy> "
 "will utilize the original GeoIP databases.  I<mmdb> will utilize the "
@@ -604,13 +603,13 @@ msgstr ""
 "I<mmdb>は改善されたGeoIP2データベースを使用します。"
 
 #. type: TP
-#: ../goaccess.1:164
+#: ../goaccess.1:171
 #, no-wrap
 msgid "B<--with-getline>"
 msgstr "B<--with-getline>"
 
 #. type: Plain text
-#: ../goaccess.1:168
+#: ../goaccess.1:175
 msgid ""
 "Dynamically expands line buffer in order to parse full line requests instead "
 "of using a fixed size buffer of 4096."
@@ -619,24 +618,39 @@ msgstr ""
 "にラインバッファを拡張します。"
 
 #. type: TP
-#: ../goaccess.1:168
+#: ../goaccess.1:175
+#, fuzzy, no-wrap
+#| msgid "B<--with-getline>"
+msgid "B<--with-zlib>"
+msgstr "B<--with-getline>"
+
+#. type: Plain text
+#: ../goaccess.1:178
+msgid "Build with zlib support for reading gzipped logs. Disabled by default."
+msgstr ""
+
+#. type: TP
+#: ../goaccess.1:178
 #, no-wrap
 msgid "B<--with-openssl>"
 msgstr "B<--with-openssl>"
 
 #. type: Plain text
-#: ../goaccess.1:171
-msgid "Compile GoAccess with OpenSSL support for its WebSocket server."
-msgstr "WebSocketサーバー用にGoAccessをOpenSSL対応付きでコンパイルします。"
+#: ../goaccess.1:184
+msgid ""
+"Compile GoAccess with OpenSSL support for its WebSocket server.  B<--with-"
+"zlib Enables optional zlib support to allow parsing of compressed log files "
+"(e.g., .gz) directly without manual decompression.>"
+msgstr ""
 
 #. type: SH
-#: ../goaccess.1:171
+#: ../goaccess.1:184
 #, no-wrap
 msgid "OPTIONS"
 msgstr "オプション"
 
 #. type: Plain text
-#: ../goaccess.1:176
+#: ../goaccess.1:189
 msgid ""
 "The following options can be supplied to the command or specified in the "
 "configuration file. If specified in the configuration file, long options "
@@ -647,19 +661,19 @@ msgstr ""
 "に使用する必要があります。"
 
 #. type: SS
-#: ../goaccess.1:176
+#: ../goaccess.1:189
 #, no-wrap
 msgid "LOG/DATE/TIME FORMAT"
 msgstr "ログ、日付、時刻の書式"
 
 #. type: TP
-#: ../goaccess.1:178
+#: ../goaccess.1:191
 #, no-wrap
 msgid "B<--time-format=E<lt>timeformatE<gt>>"
 msgstr "B<--time-format=E<lt>時刻書式E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:183
+#: ../goaccess.1:196
 msgid ""
 "The time-format variable followed by a space, specifies the log format time "
 "containing either a name of a predefined format (see options below) or any "
@@ -670,7 +684,7 @@ msgstr ""
 "を指定します。"
 
 #. type: Plain text
-#: ../goaccess.1:186
+#: ../goaccess.1:199
 msgid ""
 "They all begin with a percentage (%) sign. See `man strftime`.  I<%T or %H:"
 "%M:%S.>"
@@ -680,7 +694,7 @@ msgstr ""
 "I<%Tや%H:%M:%S>といったものです。"
 
 #. type: Plain text
-#: ../goaccess.1:193
+#: ../goaccess.1:206
 msgid ""
 "Note that if a timestamp is given in microseconds, I<%f> must be used as "
 "time-format.  If the timestamp is given in milliseconds I<%*> must be used "
@@ -692,13 +706,13 @@ msgstr ""
 "なりません。"
 
 #. type: TP
-#: ../goaccess.1:193
+#: ../goaccess.1:206
 #, no-wrap
 msgid "B<--date-format=E<lt>dateformatE<gt>>"
 msgstr "B<--date-format=E<lt>日付書式E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:198
+#: ../goaccess.1:211
 msgid ""
 "The date-format variable followed by a space, specifies the log format time "
 "containing either a name of a predefined format (see options below) or any "
@@ -708,7 +722,7 @@ msgstr ""
 "常の文字と特殊な書式指定子のあらゆる組合せを含むログ書式時刻を指定します。"
 
 #. type: Plain text
-#: ../goaccess.1:201
+#: ../goaccess.1:214
 msgid ""
 "They all begin with a percentage (%) sign. See `man strftime`.  I<%Y-%m-%d.>"
 msgstr ""
@@ -717,7 +731,7 @@ msgstr ""
 "I<%Y-%m-%d>といったものです。"
 
 #. type: Plain text
-#: ../goaccess.1:209
+#: ../goaccess.1:222
 msgid ""
 "Note that if a timestamp is given in microseconds, I<%f> must be used as "
 "date-format.  If the timestamp is given in milliseconds I<%*> must be used "
@@ -729,13 +743,13 @@ msgstr ""
 "ばなりません。"
 
 #. type: TP
-#: ../goaccess.1:209
+#: ../goaccess.1:222
 #, no-wrap
 msgid "B<--datetime-format=E<lt>date_time_formatE<gt>>"
 msgstr "B<--datetime-format=E<lt>日時書式E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:215
+#: ../goaccess.1:228
 msgid ""
 "The date and time format combines the two variables into a single option. "
 "This gives the ability to get the timezone from a request and convert it to "
@@ -748,7 +762,7 @@ msgstr ""
 "I<--tz=E<lt>タイムゾーンE<gt>>を参照してください。"
 
 #. type: Plain text
-#: ../goaccess.1:218
+#: ../goaccess.1:231
 msgid ""
 "They all begin with a percentage (%) sign. See `man strftime`. e.g., I<%d/%b/"
 "%Y:%H:%M:%S %z.>"
@@ -758,7 +772,7 @@ msgstr ""
 "例としてI<%d/%b/%Y:%H:%M:%S %z>を挙げます。"
 
 #. type: Plain text
-#: ../goaccess.1:222
+#: ../goaccess.1:235
 msgid ""
 "Note that if --datetime-format is used, I<%x> must be passed in the log-"
 "format variable to represent the date and time field."
@@ -767,13 +781,13 @@ msgstr ""
 "にログ書式変数にI<%x>が渡されなければなりません。"
 
 #. type: TP
-#: ../goaccess.1:222
+#: ../goaccess.1:235
 #, no-wrap
 msgid "B<--log-format=E<lt>logformatE<gt>>"
 msgstr "B<--log-format=E<lt>ログ書式E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:227
+#: ../goaccess.1:240
 msgid ""
 "The log-format variable followed by a space or I<\\et> for tab-delimited, "
 "specifies the log format string."
@@ -782,7 +796,7 @@ msgstr ""
 "定します。"
 
 #. type: Plain text
-#: ../goaccess.1:230
+#: ../goaccess.1:243
 msgid ""
 "Note that if there are spaces within the format, the string needs to be "
 "enclosed in single/double quotes. Inner quotes need to be escaped."
@@ -792,7 +806,7 @@ msgstr ""
 "内部の引用符はエスケープされている必要があります。"
 
 #. type: Plain text
-#: ../goaccess.1:235
+#: ../goaccess.1:248
 msgid ""
 "In addition to specifying the raw log/date/time formats, for simplicity, any "
 "of the following predefined log format names can be supplied to the log/date/"
@@ -808,7 +822,7 @@ msgstr ""
 "というように扱うこともできます。"
 
 #. type: Plain text
-#: ../goaccess.1:249
+#: ../goaccess.1:262
 #, no-wrap
 msgid ""
 "  COMBINED     - Combined Log Format,\n"
@@ -840,7 +854,7 @@ msgstr ""
 "  TRAEFIKCLF   - TraefikのCLFフレーバー\n"
 
 #. type: Plain text
-#: ../goaccess.1:253
+#: ../goaccess.1:266
 msgid ""
 "I<Note:> Generally, you need quotes around values that include white spaces, "
 "commas, pipes, quotes, and/or brackets. Inner quotes must be escaped."
@@ -849,7 +863,7 @@ msgstr ""
 "囲む必要があります。内部の引用符はエスケープしなければなりません。"
 
 #. type: Plain text
-#: ../goaccess.1:258 ../goaccess.1:1266
+#: ../goaccess.1:271 ../goaccess.1:1289
 msgid ""
 "I<Note:> Piping data into GoAccess won't prompt a log/date/time "
 "configuration dialog, you will need to previously define it in your "
@@ -860,7 +874,7 @@ msgstr ""
 "ります。"
 
 #. type: Plain text
-#: ../goaccess.1:263
+#: ../goaccess.1:276
 msgid ""
 "I<Note:> The default GoAccess format for CADDY is the 'local/info' format. "
 "Nevertheless, if needed, you have the option to utilize a custom GoAccess "
@@ -871,19 +885,19 @@ msgstr ""
 "する選択肢があります。"
 
 #. type: SS
-#: ../goaccess.1:263
+#: ../goaccess.1:276
 #, no-wrap
 msgid "USER INTERFACE OPTIONS"
 msgstr "利用者用対話的オプション"
 
 #. type: TP
-#: ../goaccess.1:265
+#: ../goaccess.1:278
 #, no-wrap
 msgid "B<-c --config-dialog>"
 msgstr "B<-c --config-dialog>"
 
 #. type: Plain text
-#: ../goaccess.1:269
+#: ../goaccess.1:282
 msgid ""
 "Prompt log/time/date configuration window on program start. Only when curses "
 "is initialized."
@@ -892,40 +906,40 @@ msgstr ""
 "cursesが初期化されているとき限定です。"
 
 #. type: TP
-#: ../goaccess.1:269
+#: ../goaccess.1:282
 #, no-wrap
 msgid "B<-i --hl-header>"
 msgstr "B<-i --hl-header>"
 
 #. type: Plain text
-#: ../goaccess.1:272
+#: ../goaccess.1:285
 msgid "Color highlight active terminal panel."
 msgstr "活性化された端末パネルを色付けします。"
 
 #. type: TP
-#: ../goaccess.1:272
+#: ../goaccess.1:285
 #, no-wrap
 msgid "B<-m --with-mouse>"
 msgstr "B<-m --with-mouse>"
 
 #. type: Plain text
-#: ../goaccess.1:275
+#: ../goaccess.1:288
 msgid "Enable mouse support on main terminal dashboard."
 msgstr "主な端末ダッシュボードでマウス対応を有効にします。"
 
 #. type: TP
-#: ../goaccess.1:275
+#: ../goaccess.1:288
 #, no-wrap
 msgid "B<---color=E<lt>fg:bg[attrs, PANEL]E<gt>>"
 msgstr "B<---color=E<lt>前景:背景[属性, パネル]E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:278
+#: ../goaccess.1:291
 msgid "Specify custom colors for the terminal output."
 msgstr "端末出力用の独自の色を指定します。"
 
 #. type: Plain text
-#: ../goaccess.1:281
+#: ../goaccess.1:294
 #, no-wrap
 msgid ""
 "I<Color Syntax>\n"
@@ -935,7 +949,7 @@ msgstr ""
 "  定義 空白またはタブ 前景色#:背景色# [属性,パネル]\n"
 
 #. type: Plain text
-#: ../goaccess.1:284
+#: ../goaccess.1:297
 #, no-wrap
 msgid ""
 " FG# = foreground color [-1...255] (-1 = default term color)\n"
@@ -946,7 +960,7 @@ msgstr ""
 
 # 色属性は固定と思われるため訳しません。
 #. type: Plain text
-#: ../goaccess.1:292
+#: ../goaccess.1:305
 msgid ""
 "Optionally, it is possible to apply color attributes (multiple attributes "
 "are comma separated), such as: I<bold,> I<underline,> I<normal,> I<reverse,> "
@@ -957,7 +971,7 @@ msgstr ""
 "例えばI<bold>、I<underline>、I<normal>、I<reverse>、I<blink>です。"
 
 #. type: Plain text
-#: ../goaccess.1:296
+#: ../goaccess.1:309
 msgid ""
 "If desired, it is possible to apply custom colors per panel, that is, a "
 "metric in the REQUESTS panel can be of color A, while the same metric in the "
@@ -968,7 +982,7 @@ msgstr ""
 "ブラウザパネルの同じ指標は色Bのものにする、といったことができます。"
 
 #. type: Plain text
-#: ../goaccess.1:325
+#: ../goaccess.1:338
 #, no-wrap
 msgid ""
 "I<Available color definitions:>\n"
@@ -1030,18 +1044,18 @@ msgstr ""
 "  COLOR_PROGRESS\n"
 
 #. type: Plain text
-#: ../goaccess.1:327
+#: ../goaccess.1:340
 msgid "See configuration file for a sample color scheme."
 msgstr "カラースキームの例は設定ファイルを参照してください。"
 
 #. type: TP
-#: ../goaccess.1:327
+#: ../goaccess.1:340
 #, no-wrap
 msgid "B<--color-scheme=E<lt>1|2|3E<gt>>"
 msgstr "B<--color-scheme=E<lt>1|2|3E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:336
+#: ../goaccess.1:349
 msgid ""
 "Choose among color schemes.  I<1> for the default grey scheme.  I<2> for the "
 "green scheme.  I<3> for the Monokai scheme (shown only if terminal supports "
@@ -1053,57 +1067,57 @@ msgstr ""
 "I<3>はMonokaiのスキームです（端末が256色に対応しているときのみ現れます）。"
 
 #. type: TP
-#: ../goaccess.1:336
+#: ../goaccess.1:349
 #, no-wrap
 msgid "B<--crawlers-only>"
 msgstr "B<--crawlers-only>"
 
 #. type: Plain text
-#: ../goaccess.1:339
+#: ../goaccess.1:352
 msgid "Parse and display only crawlers (bots)."
 msgstr "クローラー（ボット）のみ解析と表示を行います。"
 
 #. type: TP
-#: ../goaccess.1:339
+#: ../goaccess.1:352
 #, no-wrap
 msgid "B<--html-custom-css=E<lt>path/custom.cssE<gt>>"
 msgstr "B<--html-custom-css=E<lt>自前のCSSファイルへのパスE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:342
+#: ../goaccess.1:355
 msgid "Specifies a custom CSS file path to load in the HTML report."
 msgstr "HTMLレポートで読み込まれる自前のCSSファイルパスを指定します。"
 
 #. type: TP
-#: ../goaccess.1:342
+#: ../goaccess.1:355
 #, no-wrap
 msgid "B<--html-custom-js=E<lt>path/custom.jsE<gt>>"
 msgstr "B<--html-custom-js=E<lt>自前のJavaScriptファイルへのパスE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:345
+#: ../goaccess.1:358
 msgid "Specifies a custom JS file path to load in the HTML report."
 msgstr "HTMLレポートで読み込まれる自前のJSファイルパスを指定します。"
 
 #. type: TP
-#: ../goaccess.1:345
+#: ../goaccess.1:358
 #, no-wrap
 msgid "B<--html-report-title=E<lt>titleE<gt>>"
 msgstr "B<--html-report-title=E<lt>題名E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:348
+#: ../goaccess.1:361
 msgid "Set HTML report page title and header."
 msgstr "HTMLレポートページに題名とヘッダを設定します。"
 
 #. type: TP
-#: ../goaccess.1:348
+#: ../goaccess.1:361
 #, no-wrap
 msgid "B<--html-refresh=E<lt>secsE<gt>>"
 msgstr "B<--html-refresh=E<lt>秒数E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:352
+#: ../goaccess.1:365
 msgid ""
 "Refresh the HTML report every X seconds. The value has to be between 1 and "
 "60 seconds. The default is set to refresh the HTML report every 1 second."
@@ -1113,13 +1127,13 @@ msgstr ""
 "既定ではHTMLレポートを1秒毎に再描画するように設定されています。"
 
 #. type: TP
-#: ../goaccess.1:352
+#: ../goaccess.1:365
 #, no-wrap
 msgid "B<--html-prefs=E<lt>JSONE<gt>>"
 msgstr "B<--html-prefs=E<lt>JSONE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:357
+#: ../goaccess.1:370
 msgid ""
 "Set HTML report default preferences. Supply a valid JSON object containing "
 "the HTML preferences. It allows the ability to customize each panel plot. "
@@ -1131,7 +1145,7 @@ msgstr ""
 "以下の例をご覽ください。"
 
 #. type: Plain text
-#: ../goaccess.1:360
+#: ../goaccess.1:373
 msgid ""
 "I<Note:> The JSON object passed needs to be a one line JSON string. For "
 "instance,"
@@ -1140,24 +1154,24 @@ msgstr ""
 "例えば次の通りです。"
 
 #. type: Plain text
-#: ../goaccess.1:363
+#: ../goaccess.1:376
 #, no-wrap
 msgid "--html-prefs='{\"theme\":\"bright\",\"perPage\":5,\"layout\":\"horizontal\",\"showTables\":true,\"visitors\":{\"plot\":{\"chartType\":\"bar\"}}}'\n"
 msgstr "--html-prefs='{\"theme\":\"bright\",\"perPage\":5,\"layout\":\"horizontal\",\"showTables\":true,\"visitors\":{\"plot\":{\"chartType\":\"bar\"}}}'\n"
 
 #. type: TP
-#: ../goaccess.1:364
+#: ../goaccess.1:377
 #, no-wrap
 msgid "B<--json-pretty-print>"
 msgstr "B<--json-pretty-print>"
 
 #. type: Plain text
-#: ../goaccess.1:367
+#: ../goaccess.1:380
 msgid "Format JSON output using tabs and newlines."
 msgstr "タブと改行を使ってJSON出力の書式を整えます。"
 
 #. type: Plain text
-#: ../goaccess.1:371
+#: ../goaccess.1:384
 msgid ""
 "I<Note:> This is not recommended when outputting a real-time HTML report "
 "since the WebSocket payload will much much larger."
@@ -1166,13 +1180,13 @@ msgstr ""
 "実時間HTMLレポートを出力する際は推奨されません。"
 
 #. type: TP
-#: ../goaccess.1:371
+#: ../goaccess.1:384
 #, no-wrap
 msgid "B<--max-items=E<lt>numberE<gt>>"
 msgstr "B<--max-items=E<lt>数E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:375
+#: ../goaccess.1:388
 msgid ""
 "The maximum number of items to display per panel. The maximum can be a "
 "number between 1 and n."
@@ -1181,7 +1195,7 @@ msgstr ""
 "最大値は1からnまでの間にできます。"
 
 #. type: Plain text
-#: ../goaccess.1:379
+#: ../goaccess.1:392
 msgid ""
 "I<Note:> Only the CSV and JSON output allow a maximum number greater than "
 "the default value of 366 (or 50 in the real-time HTML output) items per "
@@ -1191,13 +1205,13 @@ msgstr ""
 "（実時間HTMLレポートでは50）項目より大きい最大数が許されます。"
 
 #. type: TP
-#: ../goaccess.1:379
+#: ../goaccess.1:392
 #, no-wrap
 msgid "B<--no-color>"
 msgstr "B<--no-color>"
 
 #. type: Plain text
-#: ../goaccess.1:383
+#: ../goaccess.1:396
 msgid ""
 "Turn off colored output. This is the default output on terminals that do not "
 "support colors."
@@ -1206,50 +1220,35 @@ msgstr ""
 "これは彩色に対応していない端末では既定の出力です。"
 
 #. type: TP
-#: ../goaccess.1:383
-#, no-wrap
-msgid "B<--no-column-names>"
-msgstr "B<--no-column-names>"
-
-#. type: Plain text
-#: ../goaccess.1:387
-msgid ""
-"Don't write column names in the terminal output. By default, it displays "
-"column names for each available metric in every panel."
-msgstr ""
-"端末の出力で列名を書き入れません。\n"
-"既定ではパネル毎にそれぞれの使える指標について列名が表示されます。"
-
-#. type: TP
-#: ../goaccess.1:387
+#: ../goaccess.1:396
 #, no-wrap
 msgid "B<--no-csv-summary>"
 msgstr "B<--no-csv-summary>"
 
 #. type: Plain text
-#: ../goaccess.1:390
+#: ../goaccess.1:399
 msgid "Disable summary metrics on the CSV output."
 msgstr "CSVの出力で指標の概要を無効にします。"
 
 #. type: TP
-#: ../goaccess.1:390
+#: ../goaccess.1:399
 #, no-wrap
 msgid "B<--no-progress>"
 msgstr "B<--no-progress>"
 
 #. type: Plain text
-#: ../goaccess.1:393
+#: ../goaccess.1:402
 msgid "Disable progress metrics [total requests/requests per second]."
 msgstr "進行中の指標 [リクエスト合計/毎秒リクエスト] を無効にします。"
 
 #. type: TP
-#: ../goaccess.1:393
+#: ../goaccess.1:402
 #, no-wrap
 msgid "B<--no-tab-scroll>"
 msgstr "B<--no-tab-scroll>"
 
 #. type: Plain text
-#: ../goaccess.1:397
+#: ../goaccess.1:406
 msgid ""
 "Disable scrolling through panels when TAB is pressed or when a panel is "
 "selected using a numeric key."
@@ -1259,13 +1258,13 @@ msgstr ""
 "パネルを通じてのスクロールを無効にします。"
 
 #. type: TP
-#: ../goaccess.1:397
+#: ../goaccess.1:406
 #, no-wrap
 msgid "B<--no-html-last-updated>"
 msgstr "B<--no-html-last-updated>"
 
 #. type: Plain text
-#: ../goaccess.1:400
+#: ../goaccess.1:409
 msgid ""
 "Do not show the last updated field displayed in the HTML generated report."
 msgstr ""
@@ -1273,25 +1272,25 @@ msgstr ""
 "うにします。"
 
 #. type: TP
-#: ../goaccess.1:400
+#: ../goaccess.1:409
 #, no-wrap
 msgid "B<--no-parsing-spinner>"
 msgstr "B<--no-parsing-spinner>"
 
 #. type: Plain text
-#: ../goaccess.1:403
+#: ../goaccess.1:412
 msgid "Do now show the progress metrics and parsing spinner."
 msgstr "進行中の指標とスピナーの解析を表示しません。"
 
 #. type: TP
-#: ../goaccess.1:403
+#: ../goaccess.1:412
 #, no-wrap
 msgid "B<--tz=E<lt>timezoneE<gt>>"
 msgstr "B<--tz=E<lt>timezoneE<gt>>"
 
 # typo: ouput -> output
 #. type: Plain text
-#: ../goaccess.1:415
+#: ../goaccess.1:424
 msgid ""
 "Outputs the report date/time data in the given timezone. Note that it uses "
 "the canonical timezone name. e.g., I<Europe/Berlin> or I<America/Chicago> or "
@@ -1308,14 +1307,14 @@ msgstr ""
 "てください。"
 
 #. type: SS
-#: ../goaccess.1:415
+#: ../goaccess.1:424
 #, no-wrap
 msgid "SERVER OPTIONS"
 msgstr "サーバーオプション"
 
 # maybe I<Note:>?
 #. type: Plain text
-#: ../goaccess.1:425
+#: ../goaccess.1:434
 msgid ""
 "I<Note> This is just a WebSocket server to provide the raw real-time data.  "
 "It is not a WebServer itself. To access your reports html file, you will "
@@ -1334,13 +1333,13 @@ msgstr ""
 "ダッシュボードを更新された状態に保つことができます。"
 
 #. type: TP
-#: ../goaccess.1:425
+#: ../goaccess.1:434
 #, no-wrap
 msgid "B<--addr>"
 msgstr "B<--addr>"
 
 #. type: Plain text
-#: ../goaccess.1:428
+#: ../goaccess.1:437
 msgid ""
 "Specify IP address to bind the server to. Otherwise it binds to 0.0.0.0."
 msgstr ""
@@ -1348,7 +1347,7 @@ msgstr ""
 "指定しなければ0.0.0.0に束縛します。"
 
 #. type: Plain text
-#: ../goaccess.1:431
+#: ../goaccess.1:440
 msgid ""
 "Usually there is no need to specify the address, unless you intentionally "
 "would like to bind the server to a different address within your server."
@@ -1358,38 +1357,38 @@ msgstr ""
 "りません。"
 
 #. type: TP
-#: ../goaccess.1:431
+#: ../goaccess.1:440
 #, no-wrap
 msgid "B<--daemonize>"
 msgstr "B<--daemonize>"
 
 #. type: Plain text
-#: ../goaccess.1:434
+#: ../goaccess.1:443
 msgid "Run GoAccess as daemon (only if B<--real-time-html enabled).>"
 msgstr ""
 "GoAccessをデーモンとして走らせます（B<--real-time-html>が有効になっているとき"
 "のみ）。"
 
 #. type: Plain text
-#: ../goaccess.1:437
+#: ../goaccess.1:446
 msgid ""
 "Note: It's important to make use of absolute paths across GoAccess' "
 "configuration."
 msgstr "補足：GoAccessの設定全体を通じて絶対パスを使うことは大切です。"
 
 #. type: TP
-#: ../goaccess.1:437
+#: ../goaccess.1:446
 #, no-wrap
 msgid "B<--user-name=E<lt>usernameE<gt>>"
 msgstr "B<--user-name=E<lt>利用者名E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:440
+#: ../goaccess.1:449
 msgid "Run GoAccess as the specified user."
 msgstr "GoAccessを特定のユーザーとして走らせます。"
 
 #. type: Plain text
-#: ../goaccess.1:446
+#: ../goaccess.1:455
 msgid ""
 "Note: It's important to ensure the user or the users' group can access the "
 "input and output files as well as any other files needed.  Other groups the "
@@ -1406,13 +1405,13 @@ msgstr ""
 "GoAccessはSSLプロキシの背後で走らせることをお勧めします。"
 
 #. type: TP
-#: ../goaccess.1:446
+#: ../goaccess.1:455
 #, no-wrap
 msgid "B<--origin=E<lt>urlE<gt>>"
 msgstr "B<--origin=E<lt>URLE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:449
+#: ../goaccess.1:458
 msgid ""
 "Ensure clients send the specified origin header upon the WebSocket handshake."
 msgstr ""
@@ -1420,26 +1419,26 @@ msgstr ""
 "うにします。"
 
 #. type: TP
-#: ../goaccess.1:449
+#: ../goaccess.1:458
 #, no-wrap
 msgid "B<--pid-file=E<lt>path/goaccess.pidE<gt>>"
 msgstr "B<--pid-file=E<lt>GoAccessのpidファイルへのパスE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:452
+#: ../goaccess.1:461
 msgid "Write the daemon PID to a file when used along the --daemonize option."
 msgstr ""
 "--daemonizeオプションと一緒に使ったときにデーモンのPIDをファイルに書き込みま"
 "す。"
 
 #. type: TP
-#: ../goaccess.1:452
+#: ../goaccess.1:461
 #, no-wrap
 msgid "B<--port=E<lt>portE<gt>>"
 msgstr "B<--port=E<lt>ポートE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:456
+#: ../goaccess.1:465
 msgid ""
 "Specify the port to use. By default GoAccess' WebSocket server listens on "
 "port 7890."
@@ -1448,18 +1447,18 @@ msgstr ""
 "既定ではGoAccessのWebSocketサーバーは7890ポートで待ち受けます。"
 
 #. type: TP
-#: ../goaccess.1:456
+#: ../goaccess.1:465
 #, no-wrap
 msgid "B<--real-time-html>"
 msgstr "B<--real-time-html>"
 
 #. type: Plain text
-#: ../goaccess.1:459
+#: ../goaccess.1:468
 msgid "Enable real-time HTML output."
 msgstr "実時間HTML出力を有効にします。"
 
 #. type: Plain text
-#: ../goaccess.1:462
+#: ../goaccess.1:471
 msgid ""
 "GoAccess uses its own WebSocket server to push the data from the server to "
 "the client. See http://gwsocket.io for more details how the WebSocket server "
@@ -1471,23 +1470,24 @@ msgstr ""
 "い。"
 
 #. type: TP
-#: ../goaccess.1:463
+#: ../goaccess.1:472
 #, no-wrap
 msgid "B<--ws-auth=E<lt>jwt[:secret]E<gt> | jwt:verify:secret>"
 msgstr "B<--ws-auth=E<lt>jwt[:secret]E<gt> | jwt:verify:secret>"
 
 #. type: Plain text
-#: ../goaccess.1:468
+#: ../goaccess.1:477
 msgid ""
 "Enable WebSocket authentication using a JSON Web Token (JWT). This option "
 "supports two formats depending on whether the JWT is locally generated or "
 "externally fetched and verified:"
 msgstr ""
 "JSON Web Token (JWT) を使って、WebSocket認証を有効にします。\n"
-"このオプションは、JSONがローカルで生成されるものと、外部から取得して検証されたものの、2つの形式に対応しています。"
+"このオプションは、JSONがローカルで生成されるものと、外部から取得して検証され"
+"たものの、2つの形式に対応しています。"
 
 #. type: Plain text
-#: ../goaccess.1:477
+#: ../goaccess.1:486
 msgid ""
 "B<E<lt>jwt[:secret]E<gt>>: Specifies a static JWT for WebSocket "
 "authentication, with an optional secret for local generation or validation. "
@@ -1495,81 +1495,98 @@ msgid ""
 "JWT using a secret sourced from the environment variable "
 "B<GOACCESS_WSAUTH_SECRET> or a default HS256-compatible secret if unset. If "
 "a secret is included (e.g., B<--ws-auth=jwt:mysecret>), it's used directly "
-"as the HS256 signing key or read from a file if the value is a valid path (e."
-"g., B<--ws-auth=jwt:/path/to/secret.key>)."
+"as the HS256 signing key or read from a file if the value is a valid path "
+"(e.g., B<--ws-auth=jwt:/path/to/secret.key>)."
 msgstr ""
 "B<E<lt>jwt[:シークレット]E<gt>>:WebSocket認証の静的JWTを指定します。\n"
 "ローカル生成または検証のためのシークレットを付けられますが、省けます。\n"
-"「jwt」だけ与えられるとき（例： B<--ws-auth=jwt> ）、環境変数 B<GOACCESS_WSAUTH_SECRET> をソースとするシークレット、またはシークレットが未設定であればHS256互換の既定のシークレットを使って、JWTを生成します。\n"
-"シークレットが含まれるとき（例： B<--ws-auth=jwt:mysecret> ）、直接HS256署名キーとして使われるか、その値が有効なパスであればファイルから読まれます（例： B<--ws-auth=jwt:/path/to/secret.key> ）。"
+"「jwt」だけ与えられるとき（例： B<--ws-auth=jwt> ）、環境変数 "
+"B<GOACCESS_WSAUTH_SECRET> をソースとするシークレット、またはシークレットが未"
+"設定であればHS256互換の既定のシークレットを使って、JWTを生成します。\n"
+"シークレットが含まれるとき（例： B<--ws-auth=jwt:mysecret> ）、直接HS256署名"
+"キーとして使われるか、その値が有効なパスであればファイルから読まれます（例： "
+"B<--ws-auth=jwt:/path/to/secret.key> ）。"
 
 #. type: Plain text
-#: ../goaccess.1:487
+#: ../goaccess.1:496
 msgid ""
-"B<jwt:verify:secret>: Enables verification of an externally fetched JWT (e."
-"g., via B<--ws-auth-url>). The \"verify\" keyword indicates that the JWT is "
-"provided by an external source, and the secret must be specified for "
-"validation. The secret can be a direct HS256 key (e.g., B<--ws-auth=jwt:"
-"verify:mysecret>), a file path (e.g., B<--ws-auth=jwt:verify:/path/to/secret."
-"key>), or an environment variable name (e.g., B<--ws-auth=jwt:verify:"
-"$JWT_SECRET>). This format is required when using B<--ws-auth-url> and "
-"optionally B<--ws-auth-refresh-url> to fetch and verify JWTs from external "
-"endpoints."
+"B<jwt:verify:secret>: Enables verification of an externally fetched JWT "
+"(e.g., via B<--ws-auth-url>). The \"verify\" keyword indicates that the JWT "
+"is provided by an external source, and the secret must be specified for "
+"validation. The secret can be a direct HS256 key (e.g., B<--ws-"
+"auth=jwt:verify:mysecret>), a file path (e.g., B<--ws-auth=jwt:verify:/path/"
+"to/secret.key>), or an environment variable name (e.g., B<--ws-"
+"auth=jwt:verify:$JWT_SECRET>). This format is required when using B<--ws-"
+"auth-url> and optionally B<--ws-auth-refresh-url> to fetch and verify JWTs "
+"from external endpoints."
 msgstr ""
-"B<jwt:verify:secret>: （例えば B<--ws-auth-url> を介して）外部から取得されるJWTの検証を有効にします。\n"
-"「verify」キーワードにより、JWTが外部のソースから与えられることが示されており、検証用にシークレットを指定しなければなりません。\n"
-"シークレットは直接的なHS256キー（例えば B<--ws-auth=jwt:verify:自分のシークレット> です）、ファイルパス（例えば B<--ws-auth=jwt:verify:シークレットキーへのパス> です）、環境変数名（例えば B<--ws-auth=jwt:verify:$JWT_SECRET> です）にできます。\n"
-"この形式は、 B<--ws-auth-url> を使うときは必須で、 B<--ws-auth-refresh-url> を使って外部エンドポイントからJWTを取得して検証するときは省けます。"
+"B<jwt:verify:secret>: （例えば B<--ws-auth-url> を介して）外部から取得される"
+"JWTの検証を有効にします。\n"
+"「verify」キーワードにより、JWTが外部のソースから与えられることが示されてお"
+"り、検証用にシークレットを指定しなければなりません。\n"
+"シークレットは直接的なHS256キー（例えば B<--ws-auth=jwt:verify:自分のシーク"
+"レット> です）、ファイルパス（例えば B<--ws-auth=jwt:verify:シークレットキー"
+"へのパス> です）、環境変数名（例えば B<--ws-auth=jwt:verify:$JWT_SECRET> で"
+"す）にできます。\n"
+"この形式は、 B<--ws-auth-url> を使うときは必須で、 B<--ws-auth-refresh-url> "
+"を使って外部エンドポイントからJWTを取得して検証するときは省けます。"
 
 #. type: Plain text
-#: ../goaccess.1:491
+#: ../goaccess.1:500
 msgid ""
 "When this option is used, the HTML report will not bootstrap the initial "
 "parsed data. Instead, it will only display the report if authentication "
 "succeeds, ensuring secure access to real-time data."
 msgstr ""
-"このオプションが使われているとき、HTML報告書は最初に解析されたデータでブートスラップされません。\n"
-"その代わり、認証が成功したときにのみ報告書を表示し、実時間データへの安全なアクセスを担保します。"
+"このオプションが使われているとき、HTML報告書は最初に解析されたデータでブート"
+"スラップされません。\n"
+"その代わり、認証が成功したときにのみ報告書を表示し、実時間データへの安全なア"
+"クセスを担保します。"
 
 #. type: Plain text
-#: ../goaccess.1:493
+#: ../goaccess.1:502
 msgid "The system processes this option as follows:"
 msgstr "システムはこのオプションを以下のように処理します。"
 
 #. type: Plain text
-#: ../goaccess.1:498
+#: ../goaccess.1:507
 msgid ""
 "For B<E<lt>jwt[:secret]E<gt>>: If no secret is provided, GoAccess generates "
 "a JWT locally using the B<GOACCESS_WSAUTH_SECRET> environment variable or a "
 "default secret. If a secret is specified, it's used to sign the JWT (either "
 "directly or from a file)."
 msgstr ""
-"B<E<lt>jwt[:シークレット]E<gt>>の場合：シークレットが与えられていなければ、 B<GOACCESS_WSAUTH_SECRET> 環境変数または既定のシークレットを使ってローカルでJWTが生成されます。\n"
-"（直接またはファイルで）シークレットが指定されているとき、それがJWTの署名に使われます。"
+"B<E<lt>jwt[:シークレット]E<gt>>の場合：シークレットが与えられていなければ、 "
+"B<GOACCESS_WSAUTH_SECRET> 環境変数または既定のシークレットを使ってローカルで"
+"JWTが生成されます。\n"
+"（直接またはファイルで）シークレットが指定されているとき、それがJWTの署名に使"
+"われます。"
 
 #. type: Plain text
-#: ../goaccess.1:502
+#: ../goaccess.1:511
 msgid ""
 "For B<jwt:verify:secret>: The secret is mandatory and used to verify "
 "externally fetched JWTs. It must match the signing key used by the external "
 "authentication server (e.g., at B<--ws-auth-url>)."
 msgstr ""
-"B<jwt:verify:シークレット> の場合：シークレットは必須で、外部から取得したJWTを検証するために使われます。\n"
-"（例えば B<--ws-auth-url> にある）外部認証サーバで使われる署名キーと合致しなければなりません。"
+"B<jwt:verify:シークレット> の場合：シークレットは必須で、外部から取得したJWT"
+"を検証するために使われます。\n"
+"（例えば B<--ws-auth-url> にある）外部認証サーバで使われる署名キーと合致しな"
+"ければなりません。"
 
 #. type: Plain text
-#: ../goaccess.1:505
+#: ../goaccess.1:514
 msgid "Requires to build GoAccess with I<--with-openssl.>"
 msgstr "GoAccessをビルドするときに I<--with-openssl> を付ける必要があります。"
 
 #. type: TP
-#: ../goaccess.1:505
+#: ../goaccess.1:514
 #, no-wrap
 msgid "B<--ws-auth-expire=E<lt>secsE<gt>>"
 msgstr "B<--ws-auth-expire=E<lt>secsE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:509
+#: ../goaccess.1:518
 msgid ""
 "Set the time after which the JWT expires. Defaults to 8 hours (28800 "
 "seconds)  if not specified."
@@ -1578,12 +1595,12 @@ msgstr ""
 "指定されなければ既定で8時間（28800秒）です。"
 
 #. type: Plain text
-#: ../goaccess.1:512
+#: ../goaccess.1:521
 msgid "I<Only> available for locally generated JWT."
 msgstr "ローカルで生成されるJWT I<のみ> で使えます。"
 
 #. type: Plain text
-#: ../goaccess.1:515
+#: ../goaccess.1:524
 msgid ""
 "Users can specify the expiration time in various formats. The value is "
 "converted to seconds for JWT expiration validation. Supported formats:"
@@ -1593,137 +1610,148 @@ msgstr ""
 "対応している形式は次の通りです。"
 
 #. type: IP
-#: ../goaccess.1:516 ../goaccess.1:518 ../goaccess.1:520 ../goaccess.1:522
-#: ../goaccess.1:524 ../goaccess.1:573 ../goaccess.1:576 ../goaccess.1:586
-#: ../goaccess.1:597 ../goaccess.1:613 ../goaccess.1:623 ../goaccess.1:625
-#: ../goaccess.1:627
+#: ../goaccess.1:525 ../goaccess.1:527 ../goaccess.1:529 ../goaccess.1:531
+#: ../goaccess.1:533 ../goaccess.1:582 ../goaccess.1:585 ../goaccess.1:595
+#: ../goaccess.1:606 ../goaccess.1:622 ../goaccess.1:632 ../goaccess.1:634
+#: ../goaccess.1:636
 #, no-wrap
 msgid "\\(bu"
 msgstr "\\(bu"
 
 #. type: Plain text
-#: ../goaccess.1:518
+#: ../goaccess.1:527
 msgid "\"3600\" -E<gt> 3600 seconds"
 msgstr "\"3600\" -E<gt> 3600秒"
 
 #. type: Plain text
-#: ../goaccess.1:520
+#: ../goaccess.1:529
 msgid "\"120s\" -E<gt> 2 minutes"
 msgstr "\"120s\" -E<gt> 2分"
 
 #. type: Plain text
-#: ../goaccess.1:522
+#: ../goaccess.1:531
 msgid "\"24h\" -E<gt> 24 hours = 86,400 seconds"
 msgstr "\"24h\" -E<gt> 24時間 = 86,400秒"
 
 #. type: Plain text
-#: ../goaccess.1:524
+#: ../goaccess.1:533
 msgid "\"10m\" -E<gt> 10 minutes = 600 seconds"
 msgstr "\"10m\" -E<gt> 10分 = 600秒"
 
 #. type: Plain text
-#: ../goaccess.1:526
+#: ../goaccess.1:535
 msgid "\"10d\" -E<gt> 10 days = 864,000 seconds"
 msgstr "\"10d\" -E<gt> 10日 = 864,000秒"
 
 #. type: Plain text
-#: ../goaccess.1:530
+#: ../goaccess.1:539
 msgid ""
 "The expiration time controls how long the JWT remains valid after issuance, "
 "ensuring secure WebSocket connections."
 msgstr ""
-"期限切れまでの時間は、JWTが発行されてからどの程度有効であり続けるかを制御します。\n"
+"期限切れまでの時間は、JWTが発行されてからどの程度有効であり続けるかを制御しま"
+"す。\n"
 "これにより、安全なWebSocket接続が担保されます。"
 
 #. type: TP
-#: ../goaccess.1:530
+#: ../goaccess.1:539
 #, no-wrap
 msgid "B<--ws-auth-url=E<lt>urlE<gt>>"
 msgstr "B<--ws-auth-url=E<lt>urlE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:534
+#: ../goaccess.1:543
 msgid ""
 "Specifies the URL where GoAccess fetches the initial JWT to authenticate the "
 "WebSocket connection."
 msgstr "WebSocket接続を認証するために、最初のJWTを取得するURLを指定します。"
 
 #. type: Plain text
-#: ../goaccess.1:539
+#: ../goaccess.1:548
 msgid ""
 "When this option is used, GoAccess sends a GET request to the specified URL "
 "to fetch an initial JWT. The response must be a JSON object containing "
 "B<status>, B<access_token>, B<refresh_token>, and B<expires_in> fields."
 msgstr ""
-"このオプションが使われたとき、GoAccessから指定されたURLに対してGET要求が送られ、最初のJWTが取得されます。\n"
-"応答はJSONオブジェクトでなければならず、フィールドは B<status> と B<access_token> と B<refresh_token> と B<expires_in> がなければなりません。"
+"このオプションが使われたとき、GoAccessから指定されたURLに対してGET要求が送ら"
+"れ、最初のJWTが取得されます。\n"
+"応答はJSONオブジェクトでなければならず、フィールドは B<status> と "
+"B<access_token> と B<refresh_token> と B<expires_in> がなければなりません。"
 
 #. type: Plain text
-#: ../goaccess.1:541
+#: ../goaccess.1:550
 msgid "Example: B<--ws-auth-url=https://site.com/api/get-auth-token>"
 msgstr "例： B<--ws-auth-url=https://site.com/api/get-auth-token>"
 
 #. type: Plain text
-#: ../goaccess.1:547
+#: ../goaccess.1:556
 msgid ""
 "When fetching the token, GoAccess uses I<{ credentials: 'include' }> as part "
 "of the request to securely retrieve the access token based on the user’s "
 "existing authentication session in your system, ensuring token retrieval is "
 "safe as long as your users are authenticated."
 msgstr ""
-"トークンを取得するとき、要求の一部に I<{ credentials: 'include' }> が使われます。\n"
-"システム内にある利用者の既存の認証セッションに基づき、アクセストークンを安全に取得するためです。\n"
-"これにより、利用者が認証している限り、トークンの取得は安全であることが担保されます。"
+"トークンを取得するとき、要求の一部に I<{ credentials: 'include' }> が使われま"
+"す。\n"
+"システム内にある利用者の既存の認証セッションに基づき、アクセストークンを安全"
+"に取得するためです。\n"
+"これにより、利用者が認証している限り、トークンの取得は安全であることが担保さ"
+"れます。"
 
 #. type: Plain text
-#: ../goaccess.1:550
+#: ../goaccess.1:559
 msgid ""
 "This option allows you to integrate your existing authentication system with "
 "the GoAccess dashboard, using token retrieval endpoints."
-msgstr "このオプションにより、トークン取得エンドポイントを使って、既存の認証システムをGoAccessのダッシュボードに統合できます。"
+msgstr ""
+"このオプションにより、トークン取得エンドポイントを使って、既存の認証システム"
+"をGoAccessのダッシュボードに統合できます。"
 
 #. type: TP
-#: ../goaccess.1:550
+#: ../goaccess.1:559
 #, no-wrap
 msgid "B<--ws-auth-refresh-url=E<lt>urlE<gt>>"
 msgstr "B<--ws-auth-refresh-url=E<lt>urlE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:553
+#: ../goaccess.1:562
 msgid ""
 "Specifies the URL where GoAccess fetches a new JWT when the current one is "
 "about to expire."
-msgstr "現在のJWTトークンが間もなく期限切れしそうになったときに、新しいJWTが取得されるURLを取得します。"
+msgstr ""
+"現在のJWTトークンが間もなく期限切れしそうになったときに、新しいJWTが取得され"
+"るURLを取得します。"
 
 #. type: Plain text
-#: ../goaccess.1:557
+#: ../goaccess.1:566
 msgid ""
 "GoAccess proactively refreshes the JWT 60 seconds before expiration by "
 "sending a POST request with the refresh_token to this URL. If not provided, "
 "it defaults to the same URL as B<--ws-auth-url>."
 msgstr ""
-"GoAccessは先制的に、期限切れになる60秒前に、このURLへ refresh_token 付きのPOST要求を送って、JWTをリフレッシュします。\n"
+"GoAccessは先制的に、期限切れになる60秒前に、このURLへ refresh_token 付きの"
+"POST要求を送って、JWTをリフレッシュします。\n"
 "与えられていなければ、既定で B<--ws-auth-url> と同じURLです。"
 
 #. type: Plain text
-#: ../goaccess.1:559
+#: ../goaccess.1:568
 msgid "Example: B<--ws-auth-refresh-url=https://site.com/api/refresh-token>"
 msgstr "例： B<--ws-auth-refresh-url=https://site.com/api/refresh-token>"
 
 #. type: Plain text
-#: ../goaccess.1:561
+#: ../goaccess.1:570
 msgid ""
 "The response format should match that of the initial authentication URL."
 msgstr "要求形式は最初の認証URLのものと合致させてください。"
 
 #. type: SS
-#: ../goaccess.1:561
+#: ../goaccess.1:570
 #, no-wrap
 msgid "WebSocket Authentication Flow"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:570
+#: ../goaccess.1:579
 msgid ""
 "GoAccess offers flexible authentication options, supporting both stateless "
 "and stateful approaches. In the stateless approach, the refresh token is "
@@ -1736,24 +1764,24 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:572
+#: ../goaccess.1:581
 msgid "B<Initial Authentication:>"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:576
+#: ../goaccess.1:585
 msgid ""
 "When started with B<--ws-auth-url=E<lt>urlE<gt>>, GoAccess sends a GET "
 "request to fetch an initial JWT."
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:578
+#: ../goaccess.1:587
 msgid "The expected successful response format:"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:586
+#: ../goaccess.1:595
 #, no-wrap
 msgid ""
 "    {\n"
@@ -1766,12 +1794,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:588
+#: ../goaccess.1:597
 msgid "If authentication fails, the endpoint should return:"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:593
+#: ../goaccess.1:602
 #, no-wrap
 msgid ""
 "    {\n"
@@ -1781,12 +1809,12 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:596
+#: ../goaccess.1:605
 msgid "B<Token Refreshing:>"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:601
+#: ../goaccess.1:610
 msgid ""
 "GoAccess refreshes the JWT 60 seconds before expiration by sending a POST "
 "request to the specified URL (defaults to B<--ws-auth-url> if B<--ws-auth-"
@@ -1794,13 +1822,13 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:603
+#: ../goaccess.1:612
 #, no-wrap
 msgid "    { \"refresh_token\": \"refresh123xyz\" }\n"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:609
+#: ../goaccess.1:618
 msgid ""
 "GoAccess supports both stateless and stateful authentication. For stateless, "
 "no cookies or CSRF are required; your backend validates the refresh token "
@@ -1810,58 +1838,58 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:612
+#: ../goaccess.1:621
 msgid "B<Periodic Token Validation:>"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:616
+#: ../goaccess.1:625
 msgid ""
 "After refreshing, GoAccess confirms the updated JWT’s validity with the "
 "WebSocket server by sending:"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:618
+#: ../goaccess.1:627
 #, no-wrap
 msgid "    { \"action\": \"validate_token\", \"token\": \"current-jwt\" }\n"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:622
+#: ../goaccess.1:631
 msgid ""
 "B<Important Note:> For these options to function, you must specify B<--ws-"
 "auth=jwt:verify:E<lt>secretE<gt>> where E<lt>secretE<gt> can be:"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:625
+#: ../goaccess.1:634
 msgid "A path to a file containing the secret key (e.g., /path/to/secret.key)"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:627
+#: ../goaccess.1:636
 msgid "An environment variable name that holds the secret (e.g., $JWT_SECRET)"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:629
+#: ../goaccess.1:638
 msgid "The actual HS256 secret key as a string (e.g., mysecretkey123)"
 msgstr ""
 
 #. type: Plain text
-#: ../goaccess.1:632
+#: ../goaccess.1:641
 msgid "Example: B<--ws-auth=jwt:verify:/path/to/secret.key>"
 msgstr ""
 
 #. type: TP
-#: ../goaccess.1:632
+#: ../goaccess.1:641
 #, no-wrap
 msgid "B<--ws-url=E<lt>[scheme://]url[:port]E<gt>>"
 msgstr "B<--ws-url=E<lt>[scheme://]url[:port]E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:636
+#: ../goaccess.1:645
 msgid ""
 "URL to which the WebSocket server responds. This is the URL supplied to the "
 "WebSocket constructor on the client side."
@@ -1870,7 +1898,7 @@ msgstr ""
 "これはクライアント側でWebSocket構築子に与えられるURLです。"
 
 #. type: Plain text
-#: ../goaccess.1:644
+#: ../goaccess.1:653
 msgid ""
 "Optionally, it is possible to specify the WebSocket URI scheme, such as "
 "I<ws://> or I<wss://> for unencrypted and encrypted connections. e.g., "
@@ -1882,7 +1910,7 @@ msgstr ""
 "例：I<wss://goaccess.io>"
 
 #. type: Plain text
-#: ../goaccess.1:649
+#: ../goaccess.1:658
 msgid ""
 "If GoAccess is running behind a proxy, you could set the client side to "
 "connect to a different port by specifying the host followed by a colon and "
@@ -1894,7 +1922,7 @@ msgstr ""
 "例えばI<goaccess.io:9999>です。"
 
 #. type: Plain text
-#: ../goaccess.1:653
+#: ../goaccess.1:662
 msgid ""
 "By default, it will attempt to connect to the generated report's hostname. "
 "If GoAccess is running on a remote server, the host of the remote server "
@@ -1908,13 +1936,13 @@ msgstr ""
 "てください。"
 
 #. type: TP
-#: ../goaccess.1:653
+#: ../goaccess.1:662
 #, no-wrap
 msgid "B<--ping-interval=E<lt>secsE<gt>>"
 msgstr "B<--ping-interval=E<lt>秒数E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:657
+#: ../goaccess.1:666
 msgid ""
 "Enable WebSocket ping with specified interval in seconds. This helps prevent "
 "idle connections getting disconnected."
@@ -1923,37 +1951,37 @@ msgstr ""
 "これにより切断されて放置されたままの接続を防ぐことができます。"
 
 #. type: TP
-#: ../goaccess.1:657
+#: ../goaccess.1:666
 #, no-wrap
 msgid "B<--fifo-in=E<lt>path/fileE<gt>>"
 msgstr "B<--fifo-in=E<lt>ファイルへのパスE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:660
+#: ../goaccess.1:669
 msgid "Creates a named pipe (FIFO) that reads from on the given path/file."
 msgstr ""
 "名前付きパイプ (FIFO) を作り、与えられたファイルパスから読むようにします。"
 
 #. type: TP
-#: ../goaccess.1:660
+#: ../goaccess.1:669
 #, no-wrap
 msgid "B<--fifo-out=E<lt>path/fileE<gt>>"
 msgstr "B<--fifo-out=E<lt>ファイルへのパスE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:663
+#: ../goaccess.1:672
 msgid "Creates a named pipe (FIFO) that writes to the given path/file."
 msgstr ""
 "名前付きパイプ (FIFO) を作り、与えられたファイルパスに書き込むようにします。"
 
 #. type: TP
-#: ../goaccess.1:663
+#: ../goaccess.1:672
 #, no-wrap
 msgid "B<--ssl-cert=E<lt>cert.crtE<gt>>"
 msgstr "B<--ssl-cert=E<lt>証明書.crtE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:667
+#: ../goaccess.1:676
 msgid ""
 "Path to TLS/SSL certificate. In order to enable TLS/SSL support, GoAccess "
 "requires that --ssl-cert and --ssl-key are used."
@@ -1963,18 +1991,18 @@ msgstr ""
 "ることが必要です。"
 
 #. type: Plain text
-#: ../goaccess.1:669 ../goaccess.1:675
+#: ../goaccess.1:678 ../goaccess.1:684
 msgid "Only if configured using --with-openssl"
 msgstr "--with-opensslを使ってconfigureしたときに限定されます。"
 
 #. type: TP
-#: ../goaccess.1:669
+#: ../goaccess.1:678
 #, no-wrap
 msgid "B<--ssl-key=E<lt>priv.keyE<gt>>"
 msgstr "B<--ssl-key=E<lt>秘密鍵.keyE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:673
+#: ../goaccess.1:682
 msgid ""
 "Path to TLS/SSL private key. In order to enable TLS/SSL support, GoAccess "
 "requires that --ssl-cert and --ssl-key are used."
@@ -1984,30 +2012,30 @@ msgstr ""
 "いることが必要です。"
 
 #. type: SS
-#: ../goaccess.1:675
+#: ../goaccess.1:684
 #, no-wrap
 msgid "FILE OPTIONS"
 msgstr "ファイルオプション"
 
 #. type: TP
-#: ../goaccess.1:677
+#: ../goaccess.1:686
 #, no-wrap
 msgid "B<->"
 msgstr "B<->"
 
 #. type: Plain text
-#: ../goaccess.1:680
+#: ../goaccess.1:689
 msgid "The log file to parse is read from stdin."
 msgstr "解析するログファイルが標準入力から読み込まれます。"
 
 #. type: TP
-#: ../goaccess.1:680
+#: ../goaccess.1:689
 #, no-wrap
 msgid "B<-f --log-file=E<lt>logfileE<gt>>"
 msgstr "B<-f --log-file=E<lt>ログファイルE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:684
+#: ../goaccess.1:693
 msgid ""
 "Specify the path to the input log file. If set in the config file, it will "
 "take priority over -f from the command line."
@@ -2017,13 +2045,13 @@ msgstr ""
 "優先されます。"
 
 #. type: TP
-#: ../goaccess.1:684
+#: ../goaccess.1:693
 #, no-wrap
 msgid "B<-S --log-size=E<lt>bytesE<gt>>"
 msgstr "B<-S --log-size=E<lt>バイト数E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:688
+#: ../goaccess.1:697
 msgid ""
 "Specify the log size in bytes. This is useful when piping in logs for "
 "processing in which the log size can be explicitly set."
@@ -2033,24 +2061,24 @@ msgstr ""
 "ときに便利です。"
 
 #. type: TP
-#: ../goaccess.1:688
+#: ../goaccess.1:697
 #, no-wrap
 msgid "B<-l --debug-file=E<lt>debugfileE<gt>>"
 msgstr "B<-l --debug-file=E<lt>デバッグファイルE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:691
+#: ../goaccess.1:700
 msgid "Send all debug messages to the specified file."
 msgstr "全てのデバッグ文言を指定されたファイルに送ります。"
 
 #. type: TP
-#: ../goaccess.1:691
+#: ../goaccess.1:700
 #, no-wrap
 msgid "B<-p --config-file=E<lt>configfileE<gt>>"
 msgstr "B<-p --config-file=E<lt>設定ファイルE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:695
+#: ../goaccess.1:704
 msgid ""
 "Specify a custom configuration file to use. If set, it will take priority "
 "over the global configuration file (if any)."
@@ -2059,18 +2087,18 @@ msgstr ""
 "設定されている場合、（もしあっても）大域的な設定ファイルより優先されます。"
 
 #. type: TP
-#: ../goaccess.1:695
+#: ../goaccess.1:704
 #, no-wrap
 msgid "B<--external-assets>"
 msgstr "B<--external-assets>"
 
 #. type: Plain text
-#: ../goaccess.1:703
+#: ../goaccess.1:712
 msgid ""
 "Output HTML assets to external JS/CSS files. Great if you are setting up "
 "Content Security Policy (CSP). This will create two separate files, "
-"I<goaccess.js> and I<goaccess.css> , in the same directory as your report."
-"html file."
+"I<goaccess.js> and I<goaccess.css> , in the same directory as your "
+"report.html file."
 msgstr ""
 "外部のJS/CSSファイルにHTMLアセットを出力します。\n"
 "Content Security Policy (CSP) を設定している場合に優れます。\n"
@@ -2078,35 +2106,35 @@ msgstr ""
 "とI<goaccess.css>を作成します。"
 
 #. type: TP
-#: ../goaccess.1:703
+#: ../goaccess.1:712
 #, no-wrap
 msgid "B<--invalid-requests=E<lt>filenameE<gt>>"
 msgstr "B<--invalid-requests=E<lt>ファイル名E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:706
+#: ../goaccess.1:715
 msgid "Log invalid requests to the specified file."
 msgstr "不正なリクエストを指定されたファイルにログ出力します。"
 
 #. type: TP
-#: ../goaccess.1:706
+#: ../goaccess.1:715
 #, no-wrap
 msgid "B<--unknowns-log=E<lt>filenameE<gt>>"
 msgstr "B<--unknowns-log=E<lt>ファイル名E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:709
+#: ../goaccess.1:718
 msgid "Log unknown browsers and OSs to the specified file."
 msgstr "不明なブラウザとOSを指定されたファイルにログ出力します。"
 
 #. type: TP
-#: ../goaccess.1:709
+#: ../goaccess.1:718
 #, no-wrap
 msgid "B<--no-global-config>"
 msgstr "B<--no-global-config>"
 
 #. type: Plain text
-#: ../goaccess.1:715
+#: ../goaccess.1:724
 msgid ""
 "Do not load the global configuration file. This directory should normally "
 "be /usr/local/etc, unless specified with I<--sysconfdir=/dir.> See --dcf "
@@ -2118,19 +2146,19 @@ msgstr ""
 "既定の設定ファイルを見付けるためには--dcfオプションを参照してください。"
 
 #. type: SS
-#: ../goaccess.1:715
+#: ../goaccess.1:724
 #, no-wrap
 msgid "PARSE OPTIONS"
 msgstr "解析オプション"
 
 #. type: TP
-#: ../goaccess.1:717
+#: ../goaccess.1:726
 #, no-wrap
 msgid "B<-a --agent-list>"
 msgstr "B<-a --agent-list>"
 
 #. type: Plain text
-#: ../goaccess.1:721
+#: ../goaccess.1:730
 msgid ""
 "Enable a list of user-agents by host. For faster parsing, do not enable this "
 "flag."
@@ -2139,24 +2167,24 @@ msgstr ""
 "高速な解析の上ではこのフラグを有効にしないでください。"
 
 #. type: TP
-#: ../goaccess.1:721
+#: ../goaccess.1:730
 #, no-wrap
 msgid "B<-d --with-output-resolver>"
 msgstr "B<-d --with-output-resolver>"
 
 #. type: Plain text
-#: ../goaccess.1:724
+#: ../goaccess.1:733
 msgid "Enable IP resolver on HTML|JSON output."
 msgstr "HTMLないしJSON出力におけるIPリゾルバを有効にします。"
 
 #. type: TP
-#: ../goaccess.1:724
+#: ../goaccess.1:733
 #, no-wrap
 msgid "B<-e --exclude-ip=E<lt>IP|IP-rangeE<gt>>"
 msgstr "B<-e --exclude-ip=E<lt>IPまたはIPの範囲E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:729
+#: ../goaccess.1:738
 msgid ""
 "Exclude an IPv4 or IPv6 from being counted. Applicable solely during access "
 "log data processing, it does not exclude persisted data.  Ranges can be "
@@ -2168,7 +2196,7 @@ msgstr ""
 "範囲についても、IPの間にダッシュを使う（開始-終了）ことで含められます。"
 
 #. type: Plain text
-#: ../goaccess.1:735
+#: ../goaccess.1:744
 #, no-wrap
 msgid ""
 "I<Examples:>\n"
@@ -2184,13 +2212,13 @@ msgstr ""
 "  exclude-ip 0:0:0:0:0:ffff:808:804-0:0:0:0:0:ffff:808:808\n"
 
 #. type: TP
-#: ../goaccess.1:735
+#: ../goaccess.1:744
 #, no-wrap
 msgid "B<-j --jobs=E<lt>1-6E<gt>>"
 msgstr "B<-j --jobs=E<lt>1-6E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:742
+#: ../goaccess.1:751
 msgid ""
 "This specifies the number of parallel processing threads to be used during "
 "the execution of the program. It determines the degree of concurrency when "
@@ -2205,13 +2233,13 @@ msgstr ""
 "づいてジョブ数を設定するのが一般的です。例えば、CPUコア数です。"
 
 #. type: TP
-#: ../goaccess.1:742
+#: ../goaccess.1:751
 #, no-wrap
 msgid "B<-H --http-protocol=E<lt>yes|noE<gt>>"
 msgstr "B<-H --http-protocol=E<lt>yes|noE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:746
+#: ../goaccess.1:755
 msgid ""
 "Set/unset HTTP request protocol. This will create a request key containing "
 "the request protocol + the actual request."
@@ -2221,13 +2249,13 @@ msgstr ""
 "エストキーが作られるようになります。"
 
 #. type: TP
-#: ../goaccess.1:746
+#: ../goaccess.1:755
 #, no-wrap
 msgid "B<-M --http-method=E<lt>yes|noE<gt>>"
 msgstr "B<-M --http-method=E<lt>yes|noE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:750
+#: ../goaccess.1:759
 msgid ""
 "Set/unset HTTP request method. This will create a request key containing the "
 "request method + the actual request."
@@ -2237,13 +2265,13 @@ msgstr ""
 "るようになります。"
 
 #. type: TP
-#: ../goaccess.1:750
+#: ../goaccess.1:759
 #, no-wrap
 msgid "B<-o --output=E<lt>path/file.[json|csv|html]E<gt>>"
 msgstr "B<-o --output=E<lt>ファイルへのパス.[json|csv|html]E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:754
+#: ../goaccess.1:763
 msgid ""
 "Write output to stdout given one of the following files and the "
 "corresponding extension for the output format:"
@@ -2252,7 +2280,7 @@ msgstr ""
 "出力を書き込みます。"
 
 #. type: Plain text
-#: ../goaccess.1:758
+#: ../goaccess.1:767
 #, no-wrap
 msgid ""
 "  /path/file.csv - Comma-separated values (CSV)\n"
@@ -2264,13 +2292,13 @@ msgstr ""
 "  /path/file.html - HTML\n"
 
 #. type: TP
-#: ../goaccess.1:758
+#: ../goaccess.1:767
 #, no-wrap
 msgid "B<-q --no-query-string>"
 msgstr "B<-q --no-query-string>"
 
 #. type: Plain text
-#: ../goaccess.1:762
+#: ../goaccess.1:771
 msgid ""
 "Ignore request's query string. i.e., www.google.com/page.htm?query =E<gt> "
 "www.google.com/page.htm."
@@ -2279,7 +2307,7 @@ msgstr ""
 "つまり、www.google.com/page.htm?query =E<gt> www.google.com/page.htm です。"
 
 #. type: Plain text
-#: ../goaccess.1:766
+#: ../goaccess.1:775
 msgid ""
 "I<Note:> Removing the query string can greatly decrease memory consumption, "
 "especially on timestamped requests."
@@ -2288,51 +2316,51 @@ msgstr ""
 "特にタイムスタンプ付きのリクエストではそうです。"
 
 #. type: TP
-#: ../goaccess.1:766
+#: ../goaccess.1:775
 #, no-wrap
 msgid "B<-r --no-term-resolver>"
 msgstr "B<-r --no-term-resolver>"
 
 #. type: Plain text
-#: ../goaccess.1:769
+#: ../goaccess.1:778
 msgid "Disable IP resolver on terminal output."
 msgstr "端末出力でIPリゾルバを無効にします。"
 
 #. type: TP
-#: ../goaccess.1:769
+#: ../goaccess.1:778
 #, no-wrap
 msgid "B<--444-as-404>"
 msgstr "B<--444-as-404>"
 
 #. type: Plain text
-#: ../goaccess.1:772
+#: ../goaccess.1:781
 msgid "Treat non-standard status code 444 as 404."
 msgstr "非標準的なステータスコードである444を404として扱います。"
 
 #. type: TP
-#: ../goaccess.1:772
+#: ../goaccess.1:781
 #, no-wrap
 msgid "B<--4xx-to-unique-count>"
 msgstr "B<--4xx-to-unique-count>"
 
 #. type: Plain text
-#: ../goaccess.1:775
+#: ../goaccess.1:784
 msgid "Add 4xx client errors to the unique visitors count."
 msgstr "4xxクライアントエラーを固有訪問者に加えます。"
 
 #. type: TP
-#: ../goaccess.1:775
+#: ../goaccess.1:784
 #, no-wrap
 msgid "B<--anonymize-ip>"
 msgstr "B<--anonymize-ip>"
 
 #. type: Plain text
-#: ../goaccess.1:782
+#: ../goaccess.1:791
 msgid ""
 "Anonymize the client IP address. The IP anonymization option sets the last "
 "octet of IPv4 user IP addresses and the last 80 bits of IPv6 addresses to "
-"zeros.  e.g., 192.168.20.100 =E<gt> 192.168.20.0 e.g., 2a03:2880:2110:df07:"
-"face:b00c::1 =E<gt> 2a03:2880:2110:df07::"
+"zeros.  e.g., 192.168.20.100 =E<gt> 192.168.20.0 e.g., "
+"2a03:2880:2110:df07:face:b00c::1 =E<gt> 2a03:2880:2110:df07::"
 msgstr ""
 "クライアントIPアドレスを匿名化します。\n"
 "IP匿名化オプションはIPv4利用者IPアドレスの末尾オクテットとIPv6アドレスの末尾"
@@ -2341,18 +2369,18 @@ msgstr ""
 "例：2a03:2880:2110:df07:face:b00c::1 =E<gt> 2a03:2880:2110:df07::"
 
 #. type: Plain text
-#: ../goaccess.1:785
+#: ../goaccess.1:794
 msgid "I<Note:> This deactivates -a."
 msgstr "I<補足：>これは -a を非活性にします。"
 
 #. type: TP
-#: ../goaccess.1:785
+#: ../goaccess.1:794
 #, no-wrap
 msgid "B<--chunk-size=E<lt>256-32768E<gt>>"
 msgstr "B<--chunk-size=E<lt>256-32768E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:793
+#: ../goaccess.1:802
 msgid ""
 "This determines the number of lines that form a chunk. This parameter "
 "influences the size of the data processed concurrently by each thread, "
@@ -2367,7 +2395,7 @@ msgstr ""
 "力データの特性のような要因に基づいて調整できます。"
 
 #. type: Plain text
-#: ../goaccess.1:799
+#: ../goaccess.1:808
 msgid ""
 "Low Values: If chunk-size is set too low, it might result in inefficient "
 "processing. For instance, if each chunk contains a very small number of "
@@ -2379,7 +2407,7 @@ msgstr ""
 "理と協調に掛かるオーバーヘッドがその利点を打ち消す可能性があります。"
 
 #. type: Plain text
-#: ../goaccess.1:806
+#: ../goaccess.1:815
 msgid ""
 "Large Values: Conversely, if chunk-size is set too high, it could lead to "
 "resource exhaustion. Each chunk represents a portion of data that a thread "
@@ -2393,13 +2421,13 @@ msgstr ""
 "があります。とりわけ、同時に多くの並列スレッドが走っている場合がそうです。"
 
 #. type: TP
-#: ../goaccess.1:806
+#: ../goaccess.1:815
 #, no-wrap
 msgid "B<--anonymize-level>"
 msgstr "B<--anonymize-level>"
 
 #. type: Plain text
-#: ../goaccess.1:809
+#: ../goaccess.1:818
 msgid ""
 "Specifies the anonymization levels: 1 =E<gt> default, 2 =E<gt> strong, 3 "
 "=E<gt> pedantic."
@@ -2408,85 +2436,85 @@ msgstr ""
 "1 =E<gt> 既定、2 =E<gt> 強力、3 =E<gt> 神経質"
 
 #. type: tbl table
-#: ../goaccess.1:813
+#: ../goaccess.1:822
 #, no-wrap
 msgid "Bits-hidden"
 msgstr "隠れるビット数"
 
 #. type: tbl table
-#: ../goaccess.1:813
+#: ../goaccess.1:822
 #, no-wrap
 msgid "Level 1"
 msgstr "レベル1"
 
 #. type: tbl table
-#: ../goaccess.1:813
+#: ../goaccess.1:822
 #, no-wrap
 msgid "Level 2"
 msgstr "レベル2"
 
 #. type: tbl table
-#: ../goaccess.1:813
+#: ../goaccess.1:822
 #, no-wrap
 msgid "Level 3"
 msgstr "レベル3"
 
 #. type: tbl table
-#: ../goaccess.1:816
+#: ../goaccess.1:825
 #, no-wrap
 msgid "B<IPv4>"
 msgstr "B<IPv4>"
 
 #. type: tbl table
-#: ../goaccess.1:816
+#: ../goaccess.1:825
 #, no-wrap
 msgid "8"
 msgstr "8"
 
 #. type: tbl table
-#: ../goaccess.1:816
+#: ../goaccess.1:825
 #, no-wrap
 msgid "16"
 msgstr "16"
 
 #. type: tbl table
-#: ../goaccess.1:816
+#: ../goaccess.1:825
 #, no-wrap
 msgid "24"
 msgstr "24"
 
 #. type: tbl table
-#: ../goaccess.1:819
+#: ../goaccess.1:828
 #, no-wrap
 msgid "B<IPv6>"
 msgstr "B<IPv6>"
 
 #. type: tbl table
-#: ../goaccess.1:819
+#: ../goaccess.1:828
 #, no-wrap
 msgid "64"
 msgstr "64"
 
 #. type: tbl table
-#: ../goaccess.1:819
+#: ../goaccess.1:828
 #, no-wrap
 msgid "80"
 msgstr "80"
 
 #. type: tbl table
-#: ../goaccess.1:819
+#: ../goaccess.1:828
 #, no-wrap
 msgid "96"
 msgstr "96"
 
 #. type: TP
-#: ../goaccess.1:822
+#: ../goaccess.1:831
 #, no-wrap
 msgid "B<--all-static-files>"
 msgstr "B<--all-static-files>"
 
 #. type: Plain text
-#: ../goaccess.1:826
+#: ../goaccess.1:835
 msgid ""
 "Include static files that contain a query string. e.g., /fonts/fontawesome-"
 "webfont.woff?v=4.0.3"
@@ -2495,13 +2523,13 @@ msgstr ""
 "例：/fonts/fontawesome-webfont.woff?v=4.0.3"
 
 #. type: TP
-#: ../goaccess.1:826
+#: ../goaccess.1:835
 #, no-wrap
 msgid "B<--browsers-file=E<lt>pathE<gt>>"
 msgstr "B<--browsers-file=E<lt>パスE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:833
+#: ../goaccess.1:842
 msgid ""
 "By default GoAccess parses an \"essential/basic\" curated list of browsers & "
 "crawlers. If you need to add additional browsers, use this option.  Include "
@@ -2517,13 +2545,13 @@ msgstr ""
 "goaccess/master/config/browsers.list を参照してください。"
 
 #. type: TP
-#: ../goaccess.1:833
+#: ../goaccess.1:842
 #, no-wrap
 msgid "B<--date-spec=E<lt>date|hr|minE<gt>>"
 msgstr "B<--date-spec=E<lt>date|hr|minE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:837
+#: ../goaccess.1:846
 msgid ""
 "Set the date specificity to either date (default), hr to display hours or "
 "min to display minutes appended to the date."
@@ -2532,7 +2560,7 @@ msgstr ""
 "何分かを表示する分、のうちいずれかを日付に設定します。"
 
 #. type: Plain text
-#: ../goaccess.1:841
+#: ../goaccess.1:850
 msgid ""
 "This is used in the visitors panel. It's useful for tracking visitors at the "
 "hour level. For instance, an hour specificity would yield to display traffic "
@@ -2544,13 +2572,13 @@ msgstr ""
 "分指定では18/Dec/2010:19:59が表示されます。"
 
 #. type: TP
-#: ../goaccess.1:841
+#: ../goaccess.1:850
 #, no-wrap
 msgid "B<--double-decode>"
 msgstr "B<--double-decode>"
 
 #. type: Plain text
-#: ../goaccess.1:844
+#: ../goaccess.1:853
 msgid ""
 "Decode double-encoded values. This includes, user-agent, request, and "
 "referrer."
@@ -2559,18 +2587,18 @@ msgstr ""
 "これにはユーザーエージェント、リクエスト、リファラが含まれます。"
 
 #. type: TP
-#: ../goaccess.1:844
+#: ../goaccess.1:853
 #, no-wrap
 msgid "B<--enable-panel=E<lt>PANELE<gt>>"
 msgstr "B<--enable-panel=E<lt>パネルE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:847
+#: ../goaccess.1:856
 msgid "Enable parsing and displaying the given panel."
 msgstr "与えられたパネルについて解析と表示を有効にします。"
 
 #. type: Plain text
-#: ../goaccess.1:867 ../goaccess.1:913
+#: ../goaccess.1:876 ../goaccess.1:922
 #, no-wrap
 msgid ""
 "I<Available panels:>\n"
@@ -2614,13 +2642,13 @@ msgstr ""
 "  TLS_TYPE\n"
 
 #. type: TP
-#: ../goaccess.1:867
+#: ../goaccess.1:876
 #, no-wrap
 msgid "B<--fname-as-vhost=E<lt>regexE<gt>>"
 msgstr "B<--fname-as-vhost=E<lt>正規表現E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:873
+#: ../goaccess.1:882
 msgid ""
 "Use log filename(s) as virtual host(s). POSIX regex is passed to extract the "
 "virtual host from the filename. e.g., I<--fname-as-vhost='[a-z]*.[a-z]*'> "
@@ -2632,29 +2660,29 @@ msgstr ""
 "と抽出するのに使えます。"
 
 #. type: TP
-#: ../goaccess.1:873
+#: ../goaccess.1:882
 #, no-wrap
 msgid "B<--hide-referrer=E<lt>NEEDLEE<gt>>"
 msgstr "B<--hide-referrer=E<lt>探しものE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:877
+#: ../goaccess.1:886
 msgid ""
-"Hide a referrer but still count it. Wild cards are allowed in the needle. i."
-"e., *.bing.com."
+"Hide a referrer but still count it. Wild cards are allowed in the needle. "
+"i.e., *.bing.com."
 msgstr ""
 "リファラを隠しつつ計上はします。\n"
 "探しものの箇所ではワイルドカードが使えます。\n"
 "つまり *.bing.com です。"
 
 #. type: TP
-#: ../goaccess.1:877
+#: ../goaccess.1:886
 #, no-wrap
 msgid "B<--hour-spec=E<lt>hr|minE<gt>>"
 msgstr "B<--hour-spec=E<lt>hr|minE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:881
+#: ../goaccess.1:890
 msgid ""
 "Set the time specificity to either hour (default) or min to display the "
 "tenth of an hour appended to the hour."
@@ -2663,7 +2691,7 @@ msgstr ""
 "後者では時に1/10時間が後置されます。"
 
 #. type: Plain text
-#: ../goaccess.1:884
+#: ../goaccess.1:893
 msgid ""
 "This is used in the time distribution panel. It's useful for tracking peaks "
 "of traffic on your server at specific times."
@@ -2672,67 +2700,67 @@ msgstr ""
 "サーバーで特定の時刻でトラフィックのピークを把握するのに役立ちます。"
 
 #. type: TP
-#: ../goaccess.1:884
+#: ../goaccess.1:893
 #, no-wrap
 msgid "B<--ignore-crawlers>"
 msgstr "B<--ignore-crawlers>"
 
 #. type: Plain text
-#: ../goaccess.1:887
+#: ../goaccess.1:896
 msgid "Ignore crawlers from being counted."
 msgstr "クローラーを計上から外します。"
 
 #. type: TP
-#: ../goaccess.1:887
+#: ../goaccess.1:896
 #, no-wrap
 msgid "B<--unknowns-as-crawlers>"
 msgstr "B<--unknowns-as-crawlers>"
 
 #. type: Plain text
-#: ../goaccess.1:890
+#: ../goaccess.1:899
 msgid "Classify unknown OS and browsers as crawlers."
 msgstr "不明なOSとブラウザをクローラーとして分類します。"
 
 #. type: TP
-#: ../goaccess.1:890
+#: ../goaccess.1:899
 #, no-wrap
 msgid "B<--ignore-panel=E<lt>PANELE<gt>>"
 msgstr "B<--ignore-panel=E<lt>パネルE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:893
+#: ../goaccess.1:902
 msgid "Ignore parsing and displaying the given panel."
 msgstr "与えられたパネルについて解析と表示から外します。"
 
 #. type: TP
-#: ../goaccess.1:913
+#: ../goaccess.1:922
 #, no-wrap
 msgid "B<--ignore-referrer=E<lt>referrerE<gt>>"
 msgstr "B<--ignore-referrer=E<lt>リファラE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:920
+#: ../goaccess.1:929
 msgid ""
-"Ignore referrers from being counted. Wildcards allowed. e.g., I<*.domain."
-"com> I<ww?.domain.*>"
+"Ignore referrers from being counted. Wildcards allowed. e.g., "
+"I<*.domain.com> I<ww?.domain.*>"
 msgstr ""
 "リファラを計上から外します。\n"
 "ワイルドカードが使えます。\n"
 "例：I<*.domain.com> I<ww?.domain.*>"
 
 #. type: TP
-#: ../goaccess.1:920
+#: ../goaccess.1:929
 #, no-wrap
 msgid "B<--ignore-statics=E<lt>req|panelE<gt>>"
 msgstr "B<--ignore-statics=E<lt>req|panelE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:923
+#: ../goaccess.1:932
 msgid "Ignore static file requests."
 msgstr "静的ファイルのリクエストを無視します。"
 
 #. type: Plain text
-#: ../goaccess.1:926
+#: ../goaccess.1:935
 #, no-wrap
 msgid ""
 "I<req>\n"
@@ -2742,7 +2770,7 @@ msgstr ""
 "  妥当なリクエスト由来のリクエストのみ無視します\n"
 
 #. type: Plain text
-#: ../goaccess.1:929
+#: ../goaccess.1:938
 #, no-wrap
 msgid ""
 "I<panels>\n"
@@ -2752,19 +2780,19 @@ msgstr ""
 "  パネル由来のリクエストを無視します\n"
 
 #. type: Plain text
-#: ../goaccess.1:931
+#: ../goaccess.1:940
 #, no-wrap
 msgid "  Note that it will count them towards the total number of requests\n"
 msgstr "  なおこれらはリクエストの総計に計上されます。\n"
 
 #. type: TP
-#: ../goaccess.1:931
+#: ../goaccess.1:940
 #, no-wrap
 msgid "B<--ignore-status=E<lt>CODEE<gt>>"
 msgstr "B<--ignore-status=E<lt>コードE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:935
+#: ../goaccess.1:944
 msgid ""
 "Ignore parsing and displaying one or multiple status code(s). For multiple "
 "status codes, use this option multiple times."
@@ -2773,13 +2801,13 @@ msgstr ""
 "複数のステータスコードについては、このオプションを複数回使用してください。"
 
 #. type: TP
-#: ../goaccess.1:935
+#: ../goaccess.1:944
 #, no-wrap
 msgid "B<--keep-last=E<lt>num_daysE<gt>>"
 msgstr "B<--keep-last=E<lt>日数E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:938
+#: ../goaccess.1:947
 msgid ""
 "Keep the last specified number of days in storage. This will recycle the "
 "storage tables. e.g., keep & show only the last 7 days."
@@ -2789,13 +2817,13 @@ msgstr ""
 "例：直近7日間のみを保持して表示します。"
 
 #. type: TP
-#: ../goaccess.1:938
+#: ../goaccess.1:947
 #, no-wrap
 msgid "B<--no-ip-validation>"
 msgstr "B<--no-ip-validation>"
 
 #. type: Plain text
-#: ../goaccess.1:946
+#: ../goaccess.1:955
 msgid ""
 "Disable client IP validation. Useful if IP addresses have been obfuscated "
 "before being logged.  The log still needs to contain a placeholder for I<%h> "
@@ -2808,13 +2836,13 @@ msgstr ""
 "例：I<ord37s19-in-f14.1e100.net.>"
 
 #. type: TP
-#: ../goaccess.1:946
+#: ../goaccess.1:955
 #, no-wrap
 msgid "B<--no-strict-status>"
 msgstr "B<--no-strict-status>"
 
 #. type: Plain text
-#: ../goaccess.1:951
+#: ../goaccess.1:960
 msgid ""
 "Disable HTTP status code validation. Some servers would record this value "
 "only if a connection was established to the target and the target sent a "
@@ -2826,13 +2854,13 @@ msgstr ""
 "そうでない場合-として記録されます。"
 
 #. type: TP
-#: ../goaccess.1:951
+#: ../goaccess.1:960
 #, no-wrap
 msgid "B<--num-tests=E<lt>numberE<gt>>"
 msgstr "B<--num-tests=E<lt>数値E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:960
+#: ../goaccess.1:969
 msgid ""
 "Number of lines from the access log to test against the provided log/date/"
 "time format. By default, the parser is set to test 10 lines. If set to 0, "
@@ -2851,13 +2879,13 @@ msgstr ""
 "そうでなければGoAccessはEXIT_FAILUREを返して関係するエラー文言を表示します。"
 
 #. type: TP
-#: ../goaccess.1:960
+#: ../goaccess.1:969
 #, no-wrap
 msgid "B<--process-and-exit>"
 msgstr "B<--process-and-exit>"
 
 #. type: Plain text
-#: ../goaccess.1:965
+#: ../goaccess.1:974
 msgid ""
 "Parse log and exit without outputting data. Useful if we are looking to only "
 "add new data to the on-disk database without outputting to a file or a "
@@ -2868,26 +2896,26 @@ msgstr ""
 "いだけのときに便利です。"
 
 #. type: TP
-#: ../goaccess.1:965
+#: ../goaccess.1:974
 #, no-wrap
 msgid "B<--real-os>"
 msgstr "B<--real-os>"
 
 #. type: Plain text
-#: ../goaccess.1:968
+#: ../goaccess.1:977
 msgid "Display real OS names. e.g, Windows XP, Snow Leopard."
 msgstr ""
 "実際のOS名を表示します。\n"
 "例えばWindows XP、Snow Leopardです。"
 
 #. type: TP
-#: ../goaccess.1:968
+#: ../goaccess.1:977
 #, no-wrap
 msgid "B<--sort-panel=E<lt>PANEL,FIELD,ORDERE<gt>>"
 msgstr "B<--sort-panel=E<lt>パネル,フィールド,順序E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:972
+#: ../goaccess.1:981
 msgid ""
 "Sort panel on initial load. Sort options are separated by comma. Options are "
 "in the form: PANEL,METRIC,ORDER"
@@ -2897,7 +2925,7 @@ msgstr ""
 "オプションは、パネル,指標,順序、の形式です。"
 
 #. type: Plain text
-#: ../goaccess.1:983
+#: ../goaccess.1:992
 #, no-wrap
 msgid ""
 "I<Available metrics:>\n"
@@ -2923,7 +2951,7 @@ msgstr ""
 "  BY_MTHD     - HTTPメソッドで整列\n"
 
 #. type: Plain text
-#: ../goaccess.1:987
+#: ../goaccess.1:996
 #, no-wrap
 msgid ""
 "I<Available orders:>\n"
@@ -2935,13 +2963,13 @@ msgstr ""
 "  DESC\n"
 
 #. type: TP
-#: ../goaccess.1:987
+#: ../goaccess.1:996
 #, no-wrap
 msgid "B<--static-file=E<lt>extensionE<gt>>"
 msgstr "B<--static-file=E<lt>拡張子E<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:992
+#: ../goaccess.1:1001
 msgid "Add static file extension. e.g.: I<.mp3> Extensions are case sensitive."
 msgstr ""
 "静的ファイルの拡張子を追加します。\n"
@@ -2949,35 +2977,35 @@ msgstr ""
 "拡張子は大文字小文字を区別しません。"
 
 #. type: SS
-#: ../goaccess.1:992
+#: ../goaccess.1:1001
 #, no-wrap
 msgid "GEOLOCATION OPTIONS"
 msgstr "地理的位置のオプション"
 
 #. type: TP
-#: ../goaccess.1:994
+#: ../goaccess.1:1003
 #, no-wrap
 msgid "B<-g --std-geoip>"
 msgstr "B<-g --std-geoip>"
 
 #. type: Plain text
-#: ../goaccess.1:997
+#: ../goaccess.1:1006
 msgid "Standard GeoIP database for less memory usage."
 msgstr "メモリ使用量を抑えるため標準的なGeoIPデータベースにします。"
 
 #. type: TP
-#: ../goaccess.1:997
+#: ../goaccess.1:1006
 #, no-wrap
 msgid "B<--geoip-database=E<lt>geofileE<gt>>"
 msgstr "B<--geoip-database=E<lt>地理情報ファイルE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:1000
+#: ../goaccess.1:1009
 msgid "Specify path to GeoIP database file. i.e., GeoLiteCity.dat."
 msgstr "GeoLiteCity.datのようなGeoIPデータベースファイルへのパスを指定します。"
 
 #. type: Plain text
-#: ../goaccess.1:1007
+#: ../goaccess.1:1016
 msgid ""
 "If using GeoIP2, you will need to download the GeoLite2 City or Country "
 "database from MaxMind.com and use the option --geoip-database to specify the "
@@ -2996,74 +3024,74 @@ msgstr ""
 "更新されたDBのURLについては、既定のGoAccess設定ファイルを参照してください。"
 
 #. type: Plain text
-#: ../goaccess.1:1010
+#: ../goaccess.1:1019
 msgid "I<Note:> --geoip-city-data is an alias of --geoip-database."
 msgstr "I<補足：> --geoip-city-dataは--geoip-databaseの別名です。"
 
 #. type: SS
-#: ../goaccess.1:1010
+#: ../goaccess.1:1019
 #, no-wrap
 msgid "OTHER OPTIONS"
 msgstr "他のオプション"
 
 #. type: TP
-#: ../goaccess.1:1012
+#: ../goaccess.1:1021
 #, no-wrap
 msgid "B<-h --help>"
 msgstr "B<-h --help>"
 
 #. type: Plain text
-#: ../goaccess.1:1015
+#: ../goaccess.1:1024
 msgid "The help."
 msgstr "ヘルプ。"
 
 #. type: TP
-#: ../goaccess.1:1015
+#: ../goaccess.1:1024
 #, no-wrap
 msgid "B<-s --storage>"
 msgstr "B<-s --storage>"
 
 #. type: Plain text
-#: ../goaccess.1:1018
+#: ../goaccess.1:1027
 msgid "Display current storage method. i.e., B+ Tree, Hash."
 msgstr "B+木やハッシュのような、現在のストレージメソッドを表示します。"
 
 #. type: TP
-#: ../goaccess.1:1018
+#: ../goaccess.1:1027
 #, no-wrap
 msgid "B<-V --version>"
 msgstr "B<-V --version>"
 
 #. type: Plain text
-#: ../goaccess.1:1021
+#: ../goaccess.1:1030
 msgid "Display version information and exit."
 msgstr "バージョン情報を表示して終了します。"
 
 #. type: TP
-#: ../goaccess.1:1021
+#: ../goaccess.1:1030
 #, no-wrap
 msgid "B<--dcf>"
 msgstr "B<--dcf>"
 
 #. type: Plain text
-#: ../goaccess.1:1024
+#: ../goaccess.1:1033
 msgid "Display the path of the default config file when `-p` is not used."
 msgstr "`-p`が使われていない場合既定の設定ファイルのパスを表示します。"
 
 #. type: SS
-#: ../goaccess.1:1024
+#: ../goaccess.1:1033
 #, no-wrap
 msgid "PERSISTENCE STORAGE OPTIONS"
 msgstr "永続ストレージオプション"
 
 #. type: TP
-#: ../goaccess.1:1026
+#: ../goaccess.1:1035
 #, no-wrap
 msgid "B<--persist>"
 msgstr "B<--persist>"
 
 #. type: Plain text
-#: ../goaccess.1:1030
+#: ../goaccess.1:1039
 msgid ""
 "Persist parsed data into disk. If database files exist, files will be "
 "overwritten. This should be set to the first dataset. See examples below."
@@ -3074,13 +3102,13 @@ msgstr ""
 "後述の例を参照してください。"
 
 #. type: TP
-#: ../goaccess.1:1030
+#: ../goaccess.1:1039
 #, no-wrap
 msgid "B<--restore>"
 msgstr "B<--restore>"
 
 #. type: Plain text
-#: ../goaccess.1:1036
+#: ../goaccess.1:1045
 msgid ""
 "Load previously stored data from disk. If reading persisted data only, the "
 "database files need to exist. See I<--persist> and examples below."
@@ -3091,13 +3119,13 @@ msgstr ""
 "I<--persist>と後述の例を参照してください。"
 
 #. type: TP
-#: ../goaccess.1:1036
+#: ../goaccess.1:1045
 #, no-wrap
 msgid "B<--db-path=E<lt>dirE<gt>>"
 msgstr "B<--db-path=E<lt>ディレクトリE<gt>>"
 
 #. type: Plain text
-#: ../goaccess.1:1041
+#: ../goaccess.1:1050
 msgid ""
 "Path where the on-disk database files are stored. The default value is the "
 "I</tmp> directory."
@@ -3106,18 +3134,18 @@ msgstr ""
 "既定値はI</tmp>ディレクトリです。"
 
 #. type: SH
-#: ../goaccess.1:1042
+#: ../goaccess.1:1051
 #, no-wrap
 msgid "CUSTOM LOG/DATE FORMAT"
 msgstr "独自のログ・日付書式"
 
 #. type: Plain text
-#: ../goaccess.1:1044
+#: ../goaccess.1:1053
 msgid "GoAccess can parse virtually any web log format."
 msgstr "GoAccessは理想的にはどんなwebのログ書式も解析できます。"
 
 #. type: Plain text
-#: ../goaccess.1:1048
+#: ../goaccess.1:1057
 msgid ""
 "Predefined options include, Common Log Format (CLF), Combined Log Format "
 "(XLF/ELF), including virtual host, Amazon CloudFront (Download "
@@ -3132,12 +3160,12 @@ msgstr ""
 "前2者は仮想ホスト付きのものもあります。"
 
 #. type: Plain text
-#: ../goaccess.1:1050
+#: ../goaccess.1:1059
 msgid "GoAccess allows any custom format string as well."
 msgstr "GoAccessはどんな独自の書式文字列も受け付けます。"
 
 #. type: Plain text
-#: ../goaccess.1:1056
+#: ../goaccess.1:1065
 msgid ""
 "There are two ways to configure the log format.  The easiest is to run "
 "GoAccess with I<-c> to prompt a configuration window. Otherwise, it can be "
@@ -3150,13 +3178,13 @@ msgstr ""
 
 # これは変数名のため訳さないようにします。
 #. type: IP
-#: ../goaccess.1:1056
+#: ../goaccess.1:1065
 #, no-wrap
 msgid "time-format"
 msgstr "time-format"
 
 #. type: Plain text
-#: ../goaccess.1:1063
+#: ../goaccess.1:1072
 msgid ""
 "The I<time-format> variable followed by a space, specifies the log format "
 "time containing any combination of regular characters and special format "
@@ -3170,7 +3198,7 @@ msgstr ""
 "I<%Tや%H:%M:%Sなどがあります。>"
 
 #. type: Plain text
-#: ../goaccess.1:1075
+#: ../goaccess.1:1084
 msgid ""
 "I<Note:> If a timestamp is given in microseconds, I<%f> must be used as "
 "I<time-format> or I<%*> if the timestamp is given in milliseconds."
@@ -3182,18 +3210,18 @@ msgstr ""
 
 # これは変数名のため訳さないようにします。
 #. type: IP
-#: ../goaccess.1:1075
+#: ../goaccess.1:1084
 #, no-wrap
 msgid "date-format"
 msgstr "date-format"
 
 #. type: Plain text
-#: ../goaccess.1:1082
+#: ../goaccess.1:1091
 msgid ""
 "The I<date-format> variable followed by a space, specifies the log format "
 "date containing any combination of regular characters and special format "
-"specifiers. They all begin with a percentage (%) sign. See `man strftime`. e."
-"g., I<%Y-%m-%d.>"
+"specifiers. They all begin with a percentage (%) sign. See `man strftime`. "
+"e.g., I<%Y-%m-%d.>"
 msgstr ""
 "I<date-format>変数には空白1つが続き、\n"
 "ログの書式の日付を指定します。\n"
@@ -3204,7 +3232,7 @@ msgstr ""
 "例えばI<%Y-%m-%dです。>"
 
 #. type: Plain text
-#: ../goaccess.1:1094
+#: ../goaccess.1:1103
 msgid ""
 "I<Note:> If a timestamp is given in microseconds, I<%f> must be used as "
 "I<date-format> or I<%*> if the timestamp is given in milliseconds."
@@ -3216,13 +3244,13 @@ msgstr ""
 
 # これは変数名なので訳しません。
 #. type: IP
-#: ../goaccess.1:1094
+#: ../goaccess.1:1103
 #, no-wrap
 msgid "log-format"
 msgstr "log-format"
 
 #. type: Plain text
-#: ../goaccess.1:1100
+#: ../goaccess.1:1109
 msgid ""
 "The I<log-format> variable followed by a space or I<\\et> , specifies the "
 "log format string."
@@ -3231,13 +3259,13 @@ msgstr ""
 "す。"
 
 #. type: IP
-#: ../goaccess.1:1100
+#: ../goaccess.1:1109
 #, no-wrap
 msgid "%x"
 msgstr "%x"
 
 #. type: Plain text
-#: ../goaccess.1:1108
+#: ../goaccess.1:1117
 msgid ""
 "A date and time field matching the I<time-format> and I<date-format> "
 "variables. This is used when given a timestamp or the date & time are "
@@ -3251,82 +3279,82 @@ msgstr ""
 "れます。"
 
 #. type: IP
-#: ../goaccess.1:1108
+#: ../goaccess.1:1117
 #, no-wrap
 msgid "%t"
 msgstr "%t"
 
 #. type: Plain text
-#: ../goaccess.1:1112
+#: ../goaccess.1:1121
 msgid "time field matching the I<time-format> variable."
 msgstr "I<time-format>変数に照合する時刻フィールドです。"
 
 #. type: IP
-#: ../goaccess.1:1112
+#: ../goaccess.1:1121
 #, no-wrap
 msgid "%d"
 msgstr "%d"
 
 #. type: Plain text
-#: ../goaccess.1:1116
+#: ../goaccess.1:1125
 msgid "date field matching the I<date-format> variable."
 msgstr "I<date-format>変数に照合する日付フィールドです。"
 
 #. type: IP
-#: ../goaccess.1:1116
+#: ../goaccess.1:1125
 #, no-wrap
 msgid "%v"
 msgstr "%v"
 
 #. type: Plain text
-#: ../goaccess.1:1118
+#: ../goaccess.1:1127
 msgid ""
 "The canonical Server Name of the server serving the request (Virtual Host)."
 msgstr "リクエストに応対するサーバー（仮想ホスト）の正統なServer Nameです。"
 
 #. type: IP
-#: ../goaccess.1:1118
+#: ../goaccess.1:1127
 #, no-wrap
 msgid "%e"
 msgstr "%e"
 
 #. type: Plain text
-#: ../goaccess.1:1121
+#: ../goaccess.1:1130
 msgid ""
 "This is the userid of the person requesting the document as determined by "
 "HTTP authentication."
 msgstr "これはHTTP認証により決定された文書を要求した人物のユーザーIDです。"
 
 #. type: IP
-#: ../goaccess.1:1121
+#: ../goaccess.1:1130
 #, no-wrap
 msgid "%C"
 msgstr "%C"
 
 #. type: Plain text
-#: ../goaccess.1:1123
+#: ../goaccess.1:1132
 msgid "The cache status of the object the server served."
 msgstr "サーバーが提供するオブジェクトのキャッシュ状態です。"
 
 #. type: IP
-#: ../goaccess.1:1123
+#: ../goaccess.1:1132
 #, no-wrap
 msgid "%h"
 msgstr "%h"
 
 #. type: Plain text
-#: ../goaccess.1:1125
+#: ../goaccess.1:1134
 msgid "host (the client IP address, either IPv4 or IPv6)"
 msgstr "ホスト（クライアントIPアドレスで、IPv4ないしIPv6のいずれかです）"
 
 #. type: IP
-#: ../goaccess.1:1125
+#: ../goaccess.1:1134
 #, no-wrap
 msgid "%r"
 msgstr "%r"
 
 #. type: Plain text
-#: ../goaccess.1:1129
+#: ../goaccess.1:1138
 msgid ""
 "The request line from the client. This requires specific delimiters around "
 "the request (as single quotes, double quotes, or anything else) to be "
@@ -3340,40 +3368,40 @@ msgstr ""
 "ん。"
 
 #. type: IP
-#: ../goaccess.1:1129
+#: ../goaccess.1:1138
 #, no-wrap
 msgid "%q"
 msgstr "%q"
 
 #. type: Plain text
-#: ../goaccess.1:1131
+#: ../goaccess.1:1140
 msgid "The query string."
 msgstr "検索文字列です。"
 
 #. type: IP
-#: ../goaccess.1:1131
+#: ../goaccess.1:1140
 #, no-wrap
 msgid "%m"
 msgstr "%m"
 
 #. type: Plain text
-#: ../goaccess.1:1133
+#: ../goaccess.1:1142
 msgid "The request method."
 msgstr "リクエストメソッドです。"
 
 #. type: IP
-#: ../goaccess.1:1133
+#: ../goaccess.1:1142
 #, no-wrap
 msgid "%U"
 msgstr "%U"
 
 #. type: Plain text
-#: ../goaccess.1:1135
+#: ../goaccess.1:1144
 msgid "The URL path requested."
 msgstr "リクエストされたURLのパスです。"
 
 #. type: Plain text
-#: ../goaccess.1:1142
+#: ../goaccess.1:1151
 msgid ""
 "I<Note:> If the query string is in %U, there is no need to use I<%q.> "
 "However, if the URL path, does not include any query string, you may use "
@@ -3385,68 +3413,68 @@ msgstr ""
 "I<%q>を使うことでクエリ文字列をリクエストの後に付けることができます。"
 
 #. type: IP
-#: ../goaccess.1:1142
+#: ../goaccess.1:1151
 #, no-wrap
 msgid "%H"
 msgstr "%H"
 
 #. type: Plain text
-#: ../goaccess.1:1144
+#: ../goaccess.1:1153
 msgid "The request protocol."
 msgstr "リクエストされたプロトコルです。"
 
 #. type: IP
-#: ../goaccess.1:1144
+#: ../goaccess.1:1153
 #, no-wrap
 msgid "%s"
 msgstr "%s"
 
 #. type: Plain text
-#: ../goaccess.1:1146
+#: ../goaccess.1:1155
 msgid "The status code that the server sends back to the client."
 msgstr "サーバーがクライアントに送り返すステータスコードです。"
 
 #. type: IP
-#: ../goaccess.1:1146
+#: ../goaccess.1:1155
 #, no-wrap
 msgid "%b"
 msgstr "%b"
 
 #. type: Plain text
-#: ../goaccess.1:1148
+#: ../goaccess.1:1157
 msgid "The size of the object returned to the client."
 msgstr "クライアントに返されるオブジェクトの大きさです。"
 
 #. type: IP
-#: ../goaccess.1:1148
+#: ../goaccess.1:1157
 #, no-wrap
 msgid "%R"
 msgstr "%R"
 
 #. type: Plain text
-#: ../goaccess.1:1150
+#: ../goaccess.1:1159
 msgid "The \"Referrer\" HTTP request header."
 msgstr "「リファラ」のHTTPリクエストヘッダです。"
 
 #. type: IP
-#: ../goaccess.1:1150
+#: ../goaccess.1:1159
 #, no-wrap
 msgid "%u"
 msgstr "%u"
 
 #. type: Plain text
-#: ../goaccess.1:1152
+#: ../goaccess.1:1161
 msgid "The user-agent HTTP request header."
 msgstr "ユーザーエージェントのHTTPリクエストヘッダです。"
 
 #. type: IP
-#: ../goaccess.1:1152
+#: ../goaccess.1:1161
 #, no-wrap
 msgid "%K"
 msgstr "%K"
 
 #. type: Plain text
-#: ../goaccess.1:1154
+#: ../goaccess.1:1163
 msgid ""
 "The TLS encryption settings chosen for the connection. (In Apache LogFormat: "
 "%{SSL_PROTOCOL}x)"
@@ -3454,13 +3482,13 @@ msgstr ""
 "接続に選ばれたTLS暗号設定です（Apache LogFormatでの%{SSL_PROTOCOL}xです）。"
 
 #. type: IP
-#: ../goaccess.1:1154
+#: ../goaccess.1:1163
 #, no-wrap
 msgid "%k"
 msgstr "%k"
 
 #. type: Plain text
-#: ../goaccess.1:1156
+#: ../goaccess.1:1165
 msgid ""
 "The TLS encryption settings chosen for the connection. (In Apache LogFormat: "
 "%{SSL_CIPHER}x)"
@@ -3468,13 +3496,13 @@ msgstr ""
 "接続に選ばれたTLS暗号設定です（Apache LogFormatでの%{SSL_CIPHER}xです）。"
 
 #. type: IP
-#: ../goaccess.1:1156
+#: ../goaccess.1:1165
 #, no-wrap
 msgid "%M"
 msgstr "%M"
 
 #. type: Plain text
-#: ../goaccess.1:1158
+#: ../goaccess.1:1167
 msgid ""
 "The MIME-type of the requested resource. (In Apache LogFormat: %{Content-"
 "Type}o)"
@@ -3483,86 +3511,86 @@ msgstr ""
 "です）。"
 
 #. type: IP
-#: ../goaccess.1:1158
+#: ../goaccess.1:1167
 #, no-wrap
 msgid "%D"
 msgstr "%D"
 
 #. type: Plain text
-#: ../goaccess.1:1160
+#: ../goaccess.1:1169
 msgid ""
 "The time taken to serve the request, in microseconds as a decimal number."
 msgstr ""
 "リクエストに応対するまでに掛かった時間であり、10進整数のミリ秒で指定します。"
 
 #. type: IP
-#: ../goaccess.1:1160
+#: ../goaccess.1:1169
 #, no-wrap
 msgid "%T"
 msgstr "%T"
 
 #. type: Plain text
-#: ../goaccess.1:1162
+#: ../goaccess.1:1171
 msgid ""
 "The time taken to serve the request, in seconds with milliseconds resolution."
 msgstr ""
 "リクエストに応対するのに掛かった時間で、ミリ秒精度の秒単位で指定します。"
 
 #. type: IP
-#: ../goaccess.1:1162
+#: ../goaccess.1:1171
 #, no-wrap
 msgid "%L"
 msgstr "%L"
 
 #. type: Plain text
-#: ../goaccess.1:1164
+#: ../goaccess.1:1173
 msgid ""
 "The time taken to serve the request, in milliseconds as a decimal number."
 msgstr "リクエストに応対するのに掛かった時間で、10進整数のミリ秒で指定します。"
 
 #. type: IP
-#: ../goaccess.1:1164
+#: ../goaccess.1:1173
 #, no-wrap
 msgid "%n"
 msgstr "%n"
 
 #. type: Plain text
-#: ../goaccess.1:1166
+#: ../goaccess.1:1175
 msgid "The time taken to serve the request, in nanoseconds."
 msgstr "リクエストに応対するまでに掛かった時間であり、ミリ秒で指定します。"
 
 #. type: IP
-#: ../goaccess.1:1166
+#: ../goaccess.1:1175
 #, no-wrap
 msgid "%^"
 msgstr "%^"
 
 #. type: Plain text
-#: ../goaccess.1:1168
+#: ../goaccess.1:1177
 msgid "Ignore this field."
 msgstr "このフィールドを無視します。"
 
 #. type: IP
-#: ../goaccess.1:1168
+#: ../goaccess.1:1177
 #, no-wrap
 msgid "%~"
 msgstr "%~"
 
 #. type: Plain text
-#: ../goaccess.1:1170
+#: ../goaccess.1:1179
 msgid ""
 "Move forward through the log string until a non-space (!isspace) char is "
 "found."
 msgstr "空白でない (!isspace) 文字が見付かるまでログ文字列を読み進めます。"
 
 #. type: IP
-#: ../goaccess.1:1170
+#: ../goaccess.1:1179
 #, no-wrap
 msgid "~h"
 msgstr "~h"
 
 #. type: Plain text
-#: ../goaccess.1:1172
+#: ../goaccess.1:1181
 msgid ""
 "The host (the client IP address, either IPv4 or IPv6) in a X-Forwarded-For "
 "(XFF) field."
@@ -3571,7 +3599,7 @@ msgstr ""
 "（クライアントIPアドレスで、IPv4ないしIPv6のいずれか）です。"
 
 #. type: Plain text
-#: ../goaccess.1:1176
+#: ../goaccess.1:1185
 msgid ""
 "It uses a special specifier which consists of a tilde before the host "
 "specifier, followed by the character(s) that delimit the XFF field, which "
@@ -3583,7 +3611,7 @@ msgstr ""
 "つまり\"~h{, }\"のようになります。"
 
 #. type: Plain text
-#: ../goaccess.1:1179
+#: ../goaccess.1:1188
 msgid ""
 "For example, \"~h{, }\" is used in order to parse \"11.25.11.53, "
 "17.68.33.17\" field which is delimited by a comma and a space (enclosed by "
@@ -3593,67 +3621,67 @@ msgstr ""
 "\"11.25.11.53, 17.68.33.17\"フィールドを解析するために使われます。"
 
 #. type: tbl table
-#: ../goaccess.1:1184
+#: ../goaccess.1:1193
 #, no-wrap
 msgid "XFF field"
 msgstr "XFFフィールド"
 
 #. type: tbl table
-#: ../goaccess.1:1184
+#: ../goaccess.1:1193
 #, no-wrap
 msgid "specifier"
 msgstr "指定子"
 
 #. type: tbl table
-#: ../goaccess.1:1187
+#: ../goaccess.1:1196
 #, no-wrap
 msgid "B<\\[dq]192.1.2.3,>\\ 192.68.33.17,\\ 192.1.1.2\\[dq]"
 msgstr "B<\\[dq]192.1.2.3,>\\ 192.68.33.17,\\ 192.1.1.2\\[dq]"
 
 #. type: tbl table
-#: ../goaccess.1:1187
+#: ../goaccess.1:1196
 #, no-wrap
 msgid "\\[dq]~h{, }\\[dq]"
 msgstr "\\[dq]~h{, }\\[dq]"
 
 #. type: tbl table
-#: ../goaccess.1:1190
+#: ../goaccess.1:1199
 #, no-wrap
 msgid "B<\\[dq]192.1.2.12\\[dq],\\ \\[dq]192.68.33.17\\[dq]>"
 msgstr "B<\\[dq]192.1.2.12\\[dq],\\ \\[dq]192.68.33.17\\[dq]>"
 
 #. type: tbl table
-#: ../goaccess.1:1190
+#: ../goaccess.1:1199
 #, no-wrap
 msgid "~h{\\[dq], }"
 msgstr "~h{\\[dq], }"
 
 #. type: tbl table
-#: ../goaccess.1:1193
+#: ../goaccess.1:1202
 #, no-wrap
 msgid "B<192.1.2.12,\\ 192.68.33.17>"
 msgstr "B<192.1.2.12,\\ 192.68.33.17>"
 
 #. type: tbl table
-#: ../goaccess.1:1193
+#: ../goaccess.1:1202
 #, no-wrap
 msgid "~h{, }"
 msgstr "~h{, }"
 
 #. type: tbl table
-#: ../goaccess.1:1196
+#: ../goaccess.1:1205
 #, no-wrap
 msgid "B<192.1.2.14\\ 192.68.33.17\\ 192.1.1.2>"
 msgstr "B<192.1.2.14\\ 192.68.33.17\\ 192.1.1.2>"
 
 #. type: tbl table
-#: ../goaccess.1:1196
+#: ../goaccess.1:1205
 #, no-wrap
 msgid "~h{ }"
 msgstr "~h{ }"
 
 #. type: Plain text
-#: ../goaccess.1:1209
+#: ../goaccess.1:1218
 msgid ""
 "I<Note:> In order to get the average, cumulative and maximum time served in "
 "GoAccess, you will need to start logging response times in your web server. "
@@ -3665,7 +3693,7 @@ msgstr ""
 "ApacheではI<%D>を追加できます。"
 
 #. type: Plain text
-#: ../goaccess.1:1213
+#: ../goaccess.1:1222
 msgid ""
 "I<Important:> If multiple time served specifiers are used at the same time, "
 "the first option specified in the format string will take priority over the "
@@ -3675,304 +3703,374 @@ msgstr ""
 "書式文字列で指定された最初のオプションが他の指定子よりも優先されます。"
 
 #. type: Plain text
-#: ../goaccess.1:1217
+#: ../goaccess.1:1226
 msgid "GoAccess I<requires> the following fields:"
 msgstr "GoAccessには以下のフィールドがI<必須>です。"
 
 #. type: Plain text
-#: ../goaccess.1:1220
+#: ../goaccess.1:1229
 msgid "I<%h> a valid IPv4/6"
 msgstr "I<%h> 妥当なIPv4ないしIPv6"
 
 #. type: Plain text
-#: ../goaccess.1:1223
+#: ../goaccess.1:1232
 msgid "I<%d> a valid date"
 msgstr "I<%d> 妥当な日付"
 
 #. type: Plain text
-#: ../goaccess.1:1226
+#: ../goaccess.1:1235
 msgid "I<%r> the request"
 msgstr "I<%r> リクエスト"
 
 #. type: SH
-#: ../goaccess.1:1226
+#: ../goaccess.1:1235
 #, no-wrap
 msgid "INTERACTIVE MENU"
 msgstr "対話的メニュー"
 
 #. type: IP
-#: ../goaccess.1:1227
+#: ../goaccess.1:1236
 #, no-wrap
 msgid "F1 or h"
 msgstr "F1またはh"
 
 #. type: Plain text
-#: ../goaccess.1:1229
+#: ../goaccess.1:1238
 msgid "Main help."
 msgstr "メインのヘルプです。"
 
 #. type: IP
-#: ../goaccess.1:1229
+#: ../goaccess.1:1238
 #, no-wrap
 msgid "F5"
 msgstr "F5"
 
 #. type: Plain text
-#: ../goaccess.1:1231
+#: ../goaccess.1:1240
 msgid "Redraw main window."
 msgstr "メインのウィンドウを再描画します。"
 
 #. type: IP
-#: ../goaccess.1:1231
+#: ../goaccess.1:1240
 #, no-wrap
 msgid "q"
 msgstr "q"
 
 #. type: Plain text
-#: ../goaccess.1:1233
+#: ../goaccess.1:1242
 msgid "Quit the program, current window or collapse active module"
 msgstr ""
 "プログラムまたは現在のウィンドウを終了するか、活性のモジュールを折り畳みま"
 "す。"
 
 #. type: IP
-#: ../goaccess.1:1233
+#: ../goaccess.1:1242
 #, no-wrap
 msgid "o or ENTER"
 msgstr "oまたはエンター"
 
 #. type: Plain text
-#: ../goaccess.1:1235
+#: ../goaccess.1:1244
 msgid "Expand selected module or open window"
 msgstr "選択されたモジュールを展開ないしウィンドウを開きます。"
 
 #. type: IP
-#: ../goaccess.1:1235
+#: ../goaccess.1:1244
+#, no-wrap
+msgid "+"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1246
+msgid "Expand the selected item's children when a module is already expanded."
+msgstr ""
+
+#. type: IP
+#: ../goaccess.1:1246
+#, no-wrap
+msgid "-"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1248
+msgid ""
+"Collapse the selected item's children when a module is already expanded."
+msgstr ""
+
+#. type: IP
+#: ../goaccess.1:1248
 #, no-wrap
 msgid "0-9 and Shift + 0"
 msgstr "0-9とShift + 0"
 
 #. type: Plain text
-#: ../goaccess.1:1237
+#: ../goaccess.1:1250
 msgid "Set selected module to active"
 msgstr "選択されたモジュールを活性に設定します"
 
 #. type: IP
-#: ../goaccess.1:1237
+#: ../goaccess.1:1250
+#, no-wrap
+msgid "p"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1252
+msgid "Reorder the dashboard panels interactively (press `p` or `P`)."
+msgstr ""
+
+#. type: IP
+#: ../goaccess.1:1252
 #, no-wrap
 msgid "j"
 msgstr "j"
 
 #. type: Plain text
-#: ../goaccess.1:1239
+#: ../goaccess.1:1254
 msgid "Scroll down within expanded module"
 msgstr "展開されたモジュール内でスクロールを下に移動します。"
 
 #. type: IP
-#: ../goaccess.1:1239
+#: ../goaccess.1:1254
 #, no-wrap
 msgid "k"
 msgstr "k"
 
 #. type: Plain text
-#: ../goaccess.1:1241
+#: ../goaccess.1:1256
 msgid "Scroll up within expanded module"
 msgstr "展開されたモジュール内でスクロールを上に移動します。"
 
 #. type: IP
-#: ../goaccess.1:1241
+#: ../goaccess.1:1256
 #, no-wrap
 msgid "c"
 msgstr "c"
 
 #. type: Plain text
-#: ../goaccess.1:1243
+#: ../goaccess.1:1258
 msgid "Set or change scheme color."
 msgstr "カラースキームを設定したり変更したりします。"
 
 #. type: IP
-#: ../goaccess.1:1243
+#: ../goaccess.1:1258
+#, fuzzy, no-wrap
+#| msgid "%r"
+msgid "r"
+msgstr "%r"
+
+#. type: Plain text
+#: ../goaccess.1:1260
+msgid "Toggle reverse order of chart bars for the active module."
+msgstr ""
+
+#. type: IP
+#: ../goaccess.1:1260
+#, fuzzy, no-wrap
+#| msgid "%m"
+msgid "m"
+msgstr "%m"
+
+#. type: Plain text
+#: ../goaccess.1:1262
+msgid ""
+"Cycle chart metric forward for the active module (hits, visitors, bandwidth)."
+msgstr ""
+
+#. type: IP
+#: ../goaccess.1:1262
+#, fuzzy, no-wrap
+#| msgid "%M"
+msgid "M"
+msgstr "%M"
+
+#. type: Plain text
+#: ../goaccess.1:1264
+#, fuzzy
+#| msgid "Scroll backward one screen within an active module."
+msgid "Cycle chart metric backward for the active module."
+msgstr "活性モジュールの中で1画面スクロールを後ろに戻します。"
+
+#. type: IP
+#: ../goaccess.1:1264
+#, no-wrap
+msgid "l"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1266
+msgid "Toggle logarithmic scale for chart bars in the active module."
+msgstr ""
+
+#. type: IP
+#: ../goaccess.1:1266
 #, no-wrap
 msgid "TAB"
 msgstr "タブ"
 
 #. type: Plain text
-#: ../goaccess.1:1245
+#: ../goaccess.1:1268
 msgid "Forward iteration of modules. Starts from current active module."
 msgstr "モジュールの巡回を先に進めます。現在の活性なモジュールから開始します。"
 
 #. type: IP
-#: ../goaccess.1:1245
+#: ../goaccess.1:1268
 #, no-wrap
 msgid "SHIFT + TAB"
 msgstr "シフトキーとタブ"
 
 #. type: Plain text
-#: ../goaccess.1:1247
+#: ../goaccess.1:1270
 msgid "Backward iteration of modules. Starts from current active module."
 msgstr ""
 "モジュールの巡回を後ろに戻します。現在の活性なモジュールから開始します。"
 
 #. type: IP
-#: ../goaccess.1:1247
+#: ../goaccess.1:1270
 #, no-wrap
 msgid "^f"
 msgstr "^f"
 
 #. type: Plain text
-#: ../goaccess.1:1249
+#: ../goaccess.1:1272
 msgid "Scroll forward one screen within an active module."
 msgstr "活性モジュールの中で1画面スクロールを前に進めます。"
 
 #. type: IP
-#: ../goaccess.1:1249
+#: ../goaccess.1:1272
 #, no-wrap
 msgid "^b"
 msgstr "^b"
 
 #. type: Plain text
-#: ../goaccess.1:1251
+#: ../goaccess.1:1274
 msgid "Scroll backward one screen within an active module."
 msgstr "活性モジュールの中で1画面スクロールを後ろに戻します。"
 
 #. type: IP
-#: ../goaccess.1:1251
+#: ../goaccess.1:1274
 #, no-wrap
 msgid "s"
 msgstr "s"
 
 #. type: Plain text
-#: ../goaccess.1:1253
+#: ../goaccess.1:1276
 msgid "Sort options for active module"
 msgstr "活性モジュールの並び替えオプションです"
 
 #. type: IP
-#: ../goaccess.1:1253
+#: ../goaccess.1:1276
 #, no-wrap
 msgid "/"
 msgstr "/"
 
 #. type: Plain text
-#: ../goaccess.1:1255
+#: ../goaccess.1:1278
 msgid "Search across all modules (regex allowed)"
 msgstr "全てのモジュールを検索します（正規表現が使えます）"
 
 #. type: IP
-#: ../goaccess.1:1255
+#: ../goaccess.1:1278
 #, no-wrap
 msgid "n"
 msgstr "n"
 
 #. type: Plain text
-#: ../goaccess.1:1257
+#: ../goaccess.1:1280
 msgid "Find the position of the next occurrence across all modules."
 msgstr "全てのモジュールを通じて次の発生位置を見つけ出します。"
 
 #. type: IP
-#: ../goaccess.1:1257
+#: ../goaccess.1:1280
 #, no-wrap
 msgid "g"
 msgstr "g"
 
 #. type: Plain text
-#: ../goaccess.1:1259
+#: ../goaccess.1:1282
 msgid "Move to the first item or top of screen."
 msgstr "最初の項目や画面の一番上に移動します。"
 
 #. type: IP
-#: ../goaccess.1:1259
+#: ../goaccess.1:1282
 #, no-wrap
 msgid "G"
 msgstr "G"
 
 #. type: Plain text
-#: ../goaccess.1:1261
+#: ../goaccess.1:1284
 msgid "Move to the last item or bottom of screen."
 msgstr "最後の項目や画面の一番下に移動します。"
 
 #. type: SH
-#: ../goaccess.1:1261
+#: ../goaccess.1:1284
 #, no-wrap
 msgid "EXAMPLES"
 msgstr "例"
 
 #. type: SS
-#: ../goaccess.1:1267
+#: ../goaccess.1:1290
 #, no-wrap
 msgid "DIFFERENT OUTPUTS"
 msgstr "異なる出力"
 
 #. type: Plain text
-#: ../goaccess.1:1271 ../README.md:261
+#: ../goaccess.1:1294 ../README.md:269
 msgid "To output to a terminal and generate an interactive report:"
 msgstr "端末に出力して対話的なレポートを生成するには以下のようにします。"
 
 #. type: Plain text
-#: ../goaccess.1:1273
+#: ../goaccess.1:1296
 msgid "# goaccess access.log"
 msgstr "# goaccess access.log"
 
 #. type: Plain text
-#: ../goaccess.1:1275 ../README.md:265
+#: ../goaccess.1:1298 ../README.md:273
 msgid "To generate an HTML report:"
 msgstr "HTMLレポートを生成するには以下のようにします。"
 
 #. type: Plain text
-#: ../goaccess.1:1277
+#: ../goaccess.1:1300
 msgid "# goaccess access.log -a -o report.html"
 msgstr "# goaccess access.log -a -o report.html"
 
 #. type: Plain text
-#: ../goaccess.1:1279
+#: ../goaccess.1:1302
 msgid "To generate a JSON report:"
 msgstr "JSONでレポートを生成するには以下のようにします。"
 
 #. type: Plain text
-#: ../goaccess.1:1281
+#: ../goaccess.1:1304
 msgid "# goaccess access.log -a -d -o report.json"
 msgstr "# goaccess access.log -a -d -o report.json"
 
 #. type: Plain text
-#: ../goaccess.1:1283
+#: ../goaccess.1:1306
 msgid "To generate a CSV file:"
 msgstr "CSVファイルを生成するには以下のようにします。"
 
 #. type: Plain text
-#: ../goaccess.1:1285
+#: ../goaccess.1:1308
 msgid "# goaccess access.log --no-csv-summary -o report.csv"
 msgstr "# goaccess access.log --no-csv-summary -o report.csv"
 
 #. type: Plain text
-#: ../goaccess.1:1289 ../README.md:279
-msgid ""
-"GoAccess also allows great flexibility for real-time filtering and parsing. "
-"For instance, to quickly diagnose issues by monitoring logs since goaccess "
-"was started:"
+#: ../goaccess.1:1310
+msgid "GoAccess also allows real-time monitoring from stdin:"
 msgstr ""
-"GoAccessは実時間の絞り込みと解析を行う上で、\n"
-"非常に柔軟性が高い側面もあります。\n"
-"例えばgoaccessが起動したあとのログを監視することによって素早く問題を診断でき"
-"ます。"
 
 #. type: Plain text
-#: ../goaccess.1:1291
+#: ../goaccess.1:1312
 msgid "# tail -f access.log | goaccess -"
 msgstr "# tail -f access.log | goaccess -"
 
 #. type: Plain text
-#: ../goaccess.1:1299
-msgid ""
-"And even better, to filter while maintaining opened a pipe to preserve real-"
-"time analysis, we can make use of I<tail -f> and a matching pattern tool "
-"such as I<grep, awk, sed,> etc:"
+#: ../goaccess.1:1314
+msgid "To filter while keeping the pipe open for real-time analysis:"
 msgstr ""
-"そしてさらに良くするために、\n"
-"実時間解析を保存するためのパイプを空けたままを維持しつつ、\n"
-"I<tail -f>とI<grep、awk、sedなど>のようなパターン照合ツールを活用することがで"
-"きます。"
 
 #. type: Plain text
-#: ../goaccess.1:1301
+#: ../goaccess.1:1316
 msgid ""
 "# tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-"
 "format=COMBINED -"
@@ -3981,16 +4079,18 @@ msgstr ""
 "format=COMBINED -"
 
 #. type: Plain text
-#: ../goaccess.1:1304 ../README.md:290
-msgid ""
-"or to parse from the beginning of the file while maintaining the pipe opened "
-"and applying a filter"
+#: ../goaccess.1:1318
+#, fuzzy
+#| msgid ""
+#| "or to parse from the beginning of the file while maintaining the pipe "
+#| "opened and applying a filter"
+msgid "Parse from the beginning of the file while maintaining the pipe:"
 msgstr ""
 "もしくはパイプを開きフィルタを適用しつつ、\n"
 "ファイルの冒頭から解析するにはこのようにします。"
 
 #. type: Plain text
-#: ../goaccess.1:1306
+#: ../goaccess.1:1320
 msgid ""
 "# tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess --"
 "log-format=COMBINED -o report.html --real-time-html -"
@@ -3999,16 +4099,18 @@ msgstr ""
 "log-format=COMBINED -o report.html --real-time-html -"
 
 #. type: Plain text
-#: ../goaccess.1:1308
-msgid ""
-"or to convert the log date timezone to a different timezone, e.g., Europe/"
-"Berlin"
+#: ../goaccess.1:1322
+#, fuzzy
+#| msgid ""
+#| "or to convert the log date timezone to a different timezone, e.g., Europe/"
+#| "Berlin"
+msgid "Convert log date timezone to Europe/Berlin:"
 msgstr ""
 "もしくはログの日時のタイムゾーンを異なるタイムゾーン、\n"
 "例えばEurope/Berlin、に変換するには次のようにします。"
 
 #. type: Plain text
-#: ../goaccess.1:1310
+#: ../goaccess.1:1324
 msgid ""
 "# goaccess access.log --log-format='%h %^[%x] \"%r\" %s %b \"%R\" \"%u\"' --"
 "datetime-format='%d/%b/%Y:%H:%M:%S %z' --tz=Europe/Berlin --date-spec=min"
@@ -4017,39 +4119,38 @@ msgstr ""
 "datetime-format='%d/%b/%Y:%H:%M:%S %z' --tz=Europe/Berlin --date-spec=min"
 
 #. type: SS
-#: ../goaccess.1:1310
+#: ../goaccess.1:1325
 #, no-wrap
 msgid "MULTIPLE LOG FILES"
 msgstr "複数のログファイル"
 
 #. type: Plain text
-#: ../goaccess.1:1315 ../README.md:298
-msgid ""
-"There are several ways to parse multiple logs with GoAccess. The simplest is "
-"to pass multiple log files to the command line:"
+#: ../goaccess.1:1329
+msgid "Parse multiple logs by passing them to the command line:"
 msgstr ""
-"GoAccessで複数のログを解析するにはいくつかの方法があります。\n"
-"最も単純なのはコマンドラインに複数のログファイルを渡すことです。"
 
 #. type: Plain text
-#: ../goaccess.1:1317
+#: ../goaccess.1:1331
 msgid "# goaccess access.log access.log.1"
 msgstr "# goaccess access.log access.log.1"
 
 #. type: Plain text
-#: ../goaccess.1:1319 ../README.md:302
+#: ../goaccess.1:1333
+#, fuzzy
+#| msgid ""
+#| "It's even possible to parse files from a pipe while reading regular files:"
 msgid ""
-"It's even possible to parse files from a pipe while reading regular files:"
+"Parse from a pipe while also reading regular files (append B<-> for stdin):"
 msgstr ""
 "通常のファイルから読み込みつつパイプからファイルを解析することさえできます。"
 
 #. type: Plain text
-#: ../goaccess.1:1321
+#: ../goaccess.1:1335
 msgid "# cat access.log.2 | goaccess access.log access.log.1 -"
 msgstr "# cat access.log.2 | goaccess access.log access.log.1 -"
 
 #. type: Plain text
-#: ../goaccess.1:1325
+#: ../goaccess.1:1339
 msgid ""
 "I<Note> that the single dash is appended to the command line to let GoAccess "
 "know that it should read from the pipe."
@@ -4059,232 +4160,191 @@ msgstr ""
 "GoAccessにパイプから読み込むことが伝わります。"
 
 #. type: Plain text
-#: ../goaccess.1:1330
-msgid ""
-"Now if we want to add more flexibility to GoAccess, we can do a series of "
-"pipes. For instance, if we would like to process all compressed log files "
-"I<access.log.*.gz> in addition to the current log file, we can do:"
+#: ../goaccess.1:1341
+msgid "Process all compressed log files plus the current log:"
 msgstr ""
-"さらにGoAccessの柔軟性を上げたければ一連のパイプにすることができます。\n"
-"例として現在のログファイルに加えて、\n"
-"全ての圧縮されたログファイルI<access.log.*.gz>を処理したければ、\n"
-"次のようにできます。"
 
 #. type: Plain text
-#: ../goaccess.1:1332
+#: ../goaccess.1:1343
 msgid "# zcat access.log.*.gz | goaccess access.log -"
 msgstr "# zcat access.log.*.gz | goaccess access.log -"
 
 #. type: Plain text
-#: ../goaccess.1:1335
-msgid "I<Note:> On Mac OS X, use gunzip -c instead of zcat."
-msgstr "I<補足：>Mac OS Xではzcatではなくgunzip -cを使ってください。"
-
-#. type: SS
-#: ../goaccess.1:1335
-#, no-wrap
-msgid "REAL TIME HTML OUTPUT"
-msgstr "実時間HTML出力"
-
-#. type: Plain text
-#: ../goaccess.1:1341
+#: ../goaccess.1:1349
 msgid ""
-"GoAccess has the ability to output real-time data in the HTML report. You "
-"can even email the HTML file since it is composed of a single file with no "
-"external file dependencies, how neat is that!"
+"I<Note:> On macOS, use B<gunzip -c> instead of B<zcat>.  I<Note:> If "
+"GoAccess was built with B<--with-zlib>, it can parse B<.gz> files directly "
+"without external decompression:"
 msgstr ""
-"GoAccessではHTMLレポートに実時間データを出力することができます。\n"
-"外部ファイル依存のない単一ファイルからなるため、\n"
-"HTMLファイルをEメールで送ることさえできるのです。\n"
-"やったぜ！"
-
-#. type: Plain text
-#: ../goaccess.1:1345
-msgid ""
-"The process of generating a real-time HTML report is very similar to the "
-"process of creating a static report. Only --real-time-html is needed to make "
-"it real-time."
-msgstr ""
-"実時間HTMLレポートを生成する工程は、\n"
-"静的なレポートを作る過程と大変似ています。\n"
-"実時間にするのに必要なのは--real-time-htmlだけです。"
-
-#. type: Plain text
-#: ../goaccess.1:1347
-msgid ""
-"# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-"
-"html"
-msgstr ""
-"# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-"
-"html"
 
 #. type: Plain text
 #: ../goaccess.1:1351
-msgid ""
-"By default, GoAccess will use the host name of the generated report.  "
-"Optionally, you can specify the URL to which the client's browser will "
-"connect to. See https://goaccess.io/faq for a more detailed example."
-msgstr ""
-"既定ではGoAccessは生成されたレポートのホスト名を使います。\n"
-"オプションとしてクライアントのブラウザが接続するURLを指定することができま"
-"す。\n"
-"詳細な例は https://goaccess.io/faq を参照してください。"
+#, fuzzy
+#| msgid "# goaccess access.log access.log.1"
+msgid "# goaccess access.log access.log.1.gz access.log.2.gz"
+msgstr "# goaccess access.log access.log.1"
+
+#. type: SS
+#: ../goaccess.1:1352
+#, fuzzy, no-wrap
+#| msgid "REAL TIME HTML OUTPUT"
+msgid "REAL-TIME HTML OUTPUT"
+msgstr "実時間HTML出力"
 
 #. type: Plain text
-#: ../goaccess.1:1353
-msgid ""
-"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
-msgstr ""
-"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
-
-#. type: Plain text
-#: ../goaccess.1:1356 ../README.md:350
-msgid ""
-"By default, GoAccess listens on port 7890, to use a different port other "
-"than 7890, you can specify it as (make sure the port is opened):"
-msgstr ""
-"既定ではGoAccessはポート7890で待ち受けます。\n"
-"7890以外の別のポートを使うためには以下のように指定することができます\n"
-"（ポートの穴開けができていることを確かめてください）。"
+#: ../goaccess.1:1356
+#, fuzzy
+#| msgid "To generate an HTML report:"
+msgid "Generate a real-time HTML report:"
+msgstr "HTMLレポートを生成するには以下のようにします。"
 
 #. type: Plain text
 #: ../goaccess.1:1358
+msgid ""
+"# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-"
+"html"
+msgstr ""
+"# goaccess access.log -o /usr/share/nginx/html/site/report.html --real-time-"
+"html"
+
+#. type: Plain text
+#: ../goaccess.1:1360
+msgid "Specify the WebSocket URL explicitly:"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1362
+msgid ""
+"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+msgstr ""
+"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+
+#. type: Plain text
+#: ../goaccess.1:1364
+msgid "Use a custom port:"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1366
 msgid "# goaccess access.log -o report.html --real-time-html --port=9870"
 msgstr "# goaccess access.log -o report.html --real-time-html --port=9870"
 
 #. type: Plain text
-#: ../goaccess.1:1361 ../README.md:355
-msgid ""
-"And to bind the WebSocket server to a different address other than 0.0.0.0, "
-"you can specify it as:"
+#: ../goaccess.1:1368
+msgid "Bind WebSocket to a specific address:"
 msgstr ""
-"またWebSocketサーバーを0.0.0.0以外の別のアドレスに束縛したければ以下のように"
-"指定することができます。"
 
 #. type: Plain text
-#: ../goaccess.1:1363
+#: ../goaccess.1:1370
 msgid "# goaccess access.log -o report.html --real-time-html --addr=127.0.0.1"
 msgstr "# goaccess access.log -o report.html --real-time-html --addr=127.0.0.1"
 
 #. type: Plain text
-#: ../goaccess.1:1369
+#: ../goaccess.1:1375
 msgid ""
-"I<Note:> To output real time data over a TLS/SSL connection, you need to use "
-"I<--ssl-cert=E<lt>cert.crtE<gt>> and I<--ssl-key=E<lt>priv.keyE<gt>.>"
+"I<Note:> For TLS/SSL real-time output, use B<--ssl-cert=E<lt>cert.crtE<gt>> "
+"and B<--ssl-key=E<lt>priv.keyE<gt>>.  If GoAccess is running behind a "
+"reverse proxy, set the WebSocket URL to include the proxy path and port, "
+"e.g.:"
 msgstr ""
-"I<補足：>TLS/SSL接続上で実時間データを出力するにはI<--ssl-cert=E<lt>cert."
-"crtE<gt>>とI<--ssl-key=E<lt>priv.keyE<gt>>を使う必要があります。"
+
+#. type: Plain text
+#: ../goaccess.1:1377
+#, fuzzy
+#| msgid ""
+#| "# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+msgid ""
+"# goaccess access.log -o report.html --real-time-html --ws-"
+"url=goaccess.io:8080/ws"
+msgstr ""
+"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
 
 #. type: SS
-#: ../goaccess.1:1369
+#: ../goaccess.1:1378
 #, no-wrap
 msgid "WORKING WITH DATES"
 msgstr "日付の扱い"
 
 #. type: Plain text
-#: ../goaccess.1:1373 ../README.md:366
-msgid "Another useful pipe would be filtering dates out of the web log"
-msgstr "別のパイプの有用な点はwebのログから日付で絞り込むことでしょう。"
+#: ../goaccess.1:1382
+#, fuzzy
+#| msgid "Log invalid requests to the specified file."
+msgid "All requests from a specific date to end of file:"
+msgstr "不正なリクエストを指定されたファイルにログ出力します。"
 
 #. type: Plain text
-#: ../goaccess.1:1376
-msgid ""
-"The following will get all HTTP requests starting on 05/Dec/2010 until the "
-"end of the file."
-msgstr ""
-"以下は05/Dec/2010からファイル末尾までの全てのHTTPリクエストを取得します。"
-
-#. type: Plain text
-#: ../goaccess.1:1378
+#: ../goaccess.1:1384
 msgid "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
 msgstr "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
 
 #. type: Plain text
-#: ../goaccess.1:1380 ../README.md:373
-msgid "or using relative dates such as yesterdays or tomorrows day:"
-msgstr "または昨日や明日のような相対的な日にちを使うと以下です。"
-
-#. type: Plain text
-#: ../goaccess.1:1382
-msgid ""
-"# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | "
-"goaccess -a -"
-msgstr ""
-"# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | "
-"goaccess -a -"
-
-#. type: Plain text
-#: ../goaccess.1:1384 ../README.md:377
-msgid ""
-"If we want to parse only a certain time-frame from DATE a to DATE b, we can "
-"do:"
-msgstr ""
-"日付aから日付bまでの特定の時刻間隔のみを解析したければ以下のようにできます。"
-
-#. type: Plain text
 #: ../goaccess.1:1386
-msgid ""
-"# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+msgid "Using a relative date (one week ago):"
 msgstr ""
-"# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
 
 #. type: Plain text
-#: ../goaccess.1:1390 ../README.md:383
+#: ../goaccess.1:1388
 msgid ""
-"If we want to preserve only certain amount of data and recycle storage, we "
-"can keep only a certain number of days. For instance to keep & show the last "
-"5 days:"
+"# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | "
+"goaccess -a -"
 msgstr ""
-"特定の量のデータのみを保存し容量上で古いものから再利用されている場合は、\n"
-"特定の日数のみ保持するようにできます。\n"
-"例えば直近5日間を保持して表示するには次のようにします。"
+"# sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | "
+"goaccess -a -"
+
+#. type: Plain text
+#: ../goaccess.1:1390
+msgid "Parse a specific date range:"
+msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1392
+msgid ""
+"# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+msgstr ""
+"# sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -"
+
+#. type: Plain text
+#: ../goaccess.1:1394
+msgid "Keep only the last 5 days of data:"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1396
 msgid "# goaccess access.log --keep-last=5"
 msgstr "# goaccess access.log --keep-last=5"
 
 #. type: SS
-#: ../goaccess.1:1392
+#: ../goaccess.1:1397
 #, no-wrap
 msgid "VIRTUAL HOSTS"
 msgstr "仮想ホスト"
 
 #. type: Plain text
-#: ../goaccess.1:1397
+#: ../goaccess.1:1401
 msgid ""
-"Assuming your log contains the virtual host (server blocks) field. For "
-"instance:"
+"Use B<--concat-vhost-req> to prepend the virtual host or server block (%v) "
+"to the request field."
 msgstr ""
-"ログに仮想ホスト（サーバーブロック）フィールドがあるものとします。例えば次の"
-"通り。"
-
-#. type: Plain text
-#: ../goaccess.1:1400
-msgid ""
-"vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/bag-"
-"p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
-msgstr ""
-"vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/bag-"
-"p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
 
 #. type: Plain text
 #: ../goaccess.1:1403
-msgid ""
-"And you would like to append the virtual host to the request in order to see "
-"which virtual host the top urls belong to"
-msgstr ""
-"そしてどの仮想ホストに最頻のURLが属しているのかを見るために、仮想ホストをリク"
-"エストに加えたいことがあるでしょう。"
+#, fuzzy
+#| msgid "Apache virtual hosts"
+msgid "Append virtual host manually:"
+msgstr "Apache仮想ホスト"
 
 #. type: Plain text
 #: ../goaccess.1:1405
-msgid "awk '$8=$1$8' access.log | goaccess -a -"
+#, fuzzy
+#| msgid "awk '$8=$1$8' access.log | goaccess -a -"
+msgid "# awk '$8=$1$8' access.log | goaccess -a -"
 msgstr "awk '$8=$1$8' access.log | goaccess -a -"
 
 #. type: Plain text
-#: ../goaccess.1:1407 ../README.md:402
-msgid "To exclude a list of virtual hosts you can do the following:"
+#: ../goaccess.1:1407
+#, fuzzy
+#| msgid "To exclude a list of virtual hosts you can do the following:"
+msgid "Exclude a list of virtual hosts:"
 msgstr "仮想ホストのリストを除外するためには以下のようにできます。"
 
 #. type: Plain text
@@ -4295,19 +4355,16 @@ msgstr ""
 "# grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -"
 
 #. type: SS
-#: ../goaccess.1:1409
-#, no-wrap
-msgid "FILES & STATUS CODES"
+#: ../goaccess.1:1410
+#, fuzzy, no-wrap
+#| msgid "FILES & STATUS CODES"
+msgid "FILES, STATUS CODES & BOTS"
 msgstr "ファイルとステータスコード"
 
 #. type: Plain text
 #: ../goaccess.1:1414
-msgid ""
-"To parse specific pages, e.g., page views, html, htm, php, etc. within a "
-"request:"
+msgid "Parse only specific page types (html, htm, php):"
 msgstr ""
-"リクエストのうち、html、htm、phpなどの閲覧ページなどで、\n"
-"特定のページを解析するには次のようにします。"
 
 #. type: Plain text
 #: ../goaccess.1:1416
@@ -4315,76 +4372,97 @@ msgid "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
 msgstr "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
 
 #. type: Plain text
-#: ../goaccess.1:1423
-msgid ""
-"Note, I<$7> is the request field for the common and combined log format, "
-"(without Virtual Host), if your log includes Virtual Host, then you probably "
-"want to use I<$8> instead. It's best to check which field you are shooting "
-"for, e.g.:"
+#: ../goaccess.1:1418
+msgid "Parse page views without extensions:"
 msgstr ""
-"なおI<$7>はログ書式がcommonやcombinedのもの（仮想ホストなし）のリクエスト"
-"フィールドであり、\n"
-"ログに仮想ホストが含まれるのであれば代わりにI<$8>を使うことになるでしょう。\n"
-"注目しているフィールドを確認しておくのが一番です。\n"
-"例えば次のように。"
 
 #. type: Plain text
-#: ../goaccess.1:1425
-msgid "# tail -10 access.log | awk '{print $8}'"
-msgstr "# tail -10 access.log | awk '{print $8}'"
+#: ../goaccess.1:1420
+#, fuzzy
+#| msgid "# awk '$9~/500/' access.log | goaccess -"
+msgid "# awk '$7!~/..*$/' access.log | goaccess -"
+msgstr "# awk '$9~/500/' access.log | goaccess -"
 
 #. type: Plain text
-#: ../goaccess.1:1427 ../README.md:420
-msgid "Or to parse a specific status code, e.g., 500 (Internal Server Error):"
+#: ../goaccess.1:1422
+msgid "Filter by a single status code (e.g., 500):"
 msgstr ""
-"または特定のステータスコードを解析するには次のようにします。\n"
-"ここでは500 (Internal Server Error) を例に挙げます。"
 
 #. type: Plain text
-#: ../goaccess.1:1429
+#: ../goaccess.1:1424
 msgid "# awk '$9~/500/' access.log | goaccess -"
 msgstr "# awk '$9~/500/' access.log | goaccess -"
 
+#. type: Plain text
+#: ../goaccess.1:1426
+msgid "Filter by multiple status codes (3xx or 5xx):"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1428
+#, fuzzy
+#| msgid ""
+#| "    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | "
+#| "goaccess -o out.html -\n"
+msgid ""
+"# tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o "
+"out.html -"
+msgstr ""
+"    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess "
+"-o out.html -\n"
+
+#. type: Plain text
+#: ../goaccess.1:1430
+msgid "Estimate bot traffic:"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1432
+#, fuzzy
+#| msgid ""
+#| "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess "
+#| "-\n"
+msgid "# tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -"
+msgstr ""
+"    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -\n"
+
 #. type: SS
-#: ../goaccess.1:1429
+#: ../goaccess.1:1433
 #, no-wrap
 msgid "SERVER"
 msgstr "サーバー"
 
 #. type: Plain text
-#: ../goaccess.1:1434 ../README.md:435
-msgid ""
-"Also, it is worth pointing out that if we want to run GoAccess at lower "
-"priority, we can run it as:"
+#: ../goaccess.1:1437
+msgid "Run GoAccess at lower CPU priority:"
 msgstr ""
-"また、GoAccessを低い優先度で走らせたければ次のようにできることは書いておいた"
-"ほうがよいでしょう。"
 
 #. type: Plain text
-#: ../goaccess.1:1436
+#: ../goaccess.1:1439
 msgid "# nice -n 19 goaccess -f access.log -a"
 msgstr "# nice -n 19 goaccess -f access.log -a"
 
 #. type: Plain text
-#: ../goaccess.1:1439
-msgid ""
-"and if you don't want to install it on your server, you can still run it "
-"from your local machine:"
+#: ../goaccess.1:1441
+msgid "Pipe logs from a remote server:"
 msgstr ""
-"そしてサーバーにインストールしたくない場合であってもローカルマシンから走らせ"
-"られます。"
 
 #. type: Plain text
-#: ../goaccess.1:1441
+#: ../goaccess.1:1443
 msgid "# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -"
 msgstr ""
 "# ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -"
 
 #. type: Plain text
-#: ../goaccess.1:1446
+#: ../goaccess.1:1447
+#, fuzzy
+#| msgid ""
+#| "Note: SSH requires I<-n> so GoAccess can read from stdin. Also, make sure "
+#| "to use SSH keys for authentication as it won't work if a passphrase is "
+#| "required."
 msgid ""
-"Note: SSH requires I<-n> so GoAccess can read from stdin. Also, make sure to "
-"use SSH keys for authentication as it won't work if a passphrase is required."
+"I<Note:> SSH requires B<-n> so GoAccess can read from stdin. Use SSH keys "
+"for authentication."
 msgstr ""
 "補足：SSHにはI<-n>が必要で、\n"
 "こうすることでGoAccessが標準入力から読むことができます。\n"
@@ -4392,61 +4470,78 @@ msgstr ""
 "してください。"
 
 #. type: SS
-#: ../goaccess.1:1446
+#: ../goaccess.1:1448
 #, no-wrap
 msgid "INCREMENTAL LOG PROCESSING"
 msgstr "漸進的ログ処理"
 
 #. type: Plain text
-#: ../goaccess.1:1451 ../README.md:460
+#: ../goaccess.1:1454
 msgid ""
-"GoAccess has the ability to process logs incrementally through its internal "
-"storage and dump its data to disk. It works in the following way:"
+"GoAccess can process logs incrementally by persisting data to disk, then "
+"restoring it and appending new data. GoAccess tracks inodes, the last line "
+"parsed, and the last timestamp per file."
 msgstr ""
-"GoAccessには内部的な容量を通じて漸進的にログを処理してディスクにデータを吐き"
-"出す能力があります。\n"
-"これは以下のように動作します。"
 
-#. type: IP
-#: ../goaccess.1:1453
-#, no-wrap
-msgid "\\n[step]"
-msgstr "\\n[step]"
-
-# 2つ後のI<--restore>をこちらに移動しました。
 #. type: Plain text
-#: ../goaccess.1:1457
+#: ../goaccess.1:1460
 msgid ""
-"A dataset must be persisted first with I<--persist,> then the same dataset "
-"can be loaded with"
+"I<Note:> If the inode doesn't match, all lines are parsed. If it matches, "
+"remaining lines are read and the count/timestamp updated. Log lines with a "
+"timestamp ≤ the stored timestamp are skipped. Piped data works off the "
+"timestamp of the last line read."
 msgstr ""
-"データセットは最初にI<--persist>で永続化されていなければならず、\n"
-"それから同じデータセットをI<--restore>を使って読み込むことができます。"
 
-#. type: IP
-#: ../goaccess.1:1457
-#, no-wrap
-msgid "\\n+[step]"
-msgstr "\\n+[step]"
-
-# I<--restore>は2つ前の方に移動しました。
 #. type: Plain text
-#: ../goaccess.1:1461
+#: ../goaccess.1:1465
 msgid ""
-"I<--restore.> If new data is passed (piped or through a log file), it will "
-"append it to the original dataset."
+"I<Warning:> Piped data may produce duplicate entries since multiple "
+"consecutive lines can share the same timestamp. Best practice is to parse "
+"directly with GoAccess rather than piping for incremental processing."
 msgstr ""
-"新しいデータが（パイプやログファイルを通じて）渡されたら、元のデータセットに"
-"追記します。"
+
+#. type: Plain text
+#: ../goaccess.1:1467
+#, fuzzy
+#| msgid "// last month access log"
+msgid "Persist last month's log:"
+msgstr "// 先月のアクセスログ"
+
+#. type: Plain text
+#: ../goaccess.1:1469 ../goaccess.1:1504
+msgid "# goaccess access.log.1 --persist"
+msgstr "# goaccess access.log.1 --persist"
+
+#. type: Plain text
+#: ../goaccess.1:1471
+#, fuzzy
+#| msgid "// append this month access log, and preserve new data"
+msgid "Append this month's log and preserve:"
+msgstr "// この月のアクセスログを追記し新しいデータを保存します。"
+
+#. type: Plain text
+#: ../goaccess.1:1473 ../goaccess.1:1510
+msgid "# goaccess access.log --restore --persist"
+msgstr "# goaccess access.log --restore --persist"
+
+#. type: Plain text
+#: ../goaccess.1:1475
+msgid "Read persisted data only:"
+msgstr ""
+
+#. type: Plain text
+#: ../goaccess.1:1477 ../goaccess.1:1514
+msgid "# goaccess --restore"
+msgstr "# goaccess --restore"
 
 #. type: Title #####
-#: ../goaccess.1:1464 ../goaccess.1:1499 ../README.md:466
+#: ../goaccess.1:1480 ../goaccess.1:1515 ../README.md:474
 #, no-wrap
 msgid "NOTES"
 msgstr "補足"
 
 #. type: Plain text
-#: ../goaccess.1:1470
+#: ../goaccess.1:1486
 msgid ""
 "GoAccess keeps track of inodes of all the files processed (assuming files "
 "will stay on the same partition), in addition, it extracts a snippet of data "
@@ -4461,7 +4556,7 @@ msgstr ""
 "例：inode:29627417|line:20012|ts:20171231235059"
 
 #. type: Plain text
-#: ../goaccess.1:1477
+#: ../goaccess.1:1493
 msgid ""
 "First it compares if the snippet matches the log being parsed, if it does, "
 "it assumes the log hasn't changed dramatically, e.g., hasn't been truncated. "
@@ -4482,7 +4577,7 @@ msgstr ""
 
 # based offはbased onの誤植かもしれません
 #. type: Plain text
-#: ../goaccess.1:1481
+#: ../goaccess.1:1497
 msgid ""
 "Piped data works based off the timestamp of the last line read. For "
 "instance, it will parse and discard all incoming entries until it finds a "
@@ -4493,49 +4588,34 @@ msgstr ""
 "入ってくる全てのエントリを解析後に無視します。"
 
 #. type: Plain text
-#: ../goaccess.1:1484
+#: ../goaccess.1:1500
 msgid "For instance:"
 msgstr "例えば、"
 
 #. type: Plain text
-#: ../goaccess.1:1486
+#: ../goaccess.1:1502
 msgid "// last month access log"
 msgstr "// 先月のアクセスログ"
 
 #. type: Plain text
-#: ../goaccess.1:1488
-msgid "# goaccess access.log.1 --persist"
-msgstr "# goaccess access.log.1 --persist"
-
-#. type: Plain text
-#: ../goaccess.1:1490 ../README.md:490
+#: ../goaccess.1:1506 ../README.md:498
 msgid "then, load it with"
 msgstr "として、次のように読み込みます。"
 
 #. type: Plain text
-#: ../goaccess.1:1492
+#: ../goaccess.1:1508
 msgid "// append this month access log, and preserve new data"
 msgstr "// この月のアクセスログを追記し新しいデータを保存します。"
 
 #. type: Plain text
-#: ../goaccess.1:1494
-msgid "# goaccess access.log --restore --persist"
-msgstr "# goaccess access.log --restore --persist"
-
-#. type: Plain text
-#: ../goaccess.1:1496 ../README.md:495
+#: ../goaccess.1:1512 ../README.md:503
 msgid "To read persisted data only (without parsing new data)"
 msgstr ""
 "（新しいデータを解析することなく）永続化されたデータのみを読むには次のように"
 "します。"
 
 #. type: Plain text
-#: ../goaccess.1:1498
-msgid "# goaccess --restore"
-msgstr "# goaccess --restore"
-
-#. type: Plain text
-#: ../goaccess.1:1505
+#: ../goaccess.1:1521
 msgid ""
 "Each active panel has a total of 366 items or 50 in the real-time HTML "
 "report.  The number of items is customizable using I<max-items> Note that "
@@ -4549,7 +4629,7 @@ msgstr ""
 "366項目の既定値より大きい最大値を入れることができます。"
 
 #. type: Plain text
-#: ../goaccess.1:1508
+#: ../goaccess.1:1524
 msgid ""
 "A hit is a request (line in the access log), e.g., 10 requests = 10 hits. "
 "HTTP requests with the same IP, date, and user agent are considered a unique "
@@ -4561,7 +4641,7 @@ msgstr ""
 "なします。"
 
 #. type: Plain text
-#: ../goaccess.1:1514
+#: ../goaccess.1:1530
 msgid ""
 "If you want to enable dual-stack support, please use I<--addr=::> instead of "
 "the default I<--addr=0.0.0.0.>"
@@ -4570,7 +4650,7 @@ msgstr ""
 "I<--addr=::>を使ってください。"
 
 #. type: Plain text
-#: ../goaccess.1:1517
+#: ../goaccess.1:1533
 msgid ""
 "The generated report will attempt to reconnect to the WebSocket server after "
 "1 second with exponential backoff. It will attempt to connect 20 times."
@@ -4580,13 +4660,13 @@ msgstr ""
 "20回試行は繰り返されます。"
 
 #. type: SH
-#: ../goaccess.1:1517
+#: ../goaccess.1:1533
 #, no-wrap
 msgid "BUGS"
 msgstr "バグ"
 
 #. type: Plain text
-#: ../goaccess.1:1521
+#: ../goaccess.1:1537
 msgid ""
 "If you think you have found a bug, please send me an email to "
 "I<goaccess@prosoftcorp.com> or use the issue tracker in https://github.com/"
@@ -4598,13 +4678,13 @@ msgstr ""
 "さい。"
 
 #. type: SH
-#: ../goaccess.1:1521
+#: ../goaccess.1:1537
 #, no-wrap
 msgid "AUTHOR"
 msgstr "作者"
 
 #. type: Plain text
-#: ../goaccess.1:1524
+#: ../goaccess.1:1540
 msgid ""
 "Gerardo Orellana E<lt>hello@goaccess.ioE<gt> For more details about it, or "
 "new releases, please visit https://goaccess.io"
@@ -4629,39 +4709,56 @@ msgid "What is it?"
 msgstr "GoAccessとは"
 
 #. type: Plain text
-#: ../README.md:10
+#: ../README.md:12
 msgid ""
-"GoAccess is an open source **real-time web log analyzer** and interactive "
-"viewer that runs in a **terminal** on &ast;nix systems or through your "
-"**browser**. It provides **fast** and valuable HTTP statistics for system "
-"administrators that require a visual server report on the fly.  More info "
-"at: [https://goaccess.io](https://goaccess.io/?src=gh)."
+"GoAccess is an open source, real-time web log analyzer and interactive "
+"viewer that runs in a terminal on *nix systems or directly in your browser. "
+"Designed with system administrators, DevOps engineers, and security "
+"professionals in mind, it delivers fast, actionable HTTP statistics and "
+"visual server reports on the fly. GoAccess parses your web server logs in "
+"real time and presents the data directly in the terminal or via a live HTML "
+"dashboard, making it easy to monitor traffic, detect anomalies, and "
+"troubleshoot issues instantly."
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:13
+#: ../README.md:14
+msgid "More info at: [https://goaccess.io](https://goaccess.io/?src=gh)."
+msgstr ""
+
+#. type: Plain text
+#: ../README.md:17
 msgid ""
 "[![GoAccess Terminal Dashboard](https://goaccess.io/images/goaccess-real-"
-"time-term-gh.png?2022011901)](https://goaccess.io/)  [![GoAccess HTML "
-"Dashboard](https://goaccess.io/images/goaccess-real-time-html-gh.png?"
-"202201190)](https://rt.goaccess.io/?src=gh)"
+"time-term-gh-2026-1.png?2026021201)](https://goaccess.io/)  [![GoAccess HTML "
+"Dashboard](https://goaccess.io/images/goaccess-real-time-html-gh-2026.png?"
+"2026021201)](https://rt.goaccess.io/?src=gh)"
 msgstr ""
 
 #. type: Title ##
-#: ../README.md:14
+#: ../README.md:18
 #, no-wrap
 msgid "Features"
 msgstr "機能"
 
-#. type: Bullet: '* '
+#. type: Plain text
 #: ../README.md:21
+msgid ""
+"GoAccess parses the specified web log file and outputs the data to the X "
+"terminal. Features include:"
+msgstr ""
+"GoAccessは指定されたwebログファイルを解析しX端末にデータを出力します。\n"
+"含まれている機能は以下です："
+
+#. type: Bullet: '* '
+#: ../README.md:25
 msgid ""
 "**Completely Real Time**<br> All panels and metrics are timed to be updated "
 "every 200 ms on the terminal output and every second on the HTML output."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:25
+#: ../README.md:29
 msgid ""
 "**Minimal Configuration needed**<br> You can just run it against your access "
 "log file, pick the log format and let GoAccess parse the access log and show "
@@ -4669,7 +4766,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:29
+#: ../README.md:33
 msgid ""
 "**Track Application Response Time**<br> Track the time taken to serve the "
 "request. Extremely useful if you want to track pages that are slowing down "
@@ -4677,7 +4774,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:34
+#: ../README.md:38
 msgid ""
 "**WebSocket Authentication:**<br> GoAccess offers enhanced WebSocket "
 "authentication, supporting local and external JWT verification, with secure "
@@ -4686,7 +4783,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:38
+#: ../README.md:42
 msgid ""
 "**Nearly All Web Log Formats**<br> GoAccess allows any custom log format "
 "string.  Predefined options include, Apache, Nginx, Amazon S3, Elastic Load "
@@ -4694,7 +4791,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:42
+#: ../README.md:46
 msgid ""
 "**Incremental Log Processing**<br> Need data persistence? GoAccess has the "
 "ability to process logs incrementally through the on-disk persistence "
@@ -4702,7 +4799,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:46
+#: ../README.md:50
 msgid ""
 "**Only one dependency**<br> GoAccess is written in C. To run it, you only "
 "need ncurses as a dependency.  That's it. It even features its own Web "
@@ -4710,14 +4807,14 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:50
+#: ../README.md:54
 msgid ""
 "**Visitors**<br> Determine the amount of hits, visitors, bandwidth, and "
 "metrics for slowest running requests by the hour, or date."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:54
+#: ../README.md:58
 msgid ""
 "**Metrics per Virtual Host**<br> Have multiple Virtual Hosts (Server "
 "Blocks)? It features a panel that displays which virtual host is consuming "
@@ -4725,7 +4822,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:57
+#: ../README.md:61
 msgid ""
 "**ASN (Autonomous System Number mapping)**<br> Great for detecting malicious "
 "traffic patterns and block them accordingly."
@@ -4734,7 +4831,7 @@ msgstr ""
 "トラフィックのパターンを検出し、それに対応して阻止する上で好適です。"
 
 #. type: Bullet: '* '
-#: ../README.md:61
+#: ../README.md:65
 msgid ""
 "**Color Scheme Customizable**<br> Tailor GoAccess to suit your own color "
 "taste/schemes. Either through the terminal, or by simply applying the "
@@ -4742,7 +4839,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:66
+#: ../README.md:70
 msgid ""
 "**Support for Large Datasets**<br> GoAccess features the ability to parse "
 "large logs due to its optimized in-memory hash tables. It has very good "
@@ -4755,7 +4852,7 @@ msgstr ""
 "もされています。"
 
 #. type: Bullet: '* '
-#: ../README.md:72
+#: ../README.md:76
 msgid ""
 "**Docker Support**<br> Ability to build GoAccess' Docker image from "
 "upstream. You can still fully configure it, by using Volume mapping and "
@@ -4765,13 +4862,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../README.md:73
+#: ../README.md:77
 #, no-wrap
 msgid "Nearly all web log formats..."
 msgstr "ほぼ全てのウェブのログ形式がここに……"
 
 #. type: Plain text
-#: ../README.md:76
+#: ../README.md:80
 msgid ""
 "GoAccess allows any custom log format string. Predefined options include, "
 "but not limited to:"
@@ -4780,68 +4877,68 @@ msgstr ""
 "ションが含まれていますが、これに限りません。"
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Amazon CloudFront (Download Distribution)."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Amazon Simple Storage Service (S3)"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "AWS Elastic Load Balancing"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Combined Log Format (XLF/ELF) Apache | Nginx"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Common Log Format (CLF) Apache"
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Google Cloud Storage."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Apache virtual hosts"
 msgstr "Apache仮想ホスト"
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Squid Native Format."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "W3C format (IIS)."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Caddy's JSON Structured format."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:88
+#: ../README.md:92
 msgid "Traefik's CLF flavor"
 msgstr ""
 
 #. type: Title ##
-#: ../README.md:89
+#: ../README.md:93
 #, no-wrap
 msgid "Why GoAccess?"
 msgstr "なぜGoAccessなのか"
 
 #. type: Plain text
-#: ../README.md:94
+#: ../README.md:98
 msgid ""
 "GoAccess was designed to be a fast, terminal-based log analyzer. Its core "
 "idea is to quickly analyze and view web server statistics in real time "
@@ -4851,28 +4948,36 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:99
+#: ../README.md:102
 msgid ""
-"While the terminal output is the default output, it has the capability to "
-"generate a complete, self-contained, real-time [**`HTML`**](https://rt."
-"goaccess.io/?src=gh)  report, as well as a [**`JSON`**](https://goaccess.io/"
-"json?src=gh), and [**`CSV`**](https://goaccess.io/goaccess_csv_report.csv?"
-"src=gh) report."
+"It also serves as a practical tool for security monitoring, making it easy "
+"to spot suspicious activity, unusual traffic patterns, brute-force attempts, "
+"scanners, bots, and anomalous requests directly from your logs."
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:101
+#: ../README.md:107
+msgid ""
+"While the terminal output is the default output, it has the capability to "
+"generate a complete, self-contained, real-time [**`HTML`**](https://"
+"rt.goaccess.io/?src=gh)  report, as well as a [**`JSON`**](https://"
+"goaccess.io/json?src=gh), and [**`CSV`**](https://goaccess.io/"
+"goaccess_csv_report.csv?src=gh) report."
+msgstr ""
+
+#. type: Plain text
+#: ../README.md:109
 msgid "You can see it more of a monitor command tool than anything else."
 msgstr ""
 
 #. type: Title ##
-#: ../README.md:102
+#: ../README.md:110
 #, no-wrap
 msgid "Installation"
 msgstr "インストール"
 
 #. type: Plain text
-#: ../README.md:106
+#: ../README.md:114
 #, no-wrap
 msgid ""
 "<a href=\"https://repology.org/project/goaccess/versions\">\n"
@@ -4881,29 +4986,36 @@ msgid ""
 msgstr ""
 
 #. type: Title ###
-#: ../README.md:107
+#: ../README.md:115
 #, no-wrap
 msgid "Build from release"
 msgstr "リリースからのビルド"
 
 #. type: Plain text
-#: ../README.md:110
+#: ../README.md:118
 msgid "GoAccess can be compiled and used on *nix systems."
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:112
+#: ../README.md:120
 msgid "Download, extract and compile GoAccess with:"
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:119
-#, no-wrap
+#: ../README.md:127
+#, fuzzy, no-wrap
+#| msgid ""
+#| "    $ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz\n"
+#| "    $ tar -xzvf goaccess-1.9.4.tar.gz\n"
+#| "    $ cd goaccess-1.9.4/\n"
+#| "    $ ./configure --enable-utf8 --enable-geoip=mmdb\n"
+#| "    $ make\n"
+#| "    # make install\n"
 msgid ""
-"    $ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz\n"
-"    $ tar -xzvf goaccess-1.9.4.tar.gz\n"
-"    $ cd goaccess-1.9.4/\n"
-"    $ ./configure --enable-utf8 --enable-geoip=mmdb\n"
+"    $ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz\n"
+"    $ tar -xzvf goaccess-1.10.2.tar.gz\n"
+"    $ cd goaccess-1.10.2/\n"
+"    $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib\n"
 "    $ make\n"
 "    # make install\n"
 msgstr ""
@@ -4915,13 +5027,13 @@ msgstr ""
 "    # make install\n"
 
 #. type: Title ###
-#: ../README.md:120
+#: ../README.md:128
 #, no-wrap
 msgid "Build from GitHub (Development)"
 msgstr "GitHubからのビルド（開発版）"
 
 #. type: Plain text
-#: ../README.md:128
+#: ../README.md:136
 #, no-wrap
 msgid ""
 "    $ git clone https://github.com/allinurl/goaccess.git\n"
@@ -4939,13 +5051,13 @@ msgstr ""
 "    # make install\n"
 
 #. type: Title ###
-#: ../README.md:129
+#: ../README.md:137
 #, no-wrap
 msgid "Distributions"
 msgstr "配布物"
 
 #. type: Plain text
-#: ../README.md:134
+#: ../README.md:142
 msgid ""
 "It is easiest to install GoAccess on GNU+Linux using the preferred package "
 "manager of your GNU+Linux distribution. Please note that not all "
@@ -4953,19 +5065,19 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: ../README.md:135
+#: ../README.md:143
 #, no-wrap
 msgid "Debian/Ubuntu"
 msgstr "Debian/Ubuntu"
 
 #. type: Plain text
-#: ../README.md:138
+#: ../README.md:146
 #, no-wrap
 msgid "    # apt-get install goaccess\n"
 msgstr "    # apt-get install goaccess\n"
 
 #. type: Plain text
-#: ../README.md:142
+#: ../README.md:150
 #, no-wrap
 msgid ""
 "**Note:** It is likely this will install an outdated version of GoAccess. To\n"
@@ -4974,13 +5086,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: ../README.md:143
+#: ../README.md:151
 #, no-wrap
 msgid "Official GoAccess Debian & Ubuntu repository"
 msgstr "公式のGoAccessのDebianとUbuntuのリポジトリ"
 
 #. type: Plain text
-#: ../README.md:149
+#: ../README.md:157
 #, no-wrap
 msgid ""
 "    $ wget -O - https://deb.goaccess.io/gnugpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/goaccess.gpg >/dev/null\n"
@@ -4994,7 +5106,7 @@ msgstr ""
 "    $ sudo apt-get install goaccess\n"
 
 #. type: Plain text
-#: ../README.md:152
+#: ../README.md:160
 #, no-wrap
 msgid ""
 "**Note**:\n"
@@ -5002,61 +5114,61 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: ../README.md:153
+#: ../README.md:161
 #, no-wrap
 msgid "Fedora"
 msgstr "Fedora"
 
 #. type: Plain text
-#: ../README.md:156
+#: ../README.md:164
 #, no-wrap
 msgid "    # yum install goaccess\n"
 msgstr "    # yum install goaccess\n"
 
 #. type: Title ####
-#: ../README.md:157
+#: ../README.md:165
 #, no-wrap
 msgid "Arch"
 msgstr "Arch"
 
 #. type: Plain text
-#: ../README.md:160
+#: ../README.md:168
 #, no-wrap
 msgid "    # pacman -S goaccess\n"
 msgstr "    # pacman -S goaccess\n"
 
 #. type: Title ####
-#: ../README.md:161
+#: ../README.md:169
 #, no-wrap
 msgid "Gentoo"
 msgstr "Gentoo"
 
 #. type: Plain text
-#: ../README.md:164
+#: ../README.md:172
 #, no-wrap
 msgid "    # emerge net-analyzer/goaccess\n"
 msgstr "    # emerge net-analyzer/goaccess\n"
 
 #. type: Title ####
-#: ../README.md:165
+#: ../README.md:173
 #, no-wrap
 msgid "OS X / Homebrew"
 msgstr "OS X / Homebrew"
 
 #. type: Plain text
-#: ../README.md:168
+#: ../README.md:176
 #, no-wrap
 msgid "    # brew install goaccess\n"
 msgstr "    # brew install goaccess\n"
 
 #. type: Title ####
-#: ../README.md:169
+#: ../README.md:177
 #, no-wrap
 msgid "FreeBSD"
 msgstr "FreeBSD"
 
 #. type: Plain text
-#: ../README.md:173
+#: ../README.md:181
 #, no-wrap
 msgid ""
 "    # cd /usr/ports/sysutils/goaccess/ && make install clean\n"
@@ -5066,13 +5178,13 @@ msgstr ""
 "    # pkg install sysutils/goaccess\n"
 
 #. type: Title ####
-#: ../README.md:174
+#: ../README.md:182
 #, no-wrap
 msgid "OpenBSD"
 msgstr "OpenBSD"
 
 #. type: Plain text
-#: ../README.md:178
+#: ../README.md:186
 #, no-wrap
 msgid ""
 "    # cd /usr/ports/www/goaccess && make install clean\n"
@@ -5082,13 +5194,13 @@ msgstr ""
 "    # pkg_add goaccess\n"
 
 #. type: Title ####
-#: ../README.md:179
+#: ../README.md:187
 #, no-wrap
 msgid "openSUSE"
 msgstr "openSUSE"
 
 #. type: Plain text
-#: ../README.md:183
+#: ../README.md:191
 #, no-wrap
 msgid ""
 "    # zypper ar -f obs://server:http http\n"
@@ -5098,37 +5210,37 @@ msgstr ""
 "    # zypper in goaccess\n"
 
 #. type: Title ####
-#: ../README.md:184
+#: ../README.md:192
 #, no-wrap
 msgid "OpenIndiana"
 msgstr "OpenIndiana"
 
 #. type: Plain text
-#: ../README.md:187
+#: ../README.md:195
 #, no-wrap
 msgid "    # pkg install goaccess\n"
 msgstr "    # pkg install goaccess\n"
 
 #. type: Title ####
-#: ../README.md:188
+#: ../README.md:196
 #, no-wrap
 msgid "pkgsrc (NetBSD, Solaris, SmartOS, ...)"
 msgstr "pkgsrc (NetBSD, Solaris, SmartOS, ...)"
 
 #. type: Plain text
-#: ../README.md:191
+#: ../README.md:199
 #, no-wrap
 msgid "    # pkgin install goaccess\n"
 msgstr "    # pkgin install goaccess\n"
 
 #. type: Title ####
-#: ../README.md:192
+#: ../README.md:200
 #, no-wrap
 msgid "Windows"
 msgstr "Windows"
 
 #. type: Plain text
-#: ../README.md:197
+#: ../README.md:205
 #, no-wrap
 msgid ""
 "GoAccess can be used in Windows through Cygwin. See Cygwin's <a\n"
@@ -5137,13 +5249,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: ../README.md:198
+#: ../README.md:206
 #, no-wrap
 msgid "Docker"
 msgstr "Docker"
 
 #. type: Plain text
-#: ../README.md:201
+#: ../README.md:209
 msgid ""
 "A Docker image has been updated, capable of directing output from an access "
 "log. If you only want to output a report, you can pipe a log from the "
@@ -5151,7 +5263,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:204
+#: ../README.md:212
 #, no-wrap
 msgid ""
 "    touch report.html\n"
@@ -5161,31 +5273,31 @@ msgstr ""
 "    cat access.log | docker run --rm -i -v ./report.html:/report.html -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED -\n"
 
 #. type: Plain text
-#: ../README.md:206
+#: ../README.md:214
 msgid "OR real-time"
 msgstr "もしくは、実時間の場合は次の通りです。"
 
 #. type: Plain text
-#: ../README.md:208
+#: ../README.md:216
 #, no-wrap
 msgid "    tail -F access.log | docker run -p 7890:7890 --rm -i -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED --real-time-html -\n"
 msgstr "    tail -F access.log | docker run -p 7890:7890 --rm -i -e LANG=$LANG allinurl/goaccess -a -o report.html --log-format COMBINED --real-time-html -\n"
 
 #. type: Plain text
-#: ../README.md:210
+#: ../README.md:218
 msgid ""
 "There is also documentation how to use [docker-compose](./docker-compose/"
 "README.md)."
 msgstr ""
 
 #. type: Title #####
-#: ../README.md:211
+#: ../README.md:219
 #, no-wrap
 msgid "Build in isolated container"
 msgstr "隔離されたコンテナでのビルド"
 
 #. type: Plain text
-#: ../README.md:214
+#: ../README.md:222
 msgid ""
 "You can also build the binary for Debian based systems in an isolated "
 "container environment to prevent cluttering your local system with the "
@@ -5193,7 +5305,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:218
+#: ../README.md:226
 #, no-wrap
 msgid ""
 "    $ curl -L \"https://github.com/allinurl/goaccess/archive/refs/heads/master.tar.gz\" | tar -xz && cd goaccess-master\n"
@@ -5205,20 +5317,20 @@ msgstr ""
 "    $ docker run -i --rm -v $PWD:/goaccess goaccess/build.debian-12 > goaccess\n"
 
 #. type: Plain text
-#: ../README.md:220
+#: ../README.md:228
 msgid ""
-"You can read more about using the docker image in [DOCKER.md](https://github."
-"com/allinurl/goaccess/blob/master/DOCKER.md)."
+"You can read more about using the docker image in [DOCKER.md](https://"
+"github.com/allinurl/goaccess/blob/master/DOCKER.md)."
 msgstr ""
 
 #. type: Title ####
-#: ../README.md:221
+#: ../README.md:229
 #, no-wrap
 msgid "Distribution Packages"
 msgstr "配布パッケージ"
 
 #. type: Plain text
-#: ../README.md:226
+#: ../README.md:234
 msgid ""
 "GoAccess has minimal requirements, it's written in C and requires only "
 "ncurses.  However, below is a table of some optional dependencies in some "
@@ -5226,7 +5338,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:234
+#: ../README.md:242
 #, no-wrap
 msgid ""
 "| Distro                 | NCurses          | GeoIP (opt)      | GeoIP2 (opt)          |  OpenSSL (opt)     |\n"
@@ -5246,7 +5358,7 @@ msgstr ""
 "| **Slackware**          | ncurses          | GeoIP            | libmaxminddb          |  openssl           |\n"
 
 #. type: Plain text
-#: ../README.md:238
+#: ../README.md:246
 #, no-wrap
 msgid ""
 "**Note**: You may need to install build tools like `gcc`, `autoconf`,\n"
@@ -5255,13 +5367,13 @@ msgid ""
 msgstr ""
 
 #. type: Title ##
-#: ../README.md:239
+#: ../README.md:247
 #, no-wrap
 msgid "Storage"
 msgstr "保存領域"
 
 #. type: Plain text
-#: ../README.md:247
+#: ../README.md:255
 msgid ""
 "In-memory storage provides better performance at the cost of limiting the "
 "dataset size to the amount of available physical memory. GoAccess uses in-"
@@ -5274,13 +5386,13 @@ msgstr ""
 "があります。この保存領域には、ディスク上の永続化の対応もされています。"
 
 #. type: Title ##
-#: ../README.md:248
+#: ../README.md:256
 #, no-wrap
 msgid "Command Line / Config Options"
 msgstr "コマンドラインと構成オプション"
 
 #. type: Plain text
-#: ../README.md:252
+#: ../README.md:260
 msgid ""
 "See [**options**](https://goaccess.io/man#options) that can be supplied to "
 "the command or specified in the configuration file. If specified in the "
@@ -5291,13 +5403,13 @@ msgstr ""
 "オプションは前に `--` を付けずに使う必要があります。"
 
 #. type: Title ##
-#: ../README.md:253
+#: ../README.md:261
 #, no-wrap
 msgid "Usage / Examples"
 msgstr "使い方と例"
 
 #. type: Plain text
-#: ../README.md:257
+#: ../README.md:265
 #, no-wrap
 msgid ""
 "**Note**: Piping data into GoAccess won't prompt a log/date/time\n"
@@ -5306,53 +5418,65 @@ msgid ""
 msgstr "**補足**：GoAccessにデータをパイプで流し込むときは、ログ、日付、時刻の構成ダイアログは尋ねられません。構成ファイルかコマンドラインで予め定義する必要があります。\n"
 
 #. type: Title ###
-#: ../README.md:258
+#: ../README.md:266
 #, no-wrap
 msgid "Getting Started"
 msgstr "初めの一歩"
 
 #. type: Plain text
-#: ../README.md:263
+#: ../README.md:271
 #, no-wrap
 msgid "    # goaccess access.log\n"
 msgstr "    # goaccess access.log\n"
 
 #. type: Plain text
-#: ../README.md:267
+#: ../README.md:275
 #, no-wrap
 msgid "    # goaccess access.log -a > report.html\n"
 msgstr "    # goaccess access.log -a > report.html\n"
 
 #. type: Plain text
-#: ../README.md:269
+#: ../README.md:277
 msgid "To generate a JSON report file:"
 msgstr "JSONの報告ファイルを生成するには、以下のようにします。"
 
 #. type: Plain text
-#: ../README.md:271
+#: ../README.md:279
 #, no-wrap
 msgid "    # goaccess access.log -a -d -o report.json\n"
 msgstr "    # goaccess access.log -a -d -o report.json\n"
 
 #. type: Plain text
-#: ../README.md:273
+#: ../README.md:281
 msgid "To generate a CSV report to stdout:"
 msgstr "CSVの報告を標準出力に生成するには、以下のようにします。"
 
 #. type: Plain text
-#: ../README.md:275
+#: ../README.md:283
 #, no-wrap
 msgid "    # goaccess access.log --no-csv-summary -o csv\n"
 msgstr "    # goaccess access.log --no-csv-summary -o csv\n"
 
 #. type: Plain text
-#: ../README.md:281
+#: ../README.md:287
+msgid ""
+"GoAccess also allows great flexibility for real-time filtering and parsing. "
+"For instance, to quickly diagnose issues by monitoring logs since goaccess "
+"was started:"
+msgstr ""
+"GoAccessは実時間の絞り込みと解析を行う上で、\n"
+"非常に柔軟性が高い側面もあります。\n"
+"例えばgoaccessが起動したあとのログを監視することによって素早く問題を診断でき"
+"ます。"
+
+#. type: Plain text
+#: ../README.md:289
 #, no-wrap
 msgid "    # tail -f access.log | goaccess -\n"
 msgstr "    # tail -f access.log | goaccess -\n"
 
 #. type: Plain text
-#: ../README.md:285
+#: ../README.md:293
 msgid ""
 "And even better, to filter while maintaining opened a pipe to preserve real-"
 "time analysis, we can make use of `tail -f` and a matching pattern tool such "
@@ -5362,37 +5486,62 @@ msgstr ""
 "と、`grep`、`awk`、`sed`などのパターン合致ツールを活用できます。"
 
 #. type: Plain text
-#: ../README.md:287
+#: ../README.md:295
 #, no-wrap
 msgid "    # tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -\n"
 msgstr "    # tail -f access.log | grep -i --line-buffered 'firefox' | goaccess --log-format=COMBINED -\n"
 
 #. type: Plain text
-#: ../README.md:292
+#: ../README.md:298
+msgid ""
+"or to parse from the beginning of the file while maintaining the pipe opened "
+"and applying a filter"
+msgstr ""
+"もしくはパイプを開きフィルタを適用しつつ、\n"
+"ファイルの冒頭から解析するにはこのようにします。"
+
+#. type: Plain text
+#: ../README.md:300
 #, no-wrap
 msgid "    # tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess -o report.html --real-time-html -\n"
 msgstr "    # tail -f -n +0 access.log | grep -i --line-buffered 'firefox' | goaccess -o report.html --real-time-html -\n"
 
 #. type: Title ###
-#: ../README.md:294
+#: ../README.md:302
 #, no-wrap
 msgid "Multiple Log files"
 msgstr "複数のログファイル"
 
 #. type: Plain text
-#: ../README.md:300
+#: ../README.md:306
+msgid ""
+"There are several ways to parse multiple logs with GoAccess. The simplest is "
+"to pass multiple log files to the command line:"
+msgstr ""
+"GoAccessで複数のログを解析するにはいくつかの方法があります。\n"
+"最も単純なのはコマンドラインに複数のログファイルを渡すことです。"
+
+#. type: Plain text
+#: ../README.md:308
 #, no-wrap
 msgid "    # goaccess access.log access.log.1\n"
 msgstr "    # goaccess access.log access.log.1\n"
 
 #. type: Plain text
-#: ../README.md:304
+#: ../README.md:310
+msgid ""
+"It's even possible to parse files from a pipe while reading regular files:"
+msgstr ""
+"通常のファイルから読み込みつつパイプからファイルを解析することさえできます。"
+
+#. type: Plain text
+#: ../README.md:312
 #, no-wrap
 msgid "    # cat access.log.2 | goaccess access.log access.log.1 -\n"
 msgstr "    # cat access.log.2 | goaccess access.log access.log.1 -\n"
 
 #. type: Plain text
-#: ../README.md:307
+#: ../README.md:315
 #, no-wrap
 msgid ""
 "**Note**: the single dash is appended to the command line to let GoAccess\n"
@@ -5400,7 +5549,7 @@ msgid ""
 msgstr "**補足**：コマンドラインにダッシュが1つ付いています。これにより、GoAccessにパイプから読むべきことが伝わります。\n"
 
 #. type: Plain text
-#: ../README.md:311
+#: ../README.md:319
 msgid ""
 "Now if we want to add more flexibility to GoAccess, we can use `zcat --"
 "force` to read compressed and uncompressed files. For instance, if we would "
@@ -5411,54 +5560,54 @@ msgstr ""
 "ファイルを処理したければ、以下のようにできます。"
 
 #. type: Plain text
-#: ../README.md:313
+#: ../README.md:321
 #, no-wrap
 msgid "    # zcat --force access.log* | goaccess -\n"
 msgstr "    # zcat --force access.log* | goaccess -\n"
 
 #. type: Plain text
-#: ../README.md:315
+#: ../README.md:323
 msgid "_Note_: On Mac OS X, use `gunzip -c` instead of `zcat`."
 msgstr "_補足_ ：Mac OS Xでは、`zcat`の代わりに`gunzip -c`を使ってください。"
 
 #. type: Title ###
-#: ../README.md:316
+#: ../README.md:324
 #, no-wrap
 msgid "Multi-thread Support"
 msgstr "複数スレッドへの対応"
 
 #. type: Plain text
-#: ../README.md:319
+#: ../README.md:327
 #, no-wrap
 msgid "Use `--jobs=<count>` (or `-j`) to enable multi-thread parsing. For example:\n"
 msgstr "`--jobs=<count>`（ないし`-j`）を使うと、複数スレッドでの解析が有効になります。例えば以下の通りです。\n"
 
 #. type: Plain text
-#: ../README.md:321
+#: ../README.md:329
 #, no-wrap
 msgid "    # goaccess access.log -o report.html -j 4\n"
 msgstr "    # goaccess access.log -o report.html -j 4\n"
 
 #. type: Plain text
-#: ../README.md:324
+#: ../README.md:332
 #, no-wrap
 msgid "And use `--chunk-size=<256-32768>` to adjust chunk size, the default chunk size is 1024. For example:\n"
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:326
+#: ../README.md:334
 #, no-wrap
 msgid "    # goaccess access.log -o report.html -j 4 --chunk-size=8192\n"
 msgstr "    # goaccess access.log -o report.html -j 4 --chunk-size=8192\n"
 
 #. type: Title ###
-#: ../README.md:328
+#: ../README.md:336
 #, no-wrap
 msgid "Real-time HTML outputs"
 msgstr "実時間のHTML出力"
 
 #. type: Plain text
-#: ../README.md:333
+#: ../README.md:341
 msgid ""
 "GoAccess has the ability the output real-time data in the HTML report. You "
 "can even email the HTML file since it is composed of a single file with no "
@@ -5469,7 +5618,7 @@ msgstr ""
 "一のファイルからなっているからです。やったね！"
 
 #. type: Plain text
-#: ../README.md:337
+#: ../README.md:345
 msgid ""
 "The process of generating a real-time HTML report is very similar to the "
 "process of creating a static report. Only `--real-time-html` is needed to "
@@ -5479,18 +5628,18 @@ msgstr ""
 "似ています。実時間にするには、`--real-time-html`さえあればよいのです。"
 
 #. type: Plain text
-#: ../README.md:339
+#: ../README.md:347
 #, no-wrap
 msgid "    # goaccess access.log -o /usr/share/nginx/html/your_site/report.html --real-time-html\n"
 msgstr "    # goaccess access.log -o /usr/share/nginx/html/your_site/report.html --real-time-html\n"
 
 #. type: Plain text
-#: ../README.md:341
+#: ../README.md:349
 msgid "To view the report you can navigate to `http://your_site/report.html`."
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:345
+#: ../README.md:353
 msgid ""
 "By default, GoAccess will use the host name of the generated report.  "
 "Optionally, you can specify the URL to which the client's browser will "
@@ -5501,25 +5650,44 @@ msgstr ""
 "[FAQ](https://goaccess.io/faq)をご参照ください。"
 
 #. type: Plain text
-#: ../README.md:347
+#: ../README.md:355
 #, no-wrap
 msgid "    # goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io\n"
 msgstr "    # goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io\n"
 
 #. type: Plain text
-#: ../README.md:352
+#: ../README.md:358
+msgid ""
+"By default, GoAccess listens on port 7890, to use a different port other "
+"than 7890, you can specify it as (make sure the port is opened):"
+msgstr ""
+"既定ではGoAccessはポート7890で待ち受けます。\n"
+"7890以外の別のポートを使うためには以下のように指定することができます\n"
+"（ポートの穴開けができていることを確かめてください）。"
+
+#. type: Plain text
+#: ../README.md:360
 #, no-wrap
 msgid "    # goaccess access.log -o report.html --real-time-html --port=9870\n"
 msgstr "    # goaccess access.log -o report.html --real-time-html --port=9870\n"
 
 #. type: Plain text
-#: ../README.md:357
+#: ../README.md:363
+msgid ""
+"And to bind the WebSocket server to a different address other than 0.0.0.0, "
+"you can specify it as:"
+msgstr ""
+"またWebSocketサーバーを0.0.0.0以外の別のアドレスに束縛したければ以下のように"
+"指定することができます。"
+
+#. type: Plain text
+#: ../README.md:365
 #, no-wrap
 msgid "    # goaccess access.log -o report.html --real-time-html --addr=127.0.0.1\n"
 msgstr "    # goaccess access.log -o report.html --real-time-html --addr=127.0.0.1\n"
 
 #. type: Plain text
-#: ../README.md:360
+#: ../README.md:368
 #, no-wrap
 msgid ""
 "**Note**: To output real time data over a TLS/SSL connection, you need to use\n"
@@ -5527,19 +5695,24 @@ msgid ""
 msgstr "**補足**：TLS/SSL接続越しに実時間データを出力するには、`--ssl-cert=<証明書.crt>`と`--ssl-key=<秘密鍵.key>`を使う必要があります。\n"
 
 #. type: Title ###
-#: ../README.md:361
+#: ../README.md:369
 #, no-wrap
 msgid "Filtering"
 msgstr "絞り込み"
 
 #. type: Title ####
-#: ../README.md:363
+#: ../README.md:371
 #, no-wrap
 msgid "Working with dates"
 msgstr "日付の扱い"
 
 #. type: Plain text
-#: ../README.md:369
+#: ../README.md:374
+msgid "Another useful pipe would be filtering dates out of the web log"
+msgstr "別のパイプの有用な点はwebのログから日付で絞り込むことでしょう。"
+
+#. type: Plain text
+#: ../README.md:377
 msgid ""
 "The following will get all HTTP requests starting on `05/Dec/2010` until the "
 "end of the file."
@@ -5548,49 +5721,73 @@ msgstr ""
 "ます。"
 
 #. type: Plain text
-#: ../README.md:371
+#: ../README.md:379
 #, no-wrap
 msgid "    # sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -\n"
 msgstr "    # sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -\n"
 
 #. type: Plain text
-#: ../README.md:375
+#: ../README.md:381
+msgid "or using relative dates such as yesterdays or tomorrows day:"
+msgstr "または昨日や明日のような相対的な日にちを使うと以下です。"
+
+#. type: Plain text
+#: ../README.md:383
 #, no-wrap
 msgid "    # sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | goaccess -a -\n"
 msgstr "    # sed -n '/'$(date '+%d\\/%b\\/%Y' -d '1 week ago')'/,$ p' access.log | goaccess -a -\n"
 
 #. type: Plain text
-#: ../README.md:379
+#: ../README.md:385
+msgid ""
+"If we want to parse only a certain time-frame from DATE a to DATE b, we can "
+"do:"
+msgstr ""
+"日付aから日付bまでの特定の時刻間隔のみを解析したければ以下のようにできます。"
+
+#. type: Plain text
+#: ../README.md:387
 #, no-wrap
 msgid "    # sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -\n"
 msgstr "    # sed -n '/5\\/Nov\\/2010/,/5\\/Dec\\/2010/ p' access.log | goaccess -a -\n"
 
 #. type: Plain text
-#: ../README.md:385
+#: ../README.md:391
+msgid ""
+"If we want to preserve only certain amount of data and recycle storage, we "
+"can keep only a certain number of days. For instance to keep & show the last "
+"5 days:"
+msgstr ""
+"特定の量のデータのみを保存し容量上で古いものから再利用されている場合は、\n"
+"特定の日数のみ保持するようにできます。\n"
+"例えば直近5日間を保持して表示するには次のようにします。"
+
+#. type: Plain text
+#: ../README.md:393
 #, no-wrap
 msgid "    # goaccess access.log --keep-last=5\n"
 msgstr "    # goaccess access.log --keep-last=5\n"
 
 #. type: Title ####
-#: ../README.md:386
+#: ../README.md:394
 #, no-wrap
 msgid "Virtual hosts"
 msgstr "仮想ホスト"
 
 #. type: Plain text
-#: ../README.md:389
+#: ../README.md:397
 msgid "Assuming your log contains the virtual host field. For instance:"
 msgstr ""
 "ログに仮想ホストのフィールドが含まれているとします。例えば次の通りです。"
 
 #. type: Plain text
-#: ../README.md:391
+#: ../README.md:399
 #, no-wrap
 msgid "    vhost.io:80 8.8.4.4 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop HTTP/1.1\" 200 615 \"-\" \"Googlebot-Image/1.0\"\n"
 msgstr "    vhost.io:80 8.8.4.4 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop HTTP/1.1\" 200 615 \"-\" \"Googlebot-Image/1.0\"\n"
 
 #. type: Plain text
-#: ../README.md:394
+#: ../README.md:402
 msgid ""
 "And you would like to append the virtual host to the request in order to see "
 "which virtual host the top urls belong to:"
@@ -5599,36 +5796,41 @@ msgstr ""
 "たいとします。"
 
 #. type: Plain text
-#: ../README.md:396
+#: ../README.md:404
 #, no-wrap
 msgid "    awk '$8=$1$8' access.log | goaccess -a -\n"
 msgstr "    awk '$8=$1$8' access.log | goaccess -a -\n"
 
 #. type: Plain text
-#: ../README.md:398
+#: ../README.md:406
 msgid "To do the same, but also use real-time filtering and parsing:"
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:400
+#: ../README.md:408
 #, no-wrap
 msgid "    tail -f  access.log | unbuffer -p awk '$8=$1$8' | goaccess -a -\n"
 msgstr "    tail -f  access.log | unbuffer -p awk '$8=$1$8' | goaccess -a -\n"
 
 #. type: Plain text
-#: ../README.md:404
+#: ../README.md:410
+msgid "To exclude a list of virtual hosts you can do the following:"
+msgstr "仮想ホストのリストを除外するためには以下のようにできます。"
+
+#. type: Plain text
+#: ../README.md:412
 #, no-wrap
 msgid "    # grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -\n"
 msgstr "    # grep -v \"`cat exclude_vhost_list_file`\" vhost_access.log | goaccess -\n"
 
 #. type: Title ####
-#: ../README.md:405
+#: ../README.md:413
 #, no-wrap
 msgid "Files, status codes and bots"
 msgstr "ファイル、状態コード、ボット"
 
 #. type: Plain text
-#: ../README.md:409
+#: ../README.md:417
 msgid ""
 "To parse specific pages, e.g., page views, `html`, `htm`, `php`, etc. within "
 "a request:"
@@ -5637,13 +5839,13 @@ msgstr ""
 "には、以下のようにします。"
 
 #. type: Plain text
-#: ../README.md:411
+#: ../README.md:419
 #, no-wrap
 msgid "    # awk '$7~/\\.html|\\.htm|\\.php/' access.log | goaccess -\n"
 msgstr "    # awk '$7~/\\.html|\\.htm|\\.php/' access.log | goaccess -\n"
 
 #. type: Plain text
-#: ../README.md:416
+#: ../README.md:424
 msgid ""
 "Note, `$7` is the request field for the common and combined log format, "
 "(without Virtual Host), if your log includes Virtual Host, then you probably "
@@ -5655,55 +5857,71 @@ msgstr ""
 "のフィールドを選ぶべきかは確認しておくのが一番です。例えば以下です。"
 
 #. type: Plain text
-#: ../README.md:418
+#: ../README.md:426
 #, no-wrap
 msgid "    # tail -10 access.log | awk '{print $8}'\n"
 msgstr "    # tail -10 access.log | awk '{print $8}'\n"
 
 #. type: Plain text
-#: ../README.md:422
+#: ../README.md:428
+msgid "Or to parse a specific status code, e.g., 500 (Internal Server Error):"
+msgstr ""
+"または特定のステータスコードを解析するには次のようにします。\n"
+"ここでは500 (Internal Server Error) を例に挙げます。"
+
+#. type: Plain text
+#: ../README.md:430
 #, no-wrap
 msgid "    # awk '$9~/500/' access.log | goaccess -\n"
 msgstr "    # awk '$9~/500/' access.log | goaccess -\n"
 
 #. type: Plain text
-#: ../README.md:424
+#: ../README.md:432
 msgid "Or multiple status codes, e.g., all 3xx and 5xx:"
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:426
+#: ../README.md:434
 #, no-wrap
 msgid "    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o out.html -\n"
 msgstr "    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o out.html -\n"
 
 #. type: Plain text
-#: ../README.md:428
+#: ../README.md:436
 msgid ""
 "And to get an estimated overview of how many bots (crawlers) are hitting "
 "your server:"
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:430
+#: ../README.md:438
 #, no-wrap
 msgid "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -\n"
 msgstr "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -\n"
 
 #. type: Title ###
-#: ../README.md:431
+#: ../README.md:439
 #, no-wrap
 msgid "Tips"
 msgstr "コツ"
 
 #. type: Plain text
-#: ../README.md:437
+#: ../README.md:443
+msgid ""
+"Also, it is worth pointing out that if we want to run GoAccess at lower "
+"priority, we can run it as:"
+msgstr ""
+"また、GoAccessを低い優先度で走らせたければ次のようにできることは書いておいた"
+"ほうがよいでしょう。"
+
+#. type: Plain text
+#: ../README.md:445
 #, no-wrap
 msgid "    # nice -n 19 goaccess -f access.log -a\n"
 msgstr "    # nice -n 19 goaccess -f access.log -a\n"
 
 #. type: Plain text
-#: ../README.md:440
+#: ../README.md:448
 msgid ""
 "and if you don't want to install it on your server, you can still run it "
 "from your local machine!"
@@ -5712,13 +5930,14 @@ msgstr ""
 "す！"
 
 #. type: Plain text
-#: ../README.md:442
-#, no-wrap
-msgid "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
+#: ../README.md:450
+#, fuzzy, no-wrap
+#| msgid "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
+msgid "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess - --log-format=COMBINED\n"
 msgstr "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
 
 #. type: Plain text
-#: ../README.md:445
+#: ../README.md:453
 #, no-wrap
 msgid ""
 "**Note:** SSH requires `-n` so GoAccess can read from stdin. Also, make sure to\n"
@@ -5726,19 +5945,19 @@ msgid ""
 msgstr "**補足：**GoAccessが標準入力を読めるようにするため、SSHには`-n`が必要です。また、パスフレーズが必要なときはうまく機能しないため、必ず認証のためのSSHキーを使ってください。\n"
 
 #. type: Title ####
-#: ../README.md:446
+#: ../README.md:454
 #, no-wrap
 msgid "Troubleshooting"
 msgstr "困ったときは"
 
 #. type: Plain text
-#: ../README.md:449
+#: ../README.md:457
 msgid ""
 "We receive many questions and issues that have been answered previously."
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:454
+#: ../README.md:462
 msgid ""
 "Date/time matching problems? Check that your log format and the system "
 "locale in which you run GoAccess match. See [#1571](https://github.com/"
@@ -5746,7 +5965,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:454
+#: ../README.md:462
 msgid ""
 "Problems with pattern matching? Spaces are often a problem, see for instance "
 "[#136](https://github.com/allinurl/goaccess/issues/136), [#1579](https://"
@@ -5754,7 +5973,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:454
+#: ../README.md:462
 msgid ""
 "Other issues matching log entries: See [>200 closed issues regarding log/"
 "date/time formats](https://github.com/allinurl/goaccess/issues?"
@@ -5762,7 +5981,7 @@ msgid ""
 msgstr ""
 
 #. type: Bullet: '* '
-#: ../README.md:454
+#: ../README.md:462
 msgid ""
 "Problems with log processing? See [>111 issues regarding log processing]"
 "(https://github.com/allinurl/goaccess/issues?"
@@ -5770,14 +5989,24 @@ msgid ""
 msgstr ""
 
 #. type: Title ####
-#: ../README.md:456
+#: ../README.md:464
 #, no-wrap
 msgid "Incremental log processing"
 msgstr "漸進的なログ処理"
 
+#. type: Plain text
+#: ../README.md:468
+msgid ""
+"GoAccess has the ability to process logs incrementally through its internal "
+"storage and dump its data to disk. It works in the following way:"
+msgstr ""
+"GoAccessには内部的な容量を通じて漸進的にログを処理してディスクにデータを吐き"
+"出す能力があります。\n"
+"これは以下のように動作します。"
+
 # I<--restore>は2つ前の方に移動しました。
 #. type: Plain text
-#: ../README.md:465
+#: ../README.md:473
 #, no-wrap
 msgid ""
 "1. A dataset must be persisted first with `--persist`, then the same dataset\n"
@@ -5789,7 +6018,7 @@ msgstr ""
 "2. ……`--restore`が使えます。（パイプで流し込んだり、ログファイルを通したりして）新しいデータが渡されたときは、元のデータセットに追記されます。\n"
 
 #. type: Plain text
-#: ../README.md:472
+#: ../README.md:480
 msgid ""
 "GoAccess keeps track of inodes of all the files processed (assuming files "
 "will stay on the same partition), in addition, it extracts a snippet of data "
@@ -5802,7 +6031,7 @@ msgstr ""
 "出されます。例えば、`inode:29627417|line:20012|ts:20171231235059`です。"
 
 #. type: Plain text
-#: ../README.md:479
+#: ../README.md:487
 msgid ""
 "First, it compares if the snippet matches the log being parsed, if it does, "
 "it assumes the log hasn't changed drastically, e.g., hasn't been truncated. "
@@ -5820,7 +6049,7 @@ msgstr ""
 
 # based offはbased onの誤植かもしれません
 #. type: Plain text
-#: ../README.md:483
+#: ../README.md:491
 #, no-wrap
 msgid ""
 "Piped  data works based off the timestamp of the last line read. For instance,\n"
@@ -5829,13 +6058,13 @@ msgid ""
 msgstr "パイプで流し込まれたデータは、読み込まれた最後の行の時間記録に基づいて扱われます。例えば、解析の際、保存された時間記録より新しいものが見つかるまで、全ての入ってくる項目は無視されます。\n"
 
 #. type: Title #####
-#: ../README.md:484
+#: ../README.md:492
 #, no-wrap
 msgid "Examples"
 msgstr "例"
 
 #. type: Plain text
-#: ../README.md:488
+#: ../README.md:496
 #, no-wrap
 msgid ""
 "    // last month access log\n"
@@ -5845,7 +6074,7 @@ msgstr ""
 "    # goaccess access.log.1 --persist\n"
 
 #. type: Plain text
-#: ../README.md:493
+#: ../README.md:501
 #, no-wrap
 msgid ""
 "    // append this month access log, and preserve new data\n"
@@ -5855,19 +6084,19 @@ msgstr ""
 "    # goaccess access.log --restore --persist\n"
 
 #. type: Plain text
-#: ../README.md:497
+#: ../README.md:505
 #, no-wrap
 msgid "    # goaccess --restore\n"
 msgstr "    # goaccess --restore\n"
 
 #. type: Title ##
-#: ../README.md:498
+#: ../README.md:506
 #, no-wrap
 msgid "Contributing"
 msgstr "貢献"
 
 #. type: Plain text
-#: ../README.md:503
+#: ../README.md:511
 msgid ""
 "Any help on GoAccess is welcome. The most helpful way is to try it out and "
 "give feedback. Feel free to use the GitHub issue tracker and pull requests "
@@ -5875,7 +6104,7 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:505
+#: ../README.md:513
 msgid ""
 "You can contribute to our translations by editing the .po files direct on "
 "GitHub or using the visual interface [inlang.com](https://inlang.com/editor/"
@@ -5883,16 +6112,181 @@ msgid ""
 msgstr ""
 
 #. type: Plain text
-#: ../README.md:507
-msgid ""
-"[![translation badge](https://inlang.com/badge?url=github.com/allinurl/"
-"goaccess)](https://inlang.com/editor/github.com/allinurl/goaccess?ref=badge)"
-msgstr ""
-
-#. type: Plain text
-#: ../README.md:508
+#: ../README.md:514
 msgid "Enjoy!"
 msgstr "お楽しみください！"
+
+#~ msgid ""
+#~ "B<goaccess> GoAccess is an open source real-time web log analyzer and "
+#~ "interactive viewer that runs in a I<terminal> in *nix systems or through "
+#~ "your I<browser.>"
+#~ msgstr ""
+#~ "B<goaccess> GoAccessはオープンソースの実時間webログ解析器と対話的な閲覧器"
+#~ "を兼ねており、\n"
+#~ "*nixシステムのI<端末>やI<ブラウザ>上で走ります。"
+
+#~ msgid ""
+#~ "It provides fast and valuable HTTP statistics for system administrators "
+#~ "that require a visual server report on the fly."
+#~ msgstr ""
+#~ "サーバーレポートで思うがままにデータの可視化を行う必要があるシステム管理者"
+#~ "のために、\n"
+#~ "高速で価値のあるHTTPの統計情報を提供します。"
+
+#~ msgid "Compile GoAccess with OpenSSL support for its WebSocket server."
+#~ msgstr "WebSocketサーバー用にGoAccessをOpenSSL対応付きでコンパイルします。"
+
+#, no-wrap
+#~ msgid "B<--no-column-names>"
+#~ msgstr "B<--no-column-names>"
+
+#~ msgid ""
+#~ "Don't write column names in the terminal output. By default, it displays "
+#~ "column names for each available metric in every panel."
+#~ msgstr ""
+#~ "端末の出力で列名を書き入れません。\n"
+#~ "既定ではパネル毎にそれぞれの使える指標について列名が表示されます。"
+
+#~ msgid ""
+#~ "And even better, to filter while maintaining opened a pipe to preserve "
+#~ "real-time analysis, we can make use of I<tail -f> and a matching pattern "
+#~ "tool such as I<grep, awk, sed,> etc:"
+#~ msgstr ""
+#~ "そしてさらに良くするために、\n"
+#~ "実時間解析を保存するためのパイプを空けたままを維持しつつ、\n"
+#~ "I<tail -f>とI<grep、awk、sedなど>のようなパターン照合ツールを活用すること"
+#~ "ができます。"
+
+#~ msgid ""
+#~ "Now if we want to add more flexibility to GoAccess, we can do a series of "
+#~ "pipes. For instance, if we would like to process all compressed log files "
+#~ "I<access.log.*.gz> in addition to the current log file, we can do:"
+#~ msgstr ""
+#~ "さらにGoAccessの柔軟性を上げたければ一連のパイプにすることができます。\n"
+#~ "例として現在のログファイルに加えて、\n"
+#~ "全ての圧縮されたログファイルI<access.log.*.gz>を処理したければ、\n"
+#~ "次のようにできます。"
+
+#~ msgid "I<Note:> On Mac OS X, use gunzip -c instead of zcat."
+#~ msgstr "I<補足：>Mac OS Xではzcatではなくgunzip -cを使ってください。"
+
+#~ msgid ""
+#~ "GoAccess has the ability to output real-time data in the HTML report. You "
+#~ "can even email the HTML file since it is composed of a single file with "
+#~ "no external file dependencies, how neat is that!"
+#~ msgstr ""
+#~ "GoAccessではHTMLレポートに実時間データを出力することができます。\n"
+#~ "外部ファイル依存のない単一ファイルからなるため、\n"
+#~ "HTMLファイルをEメールで送ることさえできるのです。\n"
+#~ "やったぜ！"
+
+#~ msgid ""
+#~ "The process of generating a real-time HTML report is very similar to the "
+#~ "process of creating a static report. Only --real-time-html is needed to "
+#~ "make it real-time."
+#~ msgstr ""
+#~ "実時間HTMLレポートを生成する工程は、\n"
+#~ "静的なレポートを作る過程と大変似ています。\n"
+#~ "実時間にするのに必要なのは--real-time-htmlだけです。"
+
+#~ msgid ""
+#~ "By default, GoAccess will use the host name of the generated report.  "
+#~ "Optionally, you can specify the URL to which the client's browser will "
+#~ "connect to. See https://goaccess.io/faq for a more detailed example."
+#~ msgstr ""
+#~ "既定ではGoAccessは生成されたレポートのホスト名を使います。\n"
+#~ "オプションとしてクライアントのブラウザが接続するURLを指定することができま"
+#~ "す。\n"
+#~ "詳細な例は https://goaccess.io/faq を参照してください。"
+
+#~ msgid ""
+#~ "I<Note:> To output real time data over a TLS/SSL connection, you need to "
+#~ "use I<--ssl-cert=E<lt>cert.crtE<gt>> and I<--ssl-key=E<lt>priv.keyE<gt>.>"
+#~ msgstr ""
+#~ "I<補足：>TLS/SSL接続上で実時間データを出力するにはI<--ssl-"
+#~ "cert=E<lt>cert.crtE<gt>>とI<--ssl-key=E<lt>priv.keyE<gt>>を使う必要があり"
+#~ "ます。"
+
+#~ msgid ""
+#~ "The following will get all HTTP requests starting on 05/Dec/2010 until "
+#~ "the end of the file."
+#~ msgstr ""
+#~ "以下は05/Dec/2010からファイル末尾までの全てのHTTPリクエストを取得します。"
+
+#~ msgid ""
+#~ "Assuming your log contains the virtual host (server blocks) field. For "
+#~ "instance:"
+#~ msgstr ""
+#~ "ログに仮想ホスト（サーバーブロック）フィールドがあるものとします。例えば次"
+#~ "の通り。"
+
+#~ msgid ""
+#~ "vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/"
+#~ "bag-p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
+#~ msgstr ""
+#~ "vhost.com:80 10.131.40.139 - - [02/Mar/2016:08:14:04 -0600] \"GET /shop/"
+#~ "bag-p-20 HTTP/1.1\" 200 6715 \"-\" \"Apache (internal dummy connection)\""
+
+#~ msgid ""
+#~ "And you would like to append the virtual host to the request in order to "
+#~ "see which virtual host the top urls belong to"
+#~ msgstr ""
+#~ "そしてどの仮想ホストに最頻のURLが属しているのかを見るために、仮想ホストを"
+#~ "リクエストに加えたいことがあるでしょう。"
+
+#~ msgid ""
+#~ "To parse specific pages, e.g., page views, html, htm, php, etc. within a "
+#~ "request:"
+#~ msgstr ""
+#~ "リクエストのうち、html、htm、phpなどの閲覧ページなどで、\n"
+#~ "特定のページを解析するには次のようにします。"
+
+#~ msgid ""
+#~ "Note, I<$7> is the request field for the common and combined log format, "
+#~ "(without Virtual Host), if your log includes Virtual Host, then you "
+#~ "probably want to use I<$8> instead. It's best to check which field you "
+#~ "are shooting for, e.g.:"
+#~ msgstr ""
+#~ "なおI<$7>はログ書式がcommonやcombinedのもの（仮想ホストなし）のリクエスト"
+#~ "フィールドであり、\n"
+#~ "ログに仮想ホストが含まれるのであれば代わりにI<$8>を使うことになるでしょ"
+#~ "う。\n"
+#~ "注目しているフィールドを確認しておくのが一番です。\n"
+#~ "例えば次のように。"
+
+#~ msgid "# tail -10 access.log | awk '{print $8}'"
+#~ msgstr "# tail -10 access.log | awk '{print $8}'"
+
+#~ msgid ""
+#~ "and if you don't want to install it on your server, you can still run it "
+#~ "from your local machine:"
+#~ msgstr ""
+#~ "そしてサーバーにインストールしたくない場合であってもローカルマシンから走ら"
+#~ "せられます。"
+
+#, no-wrap
+#~ msgid "\\n[step]"
+#~ msgstr "\\n[step]"
+
+# 2つ後のI<--restore>をこちらに移動しました。
+#~ msgid ""
+#~ "A dataset must be persisted first with I<--persist,> then the same "
+#~ "dataset can be loaded with"
+#~ msgstr ""
+#~ "データセットは最初にI<--persist>で永続化されていなければならず、\n"
+#~ "それから同じデータセットをI<--restore>を使って読み込むことができます。"
+
+#, no-wrap
+#~ msgid "\\n+[step]"
+#~ msgstr "\\n+[step]"
+
+# I<--restore>は2つ前の方に移動しました。
+#~ msgid ""
+#~ "I<--restore.> If new data is passed (piped or through a log file), it "
+#~ "will append it to the original dataset."
+#~ msgstr ""
+#~ "新しいデータが（パイプやログファイルを通じて）渡されたら、元のデータセット"
+#~ "に追記します。"
 
 #, no-wrap
 #~ msgid "SEPTEMBER 2023"
