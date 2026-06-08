@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -77,6 +77,8 @@ static const char *const browsers[][2] = {
 
   {"FBAV", "Facebook App"},
   {"FBSV", "Facebook App"},
+  {"FBAN", "Facebook App"},
+  {"FB_IAB", "Facebook App"},
 
   /* Others: miscellaneous user agents that don't fit other categories */
   {"Homebrew", "Others"},
@@ -128,6 +130,23 @@ static const char *const browsers[][2] = {
   {"Transmission", "Others"},
   {"libmpv", "Others"},
   {"aria2", "Others"},
+  {"Electron", "Others"},
+  {"Chromium", "Chrome"},
+  {"QtWebEngine", "Others"},
+  {"SamsungBrowser", "Samsung Internet"},
+  {"Silk/", "Silk"},
+  {"MiuiBrowser", "Others"},
+  {"HuaweiBrowser", "Others"},
+  {"HeyTapBrowser", "Others"},
+  {"VivoBrowser", "Others"},
+  {"QQBrowser", "Others"},
+  {"Instagram", "Others"},
+  {"TikTok", "Others"},
+  {"Snapchat", "Others"},
+  {"Pinterest", "Others"},
+  {"Roku", "Others"},
+  {"Tizen", "Others"},
+  {"Web0S", "Others"},
 
   /* Feed Readers: place all feed reader user agents here */
   {"AppleNewsBot", "Feeds"},
@@ -163,15 +182,27 @@ static const char *const browsers[][2] = {
   {"Winds", "Feeds"},
 
   /* Crawlers: all bot and crawler user agents grouped together */
+  {"AdsBot", "Crawlers"},
   {"AdsBot-Google", "Crawlers"},
+  {"APIs-Google", "Crawlers"},
   {"AppEngine-Google", "Crawlers"},
   {"Mediapartners-Google", "Crawlers"},
+  {"Google-InspectionTool", "Crawlers"},
+  {"Google-Extended", "Crawlers"},
+  {"GoogleOther", "Crawlers"},
+  {"Google-Read-Aloud", "Crawlers"},
   {"Google", "Crawlers"},
   {"WhatsApp", "Crawlers"},
   {"AppleBot", "Crawlers"},
+  {"Applebot-Extended", "Crawlers"},
   {"facebookexternalhit", "Crawlers"},
+  {"Facebot", "Crawlers"},
   {"Twitter", "Crawlers"},
+  {"Twitterbot", "Crawlers"},
+  {"Slackbot-LinkExpanding", "Crawlers"},
+  {"Slack-ImgProxy", "Crawlers"},
   {"Slack", "Crawlers"},
+  {"TelegramBot", "Crawlers"},
   {"Sogou", "Crawlers"},
   {"Java", "Crawlers"},
   {"Jakarta Commons-HttpClient", "Crawlers"},
@@ -188,6 +219,7 @@ static const char *const browsers[][2] = {
   {"PycURL", "Crawlers"},
   {"PHP", "Crawlers"},
   {"ClaudeBot", "Crawlers"},
+  {"Claude-User", "Crawlers"},
   {"AndroidDownloadManager", "Crawlers"},
   {"Embedly", "Crawlers"},
   {"ruby", "Crawlers"},
@@ -195,8 +227,9 @@ static const char *const browsers[][2] = {
   {"python", "Crawlers"},
   {"Python", "Crawlers"},
   {"LinkedIn", "Crawlers"},
+  {"LinkedInBot", "Crawlers"},
   {"Microsoft-WebDAV", "Crawlers"},
-  {"DuckDuckGo", "Crawlers"},
+  {"DuckDuckBot", "Crawlers"},
   {"bingbot", "Crawlers"},
   {"PetalBot", "Crawlers"},
   {"Discordbot", "Crawlers"},
@@ -205,7 +238,6 @@ static const char *const browsers[][2] = {
   {"DotBot", "Crawlers"},
   {"AhrefsBot", "Crawlers"},
   {"SemrushBot", "Crawlers"},
-  {"Adsbot", "Crawlers"},
   {"archive.org_bot", "Crawlers"},
   {"BLEXBot", "Crawlers"},
   {"NetcraftSurveyAgent", "Crawlers"},
@@ -233,7 +265,14 @@ static const char *const browsers[][2] = {
   {"Synapse", "Crawlers"},
   {"Yahoo! Slurp", "Crawlers"},
   {"GoogleMobile", "Crawlers"},
-  {"ZoteroTranslationServer", "Cralwers"},
+  {"ZoteroTranslationServer", "Crawlers"},
+  {"OAI-SearchBot", "Crawlers"},
+  {"GPTBot", "Crawlers"},
+  {"PerplexityBot", "Crawlers"},
+  {"Amazonbot", "Crawlers"},
+  {"SkypeUriPreview", "Crawlers"},
+  {"OAI-SearchBot", "Crawlers"},
+  {"OAI-SearchBot", "Crawlers"}, /* duplicate-safe if you dedupe elsewhere */
 
   /* Based on Firefox: place all Firefox-based browsers here */
   {"Camino", "Others"},
@@ -242,12 +281,15 @@ static const char *const browsers[][2] = {
   {"PaleMoon", "Firefox"},
   {"Focus", "Firefox"},
   {"Klar", "Firefox"},
+  {"Zen/", "Zen"},
   {"Firefox", "Firefox"},
 
   /* Based on Chromium: place all Chromium-based browsers here, including BeakerBrowser under Others for consistency */
+  {"Arc/", "Arc"},
   {"Brave", "Brave"},
   {"Vivaldi", "Vivaldi"},
   {"YaBrowser", "Yandex"},
+  {"DuckDuckGo/", "DuckDuckGo Browser"},
 
   /* Chrome: place all Chrome-related user agents here */
   {"HeadlessChrome", "Chrome"},
@@ -260,6 +302,12 @@ static const char *const browsers[][2] = {
   /* HTTP Library or HTTP Server User Agents: place here */
   {"axios", "HTTP Library"}, /* NodeJS axios */
   {"lua-resty-http", "HTTP Library"}, /* Ngx luarestyhttp module */
+  {"Apache-HttpClient", "HTTP Library"},
+  {"GuzzleHttp", "HTTP Library"},
+  {"RestSharp", "HTTP Library"},
+  {"http.rb", "HTTP Library"},
+  {"Java-http-client", "HTTP Library"},
+  {"node-fetch", "HTTP Library"},
 
   /* Citation Services: place here */
   {"Citoid", "Citation"}, /* MediaWiki Citoid */
@@ -285,6 +333,15 @@ static const char *const browsers[][2] = {
   {"Better Uptime Bot", "Uptime"},
   {"Site24x7", "Uptime"},
   {"Uptime-Kuma", "Uptime"},
+  {"UptimeRobot", "Uptime"},
+  {"NewRelicSynthetics", "Uptime"},
+  {"DatadogSynthetics", "Uptime"},
+  {"ELB-HealthChecker", "Uptime"},
+  {"GoogleHC", "Uptime"},
+  {"kube-probe", "Uptime"},
+  {"Fastly-HealthChecker", "Uptime"},
+  {"Cloudflare-Healthchecks", "Uptime"},
+  {"CloudFlare-AlwaysOnline", "Uptime"},
 
   /* Performance and Caching: place here */
   {"ShortPixel", "Performance"}, /* Image Optimization */

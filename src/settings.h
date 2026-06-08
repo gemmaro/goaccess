@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -202,6 +202,7 @@ typedef struct GConf_
   uint32_t num_tests;               /* number of lines to test */
   uint64_t html_refresh;            /* refresh html report every X of seconds */
   uint64_t log_size;                /* log size override */
+  int concat_vhost_req;             /* concatenate vhost and request */
 
   /* Internal flags */
   int bandwidth;                    /* is there bandwidth within the req line */
@@ -212,7 +213,7 @@ typedef struct GConf_
   int hour_spec_min;                /* hour specificity - min */
   int read_stdin;                   /* read from stdin */
   int serve_usecs;                  /* is there time served within req line */
-  int stop_processing;              /* stop all processing */
+  _Atomic int stop_processing;      /* stop all processing */
   int tailing_mode;                 /* in tailing-mode? */
 
   /* Array indices */

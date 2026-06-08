@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -128,7 +128,6 @@ static const struct option long_opts[] = {
   {"max-items"            , required_argument , 0 , 0  }  ,
   {"no-color"             , no_argument       , 0 , 0  }  ,
   {"no-strict-status"     , no_argument       , 0 , 0  }  ,
-  {"no-column-names"      , no_argument       , 0 , 0  }  ,
   {"no-csv-summary"       , no_argument       , 0 , 0  }  ,
   {"no-global-config"     , no_argument       , 0 , 0  }  ,
   {"no-html-last-updated" , no_argument       , 0 , 0  }  ,
@@ -167,6 +166,7 @@ static const struct option long_opts[] = {
 #ifdef HAVE_GEOLOCATION
   {"geoip-database"       , required_argument , 0 ,  0  } ,
 #endif
+  {"concat-vhost-req"     , no_argument       , 0 ,  0  } ,
   {0, 0, 0, 0}
 };
 
@@ -701,10 +701,6 @@ parse_long_opt (const char *name, const char *oarg) {
   if (!strcmp ("no-strict-status", name))
     conf.no_strict_status = 1;
 
-  /* no columns */
-  if (!strcmp ("no-column-names", name))
-    conf.no_column_names = 1;
-
   /* no csv summary */
   if (!strcmp ("no-csv-summary", name))
     conf.no_csv_summary = 1;
@@ -890,11 +886,14 @@ parse_long_opt (const char *name, const char *oarg) {
     conf.crawlers_only = 1;
 
   /* date specificity */
-  if (!strcmp ("date-spec", name) && !strcmp (oarg, "hr"))
-    conf.date_spec_hr = 1;
-  /* date specificity */
-  if (!strcmp ("date-spec", name) && !strcmp (oarg, "min"))
-    conf.date_spec_hr = 2;
+  if (!strcmp ("date-spec", name)) {
+    if (!strcmp (oarg, "hr"))
+      conf.date_spec_hr = 1;
+    else if (!strcmp (oarg, "min"))
+      conf.date_spec_hr = 2;
+    else if (!strcmp (oarg, "date"))
+      conf.date_spec_hr = 0;
+  }
 
   /* double decode */
   if (!strcmp ("double-decode", name))
@@ -1009,6 +1008,10 @@ parse_long_opt (const char *name, const char *oarg) {
   /* classify unknowns as crawlers */
   if (!strcmp ("unknowns-as-crawlers", name))
     conf.unknowns_as_crawlers = 1;
+
+  /* concatenate vhost and request */
+  if (!strcmp ("concat-vhost-req", name))
+    conf.concat_vhost_req = 1;
 
   /* GEOIP OPTIONS
    * ========================= */

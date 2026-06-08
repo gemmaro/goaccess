@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -47,6 +47,7 @@
 #include "gkhash.h"
 #include "settings.h"
 #include "ui.h"
+#include "dialogs.h"
 #include "util.h"
 #include "websocket.h"
 #include "xmalloc.h"
@@ -610,7 +611,7 @@ pbw (GJSON *json, GMetrics *nmetrics, int sp) {
 
   popen_obj_attr (json, "bytes", sp);
   /* print bandwidth */
-  pskeyu64val (json, "count", nmetrics->bw.nbw, isp, 0);
+  pskeyu64val (json, "count", nmetrics->nbw, isp, 0);
   /* print bandwidth percent */
   pskeyfval (json, "percent", nmetrics->bw_perc, isp, 1);
   pclose_obj (json, sp, 0);
@@ -943,7 +944,8 @@ print_json_sub_items (GJSON *json, GHolderItem *item, GPercTotals totals, int si
   GMetrics *nmetrics;
   GSubItem *iter;
   GSubList *sl = item->sub_list;
-  int i = 0, iiisp = 0, iiiisp = 0;
+  uint32_t i = 0;
+  int iiisp = 0, iiiisp = 0;
 
   /* no sub items, nothing to output */
   if (size == 0)
@@ -962,6 +964,13 @@ print_json_sub_items (GJSON *json, GHolderItem *item, GPercTotals totals, int si
 
     popen_obj (json, iiisp);
     print_json_block (json, nmetrics, iiiisp);
+    /* recurse into nested sub-items */
+    if (iter->sub_list != NULL && iter->sub_list->size > 0) {
+      GHolderItem child;
+      child.metrics = iter->metrics;
+      child.sub_list = iter->sub_list;
+      print_json_sub_items (json, &child, totals, iter->sub_list->size, iiiisp);
+    }
     pclose_obj (json, iiisp, (i == sl->size - 1));
     free (nmetrics);
   }
@@ -972,7 +981,7 @@ print_json_sub_items (GJSON *json, GHolderItem *item, GPercTotals totals, int si
 static void
 print_json_host_geo (GJSON *json, GSubList *sl, int iisp) {
   GSubItem *iter;
-  int i;
+  uint32_t i;
   static const char *key[] = {
     "country",
     "city",
@@ -1008,7 +1017,8 @@ static void
 print_data_metrics (GJSON *json, GHolder *h, GPercTotals totals, int sp,
                     const struct GPanel_ *panel) {
   GMetrics *nmetrics;
-  int i, isp = 0, iisp = 0, iiisp = 0;
+  uint32_t i;
+  int isp = 0, iisp = 0, iiisp = 0;
 
   /* use tabs to prettify output */
   if (conf.json_pretty_print)

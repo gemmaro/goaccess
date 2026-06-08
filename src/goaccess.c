@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -67,6 +67,7 @@
 #include "error.h"
 #include "gdashboard.h"
 #include "gdns.h"
+#include "gchart.h"
 #include "gholder.h"
 #include "goaccess.h"
 #include "gwsocket.h"
@@ -108,27 +109,27 @@ static int main_win_height = 0;
 /* *INDENT-OFF* */
 static GScroll gscroll = {
   {
-     {0, 0}, /* VISITORS        { scroll, offset} */
-     {0, 0}, /* REQUESTS        { scroll, offset} */
-     {0, 0}, /* REQUESTS_STATIC { scroll, offset} */
-     {0, 0}, /* NOT_FOUND       { scroll, offset} */
-     {0, 0}, /* HOSTS           { scroll, offset} */
-     {0, 0}, /* OS              { scroll, offset} */
-     {0, 0}, /* BROWSERS        { scroll, offset} */
-     {0, 0}, /* VISIT_TIMES     { scroll, offset} */
-     {0, 0}, /* VIRTUAL_HOSTS   { scroll, offset} */
-     {0, 0}, /* REFERRERS       { scroll, offset} */
-     {0, 0}, /* REFERRING_SITES { scroll, offset} */
-     {0, 0}, /* KEYPHRASES      { scroll, offset} */
-     {0, 0}, /* STATUS_CODES    { scroll, offset} */
-     {0, 0}, /* REMOTE_USER     { scroll, offset} */
-     {0, 0}, /* CACHE_STATUS    { scroll, offset} */
+     {0, 0, 0, 0, 1, NULL, 0}, /* VISITORS - note the 1 at the end! */
+     {0, 0, 0, 0, 0, NULL, 0}, /* REQUESTS */
+     {0, 0, 0, 0, 0, NULL, 0}, /* REQUESTS_STATIC */
+     {0, 0, 0, 0, 0, NULL, 0}, /* NOT_FOUND */
+     {0, 0, 0, 0, 0, NULL, 0}, /* HOSTS */
+     {0, 0, 0, 0, 0, NULL, 0}, /* OS */
+     {0, 0, 0, 0, 0, NULL, 0}, /* BROWSERS */
+     {0, 0, 0, 0, 0, NULL, 0}, /* VISIT_TIMES */
+     {0, 0, 0, 0, 0, NULL, 0}, /* VIRTUAL_HOSTS */
+     {0, 0, 0, 0, 0, NULL, 0}, /* REFERRERS */
+     {0, 0, 0, 0, 0, NULL, 0}, /* REFERRING_SITES */
+     {0, 0, 0, 0, 0, NULL, 0}, /* KEYPHRASES */
+     {0, 0, 0, 0, 0, NULL, 0}, /* STATUS_CODES */
+     {0, 0, 0, 0, 0, NULL, 0}, /* REMOTE_USER */
+     {0, 0, 0, 0, 0, NULL, 0}, /* CACHE_STATUS */
 #ifdef HAVE_GEOLOCATION
-     {0, 0}, /* GEO_LOCATION    { scroll, offset} */
-     {0, 0}, /* ASN             { scroll, offset} */
+     {0, 0, 0, 0, 0, NULL, 0}, /* GEO_LOCATION */
+     {0, 0, 0, 0, 0, NULL, 0}, /* ASN */
 #endif
-     {0, 0}, /* MIME_TYPE       { scroll, offset} */
-     {0, 0}, /* TLS_TYPE        { scroll, offset} */
+     {0, 0, 0, 0, 0, NULL, 0}, /* MIME_TYPE */
+     {0, 0, 0, 0, 0, NULL, 0}, /* TLS_TYPE */
   },
   0,         /* current module */
   0,         /* main dashboard scroll */
@@ -154,10 +155,24 @@ house_keeping_holder (void) {
   pthread_mutex_unlock (&gdns_thread.mutex);
 }
 
+/* Free per-item expand state for all modules */
+static void
+free_scroll_state (void) {
+  GModule module;
+  size_t idx = 0;
+  FOREACH_MODULE (idx, module_list) {
+    module = module_list[idx];
+    free_item_expanded (&gscroll.module[module]);
+  }
+}
+
 /* Free malloc'd data across the whole program */
 static void
 house_keeping (void) {
   house_keeping_holder ();
+
+  /* SCROLL STATE */
+  free_scroll_state ();
 
   /* DASHBOARD */
   if (dash && !conf.output_stdout) {
@@ -168,6 +183,7 @@ house_keeping (void) {
   /* GEOLOCATION */
 #ifdef HAVE_GEOLOCATION
   geoip_free ();
+  free_country_continent_map ();
 #endif
 
   /* INVALID REQUESTS */
@@ -312,6 +328,8 @@ daemonize (void) {
 static void
 allocate_holder_by_module (GModule module) {
   GRawData *raw_data;
+  uint32_t max_choices = get_max_choices ();
+  uint32_t max_choices_sub = get_max_choices_sub ();
 
   /* extract data from the corresponding hash table */
   raw_data = parse_raw_data (module);
@@ -320,7 +338,7 @@ allocate_holder_by_module (GModule module) {
     return;
   }
 
-  load_holder_data (raw_data, holder + module, module, module_sort[module]);
+  load_holder_data (raw_data, holder + module, module, module_sort[module], max_choices, max_choices_sub);
 }
 
 /* Iterate over all modules/panels and extract data from hash
@@ -338,8 +356,9 @@ allocate_holder (void) {
 /* Extract data from the modules GHolder structure and load it into
  * the terminal dashboard */
 static void
-allocate_data_by_module (GModule module, int col_data) {
-  int size = 0, max_choices = get_max_choices ();
+allocate_data_by_module (GModule module, uint32_t col_data) {
+  uint32_t size = 0;
+  uint32_t max_choices = get_max_choices ();
 
   dash->module[module].head = module_to_head (module);
   dash->module[module].desc = module_to_desc (module);
@@ -372,7 +391,7 @@ allocate_data_by_module (GModule module, int col_data) {
 static void
 allocate_data (void) {
   GModule module;
-  int col_data = get_num_collapsed_data_rows ();
+  uint32_t col_data = get_num_collapsed_data_rows ();
   size_t idx = 0;
 
   dash = new_gdash ();
@@ -421,7 +440,7 @@ render_screens (uint32_t offset) {
   /* display active label based on current module */
   update_active_module (header_win, gscroll.current);
 
-  display_content (main_win, dash, &gscroll);
+  display_content (main_win, dash, &gscroll, holder);
 }
 
 /* Collapse the current expanded module */
@@ -430,6 +449,8 @@ collapse_current_module (void) {
   if (!gscroll.expanded)
     return 1;
 
+  /* Reset per-item expand state before collapsing */
+  reset_item_expanded (&gscroll.module[gscroll.current]);
   gscroll.expanded = 0;
   reset_scroll_offsets (&gscroll);
   free_dashboard (dash);
@@ -511,6 +532,66 @@ load_ip_agent_list (void) {
     load_agent_list (main_win, item.metrics->data);
 }
 
+/* Toggle expand/collapse of the selected item's children within expanded panel.
+ * direction: 1 = expand (show children), 0 = collapse (hide children) */
+static void
+toggle_selected_item_expand (int direction) {
+  GModule mod = gscroll.current;
+  int scroll_pos = gscroll.module[mod].scroll;
+  GDashModule *dmod = &dash->module[mod];
+  int nfi;
+  uint8_t new_state;
+
+  if (scroll_pos < 0 || scroll_pos >= dmod->idx_data)
+    return;
+
+  nfi = dmod->data[scroll_pos].node_full_idx;
+
+  /* Only toggle if the item actually has children */
+  if (!dmod->data[scroll_pos].has_children)
+    return;
+
+  if (nfi < 0 || nfi >= gscroll.module[mod].item_expanded_size)
+    return;
+
+  new_state = direction ? 1 : 0;
+  if (gscroll.module[mod].item_expanded[nfi] == new_state)
+    return;
+
+  gscroll.module[mod].item_expanded[nfi] = new_state;
+
+  /* When collapsing, keep scroll on the same item (which stays visible).
+   * After rebuild, the selected item will have moved to a new flat position
+   * because collapsed children are removed. Find its new position. */
+  {
+    int old_scroll = scroll_pos;
+    int target_nfi = nfi;
+
+    /* Rebuild dashboard to reflect changed visibility */
+    free_dashboard (dash);
+    allocate_data ();
+
+    /* Find the new flat position of the toggled item */
+    dmod = &dash->module[mod];
+    {
+      int k;
+      for (k = 0; k < dmod->idx_data; k++) {
+        if (dmod->data[k].node_full_idx == target_nfi) {
+          gscroll.module[mod].scroll = k;
+          if (k < gscroll.module[mod].offset)
+            gscroll.module[mod].offset = k;
+          return;
+        }
+      }
+    }
+    /* Fallback: clamp to last item */
+    if (dmod->idx_data > 0) {
+      gscroll.module[mod].scroll = dmod->idx_data - 1;
+      (void) old_scroll;
+    }
+  }
+}
+
 /* Expand the selected module */
 static void
 expand_current_module (void) {
@@ -519,9 +600,11 @@ expand_current_module (void) {
     return;
   }
 
-  /* expanded, nothing to do... */
-  if (gscroll.expanded)
+  /* Already expanded -- toggle expand on the selected item */
+  if (gscroll.expanded) {
+    toggle_selected_item_expand (1);
     return;
+  }
 
   reset_scroll_offsets (&gscroll);
   gscroll.expanded = 1;
@@ -529,6 +612,14 @@ expand_current_module (void) {
   free_holder_by_module (&holder, gscroll.current);
   free_dashboard (dash);
   allocate_holder_by_module (gscroll.current);
+
+  /* Initialize per-node expand state -- all expanded by default.
+   * Size = total nodes in the tree (roots + all sub-items). */
+  {
+    int total_nodes = holder[gscroll.current].idx + holder[gscroll.current].sub_items_size;
+    init_item_expanded (&gscroll.module[gscroll.current], total_nodes);
+  }
+
   allocate_data ();
 }
 
@@ -548,6 +639,13 @@ expand_module_from_ypos (int y) {
   free_holder_by_module (&holder, gscroll.current);
   free_dashboard (dash);
   allocate_holder_by_module (gscroll.current);
+
+  /* Initialize per-node expand state -- all expanded by default */
+  {
+    int total_nodes = holder[gscroll.current].idx + holder[gscroll.current].sub_items_size;
+    init_item_expanded (&gscroll.module[gscroll.current], total_nodes);
+  }
+
   allocate_data ();
 
   return 0;
@@ -568,22 +666,39 @@ expand_on_mouse_click (void) {
   return 1;
 }
 
+/* Scroll up terminal dashboard */
+static void
+scroll_up_dashboard (void) {
+  gscroll.dash--;
+}
+
 /* Scroll down expanded module to the last row */
 static void
 scroll_down_expanded_module (void) {
   int exp_size = get_num_expanded_data_rows ();
   int *scroll_ptr, *offset_ptr;
+  int max_scroll;
 
   scroll_ptr = &gscroll.module[gscroll.current].scroll;
   offset_ptr = &gscroll.module[gscroll.current].offset;
 
   if (!gscroll.expanded)
     return;
-  if (*scroll_ptr >= dash->module[gscroll.current].idx_data - 1)
+
+  max_scroll = dash->module[gscroll.current].idx_data - 1;
+
+  /* Don't scroll past the last item */
+  if (*scroll_ptr >= max_scroll)
     return;
+
+  /* Increment scroll position */
   ++(*scroll_ptr);
-  if (*scroll_ptr >= exp_size && *scroll_ptr >= *offset_ptr + exp_size)
+
+  /* Adjust offset if we're scrolling beyond the visible area
+   * Keep the selection visible by ensuring it's within the window */
+  if (*scroll_ptr >= *offset_ptr + exp_size) {
     ++(*offset_ptr);
+  }
 }
 
 /* Scroll up expanded module */
@@ -596,17 +711,50 @@ scroll_up_expanded_module (void) {
 
   if (!gscroll.expanded)
     return;
+
   if (*scroll_ptr <= 0)
     return;
+
   --(*scroll_ptr);
+
+  /* Adjust offset if selection goes above visible area */
   if (*scroll_ptr < *offset_ptr)
     --(*offset_ptr);
 }
 
-/* Scroll up terminal dashboard */
+/* Page down expanded module */
 static void
-scroll_up_dashboard (void) {
-  gscroll.dash--;
+page_down_module (void) {
+  int exp_size = get_num_expanded_data_rows ();
+  int *scroll_ptr, *offset_ptr;
+  int max_scroll;
+
+  scroll_ptr = &gscroll.module[gscroll.current].scroll;
+  offset_ptr = &gscroll.module[gscroll.current].offset;
+
+  if (!gscroll.expanded)
+    return;
+
+  max_scroll = dash->module[gscroll.current].idx_data - 1;
+
+  /* Move down by page */
+  *scroll_ptr += exp_size;
+
+  /* Clamp to maximum */
+  if (*scroll_ptr > max_scroll)
+    *scroll_ptr = max_scroll;
+
+  /* Adjust offset to keep selection visible */
+  if (*scroll_ptr >= *offset_ptr + exp_size) {
+    *offset_ptr = *scroll_ptr - exp_size + 1;
+  }
+
+  /* Make sure offset doesn't go beyond valid range */
+  if (*offset_ptr + exp_size > max_scroll + 1) {
+    *offset_ptr = max_scroll - exp_size + 1;
+    if (*offset_ptr < 0)
+      *offset_ptr = 0;
+  }
 }
 
 /* Page up expanded module */
@@ -620,38 +768,18 @@ page_up_module (void) {
 
   if (!gscroll.expanded)
     return;
-  /* decrease scroll and offset by exp_size */
+
+  /* Move up by page */
   *scroll_ptr -= exp_size;
+
+  /* Clamp to minimum */
   if (*scroll_ptr < 0)
     *scroll_ptr = 0;
 
-  if (*scroll_ptr < *offset_ptr)
-    *offset_ptr -= exp_size;
-  if (*offset_ptr <= 0)
-    *offset_ptr = 0;
-}
-
-/* Page down expanded module */
-static void
-page_down_module (void) {
-  int exp_size = get_num_expanded_data_rows ();
-  int *scroll_ptr, *offset_ptr;
-
-  scroll_ptr = &gscroll.module[gscroll.current].scroll;
-  offset_ptr = &gscroll.module[gscroll.current].offset;
-
-  if (!gscroll.expanded)
-    return;
-
-  *scroll_ptr += exp_size;
-  if (*scroll_ptr >= dash->module[gscroll.current].idx_data - 1)
-    *scroll_ptr = dash->module[gscroll.current].idx_data - 1;
-  if (*scroll_ptr >= exp_size && *scroll_ptr >= *offset_ptr + exp_size)
-    *offset_ptr += exp_size;
-  if (*offset_ptr + exp_size >= dash->module[gscroll.current].idx_data - 1)
-    *offset_ptr = dash->module[gscroll.current].idx_data - exp_size;
-  if (*scroll_ptr < exp_size - 1)
-    *offset_ptr = 0;
+  /* Adjust offset to keep selection visible */
+  if (*scroll_ptr < *offset_ptr) {
+    *offset_ptr = *scroll_ptr;
+  }
 }
 
 /* Create a new find dialog window and render it. Upon closing the
@@ -768,7 +896,7 @@ read_client (void *ptr_data) {
 
 /* Parse tailed lines */
 static void
-parse_tail_follow (GLog *glog, FILE *fp) {
+parse_tail_follow (GLog *glog, GFileHandle *fh) {
   GLogItem *logitem = NULL;
 #ifdef WITH_GETLINE
   char *buf = NULL;
@@ -777,10 +905,11 @@ parse_tail_follow (GLog *glog, FILE *fp) {
 #endif
 
   glog->bytes = 0;
+
 #ifdef WITH_GETLINE
-  while ((buf = fgetline (fp)) != NULL) {
+  while ((buf = gfile_getline (fh)) != NULL) {
 #else
-  while (fgets (buf, LINE_BUFFER, fp) != NULL) {
+  while (gfile_gets (buf, LINE_BUFFER, fh) != NULL) {
 #endif
     pthread_mutex_lock (&gdns_thread.mutex);
     if ((parse_line (glog, buf, 0, &logitem)) == 0 && logitem != NULL)
@@ -790,10 +919,12 @@ parse_tail_follow (GLog *glog, FILE *fp) {
       logitem = NULL;
     }
     pthread_mutex_unlock (&gdns_thread.mutex);
+
     glog->bytes += strlen (buf);
 #ifdef WITH_GETLINE
     free (buf);
 #endif
+
     /* If the ingress rate is greater than MAX_BATCH_LINES,
      * then we break and allow to re-render the UI */
     if (++glog->read % MAX_BATCH_LINES == 0)
@@ -802,7 +933,7 @@ parse_tail_follow (GLog *glog, FILE *fp) {
 }
 
 static void
-verify_inode (FILE *fp, GLog *glog) {
+verify_inode (GFileHandle *fh, GLog *glog) {
   struct stat fdstat;
 
   if (stat (glog->props.filename, &fdstat) == -1)
@@ -810,15 +941,45 @@ verify_inode (FILE *fp, GLog *glog) {
            strerror (errno));
 
   glog->props.size = fdstat.st_size;
+
   /* Either the log got smaller, probably was truncated so start reading from 0
    * and reset snippet.
    * If the log changed its inode, more likely the log was rotated, so we set
    * the initial snippet for the new log for future iterations */
   if (fdstat.st_ino != glog->props.inode || glog->snippet[0] == '\0' || 0 == glog->props.size) {
     glog->length = glog->bytes = 0;
-    set_initial_persisted_data (glog, fp, glog->props.filename);
+    set_initial_persisted_data (glog, fh, glog->props.filename);
   }
+
   glog->props.inode = fdstat.st_ino;
+}
+
+/* Check if a file is gzipped by examining magic bytes or extension
+ * Returns 1 if gzipped, 0 otherwise */
+static int
+is_gzipped_file_check (const char *filename) {
+  FILE *fp;
+  unsigned char magic[2];
+  int result = 0;
+  size_t len;
+
+  /* Quick check: does it end in .gz? */
+  len = strlen (filename);
+  if (len > 3 && strcmp (filename + len - 3, ".gz") == 0)
+    return 1;
+
+  /* Double-check by reading magic bytes */
+  if ((fp = fopen (filename, "rb")) == NULL)
+    return 0;
+
+  if (fread (magic, 1, 2, fp) == 2) {
+    /* gzip magic number is 0x1f 0x8b */
+    if (magic[0] == 0x1f && magic[1] == 0x8b)
+      result = 1;
+  }
+
+  fclose (fp);
+  return result;
 }
 
 /* Process appended log data
@@ -827,19 +988,38 @@ verify_inode (FILE *fp, GLog *glog) {
  * If log file changed, 1 is returned. */
 static int
 perform_tail_follow (GLog *glog) {
-  FILE *fp = NULL;
+  GFileHandle *fh = NULL;
   char buf[READ_BYTES + 1] = { 0 };
   uint16_t len = 0;
   uint64_t length = 0;
 
   if (glog->props.filename[0] == '-' && glog->props.filename[1] == '\0') {
-    parse_tail_follow (glog, glog->pipe);
-    /* did we read something from the pipe? */
-    if (0 == glog->bytes)
+    /* For stdin pipe, we need to wrap the FILE* into a GFileHandle */
+    fh = calloc (1, sizeof (GFileHandle));
+    if (!fh)
       return 0;
+    fh->fp = glog->pipe;
+#ifdef HAVE_ZLIB
+    fh->is_gzipped = 0;
+    fh->gzfp = NULL;
+#endif
 
+    parse_tail_follow (glog, fh);
+
+    /* did we read something from the pipe? */
+    if (0 == glog->bytes) {
+      free (fh);
+      return 0;
+    }
     glog->length += glog->bytes;
+    free (fh);
     goto out;
+  }
+
+  /* Skip tailing gzipped files - they are static archives and should not be monitored
+   * for changes in real-time mode. Only regular log files should be tailed. */
+  if (is_gzipped_file_check (glog->props.filename)) {
+    return 0;
   }
 
   length = file_size (glog->props.filename);
@@ -850,17 +1030,17 @@ perform_tail_follow (GLog *glog) {
   if (length == glog->length)
     return 0;
 
-  if (!(fp = fopen (glog->props.filename, "r")))
+  if (!(fh = gfile_open (glog->props.filename, "r")))
     FATAL ("Unable to read the specified log file '%s'. %s", glog->props.filename,
            strerror (errno));
 
-  verify_inode (fp, glog);
+  verify_inode (fh, glog);
 
   len = MIN (glog->snippetlen, length);
   /* This is not ideal, but maybe the only reliable way to know if the
    * current log looks different than our first read/parse */
-  if ((fread (buf, len, 1, fp)) != 1 && ferror (fp))
-    FATAL ("Unable to fread the specified log file '%s'", glog->props.filename);
+  if ((gfile_read (buf, len, 1, fh)) != 1 && gfile_error (fh))
+    FATAL ("Unable to read the specified log file '%s'", glog->props.filename);
 
   /* For the case where the log got larger since the last iteration, we attempt
    * to compare the first READ_BYTES against the READ_BYTES we had since the last
@@ -869,9 +1049,10 @@ perform_tail_follow (GLog *glog) {
   if (glog->snippet[0] != '\0' && buf[0] != '\0' && memcmp (glog->snippet, buf, len) != 0)
     glog->length = glog->bytes = 0;
 
-  if (!fseeko (fp, glog->length, SEEK_SET))
-    parse_tail_follow (glog, fp);
-  fclose (fp);
+  if (!gfile_seek (fh, glog->length, SEEK_SET))
+    parse_tail_follow (glog, fh);
+
+  gfile_close (fh);
 
   glog->length += glog->bytes;
 
@@ -883,7 +1064,6 @@ perform_tail_follow (GLog *glog) {
   }
 
 out:
-
   return 1;
 }
 
@@ -1016,6 +1196,42 @@ term_tail_logs (Logs *logs) {
   }
 }
 
+static int
+cycle_metric (GScroll *scroll, GHolder *holders, GModule mod, int direction) {
+  int current_metric, found = 0, attempts = 0;
+  int available_metrics[CHART_METRIC_COUNT];
+  int num_available = get_available_metrics (mod, available_metrics);
+
+  if (num_available == 0)
+    return 0;
+
+  current_metric = scroll->module[mod].current_metric;
+
+  while (attempts < CHART_METRIC_COUNT && !found) {
+    if (direction > 0)
+      current_metric = (current_metric + 1) % CHART_METRIC_COUNT;
+    else
+      current_metric = (current_metric - 1 + CHART_METRIC_COUNT) % CHART_METRIC_COUNT;
+
+    for (int i = 0; i < num_available; i++) {
+      if (available_metrics[i] == current_metric) {
+        if (metric_has_data (&holders[mod], current_metric)) {
+          found = 1;
+          break;
+        }
+      }
+    }
+    attempts++;
+  }
+
+  if (found) {
+    scroll->module[mod].current_metric = current_metric;
+    return 1;
+  }
+
+  return 0;
+}
+
 /* Interfacing with the keyboard */
 static void
 get_keys (Logs *logs) {
@@ -1054,102 +1270,26 @@ get_keys (Logs *logs) {
       sigaction (SIGINT, &oldact, NULL);
       render_screens (offset);
       break;
-    case 49:   /* 1 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, VISITORS) == 0)
-        render_screens (offset);
-      break;
-    case 50:   /* 2 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, REQUESTS) == 0)
-        render_screens (offset);
-      break;
+    case 49:   /* 1 - jump to first panel */
+    case 50:   /* 2 - jump to second panel */
     case 51:   /* 3 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, REQUESTS_STATIC) == 0)
-        render_screens (offset);
-      break;
     case 52:   /* 4 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, NOT_FOUND) == 0)
-        render_screens (offset);
-      break;
     case 53:   /* 5 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, HOSTS) == 0)
-        render_screens (offset);
-      break;
     case 54:   /* 6 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, OS) == 0)
-        render_screens (offset);
-      break;
     case 55:   /* 7 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, BROWSERS) == 0)
-        render_screens (offset);
-      break;
     case 56:   /* 8 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, VISIT_TIMES) == 0)
-        render_screens (offset);
-      break;
     case 57:   /* 9 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, VIRTUAL_HOSTS) == 0)
-        render_screens (offset);
-      break;
-    case 48:   /* 0 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, REFERRERS) == 0)
-        render_screens (offset);
-      break;
-    case 33:   /* shift + 1 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, REFERRING_SITES) == 0)
-        render_screens (offset);
-      break;
-    case 64:   /* shift + 2 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, KEYPHRASES) == 0)
-        render_screens (offset);
-      break;
-    case 35:   /* Shift + 3 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, STATUS_CODES) == 0)
-        render_screens (offset);
-      break;
-    case 36:   /* Shift + 4 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, REMOTE_USER) == 0)
-        render_screens (offset);
-      break;
-    case 37:   /* Shift + 5 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, CACHE_STATUS) == 0)
-        render_screens (offset);
-      break;
-#ifdef HAVE_GEOLOCATION
-    case 94:   /* Shift + 6 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, GEO_LOCATION) == 0)
-        render_screens (offset);
-      break;
-    case 38:   /* Shift + 7 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, ASN) == 0)
-        render_screens (offset);
-      break;
-#endif
-    case 42:   /* Shift + 7 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, MIME_TYPE) == 0)
-        render_screens (offset);
-      break;
-    case 40:   /* Shift + 8 */
-      /* reset expanded module */
-      if (set_module_to (&gscroll, TLS_TYPE) == 0)
-        render_screens (offset);
+    case 48:   /* 0 - jump to tenth panel */
+      {
+        int panel_idx = (c == 48) ? 9 : (c - 49); /* 0 = 10th panel (index 9) */
+        int num_modules = get_num_modules ();
+
+        if (panel_idx < num_modules) {
+          GModule target = module_list[panel_idx];
+          if (set_module_to (&gscroll, target) == 0)
+            render_screens (offset);
+        }
+      }
       break;
     case 9:    /* TAB */
       /* reset expanded module */
@@ -1165,11 +1305,11 @@ get_keys (Logs *logs) {
       break;
     case 'g':  /* g = top */
       scroll_to_first_line ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
       break;
     case 'G':  /* G = down */
       scroll_to_last_line ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
       break;
       /* expand dashboard module */
     case KEY_RIGHT:
@@ -1180,12 +1320,24 @@ get_keys (Logs *logs) {
     case 111:  /* O */
     case KEY_ENTER:
       expand_current_module ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
+      break;
+    case '+':  /* expand selected item's children */
+      if (gscroll.expanded) {
+        toggle_selected_item_expand (1);
+        display_content (main_win, dash, &gscroll, holder);
+      }
+      break;
+    case '-':  /* collapse selected item's children */
+      if (gscroll.expanded) {
+        toggle_selected_item_expand (0);
+        display_content (main_win, dash, &gscroll, holder);
+      }
       break;
     case KEY_DOWN: /* scroll main dashboard */
       if ((gscroll.dash + main_win_height) < dash->total_alloc) {
         gscroll.dash++;
-        display_content (main_win, dash, &gscroll);
+        display_content (main_win, dash, &gscroll, holder);
       }
       break;
     case KEY_MOUSE: /* handles mouse events */
@@ -1194,28 +1346,28 @@ get_keys (Logs *logs) {
       break;
     case 106:  /* j - DOWN expanded module */
       scroll_down_expanded_module ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
       break;
       /* scroll up main_win */
     case KEY_UP:
       if (gscroll.dash > 0) {
         scroll_up_dashboard ();
-        display_content (main_win, dash, &gscroll);
+        display_content (main_win, dash, &gscroll, holder);
       }
       break;
     case 2:    /* ^ b - page up */
     case 339:  /* ^ PG UP */
       page_up_module ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
       break;
     case 6:    /* ^ f - page down */
     case 338:  /* ^ PG DOWN */
       page_down_module ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
       break;
     case 107:  /* k - UP expanded module */
       scroll_up_expanded_module ();
-      display_content (main_win, dash, &gscroll);
+      display_content (main_win, dash, &gscroll, holder);
       break;
     case 'n':
       if (search_next_match (search) == 0)
@@ -1227,6 +1379,58 @@ get_keys (Logs *logs) {
         render_screens (offset);
       sigaction (SIGINT, &oldact, NULL);
       break;
+    case 'p':  /* reorder panels */
+    case 'P':
+      sigaction (SIGINT, &act, &oldact);
+      load_panels_win (main_win);
+      sigaction (SIGINT, &oldact, NULL);
+
+      /* Rebuild dashboard with new panel order */
+      pthread_mutex_lock (&gdns_thread.mutex);
+      free_holder (&holder);
+      pthread_cond_broadcast (&gdns_thread.not_empty);
+      pthread_mutex_unlock (&gdns_thread.mutex);
+
+      free_dashboard (dash);
+      allocate_holder ();
+      allocate_data ();
+      render_screens (offset);
+      break;
+    case 'r':  /* toggle reverse bars */
+    case 'R':
+      {
+        GModule mod = gscroll.current;
+        gscroll.module[mod].reverse_bars = !gscroll.module[mod].reverse_bars;
+        display_content (main_win, dash, &gscroll, holder);
+      }
+      break;
+    case 'm':  /* cycle metrics forward */
+      {
+        GModule mod = gscroll.current;
+        if (cycle_metric (&gscroll, holder, mod, +1))
+          display_content (main_win, dash, &gscroll, holder);
+      }
+      break;
+
+    case 'M':  /* cycle metrics backward */
+      {
+        GModule mod = gscroll.current;
+        if (cycle_metric (&gscroll, holder, mod, -1))
+          display_content (main_win, dash, &gscroll, holder);
+      }
+      break;
+      break;
+    case 'l':  /* toggle log scale */
+    case 'L':
+      {
+        GModule mod = gscroll.current;
+        gscroll.module[mod].use_log_scale = !gscroll.module[mod].use_log_scale;
+
+        /* Refresh display whether expanded or collapsed */
+        display_content (main_win, dash, &gscroll, holder);
+      }
+      break;
+
     case 99:   /* c */
       if (conf.no_color)
         break;
@@ -1278,10 +1482,6 @@ static void
 init_processing (void) {
   /* perform some additional checks before parsing panels */
   verify_panels ();
-  /* initialize storage */
-  pthread_mutex_lock (&parsing_spinner->mutex);
-  parsing_spinner->label = "SETTING UP STORAGE";
-  pthread_mutex_unlock (&parsing_spinner->mutex);
 
   init_storage ();
   insert_methods_protocols ();
@@ -1664,7 +1864,6 @@ main (int argc, char **argv) {
 
   /* main processing event */
   time (&start_proc);
-  parsing_spinner->label = "PARSING";
 
   if ((ret = parse_log (logs, 0))) {
     end_spinner ();
@@ -1674,10 +1873,6 @@ main (int argc, char **argv) {
   if (conf.stop_processing)
     goto clean;
   logs->offset = *logs->processed;
-
-  pthread_mutex_lock (&parsing_spinner->mutex);
-  parsing_spinner->label = "RENDERING";
-  pthread_mutex_unlock (&parsing_spinner->mutex);
 
   parse_initial_sort ();
   allocate_holder ();

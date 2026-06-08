@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -158,5 +158,10 @@ void set_module_totals (GPercTotals * totals);
 void uncount_invalid (GLog * glog);
 void uncount_processed (GLog * glog);
 GMetrics *new_gmetrics (void);
+
+#ifdef HAVE_GEOLOCATION
+const char *get_continent_for_country (const char *country);
+void free_country_continent_map (void);
+#endif
 
 #endif // for #ifndef GSTORAGE_H

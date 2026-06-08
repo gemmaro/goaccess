@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -106,6 +106,12 @@ static const char *const codes[600] = {
   [561] = STATUS_CODE_561,
   [598] = STATUS_CODE_598, STATUS_CODE_599,
 };
+
+const char *
+basename_only (const char *path) {
+  const char *base = strrchr (path, '/');
+  return base ? base + 1 : path;
+}
 
 /* Return part of a string
  *

@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -84,6 +84,7 @@
 #define MTRC_VISITORS_SHORT_LBL  _( "Vis.")
 #define MTRC_VISITORS_PERC_LBL   _( "v%")
 #define MTRC_BW_LBL              _( "Tx. Amount")
+#define MTRC_BW_PERC_LBL         _( "tx%")
 #define MTRC_AVGTS_LBL           _( "Avg. T.S.")
 #define MTRC_CUMTS_LBL           _( "Cum. T.S.")
 #define MTRC_MAXTS_LBL           _( "Max. T.S.")
@@ -317,7 +318,7 @@
 #define ERR_PANEL_DISABLED             \
   _("'%1$s' panel is disabled")
 #define ERR_NO_DATA_PASSED             \
-  _("No input data was provided nor there's data to restore.")
+  _("No input data was provided nor was there data to restore.")
 #define ERR_LOG_REALLOC_FAILURE_MSG    \
   _("Unable to allocate memory for a log instance.")
 #define ERR_LOG_NOT_FOUND_MSG          \

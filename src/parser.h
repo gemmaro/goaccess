@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,8 +54,12 @@
 
 
 #include <stdio.h>
+#include <stdatomic.h>
+#include <pthread.h>
+
 #include "commons.h"
 #include "gslist.h"
+#include "fileio.h"
 
 typedef struct GLogProp_ {
   char *filename;               /* filename including path */
@@ -71,6 +75,7 @@ typedef struct GLogItem_ {
   char *browser_type;
   char *continent;
   char *country;
+  char *city;
   char *asn;
   char *date;
   char *host;
@@ -126,25 +131,22 @@ typedef struct GLastParse_ {
 /* Overall parsed log properties */
 typedef struct GLog_ {
   uint8_t piping:1;
-  uint8_t log_erridx;
-  uint32_t read;                /* lines read/parsed */
+  _Atomic uint8_t log_erridx;
+  _Atomic uint32_t read;        /* lines read/parsed */
   uint64_t bytes;               /* bytes read on each iteration */
   uint64_t length;              /* length read from the log so far */
-  uint64_t invalid;             /* invalid lines for this log */
+  _Atomic uint64_t invalid;     /* invalid lines for this log */
   uint64_t processed;           /* lines proceeded for this log */
 
-  /* file test for persisted/restored data */
   uint16_t snippetlen;
   char snippet[READ_BYTES + 1];
-
   GLastParse lp;
   GLogProp props;
   struct tm start_time;
-
   char *fname_as_vhost;
   char **errors;
-
   FILE *pipe;
+  pthread_mutex_t error_mutex;  // Add mutex for error array
 } GLog;
 
 /* Container for all logs */
@@ -161,7 +163,7 @@ typedef struct Logs_ {
 
 /* Pthread jobs for multi-thread */
 typedef struct GJob_ {
-  uint32_t cnt;
+  _Atomic uint32_t cnt;         // Make atomic
   int p, test, dry_run, running;
   GLog *glog;
   GLogItem **logitems;
@@ -194,12 +196,12 @@ typedef struct GRawData_ {
 
 
 char *extract_by_delim (const char **str, const char *end);
-char *fgetline (FILE * fp);
+char *gfile_getline (GFileHandle * fh);
 char **test_format (Logs * logs, int *len);
 int parse_line (GLog * glog, char *line, int dry_run, GLogItem ** logitem_out);
 int parse_log (Logs * logs, int dry_run);
 int set_glog (Logs * logs, const char *filename);
-int set_initial_persisted_data (GLog * glog, FILE * fp, const char *fn);
+int set_initial_persisted_data (GLog * glog, GFileHandle * fh, const char *fn);
 int set_log (Logs * logs, const char *value);
 void free_glog (GLogItem * logitem);
 void free_logerrors (GLog * glog);

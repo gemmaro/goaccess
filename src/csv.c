@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -129,7 +129,7 @@ print_csv_metric_block (FILE *fp, GMetrics *nmetrics) {
 
   /* bandwidth */
   if (conf.bandwidth) {
-    fprintf (fp, "\"%" PRIu64 "\",", nmetrics->bw.nbw);
+    fprintf (fp, "\"%" PRIu64 "\",", nmetrics->nbw);
     fprintf (fp, "\"%4.2f%%\",", nmetrics->bw_perc);
   }
 
@@ -161,12 +161,12 @@ print_csv_metric_block (FILE *fp, GMetrics *nmetrics) {
  * On error, it exits early.
  * On success, outputs item value. */
 static void
-print_csv_sub_items (FILE *fp, GHolder *h, int idx, GPercTotals totals) {
+print_csv_sub_items (FILE *fp, GSubList *sub_list, GModule module, int parent_idx,
+                     GPercTotals totals, int depth) {
   GMetrics *nmetrics;
-  GSubList *sub_list = h->items[idx].sub_list;
   GSubItem *iter;
 
-  int i = 0;
+  uint32_t i = 0;
 
   if (sub_list == NULL)
     return;
@@ -174,12 +174,18 @@ print_csv_sub_items (FILE *fp, GHolder *h, int idx, GPercTotals totals) {
   for (iter = sub_list->head; iter; iter = iter->next, i++) {
     set_data_metrics (iter->metrics, &nmetrics, totals);
 
-    fprintf (fp, "\"%d\",", i); /* idx */
-    fprintf (fp, "\"%d\",", idx); /* parent idx */
-    fprintf (fp, "\"%s\",", module_to_id (h->module));
+    fprintf (fp, "\"%u\",", i); /* idx */
+    fprintf (fp, "\"%d\",", parent_idx); /* parent idx */
+    fprintf (fp, "\"%s\",", module_to_id (module));
+    fprintf (fp, "\"%d\",", depth); /* depth */
 
     /* output metrics */
     print_csv_metric_block (fp, nmetrics);
+
+    /* recurse into nested sub-items */
+    if (iter->sub_list != NULL)
+      print_csv_sub_items (fp, iter->sub_list, module, i, totals, depth + 1);
+
     free (nmetrics);
   }
 }
@@ -190,12 +196,12 @@ print_csv_sub_items (FILE *fp, GHolder *h, int idx, GPercTotals totals) {
 static void
 print_csv_data (FILE *fp, GHolder *h, GPercTotals totals) {
   GMetrics *nmetrics;
-  int i;
+  uint32_t i;
 
   for (i = 0; i < h->idx; i++) {
     set_data_metrics (h->items[i].metrics, &nmetrics, totals);
 
-    fprintf (fp, "\"%d\",", i); /* idx */
+    fprintf (fp, "\"%u\",", i); /* idx */
     fprintf (fp, ","); /* no parent */
     fprintf (fp, "\"%s\",", module_to_id (h->module));
 
@@ -203,7 +209,7 @@ print_csv_data (FILE *fp, GHolder *h, GPercTotals totals) {
     print_csv_metric_block (fp, nmetrics);
 
     if (h->sub_items_size)
-      print_csv_sub_items (fp, h, i, totals);
+      print_csv_sub_items (fp, h->items[i].sub_list, h->module, i, totals, 1);
 
     free (nmetrics);
   }

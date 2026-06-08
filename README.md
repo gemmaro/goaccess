@@ -2,14 +2,18 @@ GoAccess [![C build](https://github.com/allinurl/goaccess/actions/workflows/buil
 ========
 
 ## What is it? ##
-GoAccess is an open source **real-time web log analyzer** and interactive
-viewer that runs in a **terminal** on &ast;nix systems or through your
-**browser**. It provides **fast** and valuable HTTP statistics for system
-administrators that require a visual server report on the fly.
+GoAccess is an open source, real-time web log analyzer and interactive viewer
+that runs in a terminal on *nix systems or directly in your browser. Designed
+with system administrators, DevOps engineers, and security professionals in
+mind, it delivers fast, actionable HTTP statistics and visual server reports on
+the fly. GoAccess parses your web server logs in real time and presents the
+data directly in the terminal or via a live HTML dashboard, making it easy to
+monitor traffic, detect anomalies, and troubleshoot issues instantly.
+
 More info at: [https://goaccess.io](https://goaccess.io/?src=gh).
 
-[![GoAccess Terminal Dashboard](https://goaccess.io/images/goaccess-real-time-term-gh.png?2022011901)](https://goaccess.io/)
-[![GoAccess HTML Dashboard](https://goaccess.io/images/goaccess-real-time-html-gh.png?202201190)](https://rt.goaccess.io/?src=gh)
+[![GoAccess Terminal Dashboard](https://goaccess.io/images/goaccess-real-time-term-gh-2026-1.png?2026021201)](https://goaccess.io/)
+[![GoAccess HTML Dashboard](https://goaccess.io/images/goaccess-real-time-html-gh-2026.png?2026021201)](https://rt.goaccess.io/?src=gh)
 
 ## Features ##
 GoAccess parses the specified web log file and outputs the data to the X
@@ -92,6 +96,10 @@ is to quickly analyze and view web server statistics in real time without
 needing to use your browser (_great if you want to do a quick analysis of your
 access log via SSH, or if you simply love working in the terminal_).
 
+It also serves as a practical tool for security monitoring, making it easy to
+spot suspicious activity, unusual traffic patterns, brute-force attempts,
+scanners, bots, and anomalous requests directly from your logs.
+
 While the terminal output is the default output, it has the capability to
 generate a complete, self-contained, real-time [**`HTML`**](https://rt.goaccess.io/?src=gh)
 report, as well as a [**`JSON`**](https://goaccess.io/json?src=gh), and
@@ -110,10 +118,10 @@ GoAccess can be compiled and used on *nix systems.
 
 Download, extract and compile GoAccess with:
 
-    $ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz
-    $ tar -xzvf goaccess-1.9.4.tar.gz
-    $ cd goaccess-1.9.4/
-    $ ./configure --enable-utf8 --enable-geoip=mmdb
+    $ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz
+    $ tar -xzvf goaccess-1.10.2.tar.gz
+    $ cd goaccess-1.10.2/
+    $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib
     $ make
     # make install
 
@@ -438,7 +446,7 @@ priority, we can run it as:
 and if you don't want to install it on your server, you can still run it from
 your local machine!
 
-    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -
+    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess - --log-format=COMBINED
 
 **Note:** SSH requires `-n` so GoAccess can read from stdin. Also, make sure to
 use SSH keys for authentication as it won't work if a passphrase is required.
@@ -502,7 +510,5 @@ feedback. Feel free to use the GitHub issue tracker and pull requests to
 discuss and submit code changes.
 
 You can contribute to our translations by editing the .po files direct on GitHub or using the visual interface [inlang.com](https://inlang.com/editor/github.com/allinurl/goaccess)
-
-[![translation badge](https://inlang.com/badge?url=github.com/allinurl/goaccess)](https://inlang.com/editor/github.com/allinurl/goaccess?ref=badge)
 
 Enjoy!

@@ -50,6 +50,7 @@ window.GoAccess = window.GoAccess || {
 		this.AppPrefs = {
 			'autoHideTables': true,
 			'layout': cw > 2560 ? 'wide' : 'horizontal',
+			'panelOrder': [],
 			'perPage': 7,
 			'theme': (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'darkPurple' : 'bright',
 			'hiddenPanels': [],
@@ -77,11 +78,30 @@ window.GoAccess = window.GoAccess || {
 
 	handleLocalStorage: function () {
 		// Check if the browser supports localStorage
-		if (GoAccess.Util.hasLocalStorage()) {
-			// Retrieve the AppPrefs object stored in localStorage
+		if (!GoAccess.Util.hasLocalStorage()) {
+			return;
+		}
+
+		try {
 			const ls = JSON.parse(localStorage.getItem('AppPrefs'));
+			if (!ls || typeof ls !== 'object') {
+				return;  // Invalid data, use defaults
+			}
+
+			// Validate critical properties maintain their expected types
+			if (ls.hiddenPanels && !Array.isArray(ls.hiddenPanels)) {
+				throw new Error('hiddenPanels is not an array');
+			}
+			if (ls.panelOrder && !Array.isArray(ls.panelOrder)) {
+				throw new Error('panelOrder is not an array');
+			}
+
 			// Merge stored preferences into the current application preferences
 			this.AppPrefs = GoAccess.Util.merge(this.AppPrefs, ls);
+		} catch (e) {
+			// Old or corrupted preferences detected, discard them
+			localStorage.removeItem('AppPrefs');
+			// AppPrefs retains new defaults
 		}
 	},
 
@@ -372,9 +392,11 @@ GoAccess.Util = {
 
 	// hash a string
 	hashCode: function (s) {
+		if (s == null) s = '';
+		else if (typeof s !== 'string') s = JSON.stringify(s);
 		return (s.split('').reduce(function (a, b) {
 			a = ((a << 5) - a) + b.charCodeAt(0);
-			return a&a;
+			return a & a;
 		}, 0) >>> 0).toString(16);
 	},
 
@@ -479,7 +501,7 @@ GoAccess.Util = {
 			}
 		}
 
-		return value == 0 ? String(val) : (val === undefined ? '—' : val);
+		return value == 0 ? String(val) : (val === undefined ? '-' : val);
 	},
 
 	isPanelHidden: function (panel) {
@@ -563,6 +585,35 @@ GoAccess.Util = {
 
 		delete GoAccess.AppCharts[panel];
 		GoAccess.OverallStats.initialize();
+		GoAccess.Panels.initialize();
+		GoAccess.Charts.initialize();
+		GoAccess.Tables.initialize();
+	},
+
+	reorderPanels: function(fromIndex, toIndex) {
+		var order = GoAccess.AppPrefs.panelOrder;
+
+		// Ensure we have a valid order array
+		if (!order || order.length === 0) {
+			console.error('Panel order not initialized');
+			return;
+		}
+
+		// Validate indices
+		if (fromIndex < 0 || fromIndex >= order.length ||
+			toIndex < 0 || toIndex >= order.length) {
+			console.error('Invalid drag indices', fromIndex, toIndex);
+			return;
+		}
+
+		// Perform the reorder
+		var item = order.splice(fromIndex, 1)[0];
+		order.splice(toIndex, 0, item);
+
+		// Save preferences
+		GoAccess.setPrefs();
+
+		// Re-render panels in new order
 		GoAccess.Panels.initialize();
 		GoAccess.Charts.initialize();
 		GoAccess.Tables.initialize();
@@ -722,6 +773,103 @@ GoAccess.Nav = {
 				item.classList.toggle('active');
 			}.bind(this);
 		}.bind(this));
+
+		$$('.drag-handle', function (item) {
+			var li = item.closest('li');
+
+			// Don't make the overall stats draggable
+			var link = li.querySelector('a');
+			if (link && link.getAttribute('href') === '#') {
+				return; // Skip overall stats item
+			}
+
+			li.setAttribute('draggable', 'true');
+
+			li.ondragstart = function(e) {
+				e.dataTransfer.effectAllowed = 'move';
+				e.dataTransfer.setData('text/html', this.innerHTML);
+				this.classList.add('dragging');
+
+				// Get the actual panel key from the link
+				var panelLink = this.querySelector('a');
+				var panelKey = panelLink ? panelLink.getAttribute('href').substring(1) : '';
+				e.dataTransfer.setData('panelKey', panelKey);
+
+				// Store the index in the ordered list (excluding overall)
+				var allItems = Array.from(this.parentNode.children);
+				var draggableItems = allItems.filter(function(item) {
+					var itemLink = item.querySelector('a');
+					return itemLink && itemLink.getAttribute('href') !== '#';
+				});
+				var fromIndex = draggableItems.indexOf(this);
+				e.dataTransfer.setData('index', fromIndex);
+			};
+
+			li.ondragend = function(e) {
+				this.classList.remove('dragging');
+				$$('.nav-list li', function(item) {
+					item.classList.remove('drag-over');
+				});
+			};
+
+			li.ondragover = function(e) {
+				e.preventDefault();
+				e.dataTransfer.dropEffect = 'move';
+
+				// Only allow drop on other draggable items
+				var link = this.querySelector('a');
+				if (link && link.getAttribute('href') !== '#') {
+					return false;
+				}
+				return true;
+			};
+
+			li.ondragenter = function(e) {
+				e.preventDefault();
+				// Only highlight if it's a valid drop target
+				var link = this.querySelector('a');
+				if (link && link.getAttribute('href') !== '#') {
+					this.classList.add('drag-over');
+				}
+			};
+
+			li.ondragleave = function(e) {
+				// Check if we're actually leaving the element (not just entering a child)
+				if (e.target === this) {
+					this.classList.remove('drag-over');
+				}
+			};
+
+			li.ondrop = function(e) {
+				e.stopPropagation();
+				e.preventDefault();
+
+				// Don't allow dropping on overall stats
+				var targetLink = this.querySelector('a');
+				if (targetLink && targetLink.getAttribute('href') === '#') {
+					return false;
+				}
+
+				var fromIndex = parseInt(e.dataTransfer.getData('index'));
+
+				// Calculate toIndex from draggable items only
+				var allItems = Array.from(this.parentNode.children);
+				var draggableItems = allItems.filter(function(item) {
+					var itemLink = item.querySelector('a');
+					return itemLink && itemLink.getAttribute('href') !== '#';
+				});
+				var toIndex = draggableItems.indexOf(this);
+
+				if (fromIndex !== toIndex && fromIndex !== -1 && toIndex !== -1) {
+					GoAccess.Util.reorderPanels(fromIndex, toIndex);
+					// Re-render the menu to show new order
+					GoAccess.Nav.renderMenu();
+				}
+
+				this.classList.remove('drag-over');
+				return false;
+			};
+		}.bind(this));
 	},
 
 	downloadJSON: function (e) {
@@ -831,12 +979,13 @@ GoAccess.Nav = {
 	},
 
 	getItems: function () {
-		var ui = GoAccess.getPanelUI(), menu = [];
+		var ui = GoAccess.getPanelUI(), menu = [], panels = [];
+
+		// Collect all valid panels
 		for (var panel in ui) {
 			if (GoAccess.Util.isPanelValid(panel))
 				continue;
-			// Push valid panels to our navigation array
-			menu.push({
+			panels.push({
 				'current': window.location.hash.substr(1) == panel,
 				'head': ui[panel].head,
 				'key': panel,
@@ -844,7 +993,32 @@ GoAccess.Nav = {
 				'hidden': GoAccess.Util.isPanelHidden(panel)
 			});
 		}
-		return menu;
+
+		// Initialize panel order if empty
+		if (!GoAccess.AppPrefs.panelOrder || GoAccess.AppPrefs.panelOrder.length === 0) {
+			GoAccess.AppPrefs.panelOrder = panels.map(function(p) { return p.key; });
+			GoAccess.setPrefs();
+		}
+
+		// Sort panels according to saved order
+		var orderedPanels = [];
+		var order = GoAccess.AppPrefs.panelOrder;
+
+		// First add panels in the saved order
+		for (var i = 0; i < order.length; i++) {
+			var panel = panels.find(function(p) { return p.key === order[i]; });
+			if (panel) orderedPanels.push(panel);
+		}
+
+		// Then add any new panels that aren't in the saved order
+		for (var j = 0; j < panels.length; j++) {
+			if (!order.includes(panels[j].key)) {
+				orderedPanels.push(panels[j]);
+				GoAccess.AppPrefs.panelOrder.push(panels[j].key);
+			}
+		}
+
+		return orderedPanels;
 	},
 
 	setPerPage: function (e) {
@@ -1174,16 +1348,46 @@ GoAccess.Panels = {
 	// structure.
 	renderPanels: function () {
 		var ui = GoAccess.getPanelUI(), idx = 0, row = null, col = null;
+		var order = GoAccess.AppPrefs.panelOrder || [];
 
 		$('#panels').innerHTML = '';
+
+		// If no order is set, create default order
+		if (order.length === 0) {
+			for (var panel in ui) {
+				if (!GoAccess.Util.isPanelValid(panel) && !GoAccess.Util.isPanelHidden(panel)) {
+					order.push(panel);
+				}
+			}
+			GoAccess.AppPrefs.panelOrder = order;
+			GoAccess.setPrefs();
+		}
+
+		// Render panels in the specified order
+		for (var i = 0; i < order.length; i++) {
+			var panel = order[i];
+			if (GoAccess.Util.isPanelValid(panel) || GoAccess.Util.isPanelHidden(panel))
+				continue;
+
+			row = this.createRow(row, idx++);
+			col = this.createCol(row);
+			this.renderPanel(panel, ui[panel], col);
+		}
+
+		// Render any new panels not in the order array
 		for (var panel in ui) {
 			if (GoAccess.Util.isPanelValid(panel) || GoAccess.Util.isPanelHidden(panel))
 				continue;
-			row = this.createRow(row, idx++);
-			col = this.createCol(row);
-			// Render panel given a user interface definition
-			this.renderPanel(panel, ui[panel], col);
+			if (!order.includes(panel)) {
+				row = this.createRow(row, idx++);
+				col = this.createCol(row);
+				this.renderPanel(panel, ui[panel], col);
+				order.push(panel);
+			}
 		}
+
+		GoAccess.AppPrefs.panelOrder = order;
+		GoAccess.setPrefs();
 	},
 
 	initialize: function () {
@@ -1212,8 +1416,11 @@ GoAccess.Charts = {
 		// Grab ui plot data for the selected panel
 		var plot = GoAccess.Util.getProp(GoAccess.AppState, panel + '.plot');
 
-		// Grab the data for the selected panel
-		data = data || this.processChartData(GoAccess.getPanelData(panel).data);
+		// Grab the data for the selected panel, respecting expanded state
+		if (!data) {
+			var subItems = GoAccess.Tables.getSubItemsData(panel);
+			data = this.processChartData(subItems.length ? subItems : GoAccess.getPanelData(panel).data);
+		}
 		return plot.chartReverse ? data.reverse() : data;
 	},
 
@@ -1290,7 +1497,7 @@ GoAccess.Charts = {
 
 	// Extract an array of objects that D3 can consume to process the chart.
 	// e.g., o = Object {hits: 37402, visitors: 6949, bytes:
-	// 505881789, avgts: 118609, cumts: 4436224010…}
+	// 505881789, avgts: 118609, cumts: 4436224010...}
 	processChartData: function (data) {
 		var out = [];
 		for (var i = 0; i < data.length; ++i)
@@ -1323,6 +1530,7 @@ GoAccess.Charts = {
 		chart.metric(plotUI['d3']['y0']['key']);
 		chart.opts(plotUI);
 		chart.projectionType(projectionType == 'wmap' ? 'mercator' : 'orthographic');
+		chart.panel(panel);
 
 		return chart;
 	},
@@ -1482,11 +1690,8 @@ GoAccess.Charts = {
 
 	// Reload (doesn't redraw) the given chart's data
 	reloadChart: function (chart, panel) {
-		var subItems = GoAccess.Tables.getSubItemsData(panel);
-		var data = (subItems.length ? subItems : GoAccess.getPanelData(panel).data).slice(0);
-
 		d3.select("#chart-" + panel)
-			.datum(this.processChartData(this.getPanelData(panel, data)))
+			.datum(this.getPanelData(panel))
 			.call(chart.width($("#chart-" + panel).offsetWidth))
 			.append("div").attr("class", "chart-tooltip-wrap");
 	},
@@ -1616,71 +1821,123 @@ GoAccess.Tables = {
 	},
 
 	getSubItemsData: function (panel) {
-		var out = [], items = this.chartData[panel];
-		for (var x in items) {
-			if (!items.hasOwnProperty(x))
-				continue;
-			out = out.concat(items[x]);
+		const expanded = GoAccess.Util.getProp(GoAccess.AppState, panel + '.expanded') || {};
+		const fullData = (GoAccess.getPanelData(panel) || {}).data || [];
+
+		let results = [];
+
+		fullData.forEach(function (continent) {
+			const continentKey = GoAccess.Util.hashCode(continent.data);
+			if (!expanded[continentKey]) return;
+			if (!continent.items) return;
+
+			continent.items.forEach(function (country) {
+				const countryKey = GoAccess.Util.hashCode(country.data);
+
+				if (expanded[countryKey] && country.items) {
+					// expanded country -> show e.g., its cities
+					results = results.concat(country.items);
+				} else {
+					// not expanded -> show e.g., country
+					results.push(country);
+				}
+			});
+		});
+
+		return results;
+	},
+
+	addChartData: function (panel, keyPath) {
+		if (!keyPath) return GoAccess.getPanelData(panel).data;
+
+		const parts = keyPath.split('|');
+		let current = GoAccess.getPanelData(panel).data;
+
+		// Traverse the tree to the target node
+		for (const part of parts) {
+			const found = current.find(item => GoAccess.Util.hashCode(item.data) === part);
+			if (!found || !found.items) return [];
+			current = found.items;
 		}
-		return out;
+
+		// Store the current level's items under this exact path
+		GoAccess.Util.setProp(this.chartData, panel + '.' + keyPath, current);
+
+		// For the chart: we return **only the items at the current drill level**
+		// (not all sub-items flattened - that was the old behavior)
+		return current;
 	},
 
-	addChartData: function (panel, key) {
-		var data = this.getDataByKey(panel, key);
-		var path = panel + '.' + key;
+	removeChartData: function (panel, keyPath) {
+		// Remove this specific path
+		const path = panel + '.' + keyPath;
+		if (GoAccess.Util.getProp(this.chartData, path)) {
+			// We don't have deleteProp -> set to null / empty
+			GoAccess.Util.setProp(this.chartData, path, null);
+		}
 
-		if (!data || !data.items)
-			return [];
-		GoAccess.Util.setProp(this.chartData, path, data.items);
+		// Find the deepest remaining expanded path (or fall back to top-level)
+		const expanded = GoAccess.Util.getProp(GoAccess.AppState, panel + '.expanded') || {};
+		let deepestPath = '';
+		let maxDepth = -1;
 
-		return this.getSubItemsData(panel);
-	},
+		for (const k in expanded) {
+			if (expanded[k] !== true) continue;
+			const depth = k.split('|').length;
+			if (depth > maxDepth) {
+				maxDepth = depth;
+				deepestPath = k;
+			}
+		}
 
-	removeChartData: function (panel, key) {
-		if (GoAccess.Util.getProp(this.chartData, panel + '.' + key))
-			delete this.chartData[panel][key];
-
-		if (!this.chartData[panel] || Object.keys(this.chartData[panel]).length == 0)
-			return GoAccess.getPanelData(panel).data;
-
-		return this.getSubItemsData(panel);
+		if (deepestPath) {
+			return GoAccess.Util.getProp(this.chartData, panel + '.' + deepestPath) || GoAccess.getPanelData(panel).data;
+		}
+		return GoAccess.getPanelData(panel).data;
 	},
 
 	isExpanded: function (panel, key) {
-		var path = panel + '.expanded.' + key;
-		return GoAccess.Util.getProp(GoAccess.AppState, path);
+		// getProp returns undefined if path doesn't exist -> treat as not expanded
+		return !!GoAccess.Util.getProp(GoAccess.AppState, panel + '.expanded.' + key);
 	},
 
 	toggleExpanded: function (panel, key) {
-		var path = panel + '.expanded.' + key, ret = true;
+		var path = panel + '.expanded.' + key;
+		var currentlyExpanded = this.isExpanded(panel, key);
 
-		if (this.isExpanded(panel, key)) {
-			delete GoAccess.AppState[panel]['expanded'][key];
+		if (currentlyExpanded) {
+			// Instead of delete -> set to false or null
+			GoAccess.Util.setProp(GoAccess.AppState, path, false);
+			// or: GoAccess.Util.setProp(GoAccess.AppState, path, null);
+			// or even remove the property completely if you prefer (see Option 2)
 		} else {
-			GoAccess.Util.setProp(GoAccess.AppState, path, true), ret = false;
+			GoAccess.Util.setProp(GoAccess.AppState, path, true);
 		}
 
-		return ret;
+		return currentlyExpanded; // returns true if it WAS expanded (now collapsed)
 	},
 
 	// Toggle children rows
 	toggleRow: function (ele) {
-		var hide = false, data = [];
-		var row = ele.parentNode;
-		var panel = row.getAttribute('data-panel'), key = row.getAttribute('data-key');
-		var plotUI = GoAccess.AppCharts[panel].opts();
+		const row = ele.closest('tr');
+		if (!row) return;
 
-		hide = this.toggleExpanded(panel, key);
+		const panel = row.getAttribute('data-panel');
+		let key = row.getAttribute('data-node-key') || row.getAttribute('data-key');
+		if (!key) return;
+
+		// If this is a nested row, we need to build the full path
+		// For simplicity, we'll assume nodeKey is unique enough for now.
+		// If collisions happen, we can later implement full path building.
+
+		const wasExpanded = this.toggleExpanded(panel, key);
+
 		this.renderTable(panel, this.getCurPage(panel));
-		if (!plotUI.redrawOnExpand)
-			return;
 
-		if (!hide) {
-			data = GoAccess.Charts.processChartData(this.addChartData(panel, key));
-		} else {
-			data = GoAccess.Charts.processChartData(this.removeChartData(panel, key));
-		}
-		GoAccess.Charts.drawPlot(panel, plotUI, data);
+		const plotUI = GoAccess.AppCharts[panel]?.opts?.();
+		if (!plotUI || !plotUI.redrawOnExpand) return;
+
+		GoAccess.Charts.reloadChart(GoAccess.AppCharts[panel], panel);
 	},
 
 	// Get current panel page
@@ -1823,26 +2080,29 @@ GoAccess.Tables = {
 
 	// Given a data item object, set all the row cells and return a
 	// table row that the template can consume.
-	renderRow: function (panel, callback, ui, dataItem, idx, subItem, parentId, expanded) {
-		var shadeParent = ((!subItem && idx % 2 != 0) ? 'shaded' : '');
-		var shadeChild = ((parentId % 2 != 0) ? 'shaded' : '');
+	renderRow: function (panel, callback, ui, dataItem, idx, subItem, parentId, expanded, level) {
+		var shade = ((!subItem && idx % 2 !== 0) ? 'shaded' : '') ||
+					(subItem && (parentId % 2 !== 0) ? 'shaded' : '');
+		var hasChildren = !!(dataItem.items && dataItem.items.length > 0);
 		return {
 			'panel'       : panel,
-			'idx'         : !subItem && (String((idx + 1) + this.pageOffSet(panel))),
-			'key'         : !subItem ? GoAccess.Util.hashCode(dataItem.data) : '',
-			'expanded'    : !subItem && expanded,
+			'idx'         : !subItem ? String((idx + 1) + this.pageOffSet(panel)) : '',
+			'key'         : !subItem ? GoAccess.Util.hashCode(String(dataItem.data ?? '')) : '',
+			'nodeKey'     : GoAccess.Util.hashCode(String(dataItem.data ?? '')),
+			'level'       : level || 0,
+			'expanded'    : !!expanded,               // must be boolean
 			'parentId'    : subItem ? String(parentId) : '',
-			'className'   : subItem ? 'child ' + shadeChild : 'parent ' + shadeParent,
-			'hasSubItems' : ui.hasSubItems,
-			'items'       : dataItem.items ? dataItem.items.length : 0,
+			'className'   : (subItem ? 'child' : 'parent') + shade,
+			'hasSubItems' : hasChildren,              // true if has children
+			'items'       : hasChildren ? dataItem.items.length : 0,
 			'cells'       : callback.call(this),
 		};
 	},
 
-	renderRows: function (rows, panel, ui, dataItems, subItem, parentId) {
+	renderRows: function(rows, panel, ui, dataItems, subItem, parentId, level = 0) {
 		subItem = subItem || false;
-		// no data rows
-		if (dataItems.length == 0 && ui.items.length) {
+		level = level || 0; /* no data rows */
+		if (dataItems.length === 0 && ui.items.length) {
 			rows.push({
 				cells: [{
 					className: 'text-center',
@@ -1850,32 +2110,34 @@ GoAccess.Tables = {
 					value: 'No data on this panel.'
 				}]
 			});
+			return;
 		}
-
-		// Iterate over all data items for the given panel and
-		// generate a table row per date item.
-		var cellcb = null;
 		for (var i = 0; i < dataItems.length; ++i) {
-			var dataItem = dataItems[i], data = null, expanded = false;
-			switch(typeof dataItem) {
-			case 'string':
-				data = dataItem;
-				cellcb = function () {
+			var dataItem = dataItems[i];
+			var data = dataItem.data ?? dataItem;
+			var isString = typeof dataItem === 'string';
+			var cellcb;
+			if (isString) {
+				cellcb = function() {
 					return {
 						'colspan': ui.items.length,
 						'value': data
 					};
 				};
-				break;
-			default:
-				data = dataItem.data;
+			} else {
 				cellcb = this.iterUIItems.bind(this, panel, ui.items, dataItem, this.getObjectCell.bind(this));
 			}
-
-			expanded = this.isExpanded(panel, GoAccess.Util.hashCode(data));
-			rows.push(this.renderRow(panel, cellcb, ui, dataItem, i, subItem, parentId, expanded));
-			if (dataItem.items && dataItem.items.length && expanded) {
-				this.renderRows(rows, panel, ui, dataItem.items, true, i, expanded);
+			/* Unique key for this node (important for nested expansion state) */
+			var nodeKey = !isString ? GoAccess.Util.hashCode(String(dataItem.data ?? '')) : null;
+			var expanded = nodeKey && this.isExpanded(panel, nodeKey); /* Build row with indentation level */
+			var row = this.renderRow(panel, cellcb, ui, dataItem, i, subItem, parentId, expanded); /* Add level for CSS indentation */
+			row.level = level;
+			row.nodeKey = nodeKey; /* for future use in events */
+			row.isLeaf = !(dataItem.items && dataItem.items.length > 0);
+			row.showPlaceholder = ui.hasSubItems && !row.hasSubItems;
+			rows.push(row); /* Recurse into children if expanded */
+			if (!isString && dataItem.items && dataItem.items.length && expanded) {
+				this.renderRows(rows, panel, ui, dataItem.items, true, /* is sub-item */ i, /* parent index (or could use nodeKey) */ level + 1);
 			}
 		}
 	},

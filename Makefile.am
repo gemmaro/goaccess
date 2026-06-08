@@ -10,6 +10,7 @@ dist_noinst_DATA =                 \
   resources/js/app.js              \
   resources/js/charts.js           \
   resources/countries-110m.json    \
+  resources/cities-10m.json        \
   resources/js/d3.v7.min.js        \
   resources/js/topojson.v3.min.js  \
   resources/js/hogan.min.js
@@ -26,6 +27,7 @@ BUILT_SOURCES =       \
   src/topojsonjs.h    \
   src/hoganjs.h       \
   src/countries110m.h \
+  src/cities10m.h     \
   src/chartsjs.h      \
   src/appjs.h
 
@@ -38,10 +40,12 @@ CLEANFILES =                          \
   src/topojsonjs.h                    \
   src/hoganjs.h                       \
   src/countries110m.h                 \
+  src/cities10m.h                     \
   src/chartsjs.h                      \
   src/appjs.h                         \
   resources/tpls.html.tmp             \
   resources/countries-110m.json.tmp   \
+  resources/cities-10m.json.tmp       \
   resources/css/bootstrap.min.css.tmp \
   resources/css/fa.min.css.tmp        \
   resources/css/app.css.tmp           \
@@ -66,6 +70,14 @@ if HAS_SEDTR
 	./bin2c $(srcdir)/resources/countries-110m.json.tmp src/countries110m.h countries_json
 else
 	./bin2c $(srcdir)/resources/countries-110m.json src/countries110m.h countries_json
+endif
+# cities.json
+src/cities10m.h: bin2c$(EXEEXT) $(srcdir)/resources/cities-10m.json
+if HAS_SEDTR
+	cat $(srcdir)/resources/cities-10m.json | sed "s/^[[:space:]]*//" | sed "/^$$/d" | tr -d "\r\n" > $(srcdir)/resources/cities-10m.json.tmp
+	./bin2c $(srcdir)/resources/cities-10m.json.tmp src/cities10m.h cities_json
+else
+	./bin2c $(srcdir)/resources/cities-10m.json src/cities10m.h cities_json
 endif
 # Bootstrap
 src/bootstrapcss.h: bin2c$(EXEEXT) $(srcdir)/resources/css/bootstrap.min.css
@@ -154,8 +166,14 @@ goaccess_SOURCES = \
    src/commons.h       \
    src/csv.c           \
    src/csv.h           \
+   src/dialogs.c       \
+   src/dialogs.h       \
    src/error.c         \
    src/error.h         \
+   src/fileio.c        \
+   src/fileio.h        \
+   src/gchart.c        \
+   src/gchart.h        \
    src/gdashboard.c    \
    src/gdashboard.h    \
    src/gdns.c          \
@@ -246,6 +264,12 @@ endif
 if WITH_RDYNAMIC
 AM_LDFLAGS = -rdynamic
 endif
+
+if WITH_ZLIB
+AM_LDFLAGS = -lz
+endif
+
+goaccess_LDADD = -lm
 
 AM_CFLAGS += -Wall -Wextra -Wnested-externs -Wformat=2 -g
 AM_CFLAGS += -Wmissing-prototypes -Wstrict-prototypes -Wmissing-declarations

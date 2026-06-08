@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([goaccess],[1.9.4],[hello@goaccess.io],[],[https://goaccess.io])
+AC_INIT([goaccess],[1.10.2],[hello@goaccess.io],[],[https://goaccess.io])
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_SRCDIR([src/goaccess.c])
 AC_CONFIG_HEADERS([src/config.h])
@@ -75,6 +75,19 @@ if test "$openssl" = 'yes'; then
   AC_CHECK_LIB([ssl], [SSL_CIPHER_standard_name], [AC_DEFINE([HAVE_CIPHER_STD_NAME], 1, [HAVE_CIPHER_STD_NAME])])
 fi
 AM_CONDITIONAL([WITH_SSL], [test "x$with_openssl" = "xyes"])
+
+# Build with zlib
+AC_ARG_WITH([zlib],
+  [AS_HELP_STRING([--with-zlib], [Build with zlib support for reading gzipped logs. Default is disabled])],
+  [zlib="$withval"],
+  [zlib="no"])
+
+if test "$zlib" = 'yes'; then
+  AC_CHECK_LIB([z], [gzopen], [], [AC_MSG_ERROR([zlib library missing])])
+  AC_CHECK_HEADERS([zlib.h], [], [AC_MSG_ERROR([zlib header missing])])
+  AC_DEFINE([HAVE_ZLIB], 1, [Build with zlib support])
+fi
+AM_CONDITIONAL([WITH_ZLIB], [test "x$zlib" = "xyes"])
 
 # GeoIP
 AC_ARG_ENABLE([geoip],[AS_HELP_STRING([--enable-geoip],[Enable GeoIP country lookup. Supported types: mmdb, legacy. Default is disabled])],[geoip="$enableval"],[geoip=no])
@@ -277,6 +290,7 @@ Your build configuration:
   Geolocation    : $geolocation
   Storage method : $storage
   TLS/SSL        : $openssl
+  zlib support   : $zlib
   Bugs           : $PACKAGE_BUGREPORT
 
 EOF

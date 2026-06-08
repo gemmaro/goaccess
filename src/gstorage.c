@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +33,7 @@
 #endif
 #include <stdlib.h>
 #include <string.h>
+#include <stdatomic.h>
 
 #include "gstorage.h"
 
@@ -48,6 +49,59 @@
 #include "ui.h"
 #include "util.h"
 #include "xmalloc.h"
+
+#ifdef HAVE_GEOLOCATION
+/* Static hash map: country string -> continent string.
+ * Populated during parsing, queried during holder construction. */
+static
+khash_t (ss32) *
+  country_continent_map = NULL;
+
+static void
+set_country_continent (const char *country, const char *continent) {
+  khint_t k;
+  int ret;
+
+  if (country == NULL || continent == NULL)
+    return;
+  if (country_continent_map == NULL)
+    country_continent_map = kh_init (ss32);
+
+  k = kh_get (ss32, country_continent_map, country);
+  if (k != kh_end (country_continent_map))
+    return;     /* already exists */
+
+  k = kh_put (ss32, country_continent_map, xstrdup (country), &ret);
+  if (ret)
+    kh_val (country_continent_map, k) = xstrdup (continent);
+}
+
+const char *
+get_continent_for_country (const char *country) {
+  khint_t k;
+  if (country_continent_map == NULL || country == NULL)
+    return NULL;
+  k = kh_get (ss32, country_continent_map, country);
+  if (k == kh_end (country_continent_map))
+    return NULL;
+  return kh_val (country_continent_map, k);
+}
+
+void
+free_country_continent_map (void) {
+  khint_t k;
+  if (country_continent_map == NULL)
+    return;
+  for (k = kh_begin (country_continent_map); k != kh_end (country_continent_map); ++k) {
+    if (!kh_exist (country_continent_map, k))
+      continue;
+    free ((char *) kh_key (country_continent_map, k));
+    free (kh_val (country_continent_map, k));
+  }
+  kh_destroy (ss32, country_continent_map);
+  country_continent_map = NULL;
+}
+#endif
 
 /* private prototypes */
 /* key/data generators for each module */
@@ -512,7 +566,7 @@ set_data_metrics (GMetrics *ometrics, GMetrics **nmetrics, GPercTotals totals) {
   /* determine percentages for certain fields */
   float hits_perc = get_percentage (totals.hits, ometrics->hits);
   float visitors_perc = get_percentage (totals.visitors, ometrics->visitors);
-  float bw_perc = get_percentage (totals.bw, ometrics->bw.nbw);
+  float bw_perc = get_percentage (totals.bw, ometrics->nbw);
 
   metrics = new_gmetrics ();
 
@@ -527,7 +581,7 @@ set_data_metrics (GMetrics *ometrics, GMetrics **nmetrics, GPercTotals totals) {
   metrics->visitors_perc = visitors_perc < 0 ? 0 : visitors_perc;
 
   /* bandwidth field */
-  metrics->bw.nbw = ometrics->bw.nbw;
+  metrics->nbw = ometrics->nbw;
 
   /* time served fields */
   if (conf.serve_usecs && ometrics->hits > 0) {
@@ -559,15 +613,24 @@ count_bw (int numdate, uint64_t resp_size) {
 /* Keep track of all invalid log strings. */
 static void
 count_invalid (GLog *glog, GLogItem *logitem, const char *line) {
-  glog->invalid++;
+  uint8_t idx = 0;
+  atomic_fetch_add (&glog->invalid, 1);
   ht_inc_cnt_overall ("failed_requests", 1);
 
   if (conf.invalid_requests_log) {
     LOG_INVALID (("%s", line));
   }
 
-  if (logitem->errstr && glog->log_erridx < MAX_LOG_ERRORS) {
-    glog->errors[glog->log_erridx++] = xstrdup (logitem->errstr);
+  if (logitem->errstr) {
+    pthread_mutex_lock (&glog->error_mutex);
+
+    idx = atomic_load (&glog->log_erridx);
+    if (idx < MAX_LOG_ERRORS) {
+      glog->errors[idx] = xstrdup (logitem->errstr);
+      atomic_store (&glog->log_erridx, idx + 1);
+    }
+
+    pthread_mutex_unlock (&glog->error_mutex);
   }
 }
 
@@ -578,10 +641,9 @@ count_invalid (GLog *glog, GLogItem *logitem, const char *line) {
 */
 void
 uncount_invalid (GLog *glog) {
-  if (glog->invalid > conf.num_tests)
-    glog->invalid -= conf.num_tests;
-  else
-    glog->invalid = 0;
+  uint64_t current = atomic_load (&glog->invalid);
+  uint64_t new_val = (current > conf.num_tests) ? (current - conf.num_tests) : 0;
+  atomic_store (&glog->invalid, new_val);
 }
 
 /* Count down the number of processed hits.
@@ -610,8 +672,8 @@ count_valid (int numdate) {
 /* Keep track of all valid and processed log strings. */
 void
 count_process (GLog *glog) {
-  __sync_add_and_fetch (&glog->processed, 1);
   lock_spinner ();
+  glog->processed++;
   ht_inc_cnt_overall ("total_requests", 1);
   unlock_spinner ();
 }
@@ -1246,15 +1308,16 @@ gen_keyphrase_key (GKeyData *kdata, GLogItem *logitem) {
 /* Extract geolocation for the given host.
  *
  * On error, 1 is returned.
- * On success, the extracted continent and country are set and 0 is
+ * On success, the extracted continent, country, and city are set and 0 is
  * returned. */
 static int
-extract_geolocation (GLogItem *logitem, char *continent, char *country) {
+extract_geolocation (GLogItem *logitem, char *continent, char *country, char *city) {
+  char asn_unused[ASN_LEN] = "";
+
   if (!is_geoip_resource ())
     return 1;
 
-  geoip_get_country (logitem->host, country, logitem->type_ip);
-  geoip_get_continent (logitem->host, continent, logitem->type_ip);
+  set_geolocation (logitem->host, continent, country, city, asn_unused);
 
   return 0;
 }
@@ -1270,8 +1333,12 @@ static int
 gen_geolocation_key (GKeyData *kdata, GLogItem *logitem) {
   char continent[CONTINENT_LEN] = "";
   char country[COUNTRY_LEN] = "";
+  char city[CITY_LEN] = "";
 
-  if (extract_geolocation (logitem, continent, country) == 1)
+  if (extract_geolocation (logitem, continent, country, city) == 1)
+    return 1;
+
+  if (country[0] == '\0' && city[0] == '\0')
     return 1;
 
   if (country[0] != '\0')
@@ -1280,8 +1347,25 @@ gen_geolocation_key (GKeyData *kdata, GLogItem *logitem) {
   if (continent[0] != '\0')
     logitem->continent = xstrdup (continent);
 
-  get_kdata (kdata, logitem->country, logitem->country);
-  get_kroot (kdata, logitem->continent, logitem->continent);
+  if (city[0] != '\0')
+    logitem->city = xstrdup (city);
+
+  /* Record the country-to-continent mapping for holder construction */
+  if (logitem->country && logitem->continent)
+    set_country_continent (logitem->country, logitem->continent);
+
+  /* If city is available, use city as data and country as root (3-level).
+   * Otherwise, use country as data and continent as root (2-level). */
+  if (conf.has_geocity && logitem->city && logitem->country) {
+    get_kdata (kdata, logitem->city, logitem->city);
+    get_kroot (kdata, logitem->country, logitem->country);
+  } else if (logitem->country) {
+    get_kdata (kdata, logitem->country, logitem->country);
+    if (logitem->continent)
+      get_kroot (kdata, logitem->continent, logitem->continent);
+  } else {
+    return 1;
+  }
   kdata->numdate = logitem->numdate;
 
   return 0;

@@ -7,7 +7,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -57,6 +57,7 @@
 #include "topojsonjs.h"
 #include "hoganjs.h"
 #include "countries110m.h"
+#include "cities10m.h"
 #include "chartsjs.h"
 #include "appjs.h"
 
@@ -1244,6 +1245,7 @@ print_json_defs (FILE *fp) {
 
   fprintf (fp, "var html_prefs=%s;", conf.html_prefs ? conf.html_prefs : "{}");
   fprintf (fp, "var countries110m=%.*s;", countries_json_length, countries_json);
+  fprintf (fp, "var cities10m=%.*s;", cities_json_length, cities_json);
   fprintf (fp, "var html_prefs=%s;", conf.html_prefs ? conf.html_prefs : "{}");
   fprintf (fp, "var user_interface=");
   fpopen_obj (fp, 0);

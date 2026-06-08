@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -38,23 +38,53 @@
 
 #include "ui.h"
 
+/* IMPORTANT: These defines are BASE VALUES used for calculation.
+ * Actual positions are calculated dynamically in render_content() */
+
 #define DASH_HEAD_POS    0 /* position of header line */
 #define DASH_EMPTY_POS   1 /* empty line position */
-#define DASH_COLS_POS    2 /* position of column names */
-#define DASH_DASHES_POS  3 /* position of dashes under column names */
-#define DASH_DATA_POS    4 /* data line position */
 
-#define DASH_NON_DATA    5 /* number of rows without data stats */
+/* Chart positioning - these are fixed */
+#define DASH_CHART_START 2 /* first chart row */
+#define DASH_CHART_END   (DASH_CHART_START + DASH_CHART_HEIGHT - 1) /* last chart row */
+
+/* These are reference values - actual positions calculated dynamically */
+#define DASH_BLANK1_POS  (DASH_CHART_END + 1) /* blank after chart (for caret) */
+#define DASH_BLANK2_POS  (DASH_CHART_END + 2) /* blank before cols (if cols enabled) */
+#define DASH_COLS_POS    (DASH_CHART_END + 3) /* position of column names (if enabled) */
+#define DASH_DASHES_POS  (DASH_CHART_END + 4) /* position of dashes (if enabled) */
+#define DASH_DATA_POS    (DASH_CHART_END + 5) /* data line position (with cols) */
+
+/* Helper macros for calculations */
+#define DASH_NON_DATA    (DASH_DATA_POS) /* number of rows without data stats */
 #define DASH_COL_ROWS    2 /* number of rows for column values + dashed lines */
 
-#define DASH_COLLAPSED   12 /* number of rows per panel (collapsed) */
-#define DASH_EXPANDED    32 /* number of rows per panel (expanded) */
+/* Panel sizes - these determine how many rows each panel occupies
+ * Structure:
+ * With columns:    header + blank + chart(7) + blank + blank + cols + dashes + data(N) + blank = 13 + N
+ * Without columns: header + blank + chart(7) + blank + data(N) + blank = 11 + N
+ */
+#define DASH_COLLAPSED   (DASH_DATA_POS + 8 + 1) /* +1 for trailing blank */
+#define DASH_EXPANDED    (DASH_DATA_POS + 28 + 1) /* +1 for trailing blank */
 
+/* Other constants */
 #define DASH_INIT_X      1 /* start position (x-axis) */
-
-#define DASH_BW_LEN      11 /* max bandwidth string length, e.g., 151.69 MiB */
-#define DASH_SRV_TM_LEN  9 /* max time served length, e.g., 483.00 us */
+#define DASH_BW_LEN      11 /* max bandwidth string length */
+#define DASH_SRV_TM_LEN  9 /* max time served length */
 #define DASH_SPACE       1 /* space between columns (metrics) */
+
+typedef struct {
+  int header_pos;
+  int blank_after_header;
+  int chart_start;
+  int chart_end;
+  int blank_for_caret;
+  int blank_before_cols;
+  int cols_header_pos;
+  int cols_dashes_pos;
+  int data_start;
+  int data_end;
+} PanelLayout;
 
 /* Common render data line fields */
 typedef struct GDashRender_ {
@@ -69,12 +99,15 @@ typedef struct GDashRender_ {
 typedef struct GDashData_ {
   GMetrics *metrics;
   short is_subitem;
+  short has_children;           /* 1 if this node has sub-items */
+  int node_full_idx;            /* index into node_expanded[] (full DFS position) */
 } GDashData;
 
 /* Dashboard panel meta data */
 typedef struct GDashMeta_ {
   uint64_t max_hits;            /* maximum value on the hits column */
   uint64_t max_visitors;        /* maximum value on the visitors column */
+  uint64_t max_bw;
 
   /* determine the maximum metric's length of these metrics */
   /* for instance, 1022 is the max value for the hits column and its length = 4 */
@@ -83,6 +116,7 @@ typedef struct GDashMeta_ {
   int visitors_len;
   int visitors_perc_len;
   int bw_len;
+  int bw_perc_len;
   int avgts_len;
   int cumts_len;
   int maxts_len;
@@ -100,11 +134,11 @@ typedef struct GDashModule_ {
   const char *head;             /* panel header */
   const char *desc;             /* panel description */
 
-  int alloc_data;               /* number of data items allocated. */
+  uint32_t alloc_data;          /* number of data items allocated. */
   /* e.g., MAX_CHOICES or holder size */
   int dash_size;                /* dashboard size */
-  int holder_size;              /* hash table size  */
-  int ht_size;                  /* hash table size  */
+  uint32_t holder_size;         /* hash table size  */
+  uint32_t ht_size;             /* hash table size  */
   int idx_data;                 /* idx data */
 
   unsigned short pos_y;         /* dashboard current Y position */
@@ -119,13 +153,13 @@ typedef struct GDash_ {
 /* Function Prototypes */
 GDashData *new_gdata (uint32_t size);
 GDash *new_gdash (void);
-int get_num_collapsed_data_rows (void);
-int get_num_expanded_data_rows (void);
+uint32_t get_num_collapsed_data_rows (void);
+uint32_t get_num_expanded_data_rows (void);
 int perform_next_find (GHolder * h, GScroll * scroll);
 int render_find_dialog (WINDOW * main_win, GScroll * scroll);
 int set_module_from_mouse_event (GScroll * scroll, GDash * dash, int y);
 uint32_t get_ht_size_by_module (GModule module);
-void display_content (WINDOW * win, GDash * dash, GScroll * scroll);
+void display_content (WINDOW * win, GDash * dash, GScroll * gscroll, GHolder * holder);
 void free_dashboard (GDash * dash);
 void load_data_to_dash (GHolder * h, GDash * dash, GModule module, GScroll * scroll);
 void reset_find (void);

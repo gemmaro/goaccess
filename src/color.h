@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -48,8 +48,13 @@ typedef enum CSTM_COLORS {
   COLOR_MTRC_HITS_PERC_MAX,
   COLOR_MTRC_VISITORS_PERC,
   COLOR_MTRC_VISITORS_PERC_MAX,
+  COLOR_MTRC_BW_PERC,
+  COLOR_MTRC_BW_PERC_MAX,
   COLOR_PANEL_COLS,
   COLOR_BARS,
+  COLOR_SUBBARS,
+  COLOR_CHART_AXIS,
+  COLOR_CHART_VALUES,
   COLOR_ERROR,
   COLOR_SELECTED,
   COLOR_PANEL_ACTIVE,
@@ -87,6 +92,7 @@ typedef struct GColors_ {
   GColorPair *pair;             /* color pair */
   int attr;                     /* color attributes, e.g., bold */
   short module;                 /* panel */
+  int pair_idx;
 } GColors;
 
 GColors *color_default (void);

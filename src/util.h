@@ -6,7 +6,7 @@
  * \____/\____/_/  |_\___/\___/\___/____/____/
  *
  * The MIT License (MIT)
- * Copyright (c) 2009-2025 Gerardo Orellana <hello @ goaccess.io>
+ * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -86,6 +86,7 @@ char *unescape_str (const char *src);
 char *usecs_to_str (unsigned long long usec);
 const char *verify_status_code (int code);
 const char *verify_status_code_type (int code);
+const char *basename_only (const char *path);
 int convert_date (char *res, const char *data, const char *from, const char *to, int size);
 int count_matches (const char *s1, char c);
 int find_output_type (char **filename, const char *ext, int alloc);
