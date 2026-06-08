@@ -19,8 +19,11 @@ serve:
 	ruby -run -e httpd ja
 .PHONY: serve
 
-$(MAN): record-po4a-version
+$(MAN): record-po4a-version po/en.pot
 	po4a po4a.cfg
+
+po/en.pot:
+	touch $@
 
 $(VERSION): record-po4a-version
 
