@@ -9,6 +9,8 @@ STYLE	:= https://cdn.jsdelivr.net/npm/water.css@2/out/water.css
 #   Command task record-po4a-version always run,
 #   so current user's po4a version is tracked.
 all: $(MAN) $(HTML) ja/README.html
+	ssh pi -- mkdir -p /srv/www/goaccess/
+	guix shell rsync -- rsync -av ja/goaccess.1.html pi:/srv/www/goaccess/index.html
 .PHONY: all
 
 clean:
