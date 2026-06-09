@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2026-06-09 08:37+0900\n"
-"PO-Revision-Date: 2026-06-09 09:00+0900\n"
+"PO-Revision-Date: 2026-06-09 09:48+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -83,6 +83,9 @@ msgid ""
 "dashboard, making it easy to monitor traffic, detect anomalies, and "
 "troubleshoot issues instantly."
 msgstr ""
+"B<goaccess>はオープンソースであり、実時間ログ解析器かつ*nixシステム上のI<端末>ないしお手元のI<ブラウザ>で直接実行する対話的な閲覧器です。\n"
+"システム管理者、DevOps技術者、セキュリティ専門家を念頭に設計され、高速で、実行可能なHTTPの統計と可視化されたサーバーの報告情報を実行時に届けます。\n"
+"GoAccessはウェブサーバーのログを実時間に解析して端末に直接ないし実況のHTMLダッシュボードを介してデータを提示し、通信量の監視、異常性の検知、問題の障害対応を即座に容易にします。"
 
 #. type: IP
 #: ../goaccess.1:21
@@ -404,7 +407,7 @@ msgstr ""
 #: ../goaccess.1:104
 #, no-wrap
 msgid "Remote User (HTTP authentication)"
-msgstr "リモートユーザー（HTTP認証）"
+msgstr "遠隔の利用者（HTTP認証）"
 
 #. type: Plain text
 #: ../goaccess.1:110
@@ -489,6 +492,8 @@ msgid ""
 "center.  Chart metrics and scales are also adjustable on the fly via the "
 "interactive menu described below."
 msgstr ""
+"GoAccessのパネルは端末のインターフェースから並び換えたり副項目を展開ないし折り畳むことができ、最重要の指標を前面かつ中央に留められます。\n"
+"表の指標と縮尺もまた後述する対話的なメニューを介して実行時に調節可能です。"
 
 #. type: Plain text
 #: ../goaccess.1:142
@@ -621,6 +626,8 @@ msgstr "B<--with-zlib>"
 #: ../goaccess.1:178
 msgid "Build with zlib support for reading gzipped logs. Disabled by default."
 msgstr ""
+"gzipされたログを読むためにzlib対応つきでビルドします。\n"
+"既定で無効化されています。"
 
 #. type: TP
 #: ../goaccess.1:178
@@ -635,6 +642,9 @@ msgid ""
 "zlib Enables optional zlib support to allow parsing of compressed log files "
 "(e.g., .gz) directly without manual decompression.>"
 msgstr ""
+"WebSocketサーバのためにOpenSSL対応つきでGoAccessをコンパイルします。\n"
+"B<--with-zlib>\n"
+"随意でzlib対応を有効にして手動の脱圧縮なしに直接圧縮されたログファイル（例：.gz）の解析を許容します。"
 
 #. type: SH
 #: ../goaccess.1:184
@@ -1738,7 +1748,7 @@ msgstr "要求形式は最初の認証URLのものと合致させてください
 #: ../goaccess.1:570
 #, no-wrap
 msgid "WebSocket Authentication Flow"
-msgstr ""
+msgstr "WebSocketの認証の流れ"
 
 #. type: Plain text
 #: ../goaccess.1:579
@@ -1752,23 +1762,28 @@ msgid ""
 "(POST) then performs a CSRF check, requiring the `X-CSRF-TOKEN` header to "
 "match the session’s token."
 msgstr ""
+"GoAccessは柔軟な認証オプションを供しており、状態なしと状態ありの手法の両方に対応しています。\n"
+"状態なしの手法では、クッキーやCSRF保護なしにリフレッシュトークンが取得されます。\n"
+"バックエンドがリフレッシュトークンのシグネチャを検証し新しいアクセストークンを払出します。\n"
+"代えて、状態ありの手法では初回の取得で`csrf_token`をともなうJWTを払出すことができ、これがセッションに保管されます。\n"
+"後続のリフレッシュ要求 (POST) からはCSRFの検査が実施され、セッションのトークンに合致する`X-CSRF-TOKEN`ヘッダを要求します。"
 
 #. type: Plain text
 #: ../goaccess.1:581
 msgid "B<Initial Authentication:>"
-msgstr ""
+msgstr "B<初回の認証：>"
 
 #. type: Plain text
 #: ../goaccess.1:585
 msgid ""
 "When started with B<--ws-auth-url=E<lt>urlE<gt>>, GoAccess sends a GET "
 "request to fetch an initial JWT."
-msgstr ""
+msgstr "B<--ws-auth-url=E<lt>urlE<gt>>で開始した場合、GoAccessは初回のJWTを取得するためのGET要求を送ります。"
 
 #. type: Plain text
 #: ../goaccess.1:587
 msgid "The expected successful response format:"
-msgstr ""
+msgstr "期待される正常な応答形式："
 
 #. type: Plain text
 #: ../goaccess.1:595
@@ -1782,11 +1797,18 @@ msgid ""
 "        \"expires_in\"    : 3600\n"
 "    }\n"
 msgstr ""
+"    {\n"
+"        \"status\"        : \"success\",\n"
+"        \"access_token\"  : \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\",\n"
+"        \"csrf_token\"    : \"3RRjNeR4RTXHmrV1cECkyUmmKeRxm4lzkI0eq41o\",\n"
+"        \"refresh_token\" : \"refresh123xyz\",\n"
+"        \"expires_in\"    : 3600\n"
+"    }\n"
 
 #. type: Plain text
 #: ../goaccess.1:597
 msgid "If authentication fails, the endpoint should return:"
-msgstr ""
+msgstr "認証が失敗なら、エンドポイントは以下を返すべきです："
 
 #. type: Plain text
 #: ../goaccess.1:602
@@ -1797,11 +1819,15 @@ msgid ""
 "        \"message\": \"User not authenticated\"\n"
 "    }\n"
 msgstr ""
+"    {\n"
+"        \"status\": \"error\",\n"
+"        \"message\": \"User not authenticated\"\n"
+"    }\n"
 
 #. type: Plain text
 #: ../goaccess.1:605
 msgid "B<Token Refreshing:>"
-msgstr ""
+msgstr "B<トークンのリフレッシュ：>"
 
 #. type: Plain text
 #: ../goaccess.1:610
@@ -1809,13 +1835,13 @@ msgid ""
 "GoAccess refreshes the JWT 60 seconds before expiration by sending a POST "
 "request to the specified URL (defaults to B<--ws-auth-url> if B<--ws-auth-"
 "refresh-url> is not set):"
-msgstr ""
+msgstr "GoAccessは指定されたURLにPOST要求を送ることで期限切れの60秒前にJWTをリフレッシュします（B<--ws-auth-refresh-url>が設定されていなければ既定でB<--ws-auth-url>になります）。"
 
 #. type: Plain text
 #: ../goaccess.1:612
 #, no-wrap
 msgid "    { \"refresh_token\": \"refresh123xyz\" }\n"
-msgstr ""
+msgstr "    { \"refresh_token\": \"refresh123xyz\" }\n"
 
 #. type: Plain text
 #: ../goaccess.1:618
@@ -1826,51 +1852,56 @@ msgid ""
 "GoAccess sends it as B<X-CSRF-TOKEN> in the refresh request, which your "
 "backend must validate against the session."
 msgstr ""
+"GoAccessは状態なしと状態ありの両方のん印象に対応しています。\n"
+"状態なしについては、クッキーやCSRFは要求されません。\n"
+"バックエンドでリフレッシュトークンのシグネチャを検証します。\n"
+"状態ありについては、初回の要求にB<csrf_token>を含めます。\n"
+"GoAccessはそれをリフレッシュ要求の中のB<X-CSRF-TOKEN>として送り、これをバックエンドではセッションに対して検証しなければなりません。"
 
 #. type: Plain text
 #: ../goaccess.1:621
 msgid "B<Periodic Token Validation:>"
-msgstr ""
+msgstr "B<周期的なトークンの検証：>"
 
 #. type: Plain text
 #: ../goaccess.1:625
 msgid ""
 "After refreshing, GoAccess confirms the updated JWT’s validity with the "
 "WebSocket server by sending:"
-msgstr ""
+msgstr "リフレッシュ後、GoAccessは以下を送ることによりWebSocketサーバーと更新されたJWTの妥当性を確認します。"
 
 #. type: Plain text
 #: ../goaccess.1:627
 #, no-wrap
 msgid "    { \"action\": \"validate_token\", \"token\": \"current-jwt\" }\n"
-msgstr ""
+msgstr "    { \"action\": \"validate_token\", \"token\": \"current-jwt\" }\n"
 
 #. type: Plain text
 #: ../goaccess.1:631
 msgid ""
 "B<Important Note:> For these options to function, you must specify B<--ws-"
 "auth=jwt:verify:E<lt>secretE<gt>> where E<lt>secretE<gt> can be:"
-msgstr ""
+msgstr "B<重要事項：>これらのオプションが機能するためには、E<lt>機密情報E<gt>が以下をとりうるB<--ws-auth=jwt:verify:E<lt>機密情報E<gt>>を指定しなければなりません。"
 
 #. type: Plain text
 #: ../goaccess.1:634
 msgid "A path to a file containing the secret key (e.g., /path/to/secret.key)"
-msgstr ""
+msgstr "機密情報のキーを含むファイルへのパス（例：/path/to/secret.key）"
 
 #. type: Plain text
 #: ../goaccess.1:636
 msgid "An environment variable name that holds the secret (e.g., $JWT_SECRET)"
-msgstr ""
+msgstr "機密情報を保持する環境変数名（例：$JWT_SECRET）"
 
 #. type: Plain text
 #: ../goaccess.1:638
 msgid "The actual HS256 secret key as a string (e.g., mysecretkey123)"
-msgstr ""
+msgstr "文字列としての実際のHS256の機密情報のキー（例：mysecretkey123）"
 
 #. type: Plain text
 #: ../goaccess.1:641
 msgid "Example: B<--ws-auth=jwt:verify:/path/to/secret.key>"
-msgstr ""
+msgstr "例：B<--ws-auth=jwt:verify:/path/to/secret.key>"
 
 #. type: TP
 #: ../goaccess.1:641
@@ -1920,10 +1951,8 @@ msgid ""
 "address."
 msgstr ""
 "既定では生成されたレポートのホスト名に接続を試みます。\n"
-"GoAccessがリモートサーバーで走っている場合、リモートサーバーのホストはここで"
-"指定されるべきです。\n"
-"また、妥当なホストになっていてHTTPアドレスになって「いない」ことを必ず確認し"
-"てください。"
+"GoAccessが遠隔サーバーで走っている場合、遠隔サーバーのホストはここで指定されるべきです。\n"
+"また、妥当なホストになっていてHTTPアドレスになって「いない」ことを必ず確認してください。"
 
 #. type: TP
 #: ../goaccess.1:662
@@ -3765,24 +3794,24 @@ msgstr "選択されたモジュールを展開ないしウィンドウを開き
 #: ../goaccess.1:1244
 #, no-wrap
 msgid "+"
-msgstr ""
+msgstr "+"
 
 #. type: Plain text
 #: ../goaccess.1:1246
 msgid "Expand the selected item's children when a module is already expanded."
-msgstr ""
+msgstr "モジュールがすでに展開されているとき選択された項目の子を展開します。"
 
 #. type: IP
 #: ../goaccess.1:1246
 #, no-wrap
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #. type: Plain text
 #: ../goaccess.1:1248
 msgid ""
 "Collapse the selected item's children when a module is already expanded."
-msgstr ""
+msgstr "モジュールがすでに展開されているとき選択された項目の子を折り畳みます。"
 
 #. type: IP
 #: ../goaccess.1:1248
@@ -3799,12 +3828,12 @@ msgstr "選択されたモジュールを活性に設定します"
 #: ../goaccess.1:1250
 #, no-wrap
 msgid "p"
-msgstr ""
+msgstr "p"
 
 #. type: Plain text
 #: ../goaccess.1:1252
 msgid "Reorder the dashboard panels interactively (press `p` or `P`)."
-msgstr ""
+msgstr "ダッシュボードのパネルを対話的に並び替えます（`p`または`P`を押下）。"
 
 #. type: IP
 #: ../goaccess.1:1252
@@ -3848,7 +3877,7 @@ msgstr "r"
 #. type: Plain text
 #: ../goaccess.1:1260
 msgid "Toggle reverse order of chart bars for the active module."
-msgstr ""
+msgstr "活性モジュールについて表のバーの逆順を切り替えます。"
 
 #. type: IP
 #: ../goaccess.1:1260
@@ -3860,7 +3889,7 @@ msgstr "m"
 #: ../goaccess.1:1262
 msgid ""
 "Cycle chart metric forward for the active module (hits, visitors, bandwidth)."
-msgstr ""
+msgstr "活性モジュール（ヒット、訪問者、帯域）について表の指標を前方に循環します。"
 
 #. type: IP
 #: ../goaccess.1:1262
@@ -3877,12 +3906,12 @@ msgstr "活性モジュールについて表の指標を後方へ循環させま
 #: ../goaccess.1:1264
 #, no-wrap
 msgid "l"
-msgstr ""
+msgstr "l"
 
 #. type: Plain text
 #: ../goaccess.1:1266
 msgid "Toggle logarithmic scale for chart bars in the active module."
-msgstr ""
+msgstr "活性モジュールにおいて表のバーの対数目盛を切り替えます。"
 
 #. type: IP
 #: ../goaccess.1:1266
@@ -4039,7 +4068,7 @@ msgstr "# goaccess access.log --no-csv-summary -o report.csv"
 #. type: Plain text
 #: ../goaccess.1:1310
 msgid "GoAccess also allows real-time monitoring from stdin:"
-msgstr ""
+msgstr "GoAccessでは標準入力からの実時間の監視もできます。"
 
 #. type: Plain text
 #: ../goaccess.1:1312
@@ -4049,7 +4078,7 @@ msgstr "# tail -f access.log | goaccess -"
 #. type: Plain text
 #: ../goaccess.1:1314
 msgid "To filter while keeping the pipe open for real-time analysis:"
-msgstr ""
+msgstr "実時間解析でパイプを開いた状態のまま絞り込むには以下とします。"
 
 #. type: Plain text
 #: ../goaccess.1:1316
@@ -4097,7 +4126,7 @@ msgstr "複数のログファイル"
 #. type: Plain text
 #: ../goaccess.1:1329
 msgid "Parse multiple logs by passing them to the command line:"
-msgstr ""
+msgstr "コマンドラインに渡すことで複数のログを解析："
 
 #. type: Plain text
 #: ../goaccess.1:1331
@@ -4142,6 +4171,8 @@ msgid ""
 "GoAccess was built with B<--with-zlib>, it can parse B<.gz> files directly "
 "without external decompression:"
 msgstr ""
+"I<附記：>macOSでは、B<zcat>の代わりにB<gunzip -c>を使ってください。\n"
+"I<附記：>GoAccessがB<--with-zlib>つきでビルドされたなら、外部の脱圧縮なしに直接B<.gz>ファイルを解析できます。"
 
 #. type: Plain text
 #: ../goaccess.1:1351
@@ -4171,7 +4202,7 @@ msgstr ""
 #. type: Plain text
 #: ../goaccess.1:1360
 msgid "Specify the WebSocket URL explicitly:"
-msgstr ""
+msgstr "WebSocketのURLを陽に指定："
 
 #. type: Plain text
 #: ../goaccess.1:1362
@@ -4183,7 +4214,7 @@ msgstr ""
 #. type: Plain text
 #: ../goaccess.1:1364
 msgid "Use a custom port:"
-msgstr ""
+msgstr "独自のポートを使用："
 
 #. type: Plain text
 #: ../goaccess.1:1366
@@ -4193,7 +4224,7 @@ msgstr "# goaccess access.log -o report.html --real-time-html --port=9870"
 #. type: Plain text
 #: ../goaccess.1:1368
 msgid "Bind WebSocket to a specific address:"
-msgstr ""
+msgstr "WebSocketを指定アドレスに束縛："
 
 #. type: Plain text
 #: ../goaccess.1:1370
@@ -4208,6 +4239,8 @@ msgid ""
 "reverse proxy, set the WebSocket URL to include the proxy path and port, "
 "e.g.:"
 msgstr ""
+"I<附記：>TLS/SSLの実時間の出力については、B<--ssl-cert=E<lt>cert.crtE<gt>>およびB<--ssl-key=E<lt>priv.keyE<gt>>を使ってください。\n"
+"GoAccessがリバースプロキシの背後で実行しているとき、以下の例のように、プロキシのパスとポートを含めるためWebSocketのURLを設定してください。"
 
 #. type: Plain text
 #: ../goaccess.1:1377
@@ -4235,7 +4268,7 @@ msgstr "# sed -n '/05\\/Dec\\/2010/,$ p' access.log | goaccess -a -"
 #. type: Plain text
 #: ../goaccess.1:1386
 msgid "Using a relative date (one week ago):"
-msgstr ""
+msgstr "相対的な日付を使用（1週間前）："
 
 #. type: Plain text
 #: ../goaccess.1:1388
@@ -4249,7 +4282,7 @@ msgstr ""
 #. type: Plain text
 #: ../goaccess.1:1390
 msgid "Parse a specific date range:"
-msgstr ""
+msgstr "指定の日付の範囲で解析："
 
 #. type: Plain text
 #: ../goaccess.1:1392
@@ -4261,7 +4294,7 @@ msgstr ""
 #. type: Plain text
 #: ../goaccess.1:1394
 msgid "Keep only the last 5 days of data:"
-msgstr ""
+msgstr "データの直近5日間のみ残します："
 
 #. type: Plain text
 #: ../goaccess.1:1396
@@ -4279,7 +4312,7 @@ msgstr "仮想ホスト"
 msgid ""
 "Use B<--concat-vhost-req> to prepend the virtual host or server block (%v) "
 "to the request field."
-msgstr ""
+msgstr "仮想ホストやサーバーブロック (%v) を要求フィールドに前置するにはB<--concat-vhost-req>を使ってください。"
 
 #. type: Plain text
 #: ../goaccess.1:1403
@@ -4312,7 +4345,7 @@ msgstr "ファイルと状態コードとボット"
 #. type: Plain text
 #: ../goaccess.1:1414
 msgid "Parse only specific page types (html, htm, php):"
-msgstr ""
+msgstr "指定されたページの種類のみを解析（html、htm、php）："
 
 #. type: Plain text
 #: ../goaccess.1:1416
@@ -4322,7 +4355,7 @@ msgstr "# awk '$7~/.html|.htm|.php/' access.log | goaccess -"
 #. type: Plain text
 #: ../goaccess.1:1418
 msgid "Parse page views without extensions:"
-msgstr ""
+msgstr "拡張子なしのページ閲覧を解析："
 
 #. type: Plain text
 #: ../goaccess.1:1420
@@ -4332,7 +4365,7 @@ msgstr "# awk '$7!~/..*$/' access.log | goaccess -"
 #. type: Plain text
 #: ../goaccess.1:1422
 msgid "Filter by a single status code (e.g., 500):"
-msgstr ""
+msgstr "単一の状態コードで絞り込み（例：500）："
 
 #. type: Plain text
 #: ../goaccess.1:1424
@@ -4342,7 +4375,7 @@ msgstr "# awk '$9~/500/' access.log | goaccess -"
 #. type: Plain text
 #: ../goaccess.1:1426
 msgid "Filter by multiple status codes (3xx or 5xx):"
-msgstr ""
+msgstr "複数の状態コードで絞り込み（3xxないし5xx）："
 
 #. type: Plain text
 #: ../goaccess.1:1428
@@ -4354,7 +4387,7 @@ msgstr "# tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -
 #. type: Plain text
 #: ../goaccess.1:1430
 msgid "Estimate bot traffic:"
-msgstr ""
+msgstr "ボットの通信量を推計："
 
 #. type: Plain text
 #: ../goaccess.1:1432
@@ -4370,7 +4403,7 @@ msgstr "サーバー"
 #. type: Plain text
 #: ../goaccess.1:1437
 msgid "Run GoAccess at lower CPU priority:"
-msgstr ""
+msgstr "GoAccessを低いCPUの優先度で実行："
 
 #. type: Plain text
 #: ../goaccess.1:1439
@@ -4380,7 +4413,7 @@ msgstr "# nice -n 19 goaccess -f access.log -a"
 #. type: Plain text
 #: ../goaccess.1:1441
 msgid "Pipe logs from a remote server:"
-msgstr ""
+msgstr "遠隔サーバーからログをパイプ："
 
 #. type: Plain text
 #: ../goaccess.1:1443
@@ -4410,6 +4443,8 @@ msgid ""
 "restoring it and appending new data. GoAccess tracks inodes, the last line "
 "parsed, and the last timestamp per file."
 msgstr ""
+"GoAccessはデータをディスクに永続化し、それから再び取り出して新しいデータに追記することで、漸進的にログを処理できます。\n"
+"GoAccessはinode、最後の解析された行、ファイル毎の最後の時間記録を把握しています。"
 
 #. type: Plain text
 #: ../goaccess.1:1460
