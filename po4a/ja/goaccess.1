@@ -3,7 +3,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH goaccess 1 "MAR 2026" GNU+Linux 利用者の手引
+.TH goaccess 1 2026年3月 GNU+Linux 利用者の手引
 .SH 名称
 goaccess \- 高速なwebログ解析器と対話的な閲覧器
 .SH 処方
@@ -46,7 +46,7 @@ JPG、CSS、SWF、JS、GIF、PNGファイル種のような頻出の静的ファ
 .IP "404ないしNot Found"
 前述のリクエストパネルと同じ指標を表示します。
 ただしこちらはサーバーで見当たらなかったり、
-一般に404ステータスコードとして知られているデータが含まれます。
+一般に404状態コードとして知られているデータが含まれます。
 .IP ホスト
 このパネルにはホスト自体についての詳細情報が載っています。
 これにより容易に攻撃的なクローラーに焦点を当てたり、
@@ -88,12 +88,11 @@ Google翻訳で使われたキーフレーズが報告されます。
 有効にするには設定ファイル中の`\-\-ignore\-panel`を参照してください。
 既定では\fI無効\fPになっています。
 .IP 地理的位置
-Determines where an IP address is geographically located. Statistics are
-broken down by continent and country, and when city\-level GeoIP data is
-available it also lists the individual cities for each hit. It needs to be
-compiled with GeoLocation support.
-.IP HTTPステータスコード
-HTTPリクエストに対する数値的なステータスコードの値です。
+IPアドレスが地理的にどこに位置しているかを定めます。
+統計は大陸と国家により細分化され、都市水準のGeoIP情報が使えるときはヒットそれぞれについて個々の都市も列挙します。
+GeoLocation対応とともにコンパイルする必要があります。
+.IP HTTP状態コード
+HTTPリクエストに対する数値的な状態コードの値です。
 .IP ASN
 このパネルにはGeoIP2と旧式のデータベース用にASN (Autonomous System Numbers) のデータが表示されます。
 悪意のあるトラフィックを検知しそれに伴ってブロックするのに優れています。
@@ -196,9 +195,9 @@ Compile GoAccess with OpenSSL support for its WebSocket server.
 \fB\-\-datetime\-format=<日時書式>\fP
 日付と時刻の書式について、
 2つの変数が単一のオプションに組み合わさったものです。
-これによりリクエストからタイムゾーンを取得し、
-出力用に他のタイムゾーンに変換することができます。
-\fI\-\-tz=<タイムゾーン>\fPを参照してください。
+これによりリクエストから時間帯を取得し、
+出力用に他の時間帯に変換することができます。
+\fI\-\-tz=<時間帯>\fPを参照してください。
 .IP
 全てパーセント (%) 符号から始まります。
 `man strftime`を参照してください。
@@ -369,11 +368,11 @@ HTMLの生成されたレポート中に表示される最後に更新された�
 進行中の指標とスピナーの解析を表示しません。
 .TP 
 \fB\-\-tz=<timezone>\fP
-レポートの日付、時刻データを与えられたタイムゾーンで出力します。
-正統なタイムゾーン名を使うことに注意してください。
+レポートの日付、時刻データを与えられた時間帯で出力します。
+正統な時間帯名を使うことに注意してください。
 例えば\fIEurope/Berlin\fPや\fIAmerica/Chicago\fPや\fIAfrica/Cairo\fPといったようにです。
-不正なタイムゾーン名が与えられると出力はGMTになります。
-日付、時刻書式で適切にタイムゾーンを指定するには\fI\-\-datetime\-format\fPを参照してください。
+不正な時間帯名が与えられると出力はGMTになります。
+日付、時刻書式で適切に時間帯を指定するには\fI\-\-datetime\-format\fPを参照してください。
 .SS サーバーオプション
 .P
 \fI補足：\fP 生の実時間データがもたらされるのはWebSocketサーバーだけです。
@@ -701,7 +700,7 @@ HTTPリクエストのメソッドを設定したり外したりします。
 端末出力でIPリゾルバを無効にします。
 .TP 
 \fB\-\-444\-as\-404\fP
-非標準的なステータスコードである444を404として扱います。
+非標準的な状態コードである444を404として扱います。
 .TP 
 \fB\-\-4xx\-to\-unique\-count\fP
 4xxクライアントエラーを固有訪問者に加えます。
@@ -800,8 +799,7 @@ https://raw.githubusercontent.com/allinurl/goaccess/master/config/browsers.list
 つまり *.bing.com です。
 .TP 
 \fB\-\-hour\-spec=<hr|min>\fP
-時刻指定を時（既定）ないし分のいずれかに設定します。
-後者では時に1/10時間が後置されます。
+時刻指定を時（既定）ないし分のいずれかに設定すると1/10時間が時に追記されて表示されます。
 .IP
 これは時間分布パネルで使われます。
 サーバーで特定の時刻でトラフィックのピークを把握するのに役立ちます。
@@ -852,8 +850,8 @@ https://raw.githubusercontent.com/allinurl/goaccess/master/config/browsers.list
   なおこれらはリクエストの総計に計上されます。
 .TP 
 \fB\-\-ignore\-status=<コード>\fP
-1つ以上のステータスコードを解析と表示から外します。
-複数のステータスコードについては、このオプションを複数回使用してください。
+1つ以上の状態コードを解析と表示から外します。
+複数の状態コードについては、このオプションを複数回使用してください。
 .TP 
 \fB\-\-keep\-last=<日数>\fP
 ストレージに指定された日数分保持します。
@@ -867,7 +865,7 @@ https://raw.githubusercontent.com/allinurl/goaccess/master/config/browsers.list
 例：\fIord37s19\-in\-f14.1e100.net.\fP
 .TP 
 \fB\-\-no\-strict\-status\fP
-HTTPステータスコードの検証を無効にします。
+HTTP状態コードの検証を無効にします。
 対象との接続が確立され対象が応答を送ったときのみにこの値を記録するサーバーもあります。
 そうでない場合\-として記録されます。
 .TP 
@@ -1035,7 +1033,7 @@ GoAccessはどんな独自の書式文字列も受け付けます。
 .IP %H
 リクエストされたプロトコルです。
 .IP %s
-サーバーがクライアントに送り返すステータスコードです。
+サーバーがクライアントに送り返す状態コードです。
 .IP %b
 クライアントに返されるオブジェクトの大きさです。
 .IP %R
@@ -1137,7 +1135,7 @@ Toggle reverse order of chart bars for the active module.
 Cycle chart metric forward for the active module (hits, visitors,
 bandwidth).
 .IP M
-Cycle chart metric backward for the active module.
+活性モジュールについて表の指標を後方へ循環させます。
 .IP l
 Toggle logarithmic scale for chart bars in the active module.
 .IP タブ
@@ -1188,12 +1186,12 @@ To filter while keeping the pipe open for real\-time analysis:
 # tail \-f access.log | grep \-i \-\-line\-buffered 'firefox' | goaccess
 \-\-log\-format=COMBINED \-
 .P
-Parse from the beginning of the file while maintaining the pipe:
+パイプを維持しつつファイルの始めから解析します。
 .IP
 # tail \-f \-n +0 access.log | grep \-i \-\-line\-buffered 'firefox' | goaccess
 \-\-log\-format=COMBINED \-o report.html \-\-real\-time\-html \-
 .P
-Convert log date timezone to Europe/Berlin:
+ログの日付の時間帯をEurope/Berlinに変換します。
 .IP
 # goaccess access.log \-\-log\-format='%h %^[%x] "%r" %s %b "%R" "%u"'
 \-\-datetime\-format='%d/%b/%Y:%H:%M:%S %z' \-\-tz=Europe/Berlin \-\-date\-spec=min
@@ -1204,7 +1202,7 @@ Parse multiple logs by passing them to the command line:
 .IP
 # goaccess access.log access.log.1
 .P
-Parse from a pipe while also reading regular files (append \fB\-\fP for stdin):
+通常のファイルも読みつつパイプから解析します（標準入力のため\fB\-\fPを後置）。
 .IP
 # cat access.log.2 | goaccess access.log access.log.1 \-
 .P
@@ -1212,7 +1210,7 @@ Parse from a pipe while also reading regular files (append \fB\-\fP for stdin):
 単一ダッシュがコマンドラインの後ろに付いていることで、
 GoAccessにパイプから読み込むことが伝わります。
 .P
-Process all compressed log files plus the current log:
+すべての圧縮されたログファイルに加えて現在のログを処理します。
 .IP
 # zcat access.log.*.gz | goaccess access.log \-
 .P
@@ -1222,9 +1220,9 @@ without external decompression:
 .IP
 # goaccess access.log access.log.1.gz access.log.2.gz
 
-.SS "REAL\-TIME HTML OUTPUT"
+.SS 実時間HTML出力
 .P
-Generate a real\-time HTML report:
+実時間のHTMLレポートを生成するには以下のようにします。
 .IP
 # goaccess access.log \-o /usr/share/nginx/html/site/report.html
 \-\-real\-time\-html
@@ -1251,7 +1249,7 @@ e.g.:
 
 .SS 日付の扱い
 .P
-All requests from a specific date to end of file:
+特定の日付からファイルの終わりまでの全要求：
 .IP
 # sed \-n '/05\/Dec\/2010/,$ p' access.log | goaccess \-a \-
 .P
@@ -1273,15 +1271,15 @@ Keep only the last 5 days of data:
 Use \fB\-\-concat\-vhost\-req\fP to prepend the virtual host or server block (%v)
 to the request field.
 .P
-Append virtual host manually:
+仮想ホストを手動で追記：
 .IP
 # awk '$8=$1$8' access.log | goaccess \-a \-
 .P
-Exclude a list of virtual hosts:
+仮想ホストの一覧を除外：
 .IP
 # grep \-v "`cat exclude_vhost_list_file`" vhost_access.log | goaccess \-
 
-.SS "FILES, STATUS CODES & BOTS"
+.SS ファイルと状態コードとボット
 .P
 Parse only specific page types (html, htm, php):
 .IP
@@ -1314,8 +1312,8 @@ Pipe logs from a remote server:
 .IP
 # ssh \-n root@server 'tail \-f /var/log/apache2/access.log' | goaccess \-
 .P
-\fINote:\fP SSH requires \fB\-n\fP so GoAccess can read from stdin. Use SSH keys
-for authentication.
+\fI補足：\fP GoAccessが標準入力から読めるようにするにはSSHに\fI\-n\fPが必須です。
+認証にはSSH鍵を使ってください。
 
 .SS 漸進的ログ処理
 .P
@@ -1332,11 +1330,11 @@ timestamp of the last line read.
 consecutive lines can share the same timestamp. Best practice is to parse
 directly with GoAccess rather than piping for incremental processing.
 .P
-Persist last month's log:
+先月のログを残置：
 .IP
 # goaccess access.log.1 \-\-persist
 .P
-Append this month's log and preserve:
+先月のログを追記して保持：
 .IP
 # goaccess access.log \-\-restore \-\-persist
 .P

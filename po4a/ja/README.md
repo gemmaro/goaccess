@@ -410,7 +410,7 @@ To do the same, but also use real-time filtering and parsing:
 
     # tail -10 access.log | awk '{print $8}'
 
-または特定のステータスコードを解析するには次のようにします。
+または特定の状態コードを解析するには次のようにします。
 ここでは500 (Internal Server Error) を例に挙げます。
 
     # awk '$9~/500/' access.log | goaccess -
