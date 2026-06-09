@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2026-06-09 08:37+0900\n"
-"PO-Revision-Date: 2025-04-13 08:26+0900\n"
+"PO-Revision-Date: 2026-06-09 09:00+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -27,10 +27,9 @@ msgstr "goaccess"
 
 #. type: TH
 #: ../goaccess.1:1
-#, fuzzy, no-wrap
-#| msgid "MAR 2025"
+#, no-wrap
 msgid "MAR 2026"
-msgstr "2025年3月"
+msgstr "2026年3月"
 
 #. type: TH
 #: ../goaccess.1:1
@@ -191,7 +190,7 @@ msgid ""
 msgstr ""
 "前述のリクエストパネルと同じ指標を表示します。\n"
 "ただしこちらはサーバーで見当たらなかったり、\n"
-"一般に404ステータスコードとして知られているデータが含まれます。"
+"一般に404状態コードとして知られているデータが含まれます。"
 
 #. type: IP
 #: ../goaccess.1:49
@@ -363,31 +362,26 @@ msgstr "地理的位置"
 
 #. type: Plain text
 #: ../goaccess.1:99
-#, fuzzy
-#| msgid ""
-#| "Determines where an IP address is geographically located. Statistics are "
-#| "broken down by continent and country. It needs to be compiled with "
-#| "GeoLocation support."
 msgid ""
 "Determines where an IP address is geographically located. Statistics are "
 "broken down by continent and country, and when city-level GeoIP data is "
 "available it also lists the individual cities for each hit. It needs to be "
 "compiled with GeoLocation support."
 msgstr ""
-"IPアドレスが地理的にどこに位置しているかを定められます。\n"
-"統計は大陸と国家に細分化されます。\n"
+"IPアドレスが地理的にどこに位置しているかを定めます。\n"
+"統計は大陸と国家により細分化され、都市水準のGeoIP情報が使えるときはヒットそれぞれについて個々の都市も列挙します。\n"
 "GeoLocation対応とともにコンパイルする必要があります。"
 
 #. type: IP
 #: ../goaccess.1:99
 #, no-wrap
 msgid "HTTP Status Codes"
-msgstr "HTTPステータスコード"
+msgstr "HTTP状態コード"
 
 #. type: Plain text
 #: ../goaccess.1:101
 msgid "The values of the numeric status code to HTTP requests."
-msgstr "HTTPリクエストに対する数値的なステータスコードの値です。"
+msgstr "HTTPリクエストに対する数値的な状態コードの値です。"
 
 #. type: IP
 #: ../goaccess.1:101
@@ -619,10 +613,9 @@ msgstr ""
 
 #. type: TP
 #: ../goaccess.1:175
-#, fuzzy, no-wrap
-#| msgid "B<--with-getline>"
+#, no-wrap
 msgid "B<--with-zlib>"
-msgstr "B<--with-getline>"
+msgstr "B<--with-zlib>"
 
 #. type: Plain text
 #: ../goaccess.1:178
@@ -757,9 +750,9 @@ msgid ""
 msgstr ""
 "日付と時刻の書式について、\n"
 "2つの変数が単一のオプションに組み合わさったものです。\n"
-"これによりリクエストからタイムゾーンを取得し、\n"
-"出力用に他のタイムゾーンに変換することができます。\n"
-"I<--tz=E<lt>タイムゾーンE<gt>>を参照してください。"
+"これによりリクエストから時間帯を取得し、\n"
+"出力用に他の時間帯に変換することができます。\n"
+"I<--tz=E<lt>時間帯E<gt>>を参照してください。"
 
 #. type: Plain text
 #: ../goaccess.1:231
@@ -1288,7 +1281,6 @@ msgstr "進行中の指標とスピナーの解析を表示しません。"
 msgid "B<--tz=E<lt>timezoneE<gt>>"
 msgstr "B<--tz=E<lt>timezoneE<gt>>"
 
-# typo: ouput -> output
 #. type: Plain text
 #: ../goaccess.1:424
 msgid ""
@@ -1298,13 +1290,11 @@ msgid ""
 "GMT. See I<--datetime-format> in order to properly specify a timezone in the "
 "date/time format."
 msgstr ""
-"レポートの日付、時刻データを与えられたタイムゾーンで出力します。\n"
-"正統なタイムゾーン名を使うことに注意してください。\n"
-"例えばI<Europe/Berlin>やI<America/Chicago>やI<Africa/Cairo>といったようにで"
-"す。\n"
-"不正なタイムゾーン名が与えられると出力はGMTになります。\n"
-"日付、時刻書式で適切にタイムゾーンを指定するにはI<--datetime-format>を参照し"
-"てください。"
+"レポートの日付、時刻データを与えられた時間帯で出力します。\n"
+"正統な時間帯名を使うことに注意してください。\n"
+"例えばI<Europe/Berlin>やI<America/Chicago>やI<Africa/Cairo>といったようにです。\n"
+"不正な時間帯名が与えられると出力はGMTになります。\n"
+"日付、時刻書式で適切に時間帯を指定するにはI<--datetime-format>を参照してください。"
 
 #. type: SS
 #: ../goaccess.1:424
@@ -2335,7 +2325,7 @@ msgstr "B<--444-as-404>"
 #. type: Plain text
 #: ../goaccess.1:781
 msgid "Treat non-standard status code 444 as 404."
-msgstr "非標準的なステータスコードである444を404として扱います。"
+msgstr "非標準的な状態コードである444を404として扱います。"
 
 #. type: TP
 #: ../goaccess.1:781
@@ -2686,9 +2676,7 @@ msgstr "B<--hour-spec=E<lt>hr|minE<gt>>"
 msgid ""
 "Set the time specificity to either hour (default) or min to display the "
 "tenth of an hour appended to the hour."
-msgstr ""
-"時刻指定を時（既定）ないし分のいずれかに設定します。\n"
-"後者では時に1/10時間が後置されます。"
+msgstr "時刻指定を時（既定）ないし分のいずれかに設定すると1/10時間が時に追記されて表示されます。"
 
 #. type: Plain text
 #: ../goaccess.1:893
@@ -2797,8 +2785,8 @@ msgid ""
 "Ignore parsing and displaying one or multiple status code(s). For multiple "
 "status codes, use this option multiple times."
 msgstr ""
-"1つ以上のステータスコードを解析と表示から外します。\n"
-"複数のステータスコードについては、このオプションを複数回使用してください。"
+"1つ以上の状態コードを解析と表示から外します。\n"
+"複数の状態コードについては、このオプションを複数回使用してください。"
 
 #. type: TP
 #: ../goaccess.1:944
@@ -2848,9 +2836,8 @@ msgid ""
 "only if a connection was established to the target and the target sent a "
 "response.  Otherwise, it could be recorded as -."
 msgstr ""
-"HTTPステータスコードの検証を無効にします。\n"
-"対象との接続が確立され対象が応答を送ったときのみにこの値を記録するサーバーも"
-"あります。\n"
+"HTTP状態コードの検証を無効にします。\n"
+"対象との接続が確立され対象が応答を送ったときのみにこの値を記録するサーバーもあります。\n"
 "そうでない場合-として記録されます。"
 
 #. type: TP
@@ -3432,7 +3419,7 @@ msgstr "%s"
 #. type: Plain text
 #: ../goaccess.1:1155
 msgid "The status code that the server sends back to the client."
-msgstr "サーバーがクライアントに送り返すステータスコードです。"
+msgstr "サーバーがクライアントに送り返す状態コードです。"
 
 #. type: IP
 #: ../goaccess.1:1155
@@ -3854,10 +3841,9 @@ msgstr "カラースキームを設定したり変更したりします。"
 
 #. type: IP
 #: ../goaccess.1:1258
-#, fuzzy, no-wrap
-#| msgid "%r"
+#, no-wrap
 msgid "r"
-msgstr "%r"
+msgstr "r"
 
 #. type: Plain text
 #: ../goaccess.1:1260
@@ -3866,10 +3852,9 @@ msgstr ""
 
 #. type: IP
 #: ../goaccess.1:1260
-#, fuzzy, no-wrap
-#| msgid "%m"
+#, no-wrap
 msgid "m"
-msgstr "%m"
+msgstr "m"
 
 #. type: Plain text
 #: ../goaccess.1:1262
@@ -3879,17 +3864,14 @@ msgstr ""
 
 #. type: IP
 #: ../goaccess.1:1262
-#, fuzzy, no-wrap
-#| msgid "%M"
+#, no-wrap
 msgid "M"
-msgstr "%M"
+msgstr "M"
 
 #. type: Plain text
 #: ../goaccess.1:1264
-#, fuzzy
-#| msgid "Scroll backward one screen within an active module."
 msgid "Cycle chart metric backward for the active module."
-msgstr "活性モジュールの中で1画面スクロールを後ろに戻します。"
+msgstr "活性モジュールについて表の指標を後方へ循環させます。"
 
 #. type: IP
 #: ../goaccess.1:1264
@@ -4080,14 +4062,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1318
-#, fuzzy
-#| msgid ""
-#| "or to parse from the beginning of the file while maintaining the pipe "
-#| "opened and applying a filter"
 msgid "Parse from the beginning of the file while maintaining the pipe:"
-msgstr ""
-"もしくはパイプを開きフィルタを適用しつつ、\n"
-"ファイルの冒頭から解析するにはこのようにします。"
+msgstr "パイプを維持しつつファイルの始めから解析します。"
 
 #. type: Plain text
 #: ../goaccess.1:1320
@@ -4100,14 +4076,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1322
-#, fuzzy
-#| msgid ""
-#| "or to convert the log date timezone to a different timezone, e.g., Europe/"
-#| "Berlin"
 msgid "Convert log date timezone to Europe/Berlin:"
-msgstr ""
-"もしくはログの日時のタイムゾーンを異なるタイムゾーン、\n"
-"例えばEurope/Berlin、に変換するには次のようにします。"
+msgstr "ログの日付の時間帯をEurope/Berlinに変換します。"
 
 #. type: Plain text
 #: ../goaccess.1:1324
@@ -4136,13 +4106,9 @@ msgstr "# goaccess access.log access.log.1"
 
 #. type: Plain text
 #: ../goaccess.1:1333
-#, fuzzy
-#| msgid ""
-#| "It's even possible to parse files from a pipe while reading regular files:"
 msgid ""
 "Parse from a pipe while also reading regular files (append B<-> for stdin):"
-msgstr ""
-"通常のファイルから読み込みつつパイプからファイルを解析することさえできます。"
+msgstr "通常のファイルも読みつつパイプから解析します（標準入力のためB<->を後置）。"
 
 #. type: Plain text
 #: ../goaccess.1:1335
@@ -4162,7 +4128,7 @@ msgstr ""
 #. type: Plain text
 #: ../goaccess.1:1341
 msgid "Process all compressed log files plus the current log:"
-msgstr ""
+msgstr "すべての圧縮されたログファイルに加えて現在のログを処理します。"
 
 #. type: Plain text
 #: ../goaccess.1:1343
@@ -4179,24 +4145,19 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1351
-#, fuzzy
-#| msgid "# goaccess access.log access.log.1"
 msgid "# goaccess access.log access.log.1.gz access.log.2.gz"
-msgstr "# goaccess access.log access.log.1"
+msgstr "# goaccess access.log access.log.1.gz access.log.2.gz"
 
 #. type: SS
 #: ../goaccess.1:1352
-#, fuzzy, no-wrap
-#| msgid "REAL TIME HTML OUTPUT"
+#, no-wrap
 msgid "REAL-TIME HTML OUTPUT"
 msgstr "実時間HTML出力"
 
 #. type: Plain text
 #: ../goaccess.1:1356
-#, fuzzy
-#| msgid "To generate an HTML report:"
 msgid "Generate a real-time HTML report:"
-msgstr "HTMLレポートを生成するには以下のようにします。"
+msgstr "実時間のHTMLレポートを生成するには以下のようにします。"
 
 #. type: Plain text
 #: ../goaccess.1:1358
@@ -4250,14 +4211,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1377
-#, fuzzy
-#| msgid ""
-#| "# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
 msgid ""
 "# goaccess access.log -o report.html --real-time-html --ws-"
 "url=goaccess.io:8080/ws"
-msgstr ""
-"# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io"
+msgstr "# goaccess access.log -o report.html --real-time-html --ws-url=goaccess.io:8080/ws"
 
 #. type: SS
 #: ../goaccess.1:1378
@@ -4267,10 +4224,8 @@ msgstr "日付の扱い"
 
 #. type: Plain text
 #: ../goaccess.1:1382
-#, fuzzy
-#| msgid "Log invalid requests to the specified file."
 msgid "All requests from a specific date to end of file:"
-msgstr "不正なリクエストを指定されたファイルにログ出力します。"
+msgstr "特定の日付からファイルの終わりまでの全要求："
 
 #. type: Plain text
 #: ../goaccess.1:1384
@@ -4328,24 +4283,18 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1403
-#, fuzzy
-#| msgid "Apache virtual hosts"
 msgid "Append virtual host manually:"
-msgstr "Apache仮想ホスト"
+msgstr "仮想ホストを手動で追記："
 
 #. type: Plain text
 #: ../goaccess.1:1405
-#, fuzzy
-#| msgid "awk '$8=$1$8' access.log | goaccess -a -"
 msgid "# awk '$8=$1$8' access.log | goaccess -a -"
-msgstr "awk '$8=$1$8' access.log | goaccess -a -"
+msgstr "# awk '$8=$1$8' access.log | goaccess -a -"
 
 #. type: Plain text
 #: ../goaccess.1:1407
-#, fuzzy
-#| msgid "To exclude a list of virtual hosts you can do the following:"
 msgid "Exclude a list of virtual hosts:"
-msgstr "仮想ホストのリストを除外するためには以下のようにできます。"
+msgstr "仮想ホストの一覧を除外："
 
 #. type: Plain text
 #: ../goaccess.1:1409
@@ -4356,10 +4305,9 @@ msgstr ""
 
 #. type: SS
 #: ../goaccess.1:1410
-#, fuzzy, no-wrap
-#| msgid "FILES & STATUS CODES"
+#, no-wrap
 msgid "FILES, STATUS CODES & BOTS"
-msgstr "ファイルとステータスコード"
+msgstr "ファイルと状態コードとボット"
 
 #. type: Plain text
 #: ../goaccess.1:1414
@@ -4378,10 +4326,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1420
-#, fuzzy
-#| msgid "# awk '$9~/500/' access.log | goaccess -"
 msgid "# awk '$7!~/..*$/' access.log | goaccess -"
-msgstr "# awk '$9~/500/' access.log | goaccess -"
+msgstr "# awk '$7!~/..*$/' access.log | goaccess -"
 
 #. type: Plain text
 #: ../goaccess.1:1422
@@ -4400,16 +4346,10 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1428
-#, fuzzy
-#| msgid ""
-#| "    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | "
-#| "goaccess -o out.html -\n"
 msgid ""
 "# tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o "
 "out.html -"
-msgstr ""
-"    # tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess "
-"-o out.html -\n"
+msgstr "# tail -f -n +0 access.log | awk '$9~/3[0-9]{2}|5[0-9]{2}/' | goaccess -o out.html -"
 
 #. type: Plain text
 #: ../goaccess.1:1430
@@ -4418,13 +4358,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1432
-#, fuzzy
-#| msgid ""
-#| "    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess "
-#| "-\n"
 msgid "# tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -"
-msgstr ""
-"    # tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -\n"
+msgstr "# tail -F -n +0 access.log | grep -i --line-buffered 'bot' | goaccess -"
 
 #. type: SS
 #: ../goaccess.1:1433
@@ -4455,19 +4390,12 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1447
-#, fuzzy
-#| msgid ""
-#| "Note: SSH requires I<-n> so GoAccess can read from stdin. Also, make sure "
-#| "to use SSH keys for authentication as it won't work if a passphrase is "
-#| "required."
 msgid ""
 "I<Note:> SSH requires B<-n> so GoAccess can read from stdin. Use SSH keys "
 "for authentication."
 msgstr ""
-"補足：SSHにはI<-n>が必要で、\n"
-"こうすることでGoAccessが標準入力から読むことができます。\n"
-"またパスフレーズが要求されるとうまく動かないため認証には必ずSSH鍵を使うように"
-"してください。"
+"I<補足：> GoAccessが標準入力から読めるようにするにはSSHにI<-n>が必須です。\n"
+"認証にはSSH鍵を使ってください。"
 
 #. type: SS
 #: ../goaccess.1:1448
@@ -4502,10 +4430,8 @@ msgstr ""
 
 #. type: Plain text
 #: ../goaccess.1:1467
-#, fuzzy
-#| msgid "// last month access log"
 msgid "Persist last month's log:"
-msgstr "// 先月のアクセスログ"
+msgstr "先月のログを残置："
 
 #. type: Plain text
 #: ../goaccess.1:1469 ../goaccess.1:1504
@@ -4514,10 +4440,8 @@ msgstr "# goaccess access.log.1 --persist"
 
 #. type: Plain text
 #: ../goaccess.1:1471
-#, fuzzy
-#| msgid "// append this month access log, and preserve new data"
 msgid "Append this month's log and preserve:"
-msgstr "// この月のアクセスログを追記し新しいデータを保存します。"
+msgstr "先月のログを追記して保持："
 
 #. type: Plain text
 #: ../goaccess.1:1473 ../goaccess.1:1510
@@ -5003,14 +4927,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:127
-#, fuzzy, no-wrap
-#| msgid ""
-#| "    $ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz\n"
-#| "    $ tar -xzvf goaccess-1.9.4.tar.gz\n"
-#| "    $ cd goaccess-1.9.4/\n"
-#| "    $ ./configure --enable-utf8 --enable-geoip=mmdb\n"
-#| "    $ make\n"
-#| "    # make install\n"
+#, no-wrap
 msgid ""
 "    $ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz\n"
 "    $ tar -xzvf goaccess-1.10.2.tar.gz\n"
@@ -5019,10 +4936,10 @@ msgid ""
 "    $ make\n"
 "    # make install\n"
 msgstr ""
-"    $ wget https://tar.goaccess.io/goaccess-1.9.4.tar.gz\n"
-"    $ tar -xzvf goaccess-1.9.4.tar.gz\n"
-"    $ cd goaccess-1.9.4/\n"
-"    $ ./configure --enable-utf8 --enable-geoip=mmdb\n"
+"    $ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz\n"
+"    $ tar -xzvf goaccess-1.10.2.tar.gz\n"
+"    $ cd goaccess-1.10.2/\n"
+"    $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib\n"
 "    $ make\n"
 "    # make install\n"
 
@@ -5866,7 +5783,7 @@ msgstr "    # tail -10 access.log | awk '{print $8}'\n"
 #: ../README.md:428
 msgid "Or to parse a specific status code, e.g., 500 (Internal Server Error):"
 msgstr ""
-"または特定のステータスコードを解析するには次のようにします。\n"
+"または特定の状態コードを解析するには次のようにします。\n"
 "ここでは500 (Internal Server Error) を例に挙げます。"
 
 #. type: Plain text
@@ -5931,10 +5848,9 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:450
-#, fuzzy, no-wrap
-#| msgid "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
+#, no-wrap
 msgid "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess - --log-format=COMBINED\n"
-msgstr "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess -\n"
+msgstr "    # ssh -n root@server 'tail -f /var/log/apache2/access.log' | goaccess - --log-format=COMBINED\n"
 
 #. type: Plain text
 #: ../README.md:453
