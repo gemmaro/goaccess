@@ -3,7 +3,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH goaccess 1 2026年3月 GNU+Linux 利用者の手引
+.TH goaccess 1 "JUL 2026" GNU+Linux 利用者の手引
 .SH 名称
 goaccess \- 高速なwebログ解析器と対話的な閲覧器
 .SH 処方
@@ -484,9 +484,10 @@ WebSocket接続を認証するために、最初のJWTを取得するURLを指�
 .IP
 例： \fB\-\-ws\-auth\-url=https://site.com/api/get\-auth\-token\fP
 .IP
-トークンを取得するとき、要求の一部に \fI{ credentials: 'include' }\fP が使われます。
-システム内にある利用者の既存の認証セッションに基づき、アクセストークンを安全に取得するためです。
-これにより、利用者が認証している限り、トークンの取得は安全であることが担保されます。
+When fetching the token, GoAccess uses \fI{ credentials: 'include' }\fP as part
+of the request to securely retrieve the access token based on the user's
+existing authentication session in your system, ensuring token retrieval is
+safe as long as your users are authenticated.
 .IP
 このオプションにより、トークン取得エンドポイントを使って、既存の認証システムをGoAccessのダッシュボードに統合できます。
 .TP 
@@ -501,11 +502,14 @@ GoAccessは先制的に、期限切れになる60秒前に、このURLへ refres
 要求形式は最初の認証URLのものと合致させてください。
 .SS WebSocketの認証の流れ
 .IP
-GoAccessは柔軟な認証オプションを供しており、状態なしと状態ありの手法の両方に対応しています。
-状態なしの手法では、クッキーやCSRF保護なしにリフレッシュトークンが取得されます。
-バックエンドがリフレッシュトークンのシグネチャを検証し新しいアクセストークンを払出します。
-代えて、状態ありの手法では初回の取得で`csrf_token`をともなうJWTを払出すことができ、これがセッションに保管されます。
-後続のリフレッシュ要求 (POST) からはCSRFの検査が実施され、セッションのトークンに合致する`X\-CSRF\-TOKEN`ヘッダを要求します。
+GoAccess offers flexible authentication options, supporting both stateless
+and stateful approaches. In the stateless approach, the refresh token is
+obtained without cookies or CSRF protection; your backend validates the
+refresh token's signature and issues a new access token. Alternatively, the
+stateful approach allows the initial fetch to issue JWTs along with a
+`csrf_token`, which is stored in the session. The subsequent refresh request
+(POST) then performs a CSRF check, requiring the `X\-CSRF\-TOKEN` header to
+match the session's token.
 .IP
 \fB初回の認証：\fP
 .RS
@@ -547,9 +551,17 @@ GoAccessはそれをリフレッシュ要求の中の\fBX\-CSRF\-TOKEN\fPとし�
 \fB周期的なトークンの検証：\fP
 .RS
 .IP \(bu 4
-リフレッシュ後、GoAccessは以下を送ることによりWebSocketサーバーと更新されたJWTの妥当性を確認します。
+After refreshing, GoAccess confirms the updated JWT's validity with the
+WebSocket server by sending:
 .IP
     { "action": "validate_token", "token": "current\-jwt" }
+.IP \(bu 4
+The WebSocket server tracks the verified JWT's \fBexp\fP claim and closes the
+connection when it expires, even if the client does not send another
+message.
+.IP \(bu 4
+If token refresh fails or returns an unusable token, the browser clears its
+credentials and closes the authenticated WebSocket connection.
 .RE
 .IP
 \fB重要事項：\fPこれらのオプションが機能するためには、<機密情報>が以下をとりうる\fB\-\-ws\-auth=jwt:verify:<機密情報>\fPを指定しなければなりません。
