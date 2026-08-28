@@ -43,7 +43,7 @@
 #define __attribute__(x) /**/
 #endif
 #define GO_UNUSED __attribute__((unused))
-#define GO_VERSION 		"1.10.2"
+#define GO_VERSION 		"1.11"
 #define GO_WEBSITE 		"https://goaccess.io/"
 extern struct tm now_tm;
 
@@ -117,15 +117,25 @@ typedef enum MODULES {
   TLS_TYPE,
 } GModule;
 
-/* Total number of storage metrics (GSMetric) */
-#define GSMTRC_TOTAL 19
+/* Total number of per-module storage slots (first GSMetric entries) */
+#define GSMTRC_TOTAL 7
+/* Total number of per-date global storage metrics (MTRC_UNIQUE_KEYS..MTRC_CNT_VISITORS) */
+#define GLOBAL_METRICS_TOTAL 6
 
-/* Enumerated Storage Metrics */
+/* Enumerated Storage Metrics
+ *
+ * The first GSMTRC_TOTAL entries are physical store slots and index directly
+ * into the per-module metrics array; their order must match module_metrics[].
+ * The MTRC_ROOT..MTRC_PROTOCOLS entries are logical metrics packed into the
+ * MTRC_METRICS slot. The remaining entries are per-date global metrics. */
 typedef enum GSMetric_ {
   MTRC_KEYMAP,
   MTRC_ROOTMAP,
   MTRC_DATAMAP,
   MTRC_UNIQMAP,
+  MTRC_METRICS,
+  MTRC_AGENTS,
+  MTRC_METADATA,
   MTRC_ROOT,
   MTRC_HITS,
   MTRC_VISITORS,
@@ -134,13 +144,12 @@ typedef enum GSMetric_ {
   MTRC_MAXTS,
   MTRC_METHODS,
   MTRC_PROTOCOLS,
-  MTRC_AGENTS,
-  MTRC_METADATA,
   MTRC_UNIQUE_KEYS,
   MTRC_AGENT_KEYS,
   MTRC_AGENT_VALS,
   MTRC_CNT_VALID,
   MTRC_CNT_BW,
+  MTRC_CNT_VISITORS,
 } GSMetric;
 
 /* Metric totals. These are metrics that have a percent value and are
@@ -219,12 +228,12 @@ typedef struct GHolderItem_ {
 typedef struct GHolder_ {
   GHolderItem *items;           /* holder items */
   GModule module;               /* current module  */
-  uint32_t idx;                      /* holder index  */
-  uint32_t holder_size;              /* number of allocated items */
+  uint32_t idx;                 /* holder index  */
+  uint32_t holder_size;         /* number of allocated items */
   uint32_t ht_size;             /* size of the hash table/store */
-  uint32_t sub_items_size;           /* number of sub items  */
-  uint32_t max_choices;              /* max items at root level */
-  uint32_t max_choices_sub;          /* max items at sub-item levels */
+  uint32_t sub_items_size;      /* number of sub items  */
+  uint32_t max_choices;         /* max items at root level */
+  uint32_t max_choices_sub;     /* max items at sub-item levels */
 } GHolder;
 
 /* Enum-to-string */

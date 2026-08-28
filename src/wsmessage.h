@@ -1,9 +1,9 @@
 /**
- *    ______      ___
- *   / ____/___  /   | _____________  __________
- *  / / __/ __ \/ /| |/ ___/ ___/ _ \/ ___/ ___/
- * / /_/ / /_/ / ___ / /__/ /__/  __(__  |__  )
- * \____/\____/_/  |_\___/\___/\___/____/____/
+ *    _______       _______            __        __
+ *   / ____/ |     / / ___/____  _____/ /_____  / /_
+ *  / / __ | | /| / /\__ \/ __ \/ ___/ //_/ _ \/ __/
+ * / /_/ / | |/ |/ /___/ / /_/ / /__/ ,< /  __/ /_
+ * \____/  |__/|__//____/\____/\___/_/|_|\___/\__/
  *
  * The MIT License (MIT)
  * Copyright (c) 2009-2026 Gerardo Orellana <hello @ goaccess.io>
@@ -27,32 +27,25 @@
  * SOFTWARE.
  */
 
-#ifndef GHOLDER_H_INCLUDED
-#define GHOLDER_H_INCLUDED
+#ifndef WSMESSAGE_H_INCLUDED
+#define WSMESSAGE_H_INCLUDED
 
-#define MTRC_ID_COUNTRY  0
-#define MTRC_ID_CITY     1
-#define MTRC_ID_ASN      2
-#define MTRC_ID_HOSTNAME 3
+#include <stddef.h>
 
-#include "commons.h"
-#include "sort.h"
+typedef enum WSTokenParseResult_ {
+  WS_TOKEN_PARSE_ERROR = -1,
+  WS_TOKEN_PARSE_OTHER = 0,
+  WS_TOKEN_PARSE_OBJECT = 1,
+} WSTokenParseResult;
 
-/* Default Anonymization Levels */
-typedef enum GAnonymizeLevels_ {
-  ANONYMIZE_DEFAULT = 1,
-  ANONYMIZE_STRONG,
-  ANONYMIZE_PEDANTIC,
-} GAnonymizeLevels;
+typedef struct WSTokenMessage_ {
+  char *token;
+  int is_validation;
+  int is_valid;
+} WSTokenMessage;
 
-/* Function Prototypes */
-GHolder *new_gholder (uint32_t size);
-void *add_hostname_node (void *ptr_holder);
-void free_holder_by_module (GHolder ** holder, GModule module);
-void free_holder (GHolder ** holder);
-void load_holder_data (GRawData * raw_data, GHolder * h, GModule module, GSort sort,
-                       uint32_t max_choices, uint32_t max_choices_sub);
-void load_host_to_holder (GHolder * h, char *ip);
-int dup_key_list (void *val, GSLList ** user_data);
+void ws_free_token_message (WSTokenMessage * message);
+WSTokenParseResult ws_parse_token_message (const char *payload, size_t payloadsz,
+                                           WSTokenMessage * message);
 
-#endif // for #ifndef GHOLDER_H
+#endif // for #ifndef WSMESSAGE_H

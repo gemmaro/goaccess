@@ -183,7 +183,6 @@ house_keeping (void) {
   /* GEOLOCATION */
 #ifdef HAVE_GEOLOCATION
   geoip_free ();
-  free_country_continent_map ();
 #endif
 
   /* INVALID REQUESTS */
@@ -338,7 +337,8 @@ allocate_holder_by_module (GModule module) {
     return;
   }
 
-  load_holder_data (raw_data, holder + module, module, module_sort[module], max_choices, max_choices_sub);
+  load_holder_data (raw_data, holder + module, module, module_sort[module], max_choices,
+                    max_choices_sub);
 }
 
 /* Iterate over all modules/panels and extract data from hash

@@ -222,6 +222,8 @@ goaccess_SOURCES = \
    src/util.h          \
    src/websocket.c     \
    src/websocket.h     \
+   src/wsmessage.c     \
+   src/wsmessage.h     \
    src/xmalloc.c       \
    src/xmalloc.h
 

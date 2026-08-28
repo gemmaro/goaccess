@@ -58,6 +58,8 @@ window.GoAccess = window.GoAccess || {
 		this.AppPrefs = GoAccess.Util.merge(this.AppPrefs, this.opts.prefs);
 		this.currentJWT = null;
 		this.csrfToken = null;
+		this.authInvalidated = false;
+		this.tokenRefreshTimer = null;
 
 		// WebSocket reconnection settings
 		this.wsDelay = this.currDelay = 1E3;
@@ -246,11 +248,20 @@ window.GoAccess = window.GoAccess || {
 	scheduleTokenRefresh: function (expiresIn, refreshToken) {
 		// Refresh 1 minute before expiration
 		const refreshUrl = this.AppWSConn.ws_auth_refresh_url || this.AppWSConn.ws_auth_url;
+		const expiresInSeconds = Number(expiresIn);
+		if (!refreshUrl || typeof refreshToken !== 'string' || !refreshToken.length ||
+			!Number.isFinite(expiresInSeconds) || expiresInSeconds <= 0) {
+			this.invalidateJWT();
+			return;
+		}
+
+		const refreshDelay = Math.max(0, (expiresInSeconds - this.tokenRefreshLeadTime) * 1000);
+		window.clearTimeout(this.tokenRefreshTimer);
 		// Set the timer to trigger one minute before the token expires
-		setTimeout(() => {
+		this.tokenRefreshTimer = setTimeout(() => {
 			this.refreshJWT(refreshUrl, refreshToken)
 				.then(data => {
-					if (data.status === "success") {
+					if (data.status === "success" && typeof data.access_token === 'string' && data.access_token.length) {
 						const newJwt = data.access_token;
 						const newRefreshToken = data.refresh_token;
 						const newExpiresIn = data.expires_in;
@@ -259,24 +270,43 @@ window.GoAccess = window.GoAccess || {
 						// Schedule the next refresh using the new expiration time
 						this.scheduleTokenRefresh(newExpiresIn, newRefreshToken);
 					} else {
-						// Update token without reconnecting
-						this.sendNewJWT(null);
+						this.invalidateJWT();
 					}
 				})
 				.catch(error => {
 					console.error("Error refreshing JWT:", error);
+					this.invalidateJWT();
 				});
-		}, (expiresIn - this.tokenRefreshLeadTime) * 1000);
+		}, refreshDelay);
 	},
 
 	// Sends the new JWT to the server over the already-open WebSocket connection
 	sendNewJWT: function (newJwt) {
+		if (typeof newJwt !== 'string' || !newJwt.length) {
+			this.invalidateJWT();
+			return;
+		}
+
 		if (this.socket && this.socket.readyState === WebSocket.OPEN) {
 			// Notify the server to update the JWT used for authentication
 			this.socket.send(JSON.stringify({ action: "validate_token", token: newJwt }));
 		}
 		// Also update the locally stored token
+		this.authInvalidated = false;
 		this.currentJWT = newJwt;
+	},
+
+	// Clear unusable credentials and terminate their authenticated connection
+	invalidateJWT: function () {
+		window.clearTimeout(this.tokenRefreshTimer);
+		this.tokenRefreshTimer = null;
+		this.authInvalidated = true;
+		this.currentJWT = null;
+		this.csrfToken = null;
+
+		if (this.socket && (this.socket.readyState === WebSocket.CONNECTING ||
+			this.socket.readyState === WebSocket.OPEN))
+			this.socket.close();
 	},
 
 	reconnect: function (wsConn) {
@@ -301,6 +331,7 @@ window.GoAccess = window.GoAccess || {
 	setWebSocket: function (wsConn, jwt, messageInterval) {
 		var host = null, pingId = null, uri = null, defURI = null, str = null;
 		// Store the JWT used for this connection
+		this.authInvalidated = false;
 		this.currentJWT = jwt;
 
 		// If no external messageInterval is provided, set up local message rotation
@@ -368,7 +399,8 @@ window.GoAccess = window.GoAccess || {
 			GoAccess.Nav.WSClose();
 			window.clearInterval(pingId);
 			this.socket = null;
-			this.wsTimer = setTimeout(() => { this.reconnect(wsConn); }, this.currDelay);
+			if (!this.authInvalidated)
+				this.wsTimer = setTimeout(() => { this.reconnect(wsConn); }, this.currDelay);
 		}.bind(this);
 	},
 };
@@ -1337,6 +1369,7 @@ GoAccess.Panels = {
 		if (GoAccess.Util.isPanelValid(panel) || GoAccess.Util.isPanelHidden(panel))
 			return false;
 
+		clearMapFullscreen(d3.select('#chart-' + panel));
 		var col = ele.parentNode;
 		col.removeChild(ele);
 		// Render panel given a user interface definition
@@ -1350,6 +1383,7 @@ GoAccess.Panels = {
 		var ui = GoAccess.getPanelUI(), idx = 0, row = null, col = null;
 		var order = GoAccess.AppPrefs.panelOrder || [];
 
+		clearMapFullscreen(d3.select('.' + MAP_FULLSCREEN_CLASS));
 		$('#panels').innerHTML = '';
 
 		// If no order is set, create default order
@@ -1637,14 +1671,18 @@ GoAccess.Charts = {
 	},
 
 	renderChart: function (panel, chart, data) {
+		var selection = d3.select('#chart-' + panel);
+
+		if (!chart.isWorldMap)
+			clearMapFullscreen(selection);
 		// remove popup
-		d3.select('#chart-' + panel + '>.chart-tooltip-wrap')
+		selection.select('.chart-tooltip-wrap')
 			.remove();
 		// remove svg
-		d3.select('#chart-' + panel).selectAll('svg')
+		selection.selectAll('svg')
 			.remove();
 		// add chart to the document
-		d3.select("#chart-" + panel)
+		selection
 			.datum(data)
 			.call(chart)
 			.append("div").attr("class", "chart-tooltip-wrap");
