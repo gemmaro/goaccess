@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" type="text/css" media="all"/>
+  <title>goaccess(1)</title>
+</head>
 <!-- This is an automatically generated file.  Do not edit.
   *******************************************************************
   
@@ -7,34 +13,25 @@
   
   *******************************************************************
  -->
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" type="text/css" media="all"/>
-  <title>goaccess(1)</title>
-</head>
 <body>
-<table class="head">
-  <tr>
-    <td class="head-ltitle">goaccess(1)</td>
-    <td class="head-vol">&#x5229;&#x7528;&#x8005;&#x306E;&#x624B;&#x5F15;</td>
-    <td class="head-rtitle">goaccess(1)</td>
-  </tr>
-</table>
-<div class="manual-text">
+<div class="head" role="doc-pageheader" aria-label="Manual header
+  line"><span class="head-ltitle">goaccess(1)</span>
+  <span class="head-vol">&#x5229;&#x7528;&#x8005;&#x306E;&#x624B;&#x5F15;</span>
+  <span class="head-rtitle">goaccess(1)</span></div>
+<main class="manual-text">
 <section class="Sh">
-<h1 class="Sh">&#x540D;&#x79F0;</h1>
+<h2 class="Sh">&#x540D;&#x79F0;</h2>
 <p class="Pp">goaccess -
     &#x9AD8;&#x901F;&#x306A;web&#x30ED;&#x30B0;&#x89E3;&#x6790;&#x5668;&#x3068;&#x5BFE;&#x8A71;&#x7684;&#x306A;&#x95B2;&#x89A7;&#x5668;</p>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x51E6;&#x65B9;</h1>
+<h2 class="Sh">&#x51E6;&#x65B9;</h2>
 <p class="Pp"><b>goaccess [&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;]
     [&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;...]
   [-c][-M][-H][-q][-d][...]</b></p>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x8AAC;&#x660E;</h1>
+<h2 class="Sh">&#x8AAC;&#x660E;</h2>
 <p class="Pp"><b>goaccess</b>&#x306F;&#x30AA;&#x30FC;&#x30D7;&#x30F3;&#x30BD;&#x30FC;&#x30B9;&#x3067;&#x3042;&#x308A;&#x3001;&#x5B9F;&#x6642;&#x9593;&#x30ED;&#x30B0;&#x89E3;&#x6790;&#x5668;&#x304B;&#x3064;*nix&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x4E0A;&#x306E;<i>&#x7AEF;&#x672B;</i>&#x306A;&#x3044;&#x3057;&#x304A;&#x624B;&#x5143;&#x306E;<i>&#x30D6;&#x30E9;&#x30A6;&#x30B6;</i>&#x3067;&#x76F4;&#x63A5;&#x5B9F;&#x884C;&#x3059;&#x308B;&#x5BFE;&#x8A71;&#x7684;&#x306A;&#x95B2;&#x89A7;&#x5668;&#x3067;&#x3059;&#x3002;
     &#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x7BA1;&#x7406;&#x8005;&#x3001;DevOps&#x6280;&#x8853;&#x8005;&#x3001;&#x30BB;&#x30AD;&#x30E5;&#x30EA;&#x30C6;&#x30A3;&#x5C02;&#x9580;&#x5BB6;&#x3092;&#x5FF5;&#x982D;&#x306B;&#x8A2D;&#x8A08;&#x3055;&#x308C;&#x3001;&#x9AD8;&#x901F;&#x3067;&#x3001;&#x5B9F;&#x884C;&#x53EF;&#x80FD;&#x306A;HTTP&#x306E;&#x7D71;&#x8A08;&#x3068;&#x53EF;&#x8996;&#x5316;&#x3055;&#x308C;&#x305F;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x5831;&#x544A;&#x60C5;&#x5831;&#x3092;&#x5B9F;&#x884C;&#x6642;&#x306B;&#x5C4A;&#x3051;&#x307E;&#x3059;&#x3002;
     GoAccess&#x306F;&#x30A6;&#x30A7;&#x30D6;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x5B9F;&#x6642;&#x9593;&#x306B;&#x89E3;&#x6790;&#x3057;&#x3066;&#x7AEF;&#x672B;&#x306B;&#x76F4;&#x63A5;&#x306A;&#x3044;&#x3057;&#x5B9F;&#x6CC1;&#x306E;HTML&#x30C0;&#x30C3;&#x30B7;&#x30E5;&#x30DC;&#x30FC;&#x30C9;&#x3092;&#x4ECB;&#x3057;&#x3066;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x63D0;&#x793A;&#x3057;&#x3001;&#x901A;&#x4FE1;&#x91CF;&#x306E;&#x76E3;&#x8996;&#x3001;&#x7570;&#x5E38;&#x6027;&#x306E;&#x691C;&#x77E5;&#x3001;&#x554F;&#x984C;&#x306E;&#x969C;&#x5BB3;&#x5BFE;&#x5FDC;&#x3092;&#x5373;&#x5EA7;&#x306B;&#x5BB9;&#x6613;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
@@ -151,7 +148,7 @@
 <p class="Pp"></p>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x5BB9;&#x91CF;</h1>
+<h2 class="Sh">&#x5BB9;&#x91CF;</h2>
 <p class="Pp">GoAccess&#x3067;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x308B;&#x5BB9;&#x91CF;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;3&#x3064;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
     &#x74B0;&#x5883;&#x3068;&#x8981;&#x4EF6;&#x306B;&#x3088;&#x308A;&#x9078;&#x629E;&#x306F;&#x5909;&#x308F;&#x3063;&#x3066;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 <dl class="Bl-tag">
@@ -164,41 +161,41 @@
 </dl>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x306E;&#x8A2D;&#x5B9A;</h1>
+<h2 class="Sh">&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x306E;&#x8A2D;&#x5B9A;</h2>
 <p class="Pp">GoAccess&#x306E;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x6642;&#x306E;&#x8A2D;&#x5B9A;&#x3067;&#x306F;&#x3044;&#x304F;&#x3064;&#x304B;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
     &#x5B8C;&#x5168;&#x306A;&#x6700;&#x65B0;&#x306E;&#x8A2D;&#x5B9A;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x4E00;&#x89A7;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;<i>./configure
     --help</i>&#x3092;&#x8D70;&#x3089;&#x305B;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
 <dl class="Bl-tag">
-  <dt id="enable"><a class="permalink" href="#enable"><b>--enable-debug</b></a></dt>
+  <dt id="enable-debug"><a class="permalink" href="#enable-debug"><b>--enable-debug</b></a></dt>
   <dd>&#x30C7;&#x30D0;&#x30C3;&#x30B0;&#x30B7;&#x30F3;&#x30DC;&#x30EB;&#x6709;&#x308A;&#x3067;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x3001;
       &#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30E9;&#x306E;&#x6700;&#x9069;&#x5316;&#x3092;&#x5207;&#x308A;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="enable~2"><a class="permalink" href="#enable~2"><b>--enable-utf8</b></a></dt>
+  <dt id="enable-utf8"><a class="permalink" href="#enable-utf8"><b>--enable-utf8</b></a></dt>
   <dd>&#x5168;&#x89D2;&#x6587;&#x5B57;&#x5BFE;&#x5FDC;&#x6709;&#x308A;&#x3067;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x307E;&#x3059;&#x3002;
       Ncursesw&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3059;&#x3002;</dd>
-  <dt id="enable~3"><a class="permalink" href="#enable~3"><b>--enable-geoip=&lt;legacy|mmdb&gt;</b></a></dt>
+  <dt id="enable-geoip=_legacy_mmdb_"><a class="permalink" href="#enable-geoip=_legacy_mmdb_"><b>--enable-geoip=&lt;legacy|mmdb&gt;</b></a></dt>
   <dd>GeoLocation&#x5BFE;&#x5FDC;&#x6709;&#x308A;&#x3067;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x307E;&#x3059;&#x3002;
       MaxMind&#x306E;GeoIP&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3059;&#x3002;
       <i>legacy</i>&#x306F;&#x5143;&#x6765;&#x306E;GeoIP&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x307E;&#x3059;&#x3002;
       <i>mmdb</i>&#x306F;&#x6539;&#x5584;&#x3055;&#x308C;&#x305F;GeoIP2&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x4F7F;&#x7528;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="with"><a class="permalink" href="#with"><b>--with-getline</b></a></dt>
+  <dt id="with-getline"><a class="permalink" href="#with-getline"><b>--with-getline</b></a></dt>
   <dd>4096&#x306E;&#x56FA;&#x5B9A;&#x5927;&#x30D0;&#x30C3;&#x30D5;&#x30A1;&#x3092;&#x4F7F;&#x3046;&#x4EE3;&#x308F;&#x308A;&#x306B;&#x3001;&#x30D5;&#x30EB;&#x30E9;&#x30A4;&#x30F3;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x89E3;&#x6790;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x52D5;&#x7684;&#x306B;&#x30E9;&#x30A4;&#x30F3;&#x30D0;&#x30C3;&#x30D5;&#x30A1;&#x3092;&#x62E1;&#x5F35;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="with~2"><a class="permalink" href="#with~2"><b>--with-zlib</b></a></dt>
+  <dt id="with-zlib"><a class="permalink" href="#with-zlib"><b>--with-zlib</b></a></dt>
   <dd>gzip&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x3092;&#x8AAD;&#x3080;&#x305F;&#x3081;&#x306B;zlib&#x5BFE;&#x5FDC;&#x3064;&#x304D;&#x3067;&#x30D3;&#x30EB;&#x30C9;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x65E2;&#x5B9A;&#x3067;&#x7121;&#x52B9;&#x5316;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="with~3"><a class="permalink" href="#with~3"><b>--with-openssl</b></a></dt>
+  <dt id="with-openssl"><a class="permalink" href="#with-openssl"><b>--with-openssl</b></a></dt>
   <dd>WebSocket&#x30B5;&#x30FC;&#x30D0;&#x306E;&#x305F;&#x3081;&#x306B;OpenSSL&#x5BFE;&#x5FDC;&#x3064;&#x304D;&#x3067;GoAccess&#x3092;&#x30B3;&#x30F3;&#x30D1;&#x30A4;&#x30EB;&#x3057;&#x307E;&#x3059;&#x3002;
       <b>--with-zlib</b>
       &#x968F;&#x610F;&#x3067;zlib&#x5BFE;&#x5FDC;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3057;&#x3066;&#x624B;&#x52D5;&#x306E;&#x8131;&#x5727;&#x7E2E;&#x306A;&#x3057;&#x306B;&#x76F4;&#x63A5;&#x5727;&#x7E2E;&#x3055;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#xFF08;&#x4F8B;&#xFF1A;.gz&#xFF09;&#x306E;&#x89E3;&#x6790;&#x3092;&#x8A31;&#x5BB9;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h1>
+<h2 class="Sh">&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
 <p class="Pp">&#x4EE5;&#x4E0B;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x306B;&#x4E0E;&#x3048;&#x305F;&#x308A;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6307;&#x5B9A;&#x3057;&#x305F;&#x308A;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
     &#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3067;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x5834;&#x5408;&#x3001;&#x9577;&#x3044;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x540D;&#x306F;--&#x3092;&#x524D;&#x306B;&#x4ED8;&#x3051;&#x305A;&#x3001;&#x7B49;&#x53F7;=&#x3092;&#x4F7F;&#x308F;&#x305A;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 <section class="Ss">
-<h2 class="Ss">&#x30ED;&#x30B0;&#x3001;&#x65E5;&#x4ED8;&#x3001;&#x6642;&#x523B;&#x306E;&#x66F8;&#x5F0F;</h2>
+<h3 class="Ss">&#x30ED;&#x30B0;&#x3001;&#x65E5;&#x4ED8;&#x3001;&#x6642;&#x523B;&#x306E;&#x66F8;&#x5F0F;</h3>
 <dl class="Bl-tag">
-  <dt id="time"><a class="permalink" href="#time"><b>--time-format=&lt;&#x6642;&#x523B;&#x66F8;&#x5F0F;&gt;</b></a></dt>
+  <dt id="time-format=_"><a class="permalink" href="#time-format=_"><b>--time-format=&lt;&#x6642;&#x523B;&#x66F8;&#x5F0F;&gt;</b></a></dt>
   <dd>&#x6642;&#x523B;&#x66F8;&#x5F0F;&#x5909;&#x6570;&#x306F;&#x7A7A;&#x767D;1&#x3064;&#x5206;&#x306B;&#x7D9A;&#x3044;&#x3066;&#x3001;&#x5B9A;&#x7FA9;&#x6E08;&#x307F;&#x66F8;&#x5F0F;&#x540D;&#xFF08;&#x5F8C;&#x8FF0;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x53C2;&#x7167;&#xFF09;&#x306A;&#x3044;&#x3057;&#x901A;&#x5E38;&#x306E;&#x6587;&#x5B57;&#x3068;&#x7279;&#x6B8A;&#x66F8;&#x5F0F;&#x6307;&#x5B9A;&#x5B50;&#x306E;&#x3042;&#x3089;&#x3086;&#x308B;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x3092;&#x542B;&#x3080;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x6642;&#x523B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -212,7 +209,7 @@
       &#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x304C;&#x30DF;&#x30EA;&#x79D2;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x306A;&#x3089;&#x3070;<i>%*</i>&#x306F;&#x6642;&#x523B;&#x66F8;&#x5F0F;&#x3068;&#x3057;&#x3066;&#x7528;&#x3044;&#x3089;&#x308C;&#x306D;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="date"><a class="permalink" href="#date"><b>--date-format=&lt;&#x65E5;&#x4ED8;&#x66F8;&#x5F0F;&gt;</b></a></dt>
+  <dt id="date-format=_"><a class="permalink" href="#date-format=_"><b>--date-format=&lt;&#x65E5;&#x4ED8;&#x66F8;&#x5F0F;&gt;</b></a></dt>
   <dd>&#x65E5;&#x4ED8;&#x66F8;&#x5F0F;&#x5909;&#x6570;&#x306F;&#x7A7A;&#x767D;1&#x3064;&#x306B;&#x7D9A;&#x304D;&#x3001;&#x5B9A;&#x7FA9;&#x6E08;&#x307F;&#x66F8;&#x5F0F;&#x540D;&#xFF08;&#x5F8C;&#x8FF0;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x53C2;&#x7167;&#xFF09;&#x306A;&#x3044;&#x3057;&#x901A;&#x5E38;&#x306E;&#x6587;&#x5B57;&#x3068;&#x7279;&#x6B8A;&#x306A;&#x66F8;&#x5F0F;&#x6307;&#x5B9A;&#x5B50;&#x306E;&#x3042;&#x3089;&#x3086;&#x308B;&#x7D44;&#x5408;&#x305B;&#x3092;&#x542B;&#x3080;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x6642;&#x523B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -227,7 +224,7 @@
       &#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x304C;&#x30DF;&#x30EA;&#x79D2;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x306A;&#x3089;&#x3070;<i>%*</i>&#x304C;&#x65E5;&#x4ED8;&#x66F8;&#x5F0F;&#x3068;&#x3057;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="datetime"><a class="permalink" href="#datetime"><b>--datetime-format=&lt;&#x65E5;&#x6642;&#x66F8;&#x5F0F;&gt;</b></a></dt>
+  <dt id="datetime-format=_"><a class="permalink" href="#datetime-format=_"><b>--datetime-format=&lt;&#x65E5;&#x6642;&#x66F8;&#x5F0F;&gt;</b></a></dt>
   <dd>&#x65E5;&#x4ED8;&#x3068;&#x6642;&#x523B;&#x306E;&#x66F8;&#x5F0F;&#x306B;&#x3064;&#x3044;&#x3066;&#x3001;
       2&#x3064;&#x306E;&#x5909;&#x6570;&#x304C;&#x5358;&#x4E00;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x7D44;&#x307F;&#x5408;&#x308F;&#x3055;&#x3063;&#x305F;&#x3082;&#x306E;&#x3067;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x304B;&#x3089;&#x6642;&#x9593;&#x5E2F;&#x3092;&#x53D6;&#x5F97;&#x3057;&#x3001;
@@ -246,7 +243,7 @@
   <dd>&#x306A;&#x304A;--datetime-format&#x304C;&#x4F7F;&#x308F;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x3001;&#x65E5;&#x4ED8;&#x3068;&#x6642;&#x523B;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3092;&#x8868;&#x73FE;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x5909;&#x6570;&#x306B;<i>%x</i>&#x304C;&#x6E21;&#x3055;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="log"><a class="permalink" href="#log"><b>--log-format=&lt;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&gt;</b></a></dt>
+  <dt id="log-format=_"><a class="permalink" href="#log-format=_"><b>--log-format=&lt;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&gt;</b></a></dt>
   <dd>&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x5909;&#x6570;&#x306F;&#x7A7A;&#x767D;1&#x3064;&#x306A;&#x3044;&#x3057;&#x30BF;&#x30D6;&#x533A;&#x5207;&#x308A;&#x7528;&#x306E;<i>\et</i>&#x306B;&#x7D9A;&#x3044;&#x3066;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x6587;&#x5B57;&#x5217;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
     <p class="Pp">&#x306A;&#x304A;&#x66F8;&#x5F0F;&#x4E2D;&#x306B;&#x7A7A;&#x767D;&#x304C;&#x3042;&#x3063;&#x305F;&#x5834;&#x5408;&#x3001;&#x6587;&#x5B57;&#x5217;&#x306F;&#x5358;&#x4E00;&#x306A;&#x3044;&#x3057;&#x4E8C;&#x91CD;&#x5F15;&#x7528;&#x7B26;&#x3067;&#x56F2;&#x307E;&#x308C;&#x3066;&#x3044;&#x306A;&#x304F;&#x3066;&#x306F;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;
         &#x5185;&#x90E8;&#x306E;&#x5F15;&#x7528;&#x7B26;&#x306F;&#x30A8;&#x30B9;&#x30B1;&#x30FC;&#x30D7;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
@@ -303,7 +300,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x5229;&#x7528;&#x8005;&#x7528;&#x5BFE;&#x8A71;&#x7684;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x5229;&#x7528;&#x8005;&#x7528;&#x5BFE;&#x8A71;&#x7684;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <dl class="Bl-tag">
   <dt><b>-c --config-dialog</b></dt>
   <dd>&#x30D7;&#x30ED;&#x30B0;&#x30E9;&#x30E0;&#x306E;&#x958B;&#x59CB;&#x6642;&#x306B;&#x30ED;&#x30B0;&#x3001;&#x65E5;&#x4ED8;&#x3001;&#x6642;&#x523B;&#x306E;&#x8A2D;&#x5B9A;&#x7A93;&#x3092;&#x958B;&#x304D;&#x307E;&#x3059;&#x3002;
@@ -389,24 +386,24 @@
        COLOR_PROGRESS</p>
     <p class="Pp">&#x30AB;&#x30E9;&#x30FC;&#x30B9;&#x30AD;&#x30FC;&#x30E0;&#x306E;&#x4F8B;&#x306F;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
   </dd>
-  <dt id="color"><a class="permalink" href="#color"><b>--color-scheme=&lt;1|2|3&gt;</b></a></dt>
+  <dt id="color-scheme=_1_2_3_"><a class="permalink" href="#color-scheme=_1_2_3_"><b>--color-scheme=&lt;1|2|3&gt;</b></a></dt>
   <dd>&#x30AB;&#x30E9;&#x30FC;&#x30B9;&#x30AD;&#x30FC;&#x30E0;&#x304B;&#x3089;&#x9078;&#x629E;&#x3057;&#x307E;&#x3059;&#x3002;
       <i>1</i>&#x306F;&#x65E2;&#x5B9A;&#x306E;&#x7070;&#x8272;&#x306E;&#x30B9;&#x30AD;&#x30FC;&#x30E0;&#x3067;&#x3059;&#x3002;
       <i>2</i>&#x306F;&#x7DD1;&#x8272;&#x306E;&#x30B9;&#x30AD;&#x30FC;&#x30E0;&#x3067;&#x3059;&#x3002;
       <i>3</i>&#x306F;Monokai&#x306E;&#x30B9;&#x30AD;&#x30FC;&#x30E0;&#x3067;&#x3059;&#xFF08;&#x7AEF;&#x672B;&#x304C;256&#x8272;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x306E;&#x307F;&#x73FE;&#x308C;&#x307E;&#x3059;&#xFF09;&#x3002;</dd>
-  <dt id="crawlers"><a class="permalink" href="#crawlers"><b>--crawlers-only</b></a></dt>
+  <dt id="crawlers-only"><a class="permalink" href="#crawlers-only"><b>--crawlers-only</b></a></dt>
   <dd>&#x30AF;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#xFF08;&#x30DC;&#x30C3;&#x30C8;&#xFF09;&#x306E;&#x307F;&#x89E3;&#x6790;&#x3068;&#x8868;&#x793A;&#x3092;&#x884C;&#x3044;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="html"><a class="permalink" href="#html"><b>--html-custom-css=&lt;&#x81EA;&#x524D;&#x306E;CSS&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
+  <dt id="html-custom-css=_"><a class="permalink" href="#html-custom-css=_"><b>--html-custom-css=&lt;&#x81EA;&#x524D;&#x306E;CSS&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
   <dd>HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#x81EA;&#x524D;&#x306E;CSS&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="html~2"><a class="permalink" href="#html~2"><b>--html-custom-js=&lt;&#x81EA;&#x524D;&#x306E;JavaScript&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
+  <dt id="html-custom-js=_"><a class="permalink" href="#html-custom-js=_"><b>--html-custom-js=&lt;&#x81EA;&#x524D;&#x306E;JavaScript&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
   <dd>HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x308B;&#x81EA;&#x524D;&#x306E;JS&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="html~3"><a class="permalink" href="#html~3"><b>--html-report-title=&lt;&#x984C;&#x540D;&gt;</b></a></dt>
+  <dt id="html-report-title=_"><a class="permalink" href="#html-report-title=_"><b>--html-report-title=&lt;&#x984C;&#x540D;&gt;</b></a></dt>
   <dd>HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x30DA;&#x30FC;&#x30B8;&#x306B;&#x984C;&#x540D;&#x3068;&#x30D8;&#x30C3;&#x30C0;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="html~4"><a class="permalink" href="#html~4"><b>--html-refresh=&lt;&#x79D2;&#x6570;&gt;</b></a></dt>
+  <dt id="html-refresh=_"><a class="permalink" href="#html-refresh=_"><b>--html-refresh=&lt;&#x79D2;&#x6570;&gt;</b></a></dt>
   <dd>HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3092;X&#x79D2;&#x6BCE;&#x306B;&#x518D;&#x63CF;&#x753B;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x5024;&#x306F;1&#x304B;&#x3089;60&#x79D2;&#x306E;&#x9593;&#x3067;&#x306A;&#x304F;&#x3066;&#x306F;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;
       &#x65E2;&#x5B9A;&#x3067;&#x306F;HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3092;1&#x79D2;&#x6BCE;&#x306B;&#x518D;&#x63CF;&#x753B;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="html~5"><a class="permalink" href="#html~5"><b>--html-prefs=&lt;JSON&gt;</b></a></dt>
+  <dt id="html-prefs=_JSON_"><a class="permalink" href="#html-prefs=_JSON_"><b>--html-prefs=&lt;JSON&gt;</b></a></dt>
   <dd>HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x306E;&#x65E2;&#x5B9A;&#x306E;&#x8A2D;&#x5B9A;&#x3092;&#x52A0;&#x3048;&#x307E;&#x3059;&#x3002;
       HTML&#x8A2D;&#x5B9A;&#x3092;&#x542B;&#x3080;&#x59A5;&#x5F53;&#x306A;JSON&#x30AA;&#x30D6;&#x30B8;&#x30A7;&#x30AF;&#x30C8;&#x3092;&#x4E0E;&#x3048;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
       &#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x30D1;&#x30CD;&#x30EB;&#x30D7;&#x30ED;&#x30C3;&#x30C8;&#x3092;&#x81EA;&#x524D;&#x306E;&#x3082;&#x306E;&#x306B;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
@@ -422,7 +419,7 @@
   </dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="json"><a class="permalink" href="#json"><b>--json-pretty-print</b></a></dt>
+  <dt id="json-pretty-print"><a class="permalink" href="#json-pretty-print"><b>--json-pretty-print</b></a></dt>
   <dd>&#x30BF;&#x30D6;&#x3068;&#x6539;&#x884C;&#x3092;&#x4F7F;&#x3063;&#x3066;JSON&#x51FA;&#x529B;&#x306E;&#x66F8;&#x5F0F;&#x3092;&#x6574;&#x3048;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -431,7 +428,7 @@
       &#x5B9F;&#x6642;&#x9593;HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x51FA;&#x529B;&#x3059;&#x308B;&#x969B;&#x306F;&#x63A8;&#x5968;&#x3055;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="max"><a class="permalink" href="#max"><b>--max-items=&lt;&#x6570;&gt;</b></a></dt>
+  <dt id="max-items=_"><a class="permalink" href="#max-items=_"><b>--max-items=&lt;&#x6570;&gt;</b></a></dt>
   <dd>&#x30D1;&#x30CD;&#x30EB;&#x6BCE;&#x306B;&#x8868;&#x793A;&#x3059;&#x308B;&#x9805;&#x76EE;&#x306E;&#x6700;&#x5927;&#x6570;&#x3002;
       &#x6700;&#x5927;&#x5024;&#x306F;1&#x304B;&#x3089;n&#x307E;&#x3067;&#x306E;&#x9593;&#x306B;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
@@ -441,22 +438,22 @@
       &#xFF08;&#x5B9F;&#x6642;&#x9593;HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x306F;50&#xFF09;&#x9805;&#x76EE;&#x3088;&#x308A;&#x5927;&#x304D;&#x3044;&#x6700;&#x5927;&#x6570;&#x304C;&#x8A31;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="no"><a class="permalink" href="#no"><b>--no-color</b></a></dt>
+  <dt id="no-color"><a class="permalink" href="#no-color"><b>--no-color</b></a></dt>
   <dd>&#x8272;&#x4ED8;&#x304D;&#x306E;&#x51FA;&#x529B;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306F;&#x5F69;&#x8272;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x306A;&#x3044;&#x7AEF;&#x672B;&#x3067;&#x306F;&#x65E2;&#x5B9A;&#x306E;&#x51FA;&#x529B;&#x3067;&#x3059;&#x3002;</dd>
-  <dt id="no~2"><a class="permalink" href="#no~2"><b>--no-csv-summary</b></a></dt>
+  <dt id="no-csv-summary"><a class="permalink" href="#no-csv-summary"><b>--no-csv-summary</b></a></dt>
   <dd>CSV&#x306E;&#x51FA;&#x529B;&#x3067;&#x6307;&#x6A19;&#x306E;&#x6982;&#x8981;&#x3092;&#x7121;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="no~3"><a class="permalink" href="#no~3"><b>--no-progress</b></a></dt>
+  <dt id="no-progress"><a class="permalink" href="#no-progress"><b>--no-progress</b></a></dt>
   <dd>&#x9032;&#x884C;&#x4E2D;&#x306E;&#x6307;&#x6A19;
       [&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x5408;&#x8A08;/&#x6BCE;&#x79D2;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;]
       &#x3092;&#x7121;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="no~4"><a class="permalink" href="#no~4"><b>--no-tab-scroll</b></a></dt>
+  <dt id="no-tab-scroll"><a class="permalink" href="#no-tab-scroll"><b>--no-tab-scroll</b></a></dt>
   <dd>&#x30BF;&#x30D6;&#x304C;&#x62BC;&#x4E0B;&#x3055;&#x308C;&#x3066;&#x3044;&#x305F;&#x308A;&#x3001;
       &#x30D1;&#x30CD;&#x30EB;&#x304C;&#x6570;&#x5B57;&#x306E;&#x30AD;&#x30FC;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x9078;&#x629E;&#x3055;&#x308C;&#x3066;&#x3044;&#x305F;&#x308A;&#x3059;&#x308B;&#x3068;&#x304D;&#x306F;
       &#x30D1;&#x30CD;&#x30EB;&#x3092;&#x901A;&#x3058;&#x3066;&#x306E;&#x30B9;&#x30AF;&#x30ED;&#x30FC;&#x30EB;&#x3092;&#x7121;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="no~5"><a class="permalink" href="#no~5"><b>--no-html-last-updated</b></a></dt>
+  <dt id="no-html-last-updated"><a class="permalink" href="#no-html-last-updated"><b>--no-html-last-updated</b></a></dt>
   <dd>HTML&#x306E;&#x751F;&#x6210;&#x3055;&#x308C;&#x305F;&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x4E2D;&#x306B;&#x8868;&#x793A;&#x3055;&#x308C;&#x308B;&#x6700;&#x5F8C;&#x306B;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x304C;&#x73FE;&#x308C;&#x306A;&#x3044;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="no~6"><a class="permalink" href="#no~6"><b>--no-parsing-spinner</b></a></dt>
+  <dt id="no-parsing-spinner"><a class="permalink" href="#no-parsing-spinner"><b>--no-parsing-spinner</b></a></dt>
   <dd>&#x9032;&#x884C;&#x4E2D;&#x306E;&#x6307;&#x6A19;&#x3068;&#x30B9;&#x30D4;&#x30CA;&#x30FC;&#x306E;&#x89E3;&#x6790;&#x3092;&#x8868;&#x793A;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
   <dt id="tz=_timezone_"><a class="permalink" href="#tz=_timezone_"><b>--tz=&lt;timezone&gt;</b></a></dt>
   <dd>&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x306E;&#x65E5;&#x4ED8;&#x3001;&#x6642;&#x523B;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x6642;&#x9593;&#x5E2F;&#x3067;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;
@@ -467,7 +464,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <p class="Pp"><i>&#x88DC;&#x8DB3;&#xFF1A;</i>
     &#x751F;&#x306E;&#x5B9F;&#x6642;&#x9593;&#x30C7;&#x30FC;&#x30BF;&#x304C;&#x3082;&#x305F;&#x3089;&#x3055;&#x308C;&#x308B;&#x306E;&#x306F;WebSocket&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3060;&#x3051;&#x3067;&#x3059;&#x3002;
     WebServer&#x81EA;&#x4F53;&#x3067;&#x306F;&#x3042;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;
@@ -494,7 +491,7 @@
   <dd>&#x88DC;&#x8DB3;&#xFF1A;GoAccess&#x306E;&#x8A2D;&#x5B9A;&#x5168;&#x4F53;&#x3092;&#x901A;&#x3058;&#x3066;&#x7D76;&#x5BFE;&#x30D1;&#x30B9;&#x3092;&#x4F7F;&#x3046;&#x3053;&#x3068;&#x306F;&#x5927;&#x5207;&#x3067;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="user"><a class="permalink" href="#user"><b>--user-name=&lt;&#x5229;&#x7528;&#x8005;&#x540D;&gt;</b></a></dt>
+  <dt id="user-name=_"><a class="permalink" href="#user-name=_"><b>--user-name=&lt;&#x5229;&#x7528;&#x8005;&#x540D;&gt;</b></a></dt>
   <dd>GoAccess&#x3092;&#x7279;&#x5B9A;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x3068;&#x3057;&#x3066;&#x8D70;&#x3089;&#x305B;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -509,12 +506,12 @@
 <dl class="Bl-tag">
   <dt id="origin=_URL_"><a class="permalink" href="#origin=_URL_"><b>--origin=&lt;URL&gt;</b></a></dt>
   <dd>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304C;WebSocket&#x30CF;&#x30F3;&#x30C9;&#x30B7;&#x30A7;&#x30A4;&#x30AF;&#x3067;&#x5FC5;&#x305A;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30AA;&#x30EA;&#x30B8;&#x30F3;&#x30D8;&#x30C3;&#x30C0;&#x30FC;&#x3092;&#x9001;&#x308B;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="pid"><a class="permalink" href="#pid"><b>--pid-file=&lt;GoAccess&#x306E;pid&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
+  <dt id="pid-file=_GoAccess"><a class="permalink" href="#pid-file=_GoAccess"><b>--pid-file=&lt;GoAccess&#x306E;pid&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
   <dd>--daemonize&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3068;&#x4E00;&#x7DD2;&#x306B;&#x4F7F;&#x3063;&#x305F;&#x3068;&#x304D;&#x306B;&#x30C7;&#x30FC;&#x30E2;&#x30F3;&#x306E;PID&#x3092;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x66F8;&#x304D;&#x8FBC;&#x307F;&#x307E;&#x3059;&#x3002;</dd>
   <dt id="port=_"><a class="permalink" href="#port=_"><b>--port=&lt;&#x30DD;&#x30FC;&#x30C8;&gt;</b></a></dt>
   <dd>&#x4F7F;&#x3046;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x65E2;&#x5B9A;&#x3067;&#x306F;GoAccess&#x306E;WebSocket&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x306F;7890&#x30DD;&#x30FC;&#x30C8;&#x3067;&#x5F85;&#x3061;&#x53D7;&#x3051;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="real"><a class="permalink" href="#real"><b>--real-time-html</b></a></dt>
+  <dt id="real-time-html"><a class="permalink" href="#real-time-html"><b>--real-time-html</b></a></dt>
   <dd>&#x5B9F;&#x6642;&#x9593;HTML&#x51FA;&#x529B;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -527,7 +524,7 @@
   </dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ws"><a class="permalink" href="#ws"><b>--ws-auth=&lt;jwt[:secret]&gt;
+  <dt id="ws-auth=_jwt_:secret__"><a class="permalink" href="#ws-auth=_jwt_:secret__"><b>--ws-auth=&lt;jwt[:secret]&gt;
     | jwt:verify:secret</b></a></dt>
   <dd>JSON Web Token (JWT)
       &#x3092;&#x4F7F;&#x3063;&#x3066;&#x3001;WebSocket&#x8A8D;&#x8A3C;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
@@ -582,7 +579,7 @@
       &#x3092;&#x4ED8;&#x3051;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ws~2"><a class="permalink" href="#ws~2"><b>--ws-auth-expire=&lt;secs&gt;</b></a></dt>
+  <dt id="ws-auth-expire=_secs_"><a class="permalink" href="#ws-auth-expire=_secs_"><b>--ws-auth-expire=&lt;secs&gt;</b></a></dt>
   <dd>JWT&#x304C;&#x671F;&#x9650;&#x5207;&#x308C;&#x306B;&#x306A;&#x308B;&#x307E;&#x3067;&#x306E;&#x6642;&#x9593;&#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x6307;&#x5B9A;&#x3055;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#x65E2;&#x5B9A;&#x3067;8&#x6642;&#x9593;&#xFF08;28800&#x79D2;&#xFF09;&#x3067;&#x3059;&#x3002;</dd>
 </dl>
@@ -611,7 +608,7 @@
       &#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x5B89;&#x5168;&#x306A;WebSocket&#x63A5;&#x7D9A;&#x304C;&#x62C5;&#x4FDD;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ws~3"><a class="permalink" href="#ws~3"><b>--ws-auth-url=&lt;url&gt;</b></a></dt>
+  <dt id="ws-auth-url=_url_"><a class="permalink" href="#ws-auth-url=_url_"><b>--ws-auth-url=&lt;url&gt;</b></a></dt>
   <dd>WebSocket&#x63A5;&#x7D9A;&#x3092;&#x8A8D;&#x8A3C;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x3001;&#x6700;&#x521D;&#x306E;JWT&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;URL&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -627,14 +624,13 @@
   <dt></dt>
   <dd>&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x3068;&#x304D;&#x3001;&#x8981;&#x6C42;&#x306E;&#x4E00;&#x90E8;&#x306B;
       <i>{ credentials: 'include' }</i>
-      &#x304C;&#x4F7F;&#x308F;&#x308C;&#x307E;&#x3059;&#x3002;
-      &#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x5185;&#x306B;&#x3042;&#x308B;&#x5229;&#x7528;&#x8005;&#x306E;&#x65E2;&#x5B58;&#x306E;&#x8A8D;&#x8A3C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x57FA;&#x3065;&#x304D;&#x3001;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x5B89;&#x5168;&#x306B;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x305F;&#x3081;&#x3067;&#x3059;&#x3002;
+      &#x304C;&#x4F7F;&#x308F;&#x308C;&#x307E;&#x3059;&#x304C;&#x3001;&#x3053;&#x308C;&#x306F;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x5185;&#x306B;&#x3042;&#x308B;&#x5229;&#x7528;&#x8005;&#x306E;&#x65E2;&#x5B58;&#x306E;&#x8A8D;&#x8A3C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x57FA;&#x3065;&#x304D;&#x3001;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x5B89;&#x5168;&#x306B;&#x53D6;&#x5F97;&#x3059;&#x308B;&#x305F;&#x3081;&#x3067;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x3001;&#x5229;&#x7528;&#x8005;&#x304C;&#x8A8D;&#x8A3C;&#x3057;&#x3066;&#x3044;&#x308B;&#x9650;&#x308A;&#x3001;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x53D6;&#x5F97;&#x306F;&#x5B89;&#x5168;&#x3067;&#x3042;&#x308B;&#x3053;&#x3068;&#x304C;&#x62C5;&#x4FDD;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
   <dt></dt>
   <dd>&#x3053;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x3088;&#x308A;&#x3001;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x53D6;&#x5F97;&#x30A8;&#x30F3;&#x30C9;&#x30DD;&#x30A4;&#x30F3;&#x30C8;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x3001;&#x65E2;&#x5B58;&#x306E;&#x8A8D;&#x8A3C;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x3092;GoAccess&#x306E;&#x30C0;&#x30C3;&#x30B7;&#x30E5;&#x30DC;&#x30FC;&#x30C9;&#x306B;&#x7D71;&#x5408;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ws~4"><a class="permalink" href="#ws~4"><b>--ws-auth-refresh-url=&lt;url&gt;</b></a></dt>
+  <dt id="ws-auth-refresh-url=_url_"><a class="permalink" href="#ws-auth-refresh-url=_url_"><b>--ws-auth-refresh-url=&lt;url&gt;</b></a></dt>
   <dd>&#x73FE;&#x5728;&#x306E;JWT&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x304C;&#x9593;&#x3082;&#x306A;&#x304F;&#x671F;&#x9650;&#x5207;&#x308C;&#x3057;&#x305D;&#x3046;&#x306B;&#x306A;&#x3063;&#x305F;&#x3068;&#x304D;&#x306B;&#x3001;&#x65B0;&#x3057;&#x3044;JWT&#x304C;&#x53D6;&#x5F97;&#x3055;&#x308C;&#x308B;URL&#x3092;&#x53D6;&#x5F97;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -653,13 +649,13 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss" id="WebSocket"><a class="permalink" href="#WebSocket">WebSocket&#x306E;&#x8A8D;&#x8A3C;&#x306E;&#x6D41;&#x308C;</a></h2>
+<h3 class="Ss" id="WebSocket__u306E___u8A8D___u8A3C___u306E___u6D41___u308C_"><a class="permalink" href="#WebSocket__u306E___u8A8D___u8A3C___u306E___u6D41___u308C_">WebSocket&#x306E;&#x8A8D;&#x8A3C;&#x306E;&#x6D41;&#x308C;</a></h3>
 <dl class="Bl-tag">
   <dt></dt>
   <dd>GoAccess&#x306F;&#x67D4;&#x8EDF;&#x306A;&#x8A8D;&#x8A3C;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F9B;&#x3057;&#x3066;&#x304A;&#x308A;&#x3001;&#x72B6;&#x614B;&#x306A;&#x3057;&#x3068;&#x72B6;&#x614B;&#x3042;&#x308A;&#x306E;&#x624B;&#x6CD5;&#x306E;&#x4E21;&#x65B9;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
       &#x72B6;&#x614B;&#x306A;&#x3057;&#x306E;&#x624B;&#x6CD5;&#x3067;&#x306F;&#x3001;&#x30AF;&#x30C3;&#x30AD;&#x30FC;&#x3084;CSRF&#x4FDD;&#x8B77;&#x306A;&#x3057;&#x306B;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x304C;&#x53D6;&#x5F97;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
-      &#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x304C;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x30B7;&#x30B0;&#x30CD;&#x30C1;&#x30E3;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x65B0;&#x3057;&#x3044;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x6255;&#x51FA;&#x3057;&#x307E;&#x3059;&#x3002;
-      &#x4EE3;&#x3048;&#x3066;&#x3001;&#x72B6;&#x614B;&#x3042;&#x308A;&#x306E;&#x624B;&#x6CD5;&#x3067;&#x306F;&#x521D;&#x56DE;&#x306E;&#x53D6;&#x5F97;&#x3067;`csrf_token`&#x3092;&#x3068;&#x3082;&#x306A;&#x3046;JWT&#x3092;&#x6255;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x3001;&#x3053;&#x308C;&#x304C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x4FDD;&#x7BA1;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
+      &#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x304C;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x7F72;&#x540D;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x65B0;&#x3057;&#x3044;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x6255;&#x51FA;&#x3057;&#x307E;&#x3059;&#x3002;
+      &#x4EE3;&#x3048;&#x3066;&#x3001;&#x72B6;&#x614B;&#x3042;&#x308A;&#x306E;&#x624B;&#x6CD5;&#x3067;&#x306F;&#x521D;&#x56DE;&#x306E;&#x53D6;&#x5F97;&#x3067;`csrf_token`&#x3092;&#x4F34;&#x3046;JWT&#x3092;&#x6255;&#x51FA;&#x3059;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x3001;&#x3053;&#x308C;&#x304C;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x4FDD;&#x7BA1;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
       &#x5F8C;&#x7D9A;&#x306E;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x8981;&#x6C42;
       (POST)
       &#x304B;&#x3089;&#x306F;CSRF&#x306E;&#x691C;&#x67FB;&#x304C;&#x5B9F;&#x65BD;&#x3055;&#x308C;&#x3001;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306E;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306B;&#x5408;&#x81F4;&#x3059;&#x308B;`X-CSRF-TOKEN`&#x30D8;&#x30C3;&#x30C0;&#x3092;&#x8981;&#x6C42;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
@@ -725,7 +721,7 @@
   <dt></dt>
   <dd>GoAccess&#x306F;&#x72B6;&#x614B;&#x306A;&#x3057;&#x3068;&#x72B6;&#x614B;&#x3042;&#x308A;&#x306E;&#x4E21;&#x65B9;&#x306E;&#x3093;&#x5370;&#x8C61;&#x306B;&#x5BFE;&#x5FDC;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
       &#x72B6;&#x614B;&#x306A;&#x3057;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x3001;&#x30AF;&#x30C3;&#x30AD;&#x30FC;&#x3084;CSRF&#x306F;&#x8981;&#x6C42;&#x3055;&#x308C;&#x307E;&#x305B;&#x3093;&#x3002;
-      &#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x3067;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x30B7;&#x30B0;&#x30CD;&#x30C1;&#x30E3;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#x3002;
+      &#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x3067;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x7F72;&#x540D;&#x3092;&#x691C;&#x8A3C;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x72B6;&#x614B;&#x3042;&#x308A;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x3001;&#x521D;&#x56DE;&#x306E;&#x8981;&#x6C42;&#x306B;<b>csrf_token</b>&#x3092;&#x542B;&#x3081;&#x307E;&#x3059;&#x3002;
       GoAccess&#x306F;&#x305D;&#x308C;&#x3092;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x8981;&#x6C42;&#x306E;&#x4E2D;&#x306E;<b>X-CSRF-TOKEN</b>&#x3068;&#x3057;&#x3066;&#x9001;&#x308A;&#x3001;&#x3053;&#x308C;&#x3092;&#x30D0;&#x30C3;&#x30AF;&#x30A8;&#x30F3;&#x30C9;&#x3067;&#x306F;&#x30BB;&#x30C3;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x691C;&#x8A3C;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
 </dl>
@@ -737,7 +733,7 @@
 <div class="Bd-indent">
 <dl class="Bl-tag">
   <dt>&#x2022;</dt>
-  <dd>&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x5F8C;&#x3001;GoAccess&#x306F;&#x4EE5;&#x4E0B;&#x3092;&#x9001;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;WebSocket&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3068;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x305F;JWT&#x306E;&#x59A5;&#x5F53;&#x6027;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
+  <dd>&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x5F8C;&#x3001;GoAccess&#x306F;&#x4EE5;&#x4E0B;&#x3092;&#x9001;&#x308B;&#x3053;&#x3068;&#x306B;&#x3088;&#x308A;WebSocket&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3068;&#x5171;&#x306B;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x305F;JWT&#x306E;&#x59A5;&#x5F53;&#x6027;&#x3092;&#x78BA;&#x8A8D;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
   <dt></dt>
@@ -746,6 +742,10 @@
      { &quot;action&quot;: &quot;validate_token&quot;, &quot;token&quot;:
       &quot;current-jwt&quot; }</dd>
 </dl>
+<ul class="Bl-bullet">
+  <li>WebSocket&#x30B5;&#x30FC;&#x30D0;&#x306F;&#x691C;&#x8A3C;&#x3055;&#x308C;&#x305F;JWT&#x306E;<b>exp</b>&#x306E;&#x4E3B;&#x5F35;&#x3092;&#x8FFD;&#x3044;&#x3001;&#x305D;&#x308C;&#x304C;&#x671F;&#x9650;&#x5207;&#x308C;&#x306B;&#x306A;&#x308B;&#x3068;&#x304D;&#x63A5;&#x7D9A;&#x3092;&#x9589;&#x3058;&#x307E;&#x3059;&#x304C;&#x3001;&#x3053;&#x308C;&#x306F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x304C;&#x5225;&#x3067;&#x4F1D;&#x6587;&#x3092;&#x9001;&#x3063;&#x3066;&#x3044;&#x306A;&#x3044;&#x306B;&#x3057;&#x3066;&#x3082;&#x3067;&#x3059;&#x3002;</li>
+  <li>&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x306E;&#x30EA;&#x30D5;&#x30EC;&#x30C3;&#x30B7;&#x30E5;&#x304C;&#x5931;&#x6557;&#x3059;&#x308B;&#x304B;&#x4F7F;&#x3048;&#x306A;&#x3044;&#x30C8;&#x30FC;&#x30AF;&#x30F3;&#x3092;&#x8FD4;&#x3059;&#x3068;&#x304D;&#x3001;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x306F;&#x30AF;&#x30EC;&#x30C7;&#x30F3;&#x30B7;&#x30E3;&#x30EB;&#x3092;&#x6D88;&#x53BB;&#x3057;&#x8A8D;&#x8A3C;&#x3055;&#x308C;&#x305F;WebSocket&#x63A5;&#x7D9A;&#x3092;&#x9589;&#x3058;&#x307E;&#x3059;&#x3002;</li>
+</ul>
 </div>
 <dl class="Bl-tag">
   <dt></dt>
@@ -763,7 +763,7 @@
   <dd>&#x4F8B;&#xFF1A;<b>--ws-auth=jwt:verify:/path/to/secret.key</b></dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ws~5"><a class="permalink" href="#ws~5"><b>--ws-url=&lt;[scheme://]url[:port]&gt;</b></a></dt>
+  <dt id="ws-url=__scheme://_url_:port__"><a class="permalink" href="#ws-url=__scheme://_url_:port__"><b>--ws-url=&lt;[scheme://]url[:port]&gt;</b></a></dt>
   <dd>WebSocket&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x304C;&#x5FDC;&#x7B54;&#x3059;&#x308B;URL&#x3067;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306F;&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x5074;&#x3067;WebSocket&#x69CB;&#x7BC9;&#x5B50;&#x306B;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x308B;URL&#x3067;&#x3059;&#x3002;</dd>
 </dl>
@@ -783,21 +783,21 @@
       &#x307E;&#x305F;&#x3001;&#x59A5;&#x5F53;&#x306A;&#x30DB;&#x30B9;&#x30C8;&#x306B;&#x306A;&#x3063;&#x3066;&#x3044;&#x3066;HTTP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306B;&#x306A;&#x3063;&#x3066;&#x300C;&#x3044;&#x306A;&#x3044;&#x300D;&#x3053;&#x3068;&#x3092;&#x5FC5;&#x305A;&#x78BA;&#x8A8D;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ping"><a class="permalink" href="#ping"><b>--ping-interval=&lt;&#x79D2;&#x6570;&gt;</b></a></dt>
+  <dt id="ping-interval=_"><a class="permalink" href="#ping-interval=_"><b>--ping-interval=&lt;&#x79D2;&#x6570;&gt;</b></a></dt>
   <dd>&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x79D2;&#x6570;&#x306E;&#x9593;&#x9694;&#x3067;WebSocket&#x306E;&#x6B7B;&#x6D3B;&#x76E3;&#x8996;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x5207;&#x65AD;&#x3055;&#x308C;&#x3066;&#x653E;&#x7F6E;&#x3055;&#x308C;&#x305F;&#x307E;&#x307E;&#x306E;&#x63A5;&#x7D9A;&#x3092;&#x9632;&#x3050;&#x3053;&#x3068;&#x304C;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="fifo"><a class="permalink" href="#fifo"><b>--fifo-in=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
+  <dt id="fifo-in=_"><a class="permalink" href="#fifo-in=_"><b>--fifo-in=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
   <dd>&#x540D;&#x524D;&#x4ED8;&#x304D;&#x30D1;&#x30A4;&#x30D7; (FIFO)
       &#x3092;&#x4F5C;&#x308A;&#x3001;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#x304B;&#x3089;&#x8AAD;&#x3080;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="fifo~2"><a class="permalink" href="#fifo~2"><b>--fifo-out=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
+  <dt id="fifo-out=_"><a class="permalink" href="#fifo-out=_"><b>--fifo-out=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&gt;</b></a></dt>
   <dd>&#x540D;&#x524D;&#x4ED8;&#x304D;&#x30D1;&#x30A4;&#x30D7; (FIFO)
       &#x3092;&#x4F5C;&#x308A;&#x3001;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30D1;&#x30B9;&#x306B;&#x66F8;&#x304D;&#x8FBC;&#x3080;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="ssl"><a class="permalink" href="#ssl"><b>--ssl-cert=&lt;&#x8A3C;&#x660E;&#x66F8;.crt&gt;</b></a></dt>
+  <dt id="ssl-cert=_"><a class="permalink" href="#ssl-cert=_"><b>--ssl-cert=&lt;&#x8A3C;&#x660E;&#x66F8;.crt&gt;</b></a></dt>
   <dd>TLS/SSL&#x8A3C;&#x660E;&#x66F8;&#x3078;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x3059;&#x3002;
       GoAccess&#x3067;TLS/SSL&#x5BFE;&#x5FDC;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;--ssl-cert&#x3068;--ssl-key&#x304C;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3059;&#x3002;
     <p class="Pp">--with-openssl&#x3092;&#x4F7F;&#x3063;&#x3066;configure&#x3057;&#x305F;&#x3068;&#x304D;&#x306B;&#x9650;&#x5B9A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
   </dd>
-  <dt id="ssl~2"><a class="permalink" href="#ssl~2"><b>--ssl-key=&lt;&#x79D8;&#x5BC6;&#x9375;.key&gt;</b></a></dt>
+  <dt id="ssl-key=_"><a class="permalink" href="#ssl-key=_"><b>--ssl-key=&lt;&#x79D8;&#x5BC6;&#x9375;.key&gt;</b></a></dt>
   <dd>TLS/SSL&#x79D8;&#x5BC6;&#x9375;&#x3078;&#x306E;&#x30D1;&#x30B9;&#x3067;&#x3059;&#x3002;
       GoAccess&#x3067;TLS/SSL&#x5BFE;&#x5FDC;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;&#x306F;&#x3001;--ssl-cert&#x3068;--ssl-key&#x304C;&#x4F7F;&#x7528;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x3053;&#x3068;&#x304C;&#x5FC5;&#x8981;&#x3067;&#x3059;&#x3002;
     <p class="Pp">--with-openssl&#x3092;&#x4F7F;&#x3063;&#x3066;configure&#x3057;&#x305F;&#x3068;&#x304D;&#x306B;&#x9650;&#x5B9A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
@@ -805,7 +805,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <dl class="Bl-tag">
   <dt><b>-</b></dt>
   <dd>&#x89E3;&#x6790;&#x3059;&#x308B;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x6A19;&#x6E96;&#x5165;&#x529B;&#x304B;&#x3089;&#x8AAD;&#x307F;&#x8FBC;&#x307E;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
@@ -824,16 +824,16 @@
     --config-file=&lt;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&gt;</b></dt>
   <dd>&#x72EC;&#x81EA;&#x306B;&#x4F7F;&#x7528;&#x3059;&#x308B;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x3001;&#xFF08;&#x3082;&#x3057;&#x3042;&#x3063;&#x3066;&#x3082;&#xFF09;&#x5927;&#x57DF;&#x7684;&#x306A;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3088;&#x308A;&#x512A;&#x5148;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="external"><a class="permalink" href="#external"><b>--external-assets</b></a></dt>
+  <dt id="external-assets"><a class="permalink" href="#external-assets"><b>--external-assets</b></a></dt>
   <dd>&#x5916;&#x90E8;&#x306E;JS/CSS&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;HTML&#x30A2;&#x30BB;&#x30C3;&#x30C8;&#x3092;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;
       Content Security Policy (CSP)
       &#x3092;&#x8A2D;&#x5B9A;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#x512A;&#x308C;&#x307E;&#x3059;&#x3002;
       report.html&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x540C;&#x3058;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306B;2&#x3064;&#x306E;&#x5206;&#x96E2;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;<i>goaccess.js</i>&#x3068;<i>goaccess.css</i>&#x3092;&#x4F5C;&#x6210;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="invalid"><a class="permalink" href="#invalid"><b>--invalid-requests=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;</b></a></dt>
+  <dt id="invalid-requests=_"><a class="permalink" href="#invalid-requests=_"><b>--invalid-requests=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;</b></a></dt>
   <dd>&#x4E0D;&#x6B63;&#x306A;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="unknowns"><a class="permalink" href="#unknowns"><b>--unknowns-log=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;</b></a></dt>
+  <dt id="unknowns-log=_"><a class="permalink" href="#unknowns-log=_"><b>--unknowns-log=&lt;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&gt;</b></a></dt>
   <dd>&#x4E0D;&#x660E;&#x306A;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3068;OS&#x3092;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306B;&#x30ED;&#x30B0;&#x51FA;&#x529B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="no~7"><a class="permalink" href="#no~7"><b>--no-global-config</b></a></dt>
+  <dt id="no-global-config"><a class="permalink" href="#no-global-config"><b>--no-global-config</b></a></dt>
   <dd>&#x5927;&#x57DF;&#x7684;&#x306A;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x307E;&#x305B;&#x3093;&#x3002;
       <i>--sysconfdir=&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3078;&#x306E;&#x30D1;&#x30B9;</i>&#x3068;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x306A;&#x3044;&#x9650;&#x308A;&#x3001;
       &#x3053;&#x306E;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x306F;&#x901A;&#x5E38;/usr/local/etc&#x3067;&#x3059;&#x3002;
@@ -841,7 +841,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x89E3;&#x6790;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x89E3;&#x6790;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <dl class="Bl-tag">
   <dt id="a"><a class="permalink" href="#a"><b>-a --agent-list</b></a></dt>
   <dd>&#x30DB;&#x30B9;&#x30C8;&#x6BCE;&#x306E;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x306E;&#x4E00;&#x89A7;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
@@ -909,7 +909,7 @@
   <dd>&#x975E;&#x6A19;&#x6E96;&#x7684;&#x306A;&#x72B6;&#x614B;&#x30B3;&#x30FC;&#x30C9;&#x3067;&#x3042;&#x308B;444&#x3092;404&#x3068;&#x3057;&#x3066;&#x6271;&#x3044;&#x307E;&#x3059;&#x3002;</dd>
   <dt><b>--4xx-to-unique-count</b></dt>
   <dd>4xx&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x30A8;&#x30E9;&#x30FC;&#x3092;&#x56FA;&#x6709;&#x8A2A;&#x554F;&#x8005;&#x306B;&#x52A0;&#x3048;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="anonymize"><a class="permalink" href="#anonymize"><b>--anonymize-ip</b></a></dt>
+  <dt id="anonymize-ip"><a class="permalink" href="#anonymize-ip"><b>--anonymize-ip</b></a></dt>
   <dd>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x3092;&#x533F;&#x540D;&#x5316;&#x3057;&#x307E;&#x3059;&#x3002;
       IP&#x533F;&#x540D;&#x5316;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;IPv4&#x5229;&#x7528;&#x8005;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x672B;&#x5C3E;&#x30AA;&#x30AF;&#x30C6;&#x30C3;&#x30C8;&#x3068;IPv6&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x306E;&#x672B;&#x5C3E;80&#x30D3;&#x30C3;&#x30C8;&#x3092;&#x30BC;&#x30ED;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;192.168.20.100 =&gt; 192.168.20.0
@@ -922,7 +922,7 @@
       &#x3092;&#x975E;&#x6D3B;&#x6027;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="chunk"><a class="permalink" href="#chunk"><b>--chunk-size=&lt;256-32768&gt;</b></a></dt>
+  <dt id="chunk-size=_256-32768_"><a class="permalink" href="#chunk-size=_256-32768_"><b>--chunk-size=&lt;256-32768&gt;</b></a></dt>
   <dd>&#x3053;&#x308C;&#x306F;&#x3001;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x3092;&#x69CB;&#x6210;&#x3059;&#x308B;&#x884C;&#x6570;&#x3092;&#x6C7A;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;&#x3053;&#x306E;&#x5F15;&#x6570;&#x306F;&#x5404;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x3067;&#x5E73;&#x884C;&#x3057;&#x3066;&#x51E6;&#x7406;&#x3055;&#x308C;&#x308B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x5927;&#x304D;&#x3055;&#x306B;&#x5F71;&#x97FF;&#x3057;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x8AAD;&#x8FBC;&#x3068;&#x51E6;&#x7406;&#x306E;&#x30BF;&#x30B9;&#x30AF;&#x306E;&#x4E26;&#x5217;&#x5316;&#x304C;&#x53EF;&#x80FD;&#x306B;&#x306A;&#x308A;&#x307E;&#x3059;&#x3002;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x306E;&#x5024;&#x306F;&#x3001;&#x4E26;&#x5217;&#x51E6;&#x7406;&#x306E;&#x52B9;&#x7387;&#x6027;&#x306B;&#x5F71;&#x97FF;&#x3057;&#x3001;&#x30B7;&#x30B9;&#x30C6;&#x30E0;&#x8CC7;&#x6E90;&#x3084;&#x5165;&#x529B;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x7279;&#x6027;&#x306E;&#x3088;&#x3046;&#x306A;&#x8981;&#x56E0;&#x306B;&#x57FA;&#x3065;&#x3044;&#x3066;&#x8ABF;&#x6574;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
     <p class="Pp"></p>
   </dd>
@@ -936,7 +936,7 @@
   <dd>&#x5927;&#x304D;&#x306A;&#x5024;&#xFF1A;&#x9006;&#x306B;&#x3001;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x304C;&#x9AD8;&#x3059;&#x304E;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x308B;&#x3068;&#x3001;&#x8CC7;&#x6E90;&#x306E;&#x67AF;&#x6E07;&#x306B;&#x7E4B;&#x304C;&#x308A;&#x304B;&#x306D;&#x307E;&#x305B;&#x3093;&#x3002;&#x5404;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x4E00;&#x90E8;&#x3092;&#x8868;&#x3057;&#x3001;&#x305D;&#x308C;&#x3092;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x304C;&#x5E73;&#x884C;&#x306B;&#x51E6;&#x7406;&#x3057;&#x307E;&#x3059;&#x3002;&#x30C1;&#x30E3;&#x30F3;&#x30AF;&#x306E;&#x5927;&#x304D;&#x3055;&#x3092;&#x8457;&#x3057;&#x304F;&#x5927;&#x304D;&#x3044;&#x5024;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;&#x3001;&#x30E1;&#x30E2;&#x30EA;&#x306E;&#x554F;&#x984C;&#x3092;&#x5F15;&#x304D;&#x8D77;&#x3053;&#x3059;&#x53EF;&#x80FD;&#x6027;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;&#x3068;&#x308A;&#x308F;&#x3051;&#x3001;&#x540C;&#x6642;&#x306B;&#x591A;&#x304F;&#x306E;&#x4E26;&#x5217;&#x30B9;&#x30EC;&#x30C3;&#x30C9;&#x304C;&#x8D70;&#x3063;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x304C;&#x305D;&#x3046;&#x3067;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="anonymize~2"><a class="permalink" href="#anonymize~2"><b>--anonymize-level</b></a></dt>
+  <dt id="anonymize-level"><a class="permalink" href="#anonymize-level"><b>--anonymize-level</b></a></dt>
   <dd>&#x533F;&#x540D;&#x5316;&#x6C34;&#x6E96;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       1 =&gt; &#x65E2;&#x5B9A;&#x3001;2 =&gt; &#x5F37;&#x529B;&#x3001;3 =&gt;
       &#x795E;&#x7D4C;&#x8CEA;
@@ -962,17 +962,17 @@
     </table>
     <p class="Pp"></p>
   </dd>
-  <dt id="all"><a class="permalink" href="#all"><b>--all-static-files</b></a></dt>
+  <dt id="all-static-files"><a class="permalink" href="#all-static-files"><b>--all-static-files</b></a></dt>
   <dd>&#x30AF;&#x30A8;&#x30EA;&#x6587;&#x5B57;&#x5217;&#x3092;&#x542B;&#x3080;&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3092;&#x542B;&#x3081;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;/fonts/fontawesome-webfont.woff?v=4.0.3</dd>
-  <dt id="browsers"><a class="permalink" href="#browsers"><b>--browsers-file=&lt;&#x30D1;&#x30B9;&gt;</b></a></dt>
+  <dt id="browsers-file=_"><a class="permalink" href="#browsers-file=_"><b>--browsers-file=&lt;&#x30D1;&#x30B9;&gt;</b></a></dt>
   <dd>&#x65E2;&#x5B9A;&#x3067;GoAccess&#x306F;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3068;&#x30AF;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x306E;&#x300C;&#x5FC5;&#x9808;&#x306A;&#x3044;&#x3057;&#x57FA;&#x790E;&#x7684;&#x306A;&#x300D;&#x53B3;&#x9078;&#x3055;&#x308C;&#x305F;&#x4E00;&#x89A7;&#x3092;&#x89E3;&#x6790;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3082;&#x3057;&#x8FFD;&#x52A0;&#x306E;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3092;&#x52A0;&#x3048;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308C;&#x3070;&#x3053;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
       &#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3084;&#x30AF;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3084;&#x30D5;&#x30A3;&#x30FC;&#x30C9;&#x306A;&#x3069;&#x306E;&#x8FFD;&#x52A0;&#x306E;&#x533A;&#x5207;&#x3089;&#x308C;&#x305F;&#x4E00;&#x89A7;&#x3092;&#x542B;&#x3081;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;
       &#x4F8B;&#x3068;&#x3057;&#x3066;&#x306F;config/browsers.list&#x3084;
       https://raw.githubusercontent.com/allinurl/goaccess/master/config/browsers.list
       &#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</dd>
-  <dt id="date~2"><a class="permalink" href="#date~2"><b>--date-spec=&lt;date|hr|min&gt;</b></a></dt>
+  <dt id="date-spec=_date_hr_min_"><a class="permalink" href="#date-spec=_date_hr_min_"><b>--date-spec=&lt;date|hr|min&gt;</b></a></dt>
   <dd>&#x65E5;&#x6642;&#x306E;&#x53B3;&#x5BC6;&#x3055;&#x306B;&#x95A2;&#x3057;&#x3066;&#x3001;&#x65E5;&#x4ED8;&#xFF08;&#x65E2;&#x5B9A;&#xFF09;&#x3001;&#x4F55;&#x6642;&#x304B;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x6642;&#x3001;
       &#x4F55;&#x5206;&#x304B;&#x3092;&#x8868;&#x793A;&#x3059;&#x308B;&#x5206;&#x3001;&#x306E;&#x3046;&#x3061;&#x3044;&#x305A;&#x308C;&#x304B;&#x3092;&#x65E5;&#x4ED8;&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
@@ -984,10 +984,10 @@
       &#x5206;&#x6307;&#x5B9A;&#x3067;&#x306F;18/Dec/2010:19:59&#x304C;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="double"><a class="permalink" href="#double"><b>--double-decode</b></a></dt>
+  <dt id="double-decode"><a class="permalink" href="#double-decode"><b>--double-decode</b></a></dt>
   <dd>&#x4E8C;&#x91CD;&#x306B;&#x7B26;&#x53F7;&#x5316;&#x3055;&#x308C;&#x305F;&#x5024;&#x3092;&#x5FA9;&#x53F7;&#x5316;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306B;&#x306F;&#x30E6;&#x30FC;&#x30B6;&#x30FC;&#x30A8;&#x30FC;&#x30B8;&#x30A7;&#x30F3;&#x30C8;&#x3001;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3001;&#x30EA;&#x30D5;&#x30A1;&#x30E9;&#x304C;&#x542B;&#x307E;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="enable~4"><a class="permalink" href="#enable~4"><b>--enable-panel=&lt;&#x30D1;&#x30CD;&#x30EB;&gt;</b></a></dt>
+  <dt id="enable-panel=_"><a class="permalink" href="#enable-panel=_"><b>--enable-panel=&lt;&#x30D1;&#x30CD;&#x30EB;&gt;</b></a></dt>
   <dd>&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x30D1;&#x30CD;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;&#x89E3;&#x6790;&#x3068;&#x8868;&#x793A;&#x3092;&#x6709;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -1031,17 +1031,17 @@
      TLS_TYPE</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="fname"><a class="permalink" href="#fname"><b>--fname-as-vhost=&lt;&#x6B63;&#x898F;&#x8868;&#x73FE;&gt;</b></a></dt>
+  <dt id="fname-as-vhost=_"><a class="permalink" href="#fname-as-vhost=_"><b>--fname-as-vhost=&lt;&#x6B63;&#x898F;&#x8868;&#x73FE;&gt;</b></a></dt>
   <dd>&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x306B;&#x4EEE;&#x60F3;&#x30DB;&#x30B9;&#x30C8;&#x3092;&#x4F7F;&#x3044;&#x307E;&#x3059;&#x3002;
       &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x540D;&#x304B;&#x3089;&#x4EEE;&#x60F3;&#x30DB;&#x30B9;&#x30C8;&#x3092;&#x62BD;&#x51FA;&#x3059;&#x308B;&#x305F;&#x3081;&#x306B;POSIX&#x6B63;&#x898F;&#x8868;&#x73FE;&#x304C;&#x6E21;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;<i>--fname-as-vhost='[a-z]*.[a-z]*'</i>&#x306F;awesome.com.log
       =&gt; awesome.com
       &#x3068;&#x62BD;&#x51FA;&#x3059;&#x308B;&#x306E;&#x306B;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="hide"><a class="permalink" href="#hide"><b>--hide-referrer=&lt;&#x63A2;&#x3057;&#x3082;&#x306E;&gt;</b></a></dt>
+  <dt id="hide-referrer=_"><a class="permalink" href="#hide-referrer=_"><b>--hide-referrer=&lt;&#x63A2;&#x3057;&#x3082;&#x306E;&gt;</b></a></dt>
   <dd>&#x30EA;&#x30D5;&#x30A1;&#x30E9;&#x3092;&#x96A0;&#x3057;&#x3064;&#x3064;&#x8A08;&#x4E0A;&#x306F;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x63A2;&#x3057;&#x3082;&#x306E;&#x306E;&#x7B87;&#x6240;&#x3067;&#x306F;&#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x304C;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x3002;
       &#x3064;&#x307E;&#x308A; *.bing.com &#x3067;&#x3059;&#x3002;</dd>
-  <dt id="hour"><a class="permalink" href="#hour"><b>--hour-spec=&lt;hr|min&gt;</b></a></dt>
+  <dt id="hour-spec=_hr_min_"><a class="permalink" href="#hour-spec=_hr_min_"><b>--hour-spec=&lt;hr|min&gt;</b></a></dt>
   <dd>&#x6642;&#x523B;&#x6307;&#x5B9A;&#x3092;&#x6642;&#xFF08;&#x65E2;&#x5B9A;&#xFF09;&#x306A;&#x3044;&#x3057;&#x5206;&#x306E;&#x3044;&#x305A;&#x308C;&#x304B;&#x306B;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3068;1/10&#x6642;&#x9593;&#x304C;&#x6642;&#x306B;&#x8FFD;&#x8A18;&#x3055;&#x308C;&#x3066;&#x8868;&#x793A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -1050,11 +1050,11 @@
       &#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3067;&#x7279;&#x5B9A;&#x306E;&#x6642;&#x523B;&#x3067;&#x30C8;&#x30E9;&#x30D5;&#x30A3;&#x30C3;&#x30AF;&#x306E;&#x30D4;&#x30FC;&#x30AF;&#x3092;&#x628A;&#x63E1;&#x3059;&#x308B;&#x306E;&#x306B;&#x5F79;&#x7ACB;&#x3061;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ignore"><a class="permalink" href="#ignore"><b>--ignore-crawlers</b></a></dt>
+  <dt id="ignore-crawlers"><a class="permalink" href="#ignore-crawlers"><b>--ignore-crawlers</b></a></dt>
   <dd>&#x30AF;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3092;&#x8A08;&#x4E0A;&#x304B;&#x3089;&#x5916;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="unknowns~2"><a class="permalink" href="#unknowns~2"><b>--unknowns-as-crawlers</b></a></dt>
+  <dt id="unknowns-as-crawlers"><a class="permalink" href="#unknowns-as-crawlers"><b>--unknowns-as-crawlers</b></a></dt>
   <dd>&#x4E0D;&#x660E;&#x306A;OS&#x3068;&#x30D6;&#x30E9;&#x30A6;&#x30B6;&#x3092;&#x30AF;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3068;&#x3057;&#x3066;&#x5206;&#x985E;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="ignore~2"><a class="permalink" href="#ignore~2"><b>--ignore-panel=&lt;&#x30D1;&#x30CD;&#x30EB;&gt;</b></a></dt>
+  <dt id="ignore-panel=_"><a class="permalink" href="#ignore-panel=_"><b>--ignore-panel=&lt;&#x30D1;&#x30CD;&#x30EB;&gt;</b></a></dt>
   <dd>&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x30D1;&#x30CD;&#x30EB;&#x306B;&#x3064;&#x3044;&#x3066;&#x89E3;&#x6790;&#x3068;&#x8868;&#x793A;&#x304B;&#x3089;&#x5916;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
 </dl>
 <dl class="Bl-tag">
@@ -1098,11 +1098,11 @@
      TLS_TYPE</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="ignore~3"><a class="permalink" href="#ignore~3"><b>--ignore-referrer=&lt;&#x30EA;&#x30D5;&#x30A1;&#x30E9;&gt;</b></a></dt>
+  <dt id="ignore-referrer=_"><a class="permalink" href="#ignore-referrer=_"><b>--ignore-referrer=&lt;&#x30EA;&#x30D5;&#x30A1;&#x30E9;&gt;</b></a></dt>
   <dd>&#x30EA;&#x30D5;&#x30A1;&#x30E9;&#x3092;&#x8A08;&#x4E0A;&#x304B;&#x3089;&#x5916;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x30EF;&#x30A4;&#x30EB;&#x30C9;&#x30AB;&#x30FC;&#x30C9;&#x304C;&#x4F7F;&#x3048;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;<i>*.domain.com</i> <i>ww?.domain.*</i></dd>
-  <dt id="ignore~4"><a class="permalink" href="#ignore~4"><b>--ignore-statics=&lt;req|panel&gt;</b></a></dt>
+  <dt id="ignore-statics=_req_panel_"><a class="permalink" href="#ignore-statics=_req_panel_"><b>--ignore-statics=&lt;req|panel&gt;</b></a></dt>
   <dd>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x3092;&#x7121;&#x8996;&#x3057;&#x307E;&#x3059;&#x3002;
     <p class="Pp"><i>req</i>
       <br/>
@@ -1117,37 +1117,37 @@
       
         &#x306A;&#x304A;&#x3053;&#x308C;&#x3089;&#x306F;&#x30EA;&#x30AF;&#x30A8;&#x30B9;&#x30C8;&#x306E;&#x7DCF;&#x8A08;&#x306B;&#x8A08;&#x4E0A;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
   </dd>
-  <dt id="ignore~5"><a class="permalink" href="#ignore~5"><b>--ignore-status=&lt;&#x30B3;&#x30FC;&#x30C9;&gt;</b></a></dt>
+  <dt id="ignore-status=_"><a class="permalink" href="#ignore-status=_"><b>--ignore-status=&lt;&#x30B3;&#x30FC;&#x30C9;&gt;</b></a></dt>
   <dd>1&#x3064;&#x4EE5;&#x4E0A;&#x306E;&#x72B6;&#x614B;&#x30B3;&#x30FC;&#x30C9;&#x3092;&#x89E3;&#x6790;&#x3068;&#x8868;&#x793A;&#x304B;&#x3089;&#x5916;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x8907;&#x6570;&#x306E;&#x72B6;&#x614B;&#x30B3;&#x30FC;&#x30C9;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;&#x3001;&#x3053;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x3092;&#x8907;&#x6570;&#x56DE;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</dd>
-  <dt id="keep"><a class="permalink" href="#keep"><b>--keep-last=&lt;&#x65E5;&#x6570;&gt;</b></a></dt>
+  <dt id="keep-last=_"><a class="permalink" href="#keep-last=_"><b>--keep-last=&lt;&#x65E5;&#x6570;&gt;</b></a></dt>
   <dd>&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306B;&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x65E5;&#x6570;&#x5206;&#x4FDD;&#x6301;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306B;&#x3088;&#x308A;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x306E;&#x5468;&#x56DE;&#x8868;&#x304C;&#x5DE1;&#x56DE;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;&#x76F4;&#x8FD1;7&#x65E5;&#x9593;&#x306E;&#x307F;&#x3092;&#x4FDD;&#x6301;&#x3057;&#x3066;&#x8868;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="no~8"><a class="permalink" href="#no~8"><b>--no-ip-validation</b></a></dt>
+  <dt id="no-ip-validation"><a class="permalink" href="#no-ip-validation"><b>--no-ip-validation</b></a></dt>
   <dd>&#x30AF;&#x30E9;&#x30A4;&#x30A2;&#x30F3;&#x30C8;&#x306E;IP&#x306E;&#x691C;&#x8A3C;&#x3092;&#x7121;&#x52B9;&#x5316;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x30ED;&#x30B0;&#x51FA;&#x529B;&#x3055;&#x308C;&#x308B;&#x524D;&#x306B;IP&#x30A2;&#x30C9;&#x30EC;&#x30B9;&#x304C;&#x7C89;&#x98FE;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x306B;&#x4FBF;&#x5229;&#x3067;&#x3059;&#x3002;
       &#x305D;&#x308C;&#x3067;&#x3082;&#x30ED;&#x30B0;&#x306B;&#x306F;<i>%h</i>&#x306E;&#x5834;&#x6240;&#x53D6;&#x308A;&#x304C;&#x306A;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x3001;&#x5927;&#x62B5;&#x306F;&#x89E3;&#x6C7A;&#x3055;&#x308C;&#x305F;IP&#x3067;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;<i>ord37s19-in-f14.1e100.net.</i></dd>
-  <dt id="no~9"><a class="permalink" href="#no~9"><b>--no-strict-status</b></a></dt>
+  <dt id="no-strict-status"><a class="permalink" href="#no-strict-status"><b>--no-strict-status</b></a></dt>
   <dd>HTTP&#x72B6;&#x614B;&#x30B3;&#x30FC;&#x30C9;&#x306E;&#x691C;&#x8A3C;&#x3092;&#x7121;&#x52B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x5BFE;&#x8C61;&#x3068;&#x306E;&#x63A5;&#x7D9A;&#x304C;&#x78BA;&#x7ACB;&#x3055;&#x308C;&#x5BFE;&#x8C61;&#x304C;&#x5FDC;&#x7B54;&#x3092;&#x9001;&#x3063;&#x305F;&#x3068;&#x304D;&#x306E;&#x307F;&#x306B;&#x3053;&#x306E;&#x5024;&#x3092;&#x8A18;&#x9332;&#x3059;&#x308B;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x3082;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
       &#x305D;&#x3046;&#x3067;&#x306A;&#x3044;&#x5834;&#x5408;-&#x3068;&#x3057;&#x3066;&#x8A18;&#x9332;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="num"><a class="permalink" href="#num"><b>--num-tests=&lt;&#x6570;&#x5024;&gt;</b></a></dt>
+  <dt id="num-tests=_"><a class="permalink" href="#num-tests=_"><b>--num-tests=&lt;&#x6570;&#x5024;&gt;</b></a></dt>
   <dd>&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x30FB;&#x65E5;&#x4ED8;&#x30FB;&#x6642;&#x523B;&#x306E;&#x66F8;&#x5F0F;&#x306B;&#x7167;&#x3089;&#x3057;&#x5408;&#x308F;&#x305B;&#x308B;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x304B;&#x3089;&#x306E;&#x884C;&#x6570;&#x3002;
       &#x65E2;&#x5B9A;&#x3067;&#x306F;&#x89E3;&#x6790;&#x5668;&#x306F;10&#x884C;&#x306B;&#x5BFE;&#x3057;&#x3066;&#x691C;&#x67FB;&#x3059;&#x308B;&#x3088;&#x3046;&#x306B;&#x8A2D;&#x5B9A;&#x3055;&#x308C;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;
       0&#x306B;&#x8A2D;&#x5B9A;&#x3057;&#x305F;&#x3068;&#x304D;&#x306F;&#x89E3;&#x6790;&#x5668;&#x306F;&#x4E00;&#x90E8;&#x306E;&#x884C;&#x306E;&#x307F;&#x306E;&#x691C;&#x67FB;&#x3067;&#x306F;&#x306A;&#x304F;&#x30A2;&#x30AF;&#x30BB;&#x30B9;&#x30ED;&#x30B0;&#x5168;&#x4F53;&#x3092;&#x89E3;&#x6790;&#x3057;&#x307E;&#x3059;&#x3002;
       <i>&lt;number&gt;</i>&#x306B;&#x5230;&#x9054;&#x3059;&#x308B;&#x307E;&#x3067;&#x306B;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x305F;&#x30ED;&#x30B0;&#x30FB;&#x65E5;&#x4ED8;&#x30FB;&#x6642;&#x523B;&#x306E;&#x66F8;&#x5F0F;&#x304C;&#x305D;&#x306E;&#x884C;&#x306B;&#x7167;&#x5408;&#x3057;&#x305F;&#x3089;&#x3001;
       &#x89E3;&#x6790;&#x5668;&#x306F;&#x305D;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x59A5;&#x5F53;&#x3068;&#x5224;&#x65AD;&#x3057;&#x3001;
       &#x305D;&#x3046;&#x3067;&#x306A;&#x3051;&#x308C;&#x3070;GoAccess&#x306F;EXIT_FAILURE&#x3092;&#x8FD4;&#x3057;&#x3066;&#x95A2;&#x4FC2;&#x3059;&#x308B;&#x30A8;&#x30E9;&#x30FC;&#x6587;&#x8A00;&#x3092;&#x8868;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="process"><a class="permalink" href="#process"><b>--process-and-exit</b></a></dt>
+  <dt id="process-and-exit"><a class="permalink" href="#process-and-exit"><b>--process-and-exit</b></a></dt>
   <dd>&#x30ED;&#x30B0;&#x3092;&#x89E3;&#x6790;&#x3057;&#x30C7;&#x30FC;&#x30BF;&#x51FA;&#x529B;&#x3059;&#x308B;&#x3053;&#x3068;&#x306A;&#x304F;&#x7D42;&#x4E86;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3084;&#x7AEF;&#x672B;&#x306B;&#x51FA;&#x529B;&#x3059;&#x308B;&#x3053;&#x3068;&#x306A;&#x304F;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x4E0A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x65B0;&#x898F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x52A0;&#x3048;&#x305F;&#x3044;&#x3060;&#x3051;&#x306E;&#x3068;&#x304D;&#x306B;&#x4FBF;&#x5229;&#x3067;&#x3059;&#x3002;</dd>
-  <dt id="real~2"><a class="permalink" href="#real~2"><b>--real-os</b></a></dt>
+  <dt id="real-os"><a class="permalink" href="#real-os"><b>--real-os</b></a></dt>
   <dd>&#x5B9F;&#x969B;&#x306E;OS&#x540D;&#x3092;&#x8868;&#x793A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#x3048;&#x3070;Windows XP&#x3001;Snow
       Leopard&#x3067;&#x3059;&#x3002;</dd>
-  <dt id="sort"><a class="permalink" href="#sort"><b>--sort-panel=&lt;&#x30D1;&#x30CD;&#x30EB;,&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;,&#x9806;&#x5E8F;&gt;</b></a></dt>
+  <dt id="sort-panel=_"><a class="permalink" href="#sort-panel=_"><b>--sort-panel=&lt;&#x30D1;&#x30CD;&#x30EB;,&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;,&#x9806;&#x5E8F;&gt;</b></a></dt>
   <dd>&#x521D;&#x671F;&#x306E;&#x8AAD;&#x8FBC;&#x3067;&#x30D1;&#x30CD;&#x30EB;&#x3092;&#x6574;&#x5217;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x6574;&#x5217;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x8AAD;&#x70B9;&#x533A;&#x5207;&#x308A;&#x3067;&#x3059;&#x3002;
       &#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306F;&#x3001;&#x30D1;&#x30CD;&#x30EB;,&#x6307;&#x6A19;,&#x9806;&#x5E8F;&#x3001;&#x306E;&#x5F62;&#x5F0F;&#x3067;&#x3059;&#x3002;</dd>
@@ -1187,18 +1187,18 @@
      DESC</dd>
 </dl>
 <dl class="Bl-tag">
-  <dt id="static"><a class="permalink" href="#static"><b>--static-file=&lt;&#x62E1;&#x5F35;&#x5B50;&gt;</b></a></dt>
+  <dt id="static-file=_"><a class="permalink" href="#static-file=_"><b>--static-file=&lt;&#x62E1;&#x5F35;&#x5B50;&gt;</b></a></dt>
   <dd>&#x9759;&#x7684;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x62E1;&#x5F35;&#x5B50;&#x3092;&#x8FFD;&#x52A0;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x4F8B;&#xFF1A;<i>.mp3</i>
       &#x62E1;&#x5F35;&#x5B50;&#x306F;&#x5927;&#x6587;&#x5B57;&#x5C0F;&#x6587;&#x5B57;&#x3092;&#x533A;&#x5225;&#x3057;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x5730;&#x7406;&#x7684;&#x4F4D;&#x7F6E;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x5730;&#x7406;&#x7684;&#x4F4D;&#x7F6E;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <dl class="Bl-tag">
   <dt><b>-g --std-geoip</b></dt>
   <dd>&#x30E1;&#x30E2;&#x30EA;&#x4F7F;&#x7528;&#x91CF;&#x3092;&#x6291;&#x3048;&#x308B;&#x305F;&#x3081;&#x6A19;&#x6E96;&#x7684;&#x306A;GeoIP&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
-  <dt id="geoip"><a class="permalink" href="#geoip"><b>--geoip-database=&lt;&#x5730;&#x7406;&#x60C5;&#x5831;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&gt;</b></a></dt>
+  <dt id="geoip-database=_"><a class="permalink" href="#geoip-database=_"><b>--geoip-database=&lt;&#x5730;&#x7406;&#x60C5;&#x5831;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&gt;</b></a></dt>
   <dd>GeoLiteCity.dat&#x306E;&#x3088;&#x3046;&#x306A;GeoIP&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3078;&#x306E;&#x30D1;&#x30B9;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
     <p class="Pp">GeoIP2&#x3092;&#x4F7F;&#x7528;&#x3057;&#x3066;&#x3044;&#x308B;&#x5834;&#x5408;&#x3001;
         MaxMind.com&#x304B;&#x3089;GeoLite2&#x306A;&#x3044;&#x3057;Country&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x3092;&#x30C0;&#x30A6;&#x30F3;&#x30ED;&#x30FC;&#x30C9;&#x3057;&#x3001;
@@ -1214,7 +1214,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x4ED6;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x4ED6;&#x306E;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <dl class="Bl-tag">
   <dt id="h"><a class="permalink" href="#h"><b>-h --help</b></a></dt>
   <dd>&#x30D8;&#x30EB;&#x30D7;&#x3002;</dd>
@@ -1227,7 +1227,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x6C38;&#x7D9A;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h2>
+<h3 class="Ss">&#x6C38;&#x7D9A;&#x30B9;&#x30C8;&#x30EC;&#x30FC;&#x30B8;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;</h3>
 <dl class="Bl-tag">
   <dt id="persist"><a class="permalink" href="#persist"><b>--persist</b></a></dt>
   <dd>&#x89E3;&#x6790;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x306B;&#x6C38;&#x7D9A;&#x5316;&#x3057;&#x307E;&#x3059;&#x3002;
@@ -1238,7 +1238,7 @@
   <dd>&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x304B;&#x3089;&#x4EE5;&#x524D;&#x683C;&#x7D0D;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x8AAD;&#x307F;&#x8FBC;&#x307F;&#x307E;&#x3059;&#x3002;
       &#x6C38;&#x7D9A;&#x5316;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x307F;&#x3092;&#x8AAD;&#x3080;&#x5834;&#x5408;&#x3001;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x5B58;&#x5728;&#x3057;&#x3066;&#x3044;&#x308B;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;
       <i>--persist</i>&#x3068;&#x5F8C;&#x8FF0;&#x306E;&#x4F8B;&#x3092;&#x53C2;&#x7167;&#x3057;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</dd>
-  <dt id="db"><a class="permalink" href="#db"><b>--db-path=&lt;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&gt;</b></a></dt>
+  <dt id="db-path=_"><a class="permalink" href="#db-path=_"><b>--db-path=&lt;&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&gt;</b></a></dt>
   <dd>&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x4E0A;&#x306E;&#x30C7;&#x30FC;&#x30BF;&#x30D9;&#x30FC;&#x30B9;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304C;&#x4FDD;&#x7BA1;&#x3055;&#x308C;&#x3066;&#x3044;&#x308B;&#x30D1;&#x30B9;&#x3067;&#x3059;&#x3002;
       &#x65E2;&#x5B9A;&#x5024;&#x306F;<i>/tmp</i>&#x30C7;&#x30A3;&#x30EC;&#x30AF;&#x30C8;&#x30EA;&#x3067;&#x3059;&#x3002;
     <p class="Pp"></p>
@@ -1247,7 +1247,7 @@
 </section>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x72EC;&#x81EA;&#x306E;&#x30ED;&#x30B0;&#x30FB;&#x65E5;&#x4ED8;&#x66F8;&#x5F0F;</h1>
+<h2 class="Sh">&#x72EC;&#x81EA;&#x306E;&#x30ED;&#x30B0;&#x30FB;&#x65E5;&#x4ED8;&#x66F8;&#x5F0F;</h2>
 <p class="Pp">GoAccess&#x306F;&#x7406;&#x60F3;&#x7684;&#x306B;&#x306F;&#x3069;&#x3093;&#x306A;web&#x306E;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x3082;&#x89E3;&#x6790;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 <p class="Pp">&#x4E88;&#x3081;&#x5B9A;&#x7FA9;&#x3055;&#x308C;&#x305F;&#x30AA;&#x30D7;&#x30B7;&#x30E7;&#x30F3;&#x306B;&#x306F;
     Common Log Format (CLF)&#x3001; Combined Log Format (XLF/ELF)&#x3001; Amazon
@@ -1261,7 +1261,7 @@
     &#x8A2D;&#x5B9A;&#x30A6;&#x30A3;&#x30F3;&#x30C9;&#x30A6;&#x304B;&#x3089;&#x6307;&#x793A;&#x306B;&#x968F;&#x3063;&#x3066;&#x5165;&#x529B;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3059;&#x3002;
     &#x4ED6;&#x306B;~/.goaccessrc&#x3084;%sysconfdir%&#x4EE5;&#x4E0B;&#x3067;&#x8A2D;&#x5B9A;&#x3059;&#x308B;&#x3053;&#x3068;&#x3082;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;</p>
 <dl class="Bl-tag">
-  <dt id="time~2"><a class="permalink" href="#time~2">time-format</a></dt>
+  <dt id="time-format"><a class="permalink" href="#time-format">time-format</a></dt>
   <dd><i>time-format</i>&#x5909;&#x6570;&#x306F;&#x7A7A;&#x767D;1&#x3064;&#x306B;&#x7D9A;&#x3044;&#x3066;&#x30ED;&#x30B0;&#x306E;&#x66F8;&#x5F0F;&#x306E;&#x6642;&#x523B;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3053;&#x308C;&#x306B;&#x306F;&#x901A;&#x5E38;&#x306E;&#x6587;&#x5B57;&#x3068;&#x7279;&#x6B8A;&#x306A;&#x66F8;&#x5F0F;&#x6307;&#x5B9A;&#x5B50;&#x306E;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x304C;&#x542B;&#x307E;&#x308C;&#x307E;&#x3059;&#x3002;
       &#x6307;&#x5B9A;&#x5B50;&#x306F;&#x5168;&#x3066;&#x30D1;&#x30FC;&#x30BB;&#x30F3;&#x30C8;&#x8A18;&#x53F7;
@@ -1273,7 +1273,7 @@
       <i>%f</i>&#x306F;<i>time-format</i>&#x3068;&#x3057;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x3066;&#x3044;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;
       &#x307E;&#x305F;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x304C;&#x30DF;&#x30EA;&#x79D2;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x306F;&#x3001;
       <i>%f</i>&#x306F;<i>%*</i>&#x3068;&#x3057;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
-  <dt id="date~3"><a class="permalink" href="#date~3">date-format</a></dt>
+  <dt id="date-format"><a class="permalink" href="#date-format">date-format</a></dt>
   <dd><i>date-format</i>&#x5909;&#x6570;&#x306B;&#x306F;&#x7A7A;&#x767D;1&#x3064;&#x304C;&#x7D9A;&#x304D;&#x3001;
       &#x30ED;&#x30B0;&#x306E;&#x66F8;&#x5F0F;&#x306E;&#x65E5;&#x4ED8;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;
       &#x3053;&#x306E;&#x66F8;&#x5F0F;&#x306B;&#x306F;&#x901A;&#x5E38;&#x306E;&#x6587;&#x5B57;&#x3068;&#x7279;&#x6B8A;&#x306A;&#x66F8;&#x5F0F;&#x306E;&#x6307;&#x5B9A;&#x5B50;&#x306E;&#x3042;&#x3089;&#x3086;&#x308B;&#x7D44;&#x307F;&#x5408;&#x308F;&#x305B;&#x3092;&#x542B;&#x3081;&#x3089;&#x308C;&#x307E;&#x3059;&#x3002;
@@ -1285,7 +1285,7 @@
   <dd><i>&#x88DC;&#x8DB3;&#xFF1A;</i>&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x304C;&#x30DE;&#x30A4;&#x30AF;&#x30ED;&#x79D2;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x3001;
       <i>%f</i>&#x306F;<i>date-format</i>&#x3068;&#x3057;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;
       &#x307E;&#x305F;&#x30BF;&#x30A4;&#x30E0;&#x30B9;&#x30BF;&#x30F3;&#x30D7;&#x304C;&#x30DF;&#x30EA;&#x79D2;&#x3067;&#x4E0E;&#x3048;&#x3089;&#x308C;&#x3066;&#x3044;&#x308B;&#x3068;&#x304D;&#x306F;<i>%f</i>&#x306F;<i>%*</i>&#x3068;&#x3057;&#x3066;&#x4F7F;&#x308F;&#x308C;&#x306A;&#x3051;&#x308C;&#x3070;&#x306A;&#x308A;&#x307E;&#x305B;&#x3093;&#x3002;</dd>
-  <dt id="log~2"><a class="permalink" href="#log~2">log-format</a></dt>
+  <dt id="log-format"><a class="permalink" href="#log-format">log-format</a></dt>
   <dd><i>log-format</i>&#x5909;&#x6570;&#x306B;&#x306F;&#x7A7A;&#x767D;1&#x3064;&#x306A;&#x3044;&#x3057;<i>\t</i>&#x304C;&#x7D9A;&#x304D;&#x3001;&#x30ED;&#x30B0;&#x66F8;&#x5F0F;&#x306E;&#x6587;&#x5B57;&#x5217;&#x3092;&#x6307;&#x5B9A;&#x3057;&#x307E;&#x3059;&#x3002;</dd>
   <dt>%x</dt>
   <dd><i>time-format</i>&#x3068;<i>date-format</i>&#x5909;&#x6570;&#x306B;&#x7167;&#x5408;&#x3059;&#x308B;&#x65E5;&#x4ED8;&#x3068;&#x6642;&#x523B;&#x306E;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x3067;&#x3059;&#x3002;
@@ -1411,7 +1411,7 @@
 </dl>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x5BFE;&#x8A71;&#x7684;&#x30E1;&#x30CB;&#x30E5;&#x30FC;</h1>
+<h2 class="Sh">&#x5BFE;&#x8A71;&#x7684;&#x30E1;&#x30CB;&#x30E5;&#x30FC;</h2>
 <dl class="Bl-tag">
   <dt id="F1"><a class="permalink" href="#F1">F1&#x307E;&#x305F;&#x306F;h</a></dt>
   <dd>&#x30E1;&#x30A4;&#x30F3;&#x306E;&#x30D8;&#x30EB;&#x30D7;&#x3067;&#x3059;&#x3002;</dd>
@@ -1468,11 +1468,11 @@
 </dl>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x4F8B;</h1>
+<h2 class="Sh">&#x4F8B;</h2>
 <p class="Pp"><i>&#x88DC;&#x8DB3;&#xFF1A;</i>&#x30C7;&#x30FC;&#x30BF;&#x3092;GoAccess&#x306B;&#x30D1;&#x30A4;&#x30D7;&#x3067;&#x6D41;&#x3057;&#x8FBC;&#x3080;&#x3068;&#x304D;&#x306F;&#x30ED;&#x30B0;&#x3001;&#x65E5;&#x4ED8;&#x3001;&#x6642;&#x523B;&#x8A2D;&#x5B9A;&#x30C0;&#x30A4;&#x30A2;&#x30ED;&#x30B0;&#x306F;&#x8CEA;&#x554F;&#x3055;&#x308C;&#x306A;&#x3044;&#x306E;&#x3067;&#x3001;&#x4E88;&#x3081;&#x8A2D;&#x5B9A;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x304B;&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x3067;&#x5B9A;&#x7FA9;&#x3057;&#x3066;&#x304A;&#x304F;&#x5FC5;&#x8981;&#x304C;&#x3042;&#x308A;&#x307E;&#x3059;&#x3002;</p>
 <p class="Pp"></p>
 <section class="Ss">
-<h2 class="Ss">&#x7570;&#x306A;&#x308B;&#x51FA;&#x529B;</h2>
+<h3 class="Ss">&#x7570;&#x306A;&#x308B;&#x51FA;&#x529B;</h3>
 <p class="Pp">&#x7AEF;&#x672B;&#x306B;&#x51FA;&#x529B;&#x3057;&#x3066;&#x5BFE;&#x8A71;&#x7684;&#x306A;&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x306B;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1521,7 +1521,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x8907;&#x6570;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h2>
+<h3 class="Ss">&#x8907;&#x6570;&#x306E;&#x30ED;&#x30B0;&#x30D5;&#x30A1;&#x30A4;&#x30EB;</h3>
 <p class="Pp">&#x30B3;&#x30DE;&#x30F3;&#x30C9;&#x30E9;&#x30A4;&#x30F3;&#x306B;&#x6E21;&#x3059;&#x3053;&#x3068;&#x3067;&#x8907;&#x6570;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x89E3;&#x6790;&#xFF1A;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1551,7 +1551,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x5B9F;&#x6642;&#x9593;HTML&#x51FA;&#x529B;</h2>
+<h3 class="Ss">&#x5B9F;&#x6642;&#x9593;HTML&#x51FA;&#x529B;</h3>
 <p class="Pp">&#x5B9F;&#x6642;&#x9593;&#x306E;HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x306B;&#x306F;&#x4EE5;&#x4E0B;&#x306E;&#x3088;&#x3046;&#x306B;&#x3057;&#x307E;&#x3059;&#x3002;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1586,7 +1586,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x65E5;&#x4ED8;&#x306E;&#x6271;&#x3044;</h2>
+<h3 class="Ss">&#x65E5;&#x4ED8;&#x306E;&#x6271;&#x3044;</h3>
 <p class="Pp">&#x7279;&#x5B9A;&#x306E;&#x65E5;&#x4ED8;&#x304B;&#x3089;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x306E;&#x7D42;&#x308F;&#x308A;&#x307E;&#x3067;&#x306E;&#x5168;&#x8981;&#x6C42;&#xFF1A;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1612,7 +1612,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x4EEE;&#x60F3;&#x30DB;&#x30B9;&#x30C8;</h2>
+<h3 class="Ss">&#x4EEE;&#x60F3;&#x30DB;&#x30B9;&#x30C8;</h3>
 <p class="Pp">&#x4EEE;&#x60F3;&#x30DB;&#x30B9;&#x30C8;&#x3084;&#x30B5;&#x30FC;&#x30D0;&#x30FC;&#x30D6;&#x30ED;&#x30C3;&#x30AF;
     (%v)
     &#x3092;&#x8981;&#x6C42;&#x30D5;&#x30A3;&#x30FC;&#x30EB;&#x30C9;&#x306B;&#x524D;&#x7F6E;&#x3059;&#x308B;&#x306B;&#x306F;<b>--concat-vhost-req</b>&#x3092;&#x4F7F;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
@@ -1631,7 +1631,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x72B6;&#x614B;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x30DC;&#x30C3;&#x30C8;</h2>
+<h3 class="Ss">&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x3068;&#x72B6;&#x614B;&#x30B3;&#x30FC;&#x30C9;&#x3068;&#x30DC;&#x30C3;&#x30C8;</h3>
 <p class="Pp">&#x6307;&#x5B9A;&#x3055;&#x308C;&#x305F;&#x30DA;&#x30FC;&#x30B8;&#x306E;&#x7A2E;&#x985E;&#x306E;&#x307F;&#x3092;&#x89E3;&#x6790;&#xFF08;html&#x3001;htm&#x3001;php&#xFF09;&#xFF1A;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1662,7 +1662,7 @@
 </dl>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x30B5;&#x30FC;&#x30D0;&#x30FC;</h2>
+<h3 class="Ss">&#x30B5;&#x30FC;&#x30D0;&#x30FC;</h3>
 <p class="Pp">GoAccess&#x3092;&#x4F4E;&#x3044;CPU&#x306E;&#x512A;&#x5148;&#x5EA6;&#x3067;&#x5B9F;&#x884C;&#xFF1A;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1680,17 +1680,15 @@
 <p class="Pp"></p>
 </section>
 <section class="Ss">
-<h2 class="Ss">&#x6F38;&#x9032;&#x7684;&#x30ED;&#x30B0;&#x51E6;&#x7406;</h2>
+<h3 class="Ss">&#x6F38;&#x9032;&#x7684;&#x30ED;&#x30B0;&#x51E6;&#x7406;</h3>
 <p class="Pp">GoAccess&#x306F;&#x30C7;&#x30FC;&#x30BF;&#x3092;&#x30C7;&#x30A3;&#x30B9;&#x30AF;&#x306B;&#x6C38;&#x7D9A;&#x5316;&#x3057;&#x3001;&#x305D;&#x308C;&#x304B;&#x3089;&#x518D;&#x3073;&#x53D6;&#x308A;&#x51FA;&#x3057;&#x3066;&#x65B0;&#x3057;&#x3044;&#x30C7;&#x30FC;&#x30BF;&#x306B;&#x8FFD;&#x8A18;&#x3059;&#x308B;&#x3053;&#x3068;&#x3067;&#x3001;&#x6F38;&#x9032;&#x7684;&#x306B;&#x30ED;&#x30B0;&#x3092;&#x51E6;&#x7406;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
     GoAccess&#x306F;inode&#x3001;&#x6700;&#x5F8C;&#x306E;&#x89E3;&#x6790;&#x3055;&#x308C;&#x305F;&#x884C;&#x3001;&#x30D5;&#x30A1;&#x30A4;&#x30EB;&#x6BCE;&#x306E;&#x6700;&#x5F8C;&#x306E;&#x6642;&#x9593;&#x8A18;&#x9332;&#x3092;&#x628A;&#x63E1;&#x3057;&#x3066;&#x3044;&#x307E;&#x3059;&#x3002;</p>
-<p class="Pp"><i>Note:</i> If the inode doesn't match, all lines are parsed. If
-    it matches, remaining lines are read and the count/timestamp updated. Log
-    lines with a timestamp &#x2264; the stored timestamp are skipped. Piped data
-    works off the timestamp of the last line read.</p>
-<p class="Pp"><i>Warning:</i> Piped data may produce duplicate entries since
-    multiple consecutive lines can share the same timestamp. Best practice is to
-    parse directly with GoAccess rather than piping for incremental
-  processing.</p>
+<p class="Pp"><i>&#x9644;&#x8A18;&#xFF1A;</i>inode&#x304C;&#x5408;&#x81F4;&#x3057;&#x306A;&#x3051;&#x308C;&#x3070;&#x3001;&#x5168;&#x884C;&#x304C;&#x69CB;&#x6587;&#x89E3;&#x6790;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
+    &#x5408;&#x81F4;&#x3059;&#x308C;&#x3070;&#x3001;&#x6B8B;&#x308A;&#x306E;&#x884C;&#x304C;&#x8AAD;&#x307E;&#x308C;&#x8A08;&#x6570;&#xFF0F;&#x6642;&#x9593;&#x8A18;&#x9332;&#x304C;&#x66F4;&#x65B0;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
+    &#x4FDD;&#x7BA1;&#x3055;&#x308C;&#x305F;&#x6642;&#x9593;&#x8A18;&#x9332;&#x4EE5;&#x4E0B;&#x306E;&#x6642;&#x9593;&#x8A18;&#x9332;&#x3092;&#x6301;&#x3064;&#x5C65;&#x6B74;&#x306F;&#x98DB;&#x3070;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;
+    &#x30D1;&#x30A4;&#x30D7;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x8AAD;&#x307E;&#x308C;&#x305F;&#x6700;&#x5F8C;&#x306E;&#x884C;&#x306E;&#x6642;&#x9593;&#x8A18;&#x9332;&#x3092;&#x57FA;&#x6E96;&#x306B;&#x6271;&#x308F;&#x308C;&#x307E;&#x3059;&#x3002;</p>
+<p class="Pp"><i>&#x8B66;&#x544A;&#xFF1A;</i>&#x30D1;&#x30A4;&#x30D7;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306F;&#x91CD;&#x8907;&#x3059;&#x308B;&#x9805;&#x76EE;&#x3092;&#x751F;&#x6210;&#x3059;&#x308B;&#x304B;&#x3082;&#x3057;&#x308C;&#x307E;&#x305B;&#x3093;&#x304C;&#x3001;&#x3053;&#x308C;&#x306F;&#x8907;&#x6570;&#x306E;&#x9023;&#x7D9A;&#x3059;&#x308B;&#x884C;&#x304C;&#x540C;&#x3058;&#x6642;&#x9593;&#x8A18;&#x9332;&#x3092;&#x5171;&#x6709;&#x3059;&#x308B;&#x3053;&#x3068;&#x304C;&#x3042;&#x308B;&#x305F;&#x3081;&#x3067;&#x3059;&#x3002;
+    &#x6700;&#x826F;&#x6163;&#x7FD2;&#x306F;&#x76F4;&#x63A5;GoAccess&#x3067;&#x89E3;&#x6790;&#x3057;&#x3001;&#x6F38;&#x6B21;&#x306E;&#x51E6;&#x7406;&#x306E;&#x305F;&#x3081;&#x30D1;&#x30A4;&#x30D7;&#x3057;&#x306A;&#x3044;&#x3053;&#x3068;&#x3067;&#x3059;&#x3002;</p>
 <p class="Pp">&#x5148;&#x6708;&#x306E;&#x30ED;&#x30B0;&#x3092;&#x6B8B;&#x7F6E;&#xFF1A;</p>
 <dl class="Bl-tag">
   <dt></dt>
@@ -1701,7 +1699,7 @@
   <dt></dt>
   <dd># goaccess access.log --restore --persist</dd>
 </dl>
-<p class="Pp">Read persisted data only:</p>
+<p class="Pp">&#x6C38;&#x7D9A;&#x5316;&#x3055;&#x308C;&#x305F;&#x30C7;&#x30FC;&#x30BF;&#x306E;&#x307F;&#x8AAD;&#x307F;&#x53D6;&#x308A;&#xFF1A;</p>
 <dl class="Bl-tag">
   <dt></dt>
   <dd># goaccess --restore
@@ -1749,7 +1747,7 @@
 </section>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x88DC;&#x8DB3;</h1>
+<h2 class="Sh">&#x88DC;&#x8DB3;</h2>
 <p class="Pp">&#x5B9F;&#x6642;&#x9593;HTML&#x30EC;&#x30DD;&#x30FC;&#x30C8;&#x306E;&#x305D;&#x308C;&#x305E;&#x308C;&#x306E;&#x6D3B;&#x6027;&#x30D1;&#x30CD;&#x30EB;&#x306B;&#x306F;&#x5408;&#x8A08;360&#x500B;&#x306A;&#x3044;&#x3057;50&#x500B;&#x306E;&#x9805;&#x76EE;&#x304C;&#x542B;&#x307E;&#x308C;&#x307E;&#x3059;&#x3002;
     &#x9805;&#x76EE;&#x6570;&#x306F;<i>max-items</i>&#x3092;&#x4F7F;&#x3063;&#x3066;&#x8ABF;&#x7BC0;&#x3067;&#x304D;&#x307E;&#x3059;&#x3002;
     HTML&#x3001;CSV&#x3001;JSON&#x51FA;&#x529B;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;1&#x30D1;&#x30CD;&#x30EB;&#x306B;&#x3064;&#x304D;&#x3001;
@@ -1763,7 +1761,7 @@
     20&#x56DE;&#x8A66;&#x884C;&#x306F;&#x7E70;&#x308A;&#x8FD4;&#x3055;&#x308C;&#x307E;&#x3059;&#x3002;</p>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x30D0;&#x30B0;</h1>
+<h2 class="Sh">&#x30D0;&#x30B0;</h2>
 <p class="Pp">&#x30D0;&#x30B0;&#x3092;&#x767A;&#x898B;&#x3057;&#x305F;&#x3068;&#x601D;&#x3063;&#x305F;&#x3089;
     <i>goaccess@prosoftcorp.com</i>
     &#x307E;&#x3067;&#x79C1;&#x306B;E&#x30E1;&#x30FC;&#x30EB;&#x3092;&#x9001;&#x308B;&#x304B;&#x3001;
@@ -1771,18 +1769,16 @@
     &#x306E;&#x30A4;&#x30B7;&#x30E5;&#x30FC;&#x30C8;&#x30E9;&#x30C3;&#x30AB;&#x30FC;&#x3092;&#x4F7F;&#x3063;&#x3066;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
 </section>
 <section class="Sh">
-<h1 class="Sh">&#x4F5C;&#x8005;</h1>
+<h2 class="Sh">&#x4F5C;&#x8005;</h2>
 <p class="Pp">Gerardo Orellana &lt;hello@goaccess.io&gt;
     &#x8A73;&#x7D30;&#x3084;&#x65B0;&#x3057;&#x3044;&#x30EA;&#x30EA;&#x30FC;&#x30B9;&#x306B;&#x3064;&#x3044;&#x3066;&#x306F;
     https://goaccess.io
     &#x306B;&#x304A;&#x8D8A;&#x3057;&#x304F;&#x3060;&#x3055;&#x3044;&#x3002;</p>
 </section>
-</div>
-<table class="foot">
-  <tr>
-    <td class="foot-date">2026&#x5E74;3&#x6708;</td>
-    <td class="foot-os">GNU+Linux</td>
-  </tr>
-</table>
+</main>
+<div class="foot" role="doc-pagefooter" aria-label="Manual footer
+  line"><span class="foot-left">GNU+Linux</span>
+  <span class="foot-date">2026&#x5E74;7&#x6708;</span>
+  <span class="foot-right">goaccess(1)</span></div>
 </body>
 </html>
