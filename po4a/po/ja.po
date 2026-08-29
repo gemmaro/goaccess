@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2026-08-29 08:51+0900\n"
-"PO-Revision-Date: 2026-06-09 09:48+0900\n"
+"PO-Revision-Date: 2026-08-29 09:07+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -27,10 +27,9 @@ msgstr "goaccess"
 
 #. type: TH
 #: ../goaccess.1:1
-#, fuzzy, no-wrap
-#| msgid "MAR 2026"
+#, no-wrap
 msgid "JUL 2026"
-msgstr "2026年3月"
+msgstr "2026年7月"
 
 #. type: TH
 #: ../goaccess.1:1
@@ -1695,24 +1694,14 @@ msgstr "例： B<--ws-auth-url=https://site.com/api/get-auth-token>"
 
 #. type: Plain text
 #: ../goaccess.1:556
-#, fuzzy
-#| msgid ""
-#| "When fetching the token, GoAccess uses I<{ credentials: 'include' }> as "
-#| "part of the request to securely retrieve the access token based on the "
-#| "user’s existing authentication session in your system, ensuring token "
-#| "retrieval is safe as long as your users are authenticated."
 msgid ""
 "When fetching the token, GoAccess uses I<{ credentials: 'include' }> as part "
 "of the request to securely retrieve the access token based on the user's "
 "existing authentication session in your system, ensuring token retrieval is "
 "safe as long as your users are authenticated."
 msgstr ""
-"トークンを取得するとき、要求の一部に I<{ credentials: 'include' }> が使われま"
-"す。\n"
-"システム内にある利用者の既存の認証セッションに基づき、アクセストークンを安全"
-"に取得するためです。\n"
-"これにより、利用者が認証している限り、トークンの取得は安全であることが担保さ"
-"れます。"
+"トークンを取得するとき、要求の一部に I<{ credentials: 'include' }> が使われますが、これはシステム内にある利用者の既存の認証セッションに基づき、アクセストークンを安全に取得するためです。\n"
+"これにより、利用者が認証している限り、トークンの取得は安全であることが担保されます。"
 
 #. type: Plain text
 #: ../goaccess.1:559
@@ -1768,16 +1757,6 @@ msgstr "WebSocketの認証の流れ"
 
 #. type: Plain text
 #: ../goaccess.1:579
-#, fuzzy
-#| msgid ""
-#| "GoAccess offers flexible authentication options, supporting both "
-#| "stateless and stateful approaches. In the stateless approach, the refresh "
-#| "token is obtained without cookies or CSRF protection; your backend "
-#| "validates the refresh token’s signature and issues a new access token. "
-#| "Alternatively, the stateful approach allows the initial fetch to issue "
-#| "JWTs along with a `csrf_token`, which is stored in the session. The "
-#| "subsequent refresh request (POST) then performs a CSRF check, requiring "
-#| "the `X-CSRF-TOKEN` header to match the session’s token."
 msgid ""
 "GoAccess offers flexible authentication options, supporting both stateless "
 "and stateful approaches. In the stateless approach, the refresh token is "
@@ -1788,16 +1767,11 @@ msgid ""
 "(POST) then performs a CSRF check, requiring the `X-CSRF-TOKEN` header to "
 "match the session's token."
 msgstr ""
-"GoAccessは柔軟な認証オプションを供しており、状態なしと状態ありの手法の両方に"
-"対応しています。\n"
-"状態なしの手法では、クッキーやCSRF保護なしにリフレッシュトークンが取得されま"
-"す。\n"
-"バックエンドがリフレッシュトークンのシグネチャを検証し新しいアクセストークン"
-"を払出します。\n"
-"代えて、状態ありの手法では初回の取得で`csrf_token`をともなうJWTを払出すことが"
-"でき、これがセッションに保管されます。\n"
-"後続のリフレッシュ要求 (POST) からはCSRFの検査が実施され、セッションのトーク"
-"ンに合致する`X-CSRF-TOKEN`ヘッダを要求します。"
+"GoAccessは柔軟な認証オプションを供しており、状態なしと状態ありの手法の両方に対応しています。\n"
+"状態なしの手法では、クッキーやCSRF保護なしにリフレッシュトークンが取得されます。\n"
+"バックエンドがリフレッシュトークンの署名を検証し新しいアクセストークンを払出します。\n"
+"代えて、状態ありの手法では初回の取得で`csrf_token`を伴うJWTを払出すことができ、これがセッションに保管されます。\n"
+"後続のリフレッシュ要求 (POST) からはCSRFの検査が実施され、セッションのトークンに合致する`X-CSRF-TOKEN`ヘッダを要求します。"
 
 #. type: Plain text
 #: ../goaccess.1:581
@@ -1890,10 +1864,9 @@ msgid ""
 msgstr ""
 "GoAccessは状態なしと状態ありの両方のん印象に対応しています。\n"
 "状態なしについては、クッキーやCSRFは要求されません。\n"
-"バックエンドでリフレッシュトークンのシグネチャを検証します。\n"
+"バックエンドでリフレッシュトークンの署名を検証します。\n"
 "状態ありについては、初回の要求にB<csrf_token>を含めます。\n"
-"GoAccessはそれをリフレッシュ要求の中のB<X-CSRF-TOKEN>として送り、これをバック"
-"エンドではセッションに対して検証しなければなりません。"
+"GoAccessはそれをリフレッシュ要求の中のB<X-CSRF-TOKEN>として送り、これをバックエンドではセッションに対して検証しなければなりません。"
 
 #. type: Plain text
 #: ../goaccess.1:621
@@ -1902,16 +1875,10 @@ msgstr "B<周期的なトークンの検証：>"
 
 #. type: Plain text
 #: ../goaccess.1:625
-#, fuzzy
-#| msgid ""
-#| "After refreshing, GoAccess confirms the updated JWT’s validity with the "
-#| "WebSocket server by sending:"
 msgid ""
 "After refreshing, GoAccess confirms the updated JWT's validity with the "
 "WebSocket server by sending:"
-msgstr ""
-"リフレッシュ後、GoAccessは以下を送ることによりWebSocketサーバーと更新された"
-"JWTの妥当性を確認します。"
+msgstr "リフレッシュ後、GoAccessは以下を送ることによりWebSocketサーバーと共に更新されたJWTの妥当性を確認します。"
 
 #. type: Plain text
 #: ../goaccess.1:627
@@ -1924,14 +1891,14 @@ msgstr "    { \"action\": \"validate_token\", \"token\": \"current-jwt\" }\n"
 msgid ""
 "The WebSocket server tracks the verified JWT's B<exp> claim and closes the "
 "connection when it expires, even if the client does not send another message."
-msgstr ""
+msgstr "WebSocketサーバは検証されたJWTのB<exp>の主張を追い、それが期限切れになるとき接続を閉じますが、これはクライアントが別で伝文を送っていないにしてもです。"
 
 #. type: Plain text
 #: ../goaccess.1:633
 msgid ""
 "If token refresh fails or returns an unusable token, the browser clears its "
 "credentials and closes the authenticated WebSocket connection."
-msgstr ""
+msgstr "トークンのリフレッシュが失敗するか使えないトークンを返すとき、ブラウザはクレデンシャルを消去し認証されたWebSocket接続を閉じます。"
 
 #. type: Plain text
 #: ../goaccess.1:637
@@ -4533,6 +4500,10 @@ msgid ""
 "timestamp ≤ the stored timestamp are skipped. Piped data works off the "
 "timestamp of the last line read."
 msgstr ""
+"I<附記：>inodeが合致しなければ、全行が構文解析されます。\n"
+"合致すれば、残りの行が読まれ計数／時間記録が更新されます。\n"
+"保管された時間記録以下の時間記録を持つ履歴は飛ばされます。\n"
+"パイプされたデータは読まれた最後の行の時間記録を基準に扱われます。"
 
 #. type: Plain text
 #: ../goaccess.1:1471
@@ -4541,6 +4512,8 @@ msgid ""
 "consecutive lines can share the same timestamp. Best practice is to parse "
 "directly with GoAccess rather than piping for incremental processing."
 msgstr ""
+"I<警告：>パイプされたデータは重複する項目を生成するかもしれませんが、これは複数の連続する行が同じ時間記録を共有することがあるためです。\n"
+"最良慣習は直接GoAccessで解析し、漸次の処理のためパイプしないことです。"
 
 #. type: Plain text
 #: ../goaccess.1:1473
@@ -4565,7 +4538,7 @@ msgstr "# goaccess access.log --restore --persist"
 #. type: Plain text
 #: ../goaccess.1:1481
 msgid "Read persisted data only:"
-msgstr ""
+msgstr "永続化されたデータのみ読み取り："
 
 #. type: Plain text
 #: ../goaccess.1:1483 ../goaccess.1:1520
@@ -5041,14 +5014,7 @@ msgstr ""
 
 #. type: Plain text
 #: ../README.md:127
-#, fuzzy, no-wrap
-#| msgid ""
-#| "    $ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz\n"
-#| "    $ tar -xzvf goaccess-1.10.2.tar.gz\n"
-#| "    $ cd goaccess-1.10.2/\n"
-#| "    $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib\n"
-#| "    $ make\n"
-#| "    # make install\n"
+#, no-wrap
 msgid ""
 "    $ wget https://tar.goaccess.io/goaccess-1.11.tar.gz\n"
 "    $ tar -xzvf goaccess-1.11.tar.gz\n"
@@ -5057,9 +5023,9 @@ msgid ""
 "    $ make\n"
 "    # make install\n"
 msgstr ""
-"    $ wget https://tar.goaccess.io/goaccess-1.10.2.tar.gz\n"
-"    $ tar -xzvf goaccess-1.10.2.tar.gz\n"
-"    $ cd goaccess-1.10.2/\n"
+"    $ wget https://tar.goaccess.io/goaccess-1.11.tar.gz\n"
+"    $ tar -xzvf goaccess-1.11.tar.gz\n"
+"    $ cd goaccess-1.11/\n"
 "    $ ./configure --enable-utf8 --enable-geoip=mmdb --with-zlib\n"
 "    $ make\n"
 "    # make install\n"
