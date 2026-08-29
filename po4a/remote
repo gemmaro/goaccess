@@ -1,3 +1,10 @@
 #!/bin/sh
 set -eu
-git remote add mainstream https://github.com/allinurl/goaccess
+
+mainstream_url=https://github.com/allinurl/goaccess
+if [ "$(git remote get-url mainstream)" != "$mainstream_url" ]
+then
+    git remote add mainstream $mainstream_url
+fi
+
+git remote add fork git@github.com:gemmaro/goaccess.git
