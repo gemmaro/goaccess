@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: goaccess 1.7\n"
 "POT-Creation-Date: 2026-08-29 08:51+0900\n"
-"PO-Revision-Date: 2026-08-29 09:07+0900\n"
+"PO-Revision-Date: 2026-08-29 09:42+0900\n"
 "Last-Translator: gemmaro <gemmaro.dev@gmail.com>\n"
 "Language-Team: none\n"
 "Language: ja\n"
@@ -4731,11 +4731,14 @@ msgid ""
 "dashboard, making it easy to monitor traffic, detect anomalies, and "
 "troubleshoot issues instantly."
 msgstr ""
+"GoAccessはオープンソースであり、実時間のウェブのログ解析器と対話的な閲覧器であって、*nixシステム上の端末やブラウザで直接走ります。\n"
+"設計では、システム管理者、DevOps技術者、セキュリティ専門家を念頭に置き、実行時に、高速で行動可能なHTTPの統計と可視のサーバ報告を届けます。\n"
+"GoAccessはウェブサーバのログを実時間で解析し、端末で直接、または実況のHTMLダッシュボードによりデータを提示しますが、これにより通信料の監視、異常性の検知、問題への即座の対応がしやすくなります。"
 
 #. type: Plain text
 #: ../README.md:14
 msgid "More info at: [https://goaccess.io](https://goaccess.io/?src=gh)."
-msgstr ""
+msgstr "より詳しいことについては：[https://goaccess.io](https://goaccess.io/?src=gh)"
 
 #. type: Plain text
 #: ../README.md:17
@@ -4744,7 +4747,7 @@ msgid ""
 "time-term-gh-2026-1.png?2026021201)](https://goaccess.io/)  [![GoAccess HTML "
 "Dashboard](https://goaccess.io/images/goaccess-real-time-html-gh-2026.png?"
 "2026021201)](https://rt.goaccess.io/?src=gh)"
-msgstr ""
+msgstr "[![GoAccessの端末のダッシュボード](https://goaccess.io/images/goaccess-real-time-term-gh-2026-1.png?2026021201)](https://goaccess.io/)  [![GoAccessのHTMLダッシュボード](https://goaccess.io/images/goaccess-real-time-html-gh-2026.png?2026021201)](https://rt.goaccess.io/?src=gh)"
 
 #. type: Title ##
 #: ../README.md:18
@@ -4767,6 +4770,8 @@ msgid ""
 "**Completely Real Time**<br> All panels and metrics are timed to be updated "
 "every 200 ms on the terminal output and every second on the HTML output."
 msgstr ""
+"**完全な実時間**<br>\n"
+"全てのパネルと指標が計られると、端末の出力上では200ms毎に、HTMLの出力上では毎秒更新されます。"
 
 #. type: Bullet: '* '
 #: ../README.md:29
@@ -4775,6 +4780,8 @@ msgid ""
 "log file, pick the log format and let GoAccess parse the access log and show "
 "you the stats."
 msgstr ""
+"**必要な構成は最小限**<br>\n"
+"アクセスログファイルに対して走らせるだけでよく、ログ形式を選んでGoAccessにアクセスログを解析させれば統計が表示されます。"
 
 #. type: Bullet: '* '
 #: ../README.md:33
@@ -4783,6 +4790,9 @@ msgid ""
 "request. Extremely useful if you want to track pages that are slowing down "
 "your site."
 msgstr ""
+"**アプリケーションの応答時間を追跡**<br>\n"
+"要求に対応するために掛かる時間を追跡します。\n"
+"サイトを低速にしているページを把握したければ極めて有用です。"
 
 #. type: Bullet: '* '
 #: ../README.md:38
@@ -4792,6 +4802,8 @@ msgid ""
 "token refresh capabilities and seamless integration with external "
 "authentication systems."
 msgstr ""
+"**WebSocket認証:**<br>\n"
+"GoAccessは強化されたWebSocket認証を供しており、ローカルと外部のJWT検証に対応し、安全なトークンのリフレッシュ機能と外部の認証システムとの円滑な統合を備えています。"
 
 #. type: Bullet: '* '
 #: ../README.md:42
@@ -4800,6 +4812,9 @@ msgid ""
 "string.  Predefined options include, Apache, Nginx, Amazon S3, Elastic Load "
 "Balancing, CloudFront, etc."
 msgstr ""
+"**ほぼ全てのウェブのログ形式**<br>\n"
+"GoAccessでは独自のログ形式の文字列を許容します。\n"
+"事前に定義された選択肢にはApache、Nginx、Amazon S3、Elastic Load Balancing、CloudFrontなどが含まれます。"
 
 #. type: Bullet: '* '
 #: ../README.md:46
@@ -4808,6 +4823,9 @@ msgid ""
 "ability to process logs incrementally through the on-disk persistence "
 "options."
 msgstr ""
+"**漸進ログ処理**<br>\n"
+"データの永続性が必要ですか？\n"
+"GoAccessにはディスク上の永続性のオプションを通じてログを漸進的に処理する能力があります。"
 
 #. type: Bullet: '* '
 #: ../README.md:50
@@ -4816,6 +4834,11 @@ msgid ""
 "need ncurses as a dependency.  That's it. It even features its own Web "
 "Socket server — http://gwsocket.io/."
 msgstr ""
+"**依存性は1つのみ**<br>\n"
+"GoAccessはCで書かれています。\n"
+"走らせるには、依存性として必要なのはncursesのみです。\n"
+"以上です。\n"
+"独自のウェブソケットサーバの機能もあります―― http://gwsocket.io/ です。"
 
 #. type: Bullet: '* '
 #: ../README.md:54
@@ -4823,6 +4846,8 @@ msgid ""
 "**Visitors**<br> Determine the amount of hits, visitors, bandwidth, and "
 "metrics for slowest running requests by the hour, or date."
 msgstr ""
+"**訪問情報**<br>\n"
+"ヒット、訪問数、帯域、時間毎、または日付毎の最も遅い実行の要求の指標の量を判定。"
 
 #. type: Bullet: '* '
 #: ../README.md:58
@@ -4831,6 +4856,9 @@ msgid ""
 "Blocks)? It features a panel that displays which virtual host is consuming "
 "most of the web server resources."
 msgstr ""
+"**仮想ホスト毎の指標**<br>\n"
+"複数の仮想ホスト（サーバブロック）がありますか？\n"
+"どの仮想ホストがウェブサーバの資源のほとんどを消費しているか表示するパネルの機能があります。"
 
 #. type: Bullet: '* '
 #: ../README.md:61
@@ -4848,6 +4876,9 @@ msgid ""
 "taste/schemes. Either through the terminal, or by simply applying the "
 "stylesheet on the HTML output."
 msgstr ""
+"**カラースキームのカスタマイズ**<br>\n"
+"GoAccessを独自の色彩の好み／スキームに仕立てましょう。\n"
+"端末を通じて、または単にHTMLの出力ではスタイルシートを適用します。"
 
 #. type: Bullet: '* '
 #: ../README.md:70
@@ -4871,6 +4902,11 @@ msgid ""
 "goaccess#docker) section below.  There is also documentation how to use "
 "[docker-compose](./docker-compose/README.md)."
 msgstr ""
+"**Docker対応**<br>\n"
+"上流からGoAccessのDockerイメージの構築が可能。\n"
+"この場合でも完全に構成することができ、これにはボリュームの対応付けと`goaccess.conf`の編集をします。\n"
+"後述の[Docker](https://github.com/allinurl/goaccess#docker)の節をご参照ください。\n"
+"[docker-compose](./docker-compose/README.md)の使い方の文書もあります。"
 
 #. type: Title ###
 #: ../README.md:77
@@ -4890,32 +4926,32 @@ msgstr ""
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Amazon CloudFront (Download Distribution)."
-msgstr ""
+msgstr "Amazon CloudFront（ダウンロード配布物）"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Amazon Simple Storage Service (S3)"
-msgstr ""
+msgstr "Amazon Simple Storage Service (S3)"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "AWS Elastic Load Balancing"
-msgstr ""
+msgstr "AWS Elastic Load Balancing"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Combined Log Format (XLF/ELF) Apache | Nginx"
-msgstr ""
+msgstr "結合されたログ形式 (XLF/ELF) Apache | Nginx"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Common Log Format (CLF) Apache"
-msgstr ""
+msgstr "Common Log Format (CLF) Apache"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Google Cloud Storage."
-msgstr ""
+msgstr "Google Cloud Storage"
 
 #. type: Bullet: '* '
 #: ../README.md:92
@@ -4925,22 +4961,22 @@ msgstr "Apache仮想ホスト"
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Squid Native Format."
-msgstr ""
+msgstr "Squid固有の形式"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "W3C format (IIS)."
-msgstr ""
+msgstr "W3Cの形式 (IIS)"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Caddy's JSON Structured format."
-msgstr ""
+msgstr "CaddyのJSONで構造化された形式"
 
 #. type: Bullet: '* '
 #: ../README.md:92
 msgid "Traefik's CLF flavor"
-msgstr ""
+msgstr "TraefikのCLF方言"
 
 #. type: Title ##
 #: ../README.md:93
